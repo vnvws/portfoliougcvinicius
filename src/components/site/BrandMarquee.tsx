@@ -9,7 +9,7 @@ import tinder from "@/assets/brands/tinder.jpg.asset.json";
 import omie from "@/assets/brands/omie.png.asset.json";
 import pj from "@/assets/brands/pj.jpg.asset.json";
 
-type Brand = { name: string; src?: string };
+type Brand = { name: string; src?: string | undefined };
 
 const brands: Brand[] = [
   { name: "Tem Promô", src: tempromo.url },
