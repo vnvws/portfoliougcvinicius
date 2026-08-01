@@ -1,32 +1,42 @@
-import brandLogosAsset from "@/assets/brand_logos.png.asset.json";
+const brands = [
+  "Picnic",
+  "Up Gas",
+  "ManClub",
+  "Radnaq",
+  "Tinder",
+  "Wine",
+  "Open English",
+  "Canva",
+  "Rainha",
+  "Inner AI",
+  "Iracema",
+  "Joingo",
+  "Informal",
+  "House of Motors",
+  "Alva",
+  "Touti",
+];
 
-// We'll simulate the individual logos by using the single image with different background positions or just repeating the style.
-// However, the user wants the logos in circles as seen in the reference.
-// The reference image shows a series of circular logos with a blue checkmark badge.
-
-const brands = Array.from({ length: 15 });
-
-function Logo({ index }: { index: number }) {
+function Logo({ name }: { name: string }) {
   return (
     <div
-      className="group relative mx-6 flex h-20 w-20 shrink-0 cursor-none items-center justify-center rounded-full bg-white transition-all duration-300 hover:scale-[1.1]"
+      data-cursor="link"
+      className="group relative mx-6 flex h-20 w-20 shrink-0 cursor-none items-center justify-center rounded-full bg-white p-3 text-center transition-all duration-300 hover:scale-[1.1]"
       style={{ 
         border: "1px solid color-mix(in oklab, var(--color-forest) 22%, transparent)",
         boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
       }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow =
+          "0 0 0 1px var(--color-neon), 0 0 26px -4px color-mix(in oklab, var(--color-neon) 65%, transparent)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+      }}
     >
-      <div className="overflow-hidden rounded-full w-full h-full p-2 flex items-center justify-center">
-         {/* Using the provided strip as a source, offset slightly per index to show different logos */}
-         <img 
-            src={brandLogosAsset.url} 
-            alt="Brand Logo" 
-            className="h-full max-w-none object-contain"
-            style={{ 
-                transform: `translateX(-${index * 6.6}%)`, // Rough estimation to slide through the logo strip
-                filter: "grayscale(20%) contrast(1.1)"
-            }}
-         />
-      </div>
+      <span className="font-display text-[11px] leading-[1.1] font-bold tracking-[-0.01em] text-ink uppercase">
+        {name}
+      </span>
       
       {/* Blue Verified Badge from the reference */}
       <div 
@@ -50,8 +60,8 @@ export function BrandMarquee() {
         onMouseOver={(e) => (e.currentTarget.style.animationPlayState = "paused")}
         onMouseOut={(e) => (e.currentTarget.style.animationPlayState = "running")}
       >
-        {[...brands, ...brands].map((_, i) => (
-          <Logo key={i} index={i % 15} />
+        {[...brands, ...brands].map((b, i) => (
+          <Logo key={`${b}-${i}`} name={b} />
         ))}
       </div>
       <div
