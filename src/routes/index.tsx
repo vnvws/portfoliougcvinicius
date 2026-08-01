@@ -7,6 +7,7 @@ import { NicheSection } from "@/components/site/NicheSection";
 import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
+import designAsset from "@/assets/design_sem_nome_1.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -188,13 +189,16 @@ function About() {
     <section id="sobre" className="mx-auto w-[1240px] pb-24">
       <div className="grid grid-cols-12 items-start gap-8">
         <Reveal className="col-span-5">
-          <h2 className="font-display text-[64px] leading-[0.86] font-extrabold tracking-[-0.04em] uppercase">
-            Não faço
-            <br />
-            <span style={{ color: "var(--color-forest)" }}>propaganda.</span>
-            <br />
-            Faço prova.
-          </h2>
+          <img
+            src={designAsset.url}
+            alt="Vinícius Araújo UGC Content"
+            className="w-full rounded-[18px] object-cover"
+            style={{
+              aspectRatio: "1 / 1",
+              border: "1px solid var(--color-neon)",
+              boxShadow: "0 0 40px -10px color-mix(in oklab, var(--color-neon) 50%, transparent)",
+            }}
+          />
         </Reveal>
         <Reveal delay={140} className="col-span-6 col-start-7 pt-6">
           <p className="text-[19px] leading-[1.55] text-forest">
