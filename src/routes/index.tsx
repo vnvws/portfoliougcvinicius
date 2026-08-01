@@ -65,6 +65,7 @@ function Index() {
           <Contact />
         </main>
       </FixedScale>
+      <BackToTop />
     </>
   );
 }
