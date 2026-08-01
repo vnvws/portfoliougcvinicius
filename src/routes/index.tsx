@@ -6,6 +6,7 @@ import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { NicheSection } from "@/components/site/NicheSection";
 import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
+import { BackToTop } from "@/components/site/BackToTop";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,6 +65,7 @@ function Index() {
           <Contact />
         </main>
       </FixedScale>
+      <BackToTop />
     </>
   );
 }
