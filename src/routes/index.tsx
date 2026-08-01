@@ -201,24 +201,13 @@ function About() {
           />
         </Reveal>
         <Reveal delay={140} className="col-span-6 col-start-7 pt-6">
-          <p className="text-[19px] leading-[1.55] text-forest">
-            Roteirizo, gravo e edito conteúdo UGC do começo ao fim. Sem equipe, sem estúdio, sem
-            aquele cheiro de comercial — só ritmo, luz honesta e o produto na mão de quem usa de
-            verdade.
-          </p>
-          <div className="mt-10 flex gap-12">
-            {[
-              ["+70", "vídeos entregues"],
-              ["9", "nichos"],
-              ["48h", "média de entrega"],
-            ].map(([n, l]) => (
-              <div key={l}>
-                <span className="font-display text-[42px] leading-none font-extrabold tracking-[-0.03em]">
-                  {n}
-                </span>
-                <p className="mt-2 text-[11px] tracking-[0.2em] text-forest uppercase">{l}</p>
-              </div>
-            ))}
+          <h3 className="font-display text-[32px] font-extrabold tracking-[-0.03em] uppercase text-ink">
+            Me conheça
+          </h3>
+          <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line">
+            <p>
+              {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald’s, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
+            </p>
           </div>
         </Reveal>
       </div>
