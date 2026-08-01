@@ -104,7 +104,7 @@ function Hero() {
       <div className="relative flex items-end gap-14">
         <div className="flex-1">
           <span className="font-sans text-[12px] tracking-[0.34em] text-forest uppercase">
-            UGC Creator · Brasil
+            UGC CREATOR MASCULINO - SÃO PAULO, BRASIL
           </span>
           <h1 className="mt-5 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em] uppercase">
             Vinícius
