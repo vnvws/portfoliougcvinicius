@@ -8,6 +8,8 @@ import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
 import designAsset from "@/assets/design_sem_nome_1.png.asset.json";
+import outOfFrameAsset from "@/assets/vinicius-out-of-frame.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -155,7 +157,7 @@ function Hero() {
               }}
             />
             <div className="grain absolute inset-0 opacity-50" />
-            <div className="absolute inset-x-4 top-4 flex items-center gap-2">
+            <div className="absolute inset-x-4 top-4 flex items-center gap-2 z-10">
               <span
                 className="h-1 flex-1 rounded-full"
                 style={{ background: "var(--color-neon)" }}
@@ -163,9 +165,23 @@ function Hero() {
               <span className="h-1 flex-1 rounded-full bg-white/25" />
               <span className="h-1 flex-1 rounded-full bg-white/25" />
             </div>
+            
+            {/* O efeito de "saída" do frame */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <img 
+                src={outOfFrameAsset.url} 
+                alt="Vinícius saindo do frame"
+                className="w-[120%] max-w-none transition-transform duration-700 ease-out"
+                style={{
+                  transform: "translateY(10%) scale(1.1)",
+                  filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.5))",
+                }}
+              />
+            </div>
+
             <div className="absolute inset-0 flex items-center justify-center">
               <span
-                className="flex h-16 w-16 items-center justify-center rounded-full"
+                className="flex h-16 w-16 items-center justify-center rounded-full bg-ink/20 backdrop-blur-sm"
                 style={{ border: "1px solid var(--color-neon)", color: "var(--color-neon)" }}
               >
                 <Play size={24} strokeWidth={2.4} />
