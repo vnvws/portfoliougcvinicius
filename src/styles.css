@@ -4,6 +4,79 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Archivo", "Space Grotesk", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
+  --color-bone: oklch(0.947 0.014 76.5);
+  --color-forest: oklch(0.436 0.043 165.5);
+  --color-ink: oklch(0.263 0 0);
+  --color-neon: oklch(0.9 0.29 135);
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+@utility neon-edge {
+  border: 1px solid color-mix(in oklab, var(--color-neon) 45%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--color-neon) 12%, transparent),
+    0 0 18px -4px color-mix(in oklab, var(--color-neon) 30%, transparent);
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes neon-breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px var(--color-neon),
+      0 0 14px -2px color-mix(in oklab, var(--color-neon) 55%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px var(--color-neon),
+      0 0 46px 2px color-mix(in oklab, var(--color-neon) 75%, transparent);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes play-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+
 /*
  * Design system definition.
  *

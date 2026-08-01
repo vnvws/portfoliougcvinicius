@@ -1,0 +1,72 @@
+import { Play } from "lucide-react";
+import { useState } from "react";
+import type { VideoItem } from "./VideoCardVertical";
+
+export function VideoCardHorizontal({ title, description, src }: VideoItem) {
+  const [hover, setHover] = useState(false);
+
+  return (
+    <figure
+      data-cursor="link"
+      className="w-full cursor-none"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <div
+        className="relative overflow-hidden rounded-[14px] bg-ink"
+        style={{
+          aspectRatio: "16 / 9",
+          border: "1px solid color-mix(in oklab, var(--color-neon) 55%, transparent)",
+          boxShadow: hover
+            ? "0 0 0 1px var(--color-neon), 0 0 34px -2px color-mix(in oklab, var(--color-neon) 60%, transparent)"
+            : "0 0 14px -6px color-mix(in oklab, var(--color-neon) 45%, transparent)",
+          transform: hover ? "scale(1.03)" : "scale(1)",
+          transition: "transform 420ms cubic-bezier(0.16,1,0.3,1), box-shadow 420ms ease",
+        }}
+      >
+        {src ? (
+          <video
+            src={src}
+            muted
+            loop
+            playsInline
+            autoPlay
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : null}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--color-forest) 50%, transparent), transparent 65%)",
+          }}
+        />
+        <div className="grain absolute inset-0 opacity-40" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span
+            className="flex h-16 w-16 items-center justify-center rounded-full"
+            style={{
+              border: "1px solid var(--color-neon)",
+              color: "var(--color-neon)",
+              animation: hover ? "play-pulse 900ms ease-in-out infinite" : undefined,
+            }}
+          >
+            <Play size={24} strokeWidth={2.4} />
+          </span>
+        </div>
+        <span
+          className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
+          style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
+        >
+          16:9
+        </span>
+      </div>
+      <figcaption className="pt-3">
+        <h4 className="truncate font-display text-[17px] leading-tight font-bold tracking-tight text-ink">
+          {title}
+        </h4>
+        <p className="mt-1 font-sans text-[13px] leading-snug text-forest">{description}</p>
+      </figcaption>
+    </figure>
+  );
+}
