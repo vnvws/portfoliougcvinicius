@@ -17,6 +17,12 @@ import video1 from "@/assets/videos/video-1.mp4.asset.json";
 import semLegenda from "@/assets/videos/sem-legenda.mp4.asset.json";
 // @ts-ignore
 import videoIphone from "@/assets/videos/tech-comparativo.mp4.asset.json";
+// @ts-ignore
+import promoSupermercado from "@/assets/videos/promo-supermercado.mp4.asset.json";
+// @ts-ignore
+import promoGeral from "@/assets/videos/promo-geral.mp4.asset.json";
+// @ts-ignore
+import promoNike from "@/assets/videos/promo-nike.mp4.asset.json";
 
 interface Asset {
   url: string;
