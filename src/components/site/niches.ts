@@ -37,6 +37,9 @@ const v6 = alimentosRedbull as unknown as Asset;
 const v7 = video1 as unknown as Asset;
 const v8 = semLegenda as unknown as Asset;
 const v9 = videoIphone as unknown as Asset;
+const v10 = promoSupermercado as unknown as Asset;
+const v11 = promoGeral as unknown as Asset;
+const v12 = promoNike as unknown as Asset;
 
 export type Niche = {
   id: string;
