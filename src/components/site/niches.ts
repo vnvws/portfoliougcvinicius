@@ -316,4 +316,71 @@ export const niches: Niche[] = [
       }
     ],
   },
+  {
+    id: "tech",
+    title: "Tech",
+    layout: "vertical",
+    videos: [
+      {
+        title: "Pocket Safe",
+        description: "A tag que protege seu Smartphone",
+        src: t1.url,
+        label: "Clique"
+      },
+      {
+        title: "BANSK",
+        description: "A capinha que mantém o design original do iPhone",
+        src: t2.url,
+        label: "Clique"
+      },
+      {
+        title: "Teccon",
+        description: "O melhor mouse gamer com fio",
+        src: t3.url,
+        label: "Clique"
+      },
+      {
+        title: "JOINGO",
+        description: "A garrafa tripé",
+        src: t4.url,
+        label: "Clique"
+      },
+      {
+        title: "MANCER",
+        description: "Monitor gamer custo benefício",
+        src: t5.url,
+        label: "Clique"
+      },
+      {
+        title: "8BitDo",
+        description: "Controle sem fio com layout do X-Box",
+        src: t6.url,
+        label: "Clique"
+      },
+      {
+        title: "Baseus",
+        description: "Headphone sem fio",
+        src: t7.url,
+        label: "Clique"
+      },
+      {
+        title: "Allchem",
+        description: "Maneira segura de limpar seu PC gamer",
+        src: t8.url,
+        label: "Clique"
+      },
+      {
+        title: "Allchem",
+        description: "Limpeza preventiva com alcool isopropílico",
+        src: t9.url,
+        label: "Clique"
+      },
+      {
+        title: "NEGOCIUN",
+        description: "Notebook Lenovo com preço justo",
+        src: t10.url,
+        label: "Clique"
+      }
+    ],
+  },
 ];
