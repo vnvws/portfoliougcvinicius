@@ -5,6 +5,9 @@ import modaTenis from "@/assets/videos/moda-tenis.mp4.asset.json";
 import techComparativo from "@/assets/videos/tech-comparativo.mp4.asset.json";
 import alimentosCreatina from "@/assets/videos/alimentos-creatina.mp4.asset.json";
 import alimentosRedbull from "@/assets/videos/alimentos-redbull.mp4.asset.json";
+import video1 from "@/assets/videos/video-1.mp4.asset.json";
+import semLegenda from "@/assets/videos/sem-legenda.mp4.asset.json";
+import videoIphone from "@/assets/videos/video-iphone.mov.asset.json";
 
 export type Niche = {
   id: string;
@@ -35,9 +38,51 @@ export const niches: Niche[] = [
         title: "Semana do Consumidor",
         description: "Ofertas exclusivas com gatilhos de urgência.",
         src: promoSemanaConsumidor.url,
-        label: "9:16"
+        label: "Clique"
       },
-      ...make(10, "Promo", "Vídeo vertical de divulgação com CTA direto para o grupo."),
+      {
+        title: "Tênis e Ofertas",
+        description: "Review rápido de produtos em promoção.",
+        src: modaTenis.url,
+        label: "Clique"
+      },
+      {
+        title: "Comparativo Tech",
+        description: "Destaque de specs para grupos de tecnologia.",
+        src: techComparativo.url,
+        label: "Clique"
+      },
+      {
+        title: "Suplementos e Saúde",
+        description: "Ofertas focadas em performance e bem-estar.",
+        src: alimentosCreatina.url,
+        label: "Clique"
+      },
+      {
+        title: "Bebidas e Energia",
+        description: "Produtos de giro rápido para promoções relâmpago.",
+        src: alimentosRedbull.url,
+        label: "Clique"
+      },
+      {
+        title: "Vídeo Demonstrativo",
+        description: "Exemplo de conteúdo para engajamento no grupo.",
+        src: video1.url,
+        label: "Clique"
+      },
+      {
+        title: "Review de Produto",
+        description: "Análise visual sem narração, foco no produto.",
+        src: semLegenda.url,
+        label: "Clique"
+      },
+      {
+        title: "Tech e Gadgets",
+        description: "Conteúdo focado em dispositivos Apple e eletrônicos.",
+        src: videoIphone.url,
+        label: "Clique"
+      },
+      ...make(3, "Promo", "Vídeo vertical de divulgação com CTA direto para o grupo."),
     ],
   },
   {
@@ -56,35 +101,13 @@ export const niches: Niche[] = [
     id: "tech",
     title: "Tech",
     layout: "vertical",
-    videos: [
-      {
-        title: "Comparativo Tech",
-        description: "Unboxing e testes de gadget com cortes rápidos.",
-        src: techComparativo.url,
-        label: "9:16"
-      },
-      ...make(7, "Tech", "Unboxing e testes de gadget com cortes rápidos."),
-    ],
+    videos: make(8, "Tech", "Unboxing e testes de gadget com cortes rápidos."),
   },
   {
     id: "alimentos-e-bebidas",
     title: "Alimentos e Bebidas",
     layout: "vertical",
-    videos: [
-      {
-        title: "Energia Red Bull",
-        description: "Close-ups e som ambiente valorizando textura e sabor.",
-        src: alimentosRedbull.url,
-        label: "9:16"
-      },
-      {
-        title: "Creatina Suplemento",
-        description: "Demonstração de preparo e benefícios.",
-        src: alimentosCreatina.url,
-        label: "9:16"
-      },
-      ...make(2, "Food", "Close-ups e som ambiente valorizando textura e sabor."),
-    ],
+    videos: make(4, "Food", "Close-ups e som ambiente valorizando textura e sabor."),
   },
   {
     id: "autocuidado",
@@ -96,15 +119,7 @@ export const niches: Niche[] = [
     id: "moda",
     title: "Moda",
     layout: "vertical",
-    videos: [
-      {
-        title: "Tênis Originais",
-        description: "Try-on com transições no beat e enquadramento de corpo inteiro.",
-        src: modaTenis.url,
-        label: "9:16"
-      },
-      ...make(11, "Look", "Try-on com transições no beat e enquadramento de corpo inteiro."),
-    ],
+    videos: make(12, "Look", "Try-on com transições no beat e enquadramento de corpo inteiro."),
   },
   {
     id: "viagens",
