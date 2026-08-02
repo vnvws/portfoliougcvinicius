@@ -1,10 +1,36 @@
 import type { VideoItem } from "./VideoCardVertical";
+// @ts-ignore
 import promoBlackFriday from "@/assets/videos/promo-black-friday.mp4.asset.json";
+// @ts-ignore
 import promoSemanaConsumidor from "@/assets/videos/promo-semana-consumidor.mp4.asset.json";
+// @ts-ignore
 import modaTenis from "@/assets/videos/moda-tenis.mp4.asset.json";
+// @ts-ignore
 import techComparativo from "@/assets/videos/tech-comparativo.mp4.asset.json";
+// @ts-ignore
 import alimentosCreatina from "@/assets/videos/alimentos-creatina.mp4.asset.json";
+// @ts-ignore
 import alimentosRedbull from "@/assets/videos/alimentos-redbull.mp4.asset.json";
+// @ts-ignore
+import video1 from "@/assets/videos/video-1.mp4.asset.json";
+// @ts-ignore
+import semLegenda from "@/assets/videos/sem-legenda.mp4.asset.json";
+// @ts-ignore
+import videoIphone from "@/assets/videos/video-iphone.mov.asset.json";
+
+interface Asset {
+  url: string;
+}
+
+const v1 = promoBlackFriday as unknown as Asset;
+const v2 = promoSemanaConsumidor as unknown as Asset;
+const v3 = modaTenis as unknown as Asset;
+const v4 = techComparativo as unknown as Asset;
+const v5 = alimentosCreatina as unknown as Asset;
+const v6 = alimentosRedbull as unknown as Asset;
+const v7 = video1 as unknown as Asset;
+const v8 = semLegenda as unknown as Asset;
+const v9 = videoIphone as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -12,12 +38,6 @@ export type Niche = {
   layout: "vertical" | "horizontal";
   videos: VideoItem[];
 };
-
-const make = (count: number, label: string, desc: string): VideoItem[] =>
-  Array.from({ length: count }, (_, i) => ({
-    title: `${label} #${String(i + 1).padStart(2, "0")}`,
-    description: desc,
-  }));
 
 export const niches: Niche[] = [
   {
@@ -28,94 +48,57 @@ export const niches: Niche[] = [
       {
         title: "Promo Black Friday",
         description: "Vídeo vertical de divulgação com CTA direto para o grupo.",
-        src: promoBlackFriday.url,
+        src: v1.url,
         label: "Clique"
       },
       {
         title: "Semana do Consumidor",
         description: "Ofertas exclusivas com gatilhos de urgência.",
-        src: promoSemanaConsumidor.url,
-        label: "9:16"
+        src: v2.url,
+        label: "Clique"
       },
-      ...make(10, "Promo", "Vídeo vertical de divulgação com CTA direto para o grupo."),
-    ],
-  },
-  {
-    id: "apps-e-servicos",
-    title: "Apps e Serviços",
-    layout: "vertical",
-    videos: make(12, "App", "Demonstração de uso do app com narração e legenda dinâmica."),
-  },
-  {
-    id: "carro-e-casa",
-    title: "Carro e Casa",
-    layout: "vertical",
-    videos: make(4, "Casa & Carro", "Review de produto no ambiente real, luz natural."),
-  },
-  {
-    id: "tech",
-    title: "Tech",
-    layout: "vertical",
-    videos: [
+      {
+        title: "Tênis e Ofertas",
+        description: "Review rápido de produtos em promoção.",
+        src: v3.url,
+        label: "Clique"
+      },
       {
         title: "Comparativo Tech",
-        description: "Unboxing e testes de gadget com cortes rápidos.",
-        src: techComparativo.url,
-        label: "9:16"
-      },
-      ...make(7, "Tech", "Unboxing e testes de gadget com cortes rápidos."),
-    ],
-  },
-  {
-    id: "alimentos-e-bebidas",
-    title: "Alimentos e Bebidas",
-    layout: "vertical",
-    videos: [
-      {
-        title: "Energia Red Bull",
-        description: "Close-ups e som ambiente valorizando textura e sabor.",
-        src: alimentosRedbull.url,
-        label: "9:16"
+        description: "Destaque de specs para grupos de tecnologia.",
+        src: v4.url,
+        label: "Clique"
       },
       {
-        title: "Creatina Suplemento",
-        description: "Demonstração de preparo e benefícios.",
-        src: alimentosCreatina.url,
-        label: "9:16"
+        title: "Suplementos e Saúde",
+        description: "Ofertas focadas em performance e bem-estar.",
+        src: v5.url,
+        label: "Clique"
       },
-      ...make(2, "Food", "Close-ups e som ambiente valorizando textura e sabor."),
-    ],
-  },
-  {
-    id: "autocuidado",
-    title: "Autocuidado",
-    layout: "vertical",
-    videos: make(6, "Care", "Rotina de skincare com antes e depois honesto."),
-  },
-  {
-    id: "moda",
-    title: "Moda",
-    layout: "vertical",
-    videos: [
       {
-        title: "Tênis Originais",
-        description: "Try-on com transições no beat e enquadramento de corpo inteiro.",
-        src: modaTenis.url,
-        label: "9:16"
+        title: "Bebidas e Energia",
+        description: "Produtos de giro rápido para promoções relâmpago.",
+        src: v6.url,
+        label: "Clique"
       },
-      ...make(11, "Look", "Try-on com transições no beat e enquadramento de corpo inteiro."),
+      {
+        title: "Vídeo Demonstrativo",
+        description: "Exemplo de conteúdo para engajamento no grupo.",
+        src: v7.url,
+        label: "Clique"
+      },
+      {
+        title: "Review de Produto",
+        description: "Análise visual sem narração, foco no produto.",
+        src: v8.url,
+        label: "Clique"
+      },
+      {
+        title: "Tech e Gadgets",
+        description: "Conteúdo focado em dispositivos Apple e eletrônicos.",
+        src: v9.url,
+        label: "Clique"
+      }
     ],
-  },
-  {
-    id: "viagens",
-    title: "Viagens",
-    layout: "vertical",
-    videos: make(4, "Trip", "Roteiro em formato diário, captação handheld."),
-  },
-  {
-    id: "youtube",
-    title: "YouTube",
-    layout: "horizontal",
-    videos: make(3, "YT", "Vídeo horizontal 16:9 com roteiro longo e edição narrativa."),
-  },
+  }
 ];
