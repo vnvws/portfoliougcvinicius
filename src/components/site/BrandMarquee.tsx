@@ -16,6 +16,11 @@ import iracema from "@/assets/iracema.jpg.asset.json";
 import promocoesDoDia from "@/assets/promocoes-do-dia.png.asset.json";
 import lightning from "@/assets/lightning.png.asset.json";
 import ofertinhas from "@/assets/ofertinhas.jpg.asset.json";
+import rainha from "@/assets/brands/rainha.jpg.asset.json";
+import joingo from "@/assets/brands/joingo.jpg.asset.json";
+import houseOfMotors from "@/assets/brands/house-of-motors.jpg.asset.json";
+import wa from "@/assets/brands/wa.png.asset.json";
+import aPromoMen from "@/assets/brands/a-promo-men.jpg.asset.json";
 
 type Brand = { name: string; src?: string | undefined };
 
@@ -38,10 +43,12 @@ const brands: Brand[] = [
   { name: "Promoções do Dia", src: promocoesDoDia.url },
   { name: "Lightning", src: lightning.url },
   { name: "Ofertinhas Todo Dia", src: ofertinhas.url },
-  { name: "Rainha" },
-  { name: "Joingo" },
+  { name: "Rainha", src: rainha.url },
+  { name: "Joingo", src: joingo.url },
+  { name: "WA", src: wa.url },
+  { name: "A Promo Men", src: aPromoMen.url },
+  { name: "House of Motors", src: houseOfMotors.url },
   { name: "Informal" },
-  { name: "House of Motors" },
   { name: "Alva" },
   { name: "Touti" },
 ];
