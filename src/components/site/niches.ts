@@ -107,6 +107,24 @@ export const niches: Niche[] = [
         description: "Conteúdo focado em dispositivos Apple e eletrônicos.",
         src: v9.url,
         label: "Clique"
+      },
+      {
+        title: "Economia no Supermercado",
+        description: "Comparativo de preços e benefícios do grupo.",
+        src: v10.url,
+        label: "Clique"
+      },
+      {
+        title: "Destaques Gerais",
+        description: "Seleção das melhores oportunidades do dia.",
+        src: v11.url,
+        label: "Clique"
+      },
+      {
+        title: "Outlet Nike",
+        description: "Promoções exclusivas em calçados e vestuário.",
+        src: v12.url,
+        label: "Clique"
       }
     ],
   }
