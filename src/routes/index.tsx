@@ -47,11 +47,6 @@ function Index() {
           </section>
 
           <div className="mx-auto flex w-[1240px] flex-col gap-16 pt-24 pb-32">
-            <Reveal className="flex items-center">
-              <h2 className="font-display text-[86px] leading-[1] font-extrabold tracking-[-0.045em] uppercase">
-                Conheça meu <span className="text-forest">trabalho</span>
-              </h2>
-            </Reveal>
             {niches.map((niche, i) => (
               <NicheSection key={niche.id} niche={niche} index={i} />
             ))}
