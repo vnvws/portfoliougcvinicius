@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Instagram, Mail, Play } from "lucide-react";
+import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2 } from "lucide-react";
 import { FixedScale } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -8,6 +8,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
 import designAsset from "@/assets/design_sem_nome_1.png.asset.json";
+import processAsset from "@/assets/processo/processo-criativo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,6 +52,8 @@ function Index() {
               <NicheSection key={niche.id} niche={niche} index={i} />
             ))}
           </div>
+
+          <CreativeProcess />
 
           <Contact />
         </main>
@@ -184,6 +187,103 @@ function About() {
             </p>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function CreativeProcess() {
+  const steps = [
+    {
+      title: "DIAGNÓSTICO INICIAL",
+      description:
+        "Fase de alinhamento para compreender os objetivos da marca e mapear as melhores estratégias de conteúdo para entregar resultados reais.",
+    },
+    {
+      title: "FORMALIZAÇÃO",
+      description: "Trâmite contratual ágil e descomplicado:",
+      list: [
+        "Disponibilização de contrato padrão para assinatura eletrônica.",
+        "Preenchimento exclusivo com as informações jurídicas da contratante.",
+      ],
+    },
+    {
+      title: "PLANEJAMENTO CRIATIVO",
+      description: "Definição da linha narrativa da campanha:",
+      list: [
+        "Elaboração de roteiros personalizados seguindo as diretrizes da marca.",
+        "Flexibilidade para trabalhar com briefing próprio da empresa ou aprovação do material desenvolvido por mim.",
+      ],
+    },
+    {
+      title: "EXECUÇÃO E CRONOGRAMA",
+      description: "Ciclo completo de entrega em até 5 dias úteis:",
+      list: [
+        "Etapas: Criação de roteiro → Validação → Captação e Edição → Revisões finais → Envio via Google Drive.",
+      ],
+    },
+    {
+      title: "CONDIÇÕES COMERCIAIS",
+      list: [
+        "Faturamento: Pagamento do valor integral realizado no ato da entrega final dos conteúdos.",
+        "Fiscal: Nota fiscal emitida imediatamente após a confirmação do pagamento.",
+      ],
+    },
+  ];
+
+  return (
+    <section className="bg-forest/10 py-32">
+      <div className="mx-auto flex w-[1240px] items-start gap-16">
+        <div className="flex-1">
+          <Reveal>
+            <h2 className="font-display text-[72px] font-black tracking-[-0.04em] uppercase text-forest">
+              Processo criativo
+            </h2>
+          </Reveal>
+          <Reveal delay={200} className="mt-12">
+            <div className="relative">
+              <img
+                src={processAsset.url}
+                alt="Exemplos de Conteúdo"
+                className="w-[580px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+              />
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="w-[520px] pt-8">
+          <div className="space-y-10">
+            {steps.map((step, idx) => (
+              <Reveal key={step.title} delay={300 + idx * 100}>
+                <div className="group relative flex gap-4">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-forest/30 text-forest">
+                    <CheckCircle2 size={16} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-display text-[18px] font-extrabold tracking-tight uppercase text-forest">
+                      {step.title}
+                    </h4>
+                    {step.description && (
+                      <p className="mt-2 text-[14px] leading-relaxed text-forest/80">
+                        {step.description}
+                      </p>
+                    )}
+                    {step.list && (
+                      <ul className="mt-2 list-disc space-y-1 pl-4 text-[14px] leading-relaxed text-forest/80">
+                        {step.list.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  {idx < steps.length - 1 && (
+                    <div className="absolute top-8 left-3 h-[calc(100%+24px)] w-[1px] bg-forest/20" />
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
