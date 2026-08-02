@@ -69,16 +69,17 @@ function Nav() {
       <span className="font-display text-[18px] font-extrabold tracking-[-0.02em] uppercase text-ink">
         Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
       </span>
-      <nav className="flex items-center gap-8 text-[12px] tracking-[0.2em] text-forest uppercase">
-        <a data-cursor="link" className="cursor-none hover:text-ink" href="#sobre">
-          Sobre
-        </a>
-        <a data-cursor="link" className="cursor-none hover:text-ink" href="#moda">
-          Portfólio
-        </a>
-        <a data-cursor="link" className="cursor-none hover:text-ink" href="#contato">
-          Contato
-        </a>
+      <nav className="flex items-center gap-6 text-[10px] tracking-[0.15em] text-forest uppercase">
+        {niches.map((niche) => (
+          <a
+            key={niche.id}
+            data-cursor="link"
+            className="cursor-none transition-colors hover:text-ink"
+            href={`#${niche.id}`}
+          >
+            {niche.title}
+          </a>
+        ))}
       </nav>
     </header>
   );
