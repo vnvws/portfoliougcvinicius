@@ -108,6 +108,16 @@ const c1 = autoLoovi as unknown as Asset;
 const c2 = autoHouseOfMotors as unknown as Asset;
 const c3 = autoRadnaqEspuma as unknown as Asset;
 const c4 = autoRadnaqOleo as unknown as Asset;
+const t1 = techPocketSafe as unknown as Asset;
+const t2 = techBanskIphone as unknown as Asset;
+const t3 = techTecconMouse as unknown as Asset;
+const t4 = techJoingoBottle as unknown as Asset;
+const t5 = techMancerMonitor as unknown as Asset;
+const t6 = tech8bitdoControl as unknown as Asset;
+const t7 = techBaseusHeadphone as unknown as Asset;
+const t8 = techAllchemPcClean as unknown as Asset;
+const t9 = techAllchemPreventive as unknown as Asset;
+const t10 = techNegociunLenovo as unknown as Asset;
 
 export type Niche = {
   id: string;
