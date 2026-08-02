@@ -3,7 +3,7 @@ import { useState } from "react";
 import { InlineVideo } from "./InlineVideo";
 import type { VideoItem } from "./VideoCardVertical";
 
-export function VideoCardHorizontal({ title, description, src, poster }: VideoItem) {
+export function VideoCardHorizontal({ title, description, src, poster, label }: VideoItem) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -26,7 +26,7 @@ export function VideoCardHorizontal({ title, description, src, poster }: VideoIt
         }}
       >
         {src ? (
-          <InlineVideo src={src} poster={poster} iconSize={24} label="16:9" />
+          <InlineVideo src={src} poster={poster} iconSize={24} label={label || "16:9"} />
         ) : (
           <>
             <div

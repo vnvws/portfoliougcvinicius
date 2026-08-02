@@ -1,4 +1,10 @@
 import type { VideoItem } from "./VideoCardVertical";
+import promoBlackFriday from "@/assets/videos/promo-black-friday.mp4.asset.json";
+import promoSemanaConsumidor from "@/assets/videos/promo-semana-consumidor.mp4.asset.json";
+import modaTenis from "@/assets/videos/moda-tenis.mp4.asset.json";
+import techComparativo from "@/assets/videos/tech-comparativo.mp4.asset.json";
+import alimentosCreatina from "@/assets/videos/alimentos-creatina.mp4.asset.json";
+import alimentosRedbull from "@/assets/videos/alimentos-redbull.mp4.asset.json";
 
 export type Niche = {
   id: string;
@@ -18,7 +24,21 @@ export const niches: Niche[] = [
     id: "grupos-de-promocao",
     title: "Grupos de Promoção",
     layout: "vertical",
-    videos: make(12, "Promo", "Vídeo vertical de divulgação com CTA direto para o grupo."),
+    videos: [
+      {
+        title: "Promo Black Friday",
+        description: "Vídeo vertical de divulgação com CTA direto para o grupo.",
+        src: promoBlackFriday.url,
+        label: "Clique"
+      },
+      {
+        title: "Semana do Consumidor",
+        description: "Ofertas exclusivas com gatilhos de urgência.",
+        src: promoSemanaConsumidor.url,
+        label: "9:16"
+      },
+      ...make(10, "Promo", "Vídeo vertical de divulgação com CTA direto para o grupo."),
+    ],
   },
   {
     id: "apps-e-servicos",
@@ -36,13 +56,35 @@ export const niches: Niche[] = [
     id: "tech",
     title: "Tech",
     layout: "vertical",
-    videos: make(8, "Tech", "Unboxing e testes de gadget com cortes rápidos."),
+    videos: [
+      {
+        title: "Comparativo Tech",
+        description: "Unboxing e testes de gadget com cortes rápidos.",
+        src: techComparativo.url,
+        label: "9:16"
+      },
+      ...make(7, "Tech", "Unboxing e testes de gadget com cortes rápidos."),
+    ],
   },
   {
     id: "alimentos-e-bebidas",
     title: "Alimentos e Bebidas",
     layout: "vertical",
-    videos: make(4, "Food", "Close-ups e som ambiente valorizando textura e sabor."),
+    videos: [
+      {
+        title: "Energia Red Bull",
+        description: "Close-ups e som ambiente valorizando textura e sabor.",
+        src: alimentosRedbull.url,
+        label: "9:16"
+      },
+      {
+        title: "Creatina Suplemento",
+        description: "Demonstração de preparo e benefícios.",
+        src: alimentosCreatina.url,
+        label: "9:16"
+      },
+      ...make(2, "Food", "Close-ups e som ambiente valorizando textura e sabor."),
+    ],
   },
   {
     id: "autocuidado",
@@ -54,7 +96,15 @@ export const niches: Niche[] = [
     id: "moda",
     title: "Moda",
     layout: "vertical",
-    videos: make(12, "Look", "Try-on com transições no beat e enquadramento de corpo inteiro."),
+    videos: [
+      {
+        title: "Tênis Originais",
+        description: "Try-on com transições no beat e enquadramento de corpo inteiro.",
+        src: modaTenis.url,
+        label: "9:16"
+      },
+      ...make(11, "Look", "Try-on com transições no beat e enquadramento de corpo inteiro."),
+    ],
   },
   {
     id: "viagens",
