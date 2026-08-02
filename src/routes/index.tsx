@@ -127,9 +127,9 @@ function Hero() {
             }}
           >
             <img 
-              src={mainCollageAsset.url} 
+              src={viniciusPhotoAsset.url} 
               alt="Vinícius Araújo"
-              className="absolute inset-0 h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
             />
             <div className="grain absolute inset-0 opacity-40 pointer-events-none" />
             <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
