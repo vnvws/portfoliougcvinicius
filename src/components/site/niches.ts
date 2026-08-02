@@ -386,6 +386,18 @@ export const niches: Niche[] = [
         description: "Notebook Lenovo com preço justo",
         src: t10.url,
         label: "Clique"
+      },
+      {
+        title: "NEGOCIUN",
+        description: "O marketplace perfeito para comprar seu PS5",
+        src: t11.url,
+        label: "Clique"
+      },
+      {
+        title: "DDPAI",
+        description: "A dash Cam Plug and Play",
+        src: t12.url,
+        label: "Clique"
       }
     ],
   },
