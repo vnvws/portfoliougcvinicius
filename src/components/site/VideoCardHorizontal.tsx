@@ -1,8 +1,9 @@
 import { Play } from "lucide-react";
 import { useState } from "react";
+import { InlineVideo } from "./InlineVideo";
 import type { VideoItem } from "./VideoCardVertical";
 
-export function VideoCardHorizontal({ title, description, src }: VideoItem) {
+export function VideoCardHorizontal({ title, description, src, poster }: VideoItem) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -25,24 +26,18 @@ export function VideoCardHorizontal({ title, description, src }: VideoItem) {
         }}
       >
         {src ? (
-          <video
-            src={src}
-            muted
-            loop
-            playsInline
-            autoPlay
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        ) : null}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--color-forest) 50%, transparent), transparent 65%)",
-          }}
-        />
-        <div className="grain absolute inset-0 opacity-40" />
-        <div className="absolute inset-0 flex items-center justify-center">
+          <InlineVideo src={src} poster={poster} iconSize={24} label="16:9" />
+        ) : (
+          <>
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--color-forest) 50%, transparent), transparent 65%)",
+              }}
+            />
+            <div className="grain absolute inset-0 opacity-40" />
+            <div className="absolute inset-0 flex items-center justify-center">
           <span
             className="flex h-16 w-16 items-center justify-center rounded-full"
             style={{
@@ -53,13 +48,15 @@ export function VideoCardHorizontal({ title, description, src }: VideoItem) {
           >
             <Play size={24} strokeWidth={2.4} />
           </span>
-        </div>
-        <span
-          className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
-          style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
-        >
-          16:9
-        </span>
+            </div>
+            <span
+              className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
+              style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
+            >
+              16:9
+            </span>
+          </>
+        )}
       </div>
       <figcaption className="pt-3">
         <h4 className="truncate font-display text-[17px] leading-tight font-bold tracking-tight text-ink">
