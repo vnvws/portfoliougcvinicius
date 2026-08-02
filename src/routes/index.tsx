@@ -39,7 +39,6 @@ function Index() {
         <main className="grain relative w-full overflow-hidden bg-bone font-sans text-ink">
           <Nav />
           <Hero />
-          <About />
           <section className="relative pt-12">
             <div className="mx-auto w-[1240px] pb-6">
               <p className="font-sans text-[11px] font-bold tracking-[0.32em] text-forest uppercase opacity-80">
@@ -48,6 +47,9 @@ function Index() {
             </div>
             <BrandMarquee />
           </section>
+          <div className="pt-24">
+            <About />
+          </div>
 
           <div className="mx-auto flex w-[1240px] flex-col gap-16 pt-24 pb-32">
             {niches.map((niche, i) => (
