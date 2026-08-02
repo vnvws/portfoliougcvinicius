@@ -54,7 +54,7 @@ import autoHouseOfMotors from "@/assets/videos/auto-house-of-motors.mp4.asset.js
 // @ts-ignore
 import autoRadnaqEspuma from "@/assets/videos/auto-radnaq-espuma.mp4.asset.json";
 // @ts-ignore
-import autoRadnaqOleo from "@/assets/videos/auto-radnaq-oleo.mp4.asset.json";
+import autoRadnaqOleo from "@/assets/radnaq-oleo.mp4.asset.json";
 
 interface Asset {
   url: string;
