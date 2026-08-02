@@ -1,14 +1,17 @@
 import { Play } from "lucide-react";
 import { useState } from "react";
+import { InlineVideo } from "./InlineVideo";
 
 export type VideoItem = {
   title: string;
   description: string;
-  /** Substituir depois pelo vídeo real (mp4/embed). */
+  /** URL do vídeo real (mp4). */
   src?: string;
+  /** Imagem de capa opcional. */
+  poster?: string;
 };
 
-export function VideoCardVertical({ title, description, src }: VideoItem) {
+export function VideoCardVertical({ title, description, src, poster }: VideoItem) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -31,24 +34,18 @@ export function VideoCardVertical({ title, description, src }: VideoItem) {
         }}
       >
         {src ? (
-          <video
-            src={src}
-            muted
-            loop
-            playsInline
-            autoPlay
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        ) : null}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 50% 30%, color-mix(in oklab, var(--color-forest) 55%, transparent), transparent 62%)",
-          }}
-        />
-        <div className="grain absolute inset-0 opacity-40" />
-        <div className="absolute inset-0 flex items-center justify-center">
+          <InlineVideo src={src} poster={poster} iconSize={20} label="9:16" />
+        ) : (
+          <>
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 50% 30%, color-mix(in oklab, var(--color-forest) 55%, transparent), transparent 62%)",
+              }}
+            />
+            <div className="grain absolute inset-0 opacity-40" />
+            <div className="absolute inset-0 flex items-center justify-center">
           <span
             className="flex h-14 w-14 items-center justify-center rounded-full"
             style={{
@@ -59,13 +56,15 @@ export function VideoCardVertical({ title, description, src }: VideoItem) {
           >
             <Play size={20} strokeWidth={2.4} />
           </span>
-        </div>
-        <span
-          className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
-          style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
-        >
-          9:16
-        </span>
+            </div>
+            <span
+              className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
+              style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
+            >
+              9:16
+            </span>
+          </>
+        )}
       </div>
       <figcaption className="pt-3">
         <h4 className="truncate font-display text-[15px] leading-tight font-bold tracking-tight text-ink">
