@@ -150,21 +150,6 @@ function Hero() {
           </span>
         </div>
       </div>
-      <div className="mt-20 flex flex-wrap items-center justify-between gap-y-4 border-t border-forest/10 pt-8">
-        {niches.map((niche) => (
-          <a
-            key={niche.id}
-            data-cursor="link"
-            className="flex cursor-none items-center gap-2 font-display text-[15px] font-bold tracking-tight uppercase transition-colors hover:text-forest"
-            href={`#${niche.id}`}
-            style={{ color: "var(--color-ink)" }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-neon)" }} />
-            {niche.title}
-            <ArrowUpRight size={14} className="opacity-40" />
-          </a>
-        ))}
-      </div>
     </section>
   );
 }
