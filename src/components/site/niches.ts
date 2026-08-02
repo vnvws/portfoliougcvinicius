@@ -17,6 +17,12 @@ import video1 from "@/assets/videos/video-1.mp4.asset.json";
 import semLegenda from "@/assets/videos/sem-legenda.mp4.asset.json";
 // @ts-ignore
 import videoIphone from "@/assets/videos/tech-comparativo.mp4.asset.json";
+// @ts-ignore
+import promoSupermercado from "@/assets/videos/promo-supermercado.mp4.asset.json";
+// @ts-ignore
+import promoGeral from "@/assets/videos/promo-geral.mp4.asset.json";
+// @ts-ignore
+import promoNike from "@/assets/videos/promo-nike.mp4.asset.json";
 
 interface Asset {
   url: string;
@@ -31,6 +37,9 @@ const v6 = alimentosRedbull as unknown as Asset;
 const v7 = video1 as unknown as Asset;
 const v8 = semLegenda as unknown as Asset;
 const v9 = videoIphone as unknown as Asset;
+const v10 = promoSupermercado as unknown as Asset;
+const v11 = promoGeral as unknown as Asset;
+const v12 = promoNike as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -97,6 +106,24 @@ export const niches: Niche[] = [
         title: "Tech e Gadgets",
         description: "Conteúdo focado em dispositivos Apple e eletrônicos.",
         src: v9.url,
+        label: "Clique"
+      },
+      {
+        title: "Economia no Supermercado",
+        description: "Comparativo de preços e benefícios do grupo.",
+        src: v10.url,
+        label: "Clique"
+      },
+      {
+        title: "Destaques Gerais",
+        description: "Seleção das melhores oportunidades do dia.",
+        src: v11.url,
+        label: "Clique"
+      },
+      {
+        title: "Outlet Nike",
+        description: "Promoções exclusivas em calçados e vestuário.",
+        src: v12.url,
         label: "Clique"
       }
     ],
