@@ -55,6 +55,26 @@ import autoHouseOfMotors from "@/assets/videos/auto-house-of-motors.mp4.asset.js
 import autoRadnaqEspuma from "@/assets/videos/auto-radnaq-espuma.mp4.asset.json";
 // @ts-ignore
 import autoRadnaqOleo from "@/assets/radnaq-oleo.mp4.asset.json";
+// @ts-ignore
+import techPocketSafe from "@/assets/tech-pocket-safe.mp4.asset.json";
+// @ts-ignore
+import techBanskIphone from "@/assets/tech-bansk-iphone.mp4.asset.json";
+// @ts-ignore
+import techTecconMouse from "@/assets/tech-teccon-mouse.mp4.asset.json";
+// @ts-ignore
+import techJoingoBottle from "@/assets/tech-joingo-bottle.mov.asset.json";
+// @ts-ignore
+import techMancerMonitor from "@/assets/tech-mancer-monitor.mp4.asset.json";
+// @ts-ignore
+import tech8bitdoControl from "@/assets/tech-8bitdo-control.mp4.asset.json";
+// @ts-ignore
+import techBaseusHeadphone from "@/assets/tech-baseus-headphone.mp4.asset.json";
+// @ts-ignore
+import techAllchemPcClean from "@/assets/tech-allchem-pc-clean.mp4.asset.json";
+// @ts-ignore
+import techAllchemPreventive from "@/assets/tech-allchem-preventive.mp4.asset.json";
+// @ts-ignore
+import techNegociunLenovo from "@/assets/tech-negociun-lenovo.mp4.asset.json";
 
 interface Asset {
   url: string;
@@ -88,6 +108,16 @@ const c1 = autoLoovi as unknown as Asset;
 const c2 = autoHouseOfMotors as unknown as Asset;
 const c3 = autoRadnaqEspuma as unknown as Asset;
 const c4 = autoRadnaqOleo as unknown as Asset;
+const t1 = techPocketSafe as unknown as Asset;
+const t2 = techBanskIphone as unknown as Asset;
+const t3 = techTecconMouse as unknown as Asset;
+const t4 = techJoingoBottle as unknown as Asset;
+const t5 = techMancerMonitor as unknown as Asset;
+const t6 = tech8bitdoControl as unknown as Asset;
+const t7 = techBaseusHeadphone as unknown as Asset;
+const t8 = techAllchemPcClean as unknown as Asset;
+const t9 = techAllchemPreventive as unknown as Asset;
+const t10 = techNegociunLenovo as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -282,6 +312,73 @@ export const niches: Niche[] = [
         title: "Radnaq Automotive",
         description: "O óleo ideal para o motor do seu carro",
         src: c4.url,
+        label: "Clique"
+      }
+    ],
+  },
+  {
+    id: "tech",
+    title: "Tech",
+    layout: "vertical",
+    videos: [
+      {
+        title: "Pocket Safe",
+        description: "A tag que protege seu Smartphone",
+        src: t1.url,
+        label: "Clique"
+      },
+      {
+        title: "BANSK",
+        description: "A capinha que mantém o design original do iPhone",
+        src: t2.url,
+        label: "Clique"
+      },
+      {
+        title: "Teccon",
+        description: "O melhor mouse gamer com fio",
+        src: t3.url,
+        label: "Clique"
+      },
+      {
+        title: "JOINGO",
+        description: "A garrafa tripé",
+        src: t4.url,
+        label: "Clique"
+      },
+      {
+        title: "MANCER",
+        description: "Monitor gamer custo benefício",
+        src: t5.url,
+        label: "Clique"
+      },
+      {
+        title: "8BitDo",
+        description: "Controle sem fio com layout do X-Box",
+        src: t6.url,
+        label: "Clique"
+      },
+      {
+        title: "Baseus",
+        description: "Headphone sem fio",
+        src: t7.url,
+        label: "Clique"
+      },
+      {
+        title: "Allchem",
+        description: "Maneira segura de limpar seu PC gamer",
+        src: t8.url,
+        label: "Clique"
+      },
+      {
+        title: "Allchem",
+        description: "Limpeza preventiva com alcool isopropílico",
+        src: t9.url,
+        label: "Clique"
+      },
+      {
+        title: "NEGOCIUN",
+        description: "Notebook Lenovo com preço justo",
+        src: t10.url,
         label: "Clique"
       }
     ],
