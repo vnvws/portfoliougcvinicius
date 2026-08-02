@@ -34,13 +34,15 @@ export function FixedScale({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div style={{ width: "100%", overflowX: "hidden", height }}>
+    <div style={{ width: "100%", overflowX: "hidden", display: "flex", justifyContent: "center" }}>
       <div
         ref={inner}
         style={{
           width: DESIGN_WIDTH,
+          minHeight: "100vh",
           transform: `scale(${scale})`,
-          transformOrigin: "top left",
+          transformOrigin: "top center",
+          flexShrink: 0,
         }}
       >
         {children}
