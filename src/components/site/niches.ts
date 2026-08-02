@@ -1,13 +1,13 @@
 import type { VideoItem } from "./VideoCardVertical";
-import promoBlackFriday from "@/assets/videos/promo-black-friday.mp4.asset.json";
-import promoSemanaConsumidor from "@/assets/videos/promo-semana-consumidor.mp4.asset.json";
-import modaTenis from "@/assets/videos/moda-tenis.mp4.asset.json";
-import techComparativo from "@/assets/videos/tech-comparativo.mp4.asset.json";
-import alimentosCreatina from "@/assets/videos/alimentos-creatina.mp4.asset.json";
-import alimentosRedbull from "@/assets/videos/alimentos-redbull.mp4.asset.json";
-import video1 from "@/assets/videos/video-1.mp4.asset.json";
-import semLegenda from "@/assets/videos/sem-legenda.mp4.asset.json";
-import videoIphone from "@/assets/videos/video-iphone.mov.asset.json";
+import promoBlackFriday from "../assets/videos/promo-black-friday.mp4.asset.json";
+import promoSemanaConsumidor from "../assets/videos/promo-semana-consumidor.mp4.asset.json";
+import modaTenis from "../assets/videos/moda-tenis.mp4.asset.json";
+import techComparativo from "../assets/videos/tech-comparativo.mp4.asset.json";
+import alimentosCreatina from "../assets/videos/alimentos-creatina.mp4.asset.json";
+import alimentosRedbull from "../assets/videos/alimentos-redbull.mp4.asset.json";
+import video1 from "../assets/videos/video-1.mp4.asset.json";
+import semLegenda from "../assets/videos/sem-legenda.mp4.asset.json";
+import videoIphone from "../assets/videos/video-iphone.mov.asset.json";
 
 export type Niche = {
   id: string;
