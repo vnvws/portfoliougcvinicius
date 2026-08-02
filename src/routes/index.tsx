@@ -53,7 +53,6 @@ function Index() {
 
           <div className="mx-auto flex w-[1240px] flex-col gap-16 pt-24 pb-32">
             {niches
-              .filter(n => n.id === "grupos-de-promocao")
               .map((niche, i) => (
                 <NicheSection key={niche.id} niche={niche} index={i} />
               ))}
@@ -77,7 +76,6 @@ function Nav() {
       </span>
       <nav className="flex items-center gap-6 text-[10px] tracking-[0.15em] text-forest uppercase">
         {niches
-          .filter(n => n.id === "grupos-de-promocao")
           .map((niche) => (
             <a
               key={niche.id}
