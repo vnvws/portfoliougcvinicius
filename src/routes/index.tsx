@@ -47,16 +47,10 @@ function Index() {
           </section>
 
           <div className="mx-auto flex w-[1240px] flex-col gap-16 pt-24 pb-32">
-            <Reveal className="flex items-end justify-between">
-              <h2 className="font-display text-[86px] leading-[0.85] font-extrabold tracking-[-0.045em] uppercase">
-                Portfólio
-                <br />
-                <span className="text-forest">por nicho</span>
+            <Reveal className="flex items-center">
+              <h2 className="font-display text-[86px] leading-[1] font-extrabold tracking-[-0.045em] uppercase">
+                Conheça meu <span className="text-forest">trabalho</span>
               </h2>
-              <p className="w-[340px] pb-3 text-[14px] leading-relaxed text-forest">
-                Nove nichos, mais de setenta entregas. Cada bloco abaixo é um território onde já
-                produzi, roteirizei e editei conteúdo vertical do zero.
-              </p>
             </Reveal>
             {niches.map((niche, i) => (
               <NicheSection key={niche.id} niche={niche} index={i} />
