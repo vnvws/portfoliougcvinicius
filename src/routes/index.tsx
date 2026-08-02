@@ -52,9 +52,11 @@ function Index() {
           </div>
 
           <div className="mx-auto flex w-[1240px] flex-col gap-16 pt-24 pb-32">
-            {niches.map((niche, i) => (
-              <NicheSection key={niche.id} niche={niche} index={i} />
-            ))}
+            {niches
+              .filter(n => n.id === "grupos-de-promocao")
+              .map((niche, i) => (
+                <NicheSection key={niche.id} niche={niche} index={i} />
+              ))}
           </div>
 
           <CreativeProcess />
@@ -74,16 +76,18 @@ function Nav() {
         Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
       </span>
       <nav className="flex items-center gap-6 text-[10px] tracking-[0.15em] text-forest uppercase">
-        {niches.map((niche) => (
-          <a
-            key={niche.id}
-            data-cursor="link"
-            className="cursor-none transition-colors hover:text-ink"
-            href={`#${niche.id}`}
-          >
-            {niche.title}
-          </a>
-        ))}
+        {niches
+          .filter(n => n.id === "grupos-de-promocao")
+          .map((niche) => (
+            <a
+              key={niche.id}
+              data-cursor="link"
+              className="cursor-none transition-colors hover:text-ink"
+              href={`#${niche.id}`}
+            >
+              {niche.title}
+            </a>
+          ))}
       </nav>
     </header>
   );
