@@ -23,6 +23,24 @@ import promoSupermercado from "@/assets/videos/promo-supermercado.mp4.asset.json
 import promoGeral from "@/assets/videos/promo-geral.mp4.asset.json";
 // @ts-ignore
 import promoNike from "@/assets/videos/promo-nike.mp4.asset.json";
+// @ts-ignore
+import appsVideoLegenda from "@/assets/videos/apps-video-legenda.mp4.asset.json";
+// @ts-ignore
+import appsOpenEnglish from "@/assets/videos/apps-open-english.mp4.asset.json";
+// @ts-ignore
+import appsGancho1 from "@/assets/videos/apps-gancho-1.mp4.asset.json";
+// @ts-ignore
+import appsGancho2 from "@/assets/videos/apps-gancho-2.mp4.asset.json";
+// @ts-ignore
+import appsSnaptik from "@/assets/videos/apps-snaptik.mp4.asset.json";
+// @ts-ignore
+import appsVideo12 from "@/assets/videos/apps-video-1-2.mp4.asset.json";
+// @ts-ignore
+import appsOmie from "@/assets/videos/apps-omie.mp4.asset.json";
+// @ts-ignore
+import appsGancho1Alt from "@/assets/videos/apps-gancho-1-alt.mp4.asset.json";
+// @ts-ignore
+import appsVideo1Legendas from "@/assets/videos/apps-video-1-legendas.mp4.asset.json";
 
 interface Asset {
   url: string;
@@ -40,6 +58,15 @@ const v9 = videoIphone as unknown as Asset;
 const v10 = promoSupermercado as unknown as Asset;
 const v11 = promoGeral as unknown as Asset;
 const v12 = promoNike as unknown as Asset;
+const a1 = appsVideoLegenda as unknown as Asset;
+const a2 = appsOpenEnglish as unknown as Asset;
+const a3 = appsGancho1 as unknown as Asset;
+const a4 = appsGancho2 as unknown as Asset;
+const a5 = appsSnaptik as unknown as Asset;
+const a6 = appsVideo12 as unknown as Asset;
+const a7 = appsOmie as unknown as Asset;
+const a8 = appsGancho1Alt as unknown as Asset;
+const a9 = appsVideo1Legendas as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -127,5 +154,66 @@ export const niches: Niche[] = [
         label: "Clique"
       }
     ],
-  }
+  },
+  {
+    id: "apps-e-servicos",
+    title: "Apps e Serviços",
+    layout: "vertical",
+    videos: [
+      {
+        title: "Omie",
+        description: "Conteúdo UGC para plataforma de gestão empresarial.",
+        src: a7.url,
+        label: "Clique"
+      },
+      {
+        title: "Open English",
+        description: "Vídeo de divulgação para plataforma de idiomas.",
+        src: a2.url,
+        label: "Clique"
+      },
+      {
+        title: "Gancho 1",
+        description: "Abertura com gancho forte para retenção nos primeiros segundos.",
+        src: a3.url,
+        label: "Clique"
+      },
+      {
+        title: "Gancho 2",
+        description: "Versão alternativa de abertura com outro gancho.",
+        src: a4.url,
+        label: "Clique"
+      },
+      {
+        title: "Gancho 1 — Variação",
+        description: "Teste A/B de gancho para otimização de campanha.",
+        src: a8.url,
+        label: "Clique"
+      },
+      {
+        title: "Vídeo com Legenda",
+        description: "Conteúdo legendado para consumo sem som.",
+        src: a1.url,
+        label: "Clique"
+      },
+      {
+        title: "Vídeo 1 com Legendas",
+        description: "Versão legendada com foco em acessibilidade e retenção.",
+        src: a9.url,
+        label: "Clique"
+      },
+      {
+        title: "Vídeo 1 — Corte 2",
+        description: "Segundo corte com ritmo mais dinâmico.",
+        src: a6.url,
+        label: "Clique"
+      },
+      {
+        title: "Formato Social",
+        description: "Peça curta pensada para TikTok e Reels.",
+        src: a5.url,
+        label: "Clique"
+      }
+    ],
+  },
 ];
