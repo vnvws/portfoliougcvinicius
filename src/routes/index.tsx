@@ -132,7 +132,7 @@ function Hero() {
               }}
             />
             <div className="grain absolute inset-0 opacity-50" />
-            <div className="absolute inset-x-4 top-2 flex items-center gap-2">
+            <div className="absolute inset-x-4 top-1.5 flex items-center gap-2">
               <span
                 className="h-1 flex-1 rounded-full"
                 style={{ background: "var(--color-neon)" }}
