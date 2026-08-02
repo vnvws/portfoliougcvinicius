@@ -1,36 +1,37 @@
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Play, Pause, Maximize } from "lucide-react";
 import { useRef, useState } from "react";
 
 type Props = {
   src: string;
   poster?: string | undefined;
-  /** Prévia muda ao passar o mouse (sem clique). */
+  /** Se a prévia muda ao passar o mouse */
   previewOnHover?: boolean;
   iconSize?: number;
   label?: string;
 };
 
 /**
- * Player inline: reproduz DENTRO do frame, nunca em tela cheia.
- * - clique = play/pause
- * - hover  = prévia muda (opcional)
- * - botão de som para ativar áudio
+ * Player inline configurado para:
+ * - Reprodução com som apenas ao clicar
+ * - Sem reprodução automática (exceto prévia sem som opcional no hover)
+ * - Botão de tela cheia no lugar do botão de som
  */
 export function InlineVideo({
   src,
   poster,
-  previewOnHover = true,
+  previewOnHover = false, // Desativado por padrão conforme pedido de remover reprodução automática
   iconSize = 20,
   label,
 }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
 
   const toggle = () => {
     const v = ref.current;
     if (!v) return;
+    
     if (v.paused) {
+      v.muted = false; // Tocar com som ao clicar
       void v.play();
       setPlaying(true);
     } else {
@@ -39,10 +40,25 @@ export function InlineVideo({
     }
   };
 
+  const handleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const v = ref.current;
+    if (!v) return;
+    
+    if (v.requestFullscreen) {
+      void v.requestFullscreen();
+    } else if ((v as any).webkitRequestFullscreen) {
+      void (v as any).webkitRequestFullscreen();
+    }
+  };
+
   const onEnter = () => {
     if (!previewOnHover || playing) return;
     const v = ref.current;
-    if (v) void v.play();
+    if (v) {
+      v.muted = true; // Prévia sempre sem som
+      void v.play();
+    }
   };
 
   const onLeave = () => {
@@ -65,7 +81,7 @@ export function InlineVideo({
         ref={ref}
         src={src}
         poster={poster}
-        muted={muted}
+        muted={true} // Inicia mutado para evitar bloqueios, mas toggle ativa o som
         loop
         playsInline
         preload="metadata"
@@ -101,14 +117,8 @@ export function InlineVideo({
 
       <button
         type="button"
-        aria-label={muted ? "Ativar som" : "Desativar som"}
-        onClick={(e) => {
-          e.stopPropagation();
-          const v = ref.current;
-          const next = !muted;
-          setMuted(next);
-          if (v) v.muted = next;
-        }}
+        aria-label="Tela cheia"
+        onClick={handleFullscreen}
         className="absolute right-3 bottom-3 flex h-8 w-8 cursor-none items-center justify-center rounded-full backdrop-blur-sm"
         style={{
           border: "1px solid color-mix(in oklab, var(--color-neon) 70%, transparent)",
@@ -116,7 +126,7 @@ export function InlineVideo({
           background: "rgba(0,0,0,0.35)",
         }}
       >
-        {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+        <Maximize size={14} />
       </button>
 
       {label ? (
