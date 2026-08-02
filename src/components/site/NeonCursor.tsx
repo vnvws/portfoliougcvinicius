@@ -42,7 +42,7 @@ export function NeonCursor() {
     <div
       ref={dot}
       aria-hidden
-      className="pointer-events-none fixed top-0 left-0 z-[100] hidden rounded-full pointer-coarse:hidden md:block"
+      className="pointer-events-none fixed top-0 left-0 z-[100] hidden rounded-full md:block"
       style={{
         width: active ? 54 : 18,
         height: active ? 54 : 18,
