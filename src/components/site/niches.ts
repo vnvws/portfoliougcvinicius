@@ -74,7 +74,11 @@ import techAllchemPcClean from "@/assets/tech-allchem-pc-clean.mp4.asset.json";
 // @ts-ignore
 import techAllchemPreventive from "@/assets/tech-allchem-preventive.mp4.asset.json";
 // @ts-ignore
-import techNegociunLenovo from "@/assets/tech-negociun-lenovo.mp4.asset.json";
+import techNegociunLenovo from "@/assets/videos/tech-negociun-lenovo.mp4.asset.json";
+// @ts-ignore
+import techNegociunPs5 from "@/assets/tech-negociun-ps5.mp4.asset.json";
+// @ts-ignore
+import techDdpaiDashcam from "@/assets/tech-ddpai-dashcam.mp4.asset.json";
 
 interface Asset {
   url: string;
