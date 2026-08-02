@@ -10,6 +10,7 @@ import { BackToTop } from "@/components/site/BackToTop";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 import processAsset from "@/assets/processo/processo-criativo.png.asset.json";
 import viniciusPhotoAsset from "@/assets/vinicius-photo.jpg.asset.json";
+import aboutCollageAsset from "@/assets/about-collage.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
