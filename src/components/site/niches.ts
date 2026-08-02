@@ -82,62 +82,62 @@ export const niches: Niche[] = [
     layout: "vertical",
     videos: [
       {
-        title: "Promo Black Friday",
-        description: "Vídeo vertical de divulgação com CTA direto para o grupo.",
+        title: "Promoções do Dia",
+        description: "As melhores promoções da Black Friday",
         src: v1.url,
         label: "Clique"
       },
       {
-        title: "Semana do Consumidor",
-        description: "Ofertas exclusivas com gatilhos de urgência.",
+        title: "A Promo Men",
+        description: "Ofertas exclusivas durante a semana do consumidor",
         src: v2.url,
         label: "Clique"
       },
       {
-        title: "Tênis e Ofertas",
-        description: "Review rápido de produtos em promoção.",
+        title: "A Promo Men",
+        description: "Onde comprar tênis pagando barato",
         src: v3.url,
         label: "Clique"
       },
       {
-        title: "Comparativo Tech",
-        description: "Destaque de specs para grupos de tecnologia.",
+        title: "Tem Promô",
+        description: "Grupo exclusivo de promoções",
         src: v4.url,
         label: "Clique"
       },
       {
-        title: "Suplementos e Saúde",
-        description: "Ofertas focadas em performance e bem-estar.",
+        title: "Urubu das Promos",
+        description: "Creatina pagando barato",
         src: v5.url,
         label: "Clique"
       },
       {
-        title: "Bebidas e Energia",
-        description: "Produtos de giro rápido para promoções relâmpago.",
+        title: "Urubu das Promos",
+        description: "Onde comprar energético barato",
         src: v6.url,
         label: "Clique"
       },
       {
-        title: "Vídeo Demonstrativo",
-        description: "Exemplo de conteúdo para engajamento no grupo.",
+        title: "Waves Outlet",
+        description: "Sneakers do momento pagando pouco",
         src: v7.url,
         label: "Clique"
       },
       {
-        title: "Review de Produto",
-        description: "Análise visual sem narração, foco no produto.",
+        title: "Rei da Promo",
+        description: "Grupo com os melhores descontos da internet",
         src: v8.url,
         label: "Clique"
       },
       {
-        title: "Tech e Gadgets",
-        description: "Conteúdo focado em dispositivos Apple e eletrônicos.",
+        title: "Tem Promô",
+        description: "Grupo exclusivo de promoções",
         src: v9.url,
         label: "Clique"
       },
       {
-        title: "Economia no Supermercado",
-        description: "Comparativo de preços e benefícios do grupo.",
+        title: "Urubu das Promos",
+        description: "Compras no mercado x no grupo",
         src: v10.url,
         label: "Clique"
       },
@@ -148,8 +148,8 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Outlet Nike",
-        description: "Promoções exclusivas em calçados e vestuário.",
+        title: "Promoções do Dia",
+        description: "Achado secreto de promoções",
         src: v12.url,
         label: "Clique"
       }
@@ -162,55 +162,55 @@ export const niches: Niche[] = [
     videos: [
       {
         title: "Omie",
-        description: "Conteúdo UGC para plataforma de gestão empresarial.",
+        description: "Software de gestão completo para seu negócio",
         src: a7.url,
         label: "Clique"
       },
       {
         title: "Open English",
-        description: "Vídeo de divulgação para plataforma de idiomas.",
+        description: "Aprender inglês nunca foi tão fácil",
         src: a2.url,
         label: "Clique"
       },
       {
-        title: "Gancho 1",
-        description: "Abertura com gancho forte para retenção nos primeiros segundos.",
+        title: "Canva",
+        description: "Criando um post em segundos com a IA do Canva",
         src: a3.url,
         label: "Clique"
       },
       {
-        title: "Gancho 2",
-        description: "Versão alternativa de abertura com outro gancho.",
+        title: "WaSpeed",
+        description: "Automatizando o seu atendimento no WhatsApp",
         src: a4.url,
         label: "Clique"
       },
       {
-        title: "Gancho 1 — Variação",
-        description: "Teste A/B de gancho para otimização de campanha.",
+        title: "Canva",
+        description: "Transformando foto em vídeo com a IA do Canva",
         src: a8.url,
         label: "Clique"
       },
       {
-        title: "Vídeo com Legenda",
-        description: "Conteúdo legendado para consumo sem som.",
+        title: "Inner AI",
+        description: "Plataforma completa com mais de 50 IAs",
         src: a1.url,
         label: "Clique"
       },
       {
-        title: "Vídeo 1 com Legendas",
-        description: "Versão legendada com foco em acessibilidade e retenção.",
+        title: "Lemon Cash",
+        description: "Wallet híbrida multi moedas",
         src: a9.url,
         label: "Clique"
       },
       {
-        title: "Vídeo 1 — Corte 2",
-        description: "Segundo corte com ritmo mais dinâmico.",
+        title: "KalyFit",
+        description: "App que conta calorias a partir de fotos",
         src: a6.url,
         label: "Clique"
       },
       {
-        title: "Formato Social",
-        description: "Peça curta pensada para TikTok e Reels.",
+        title: "My Dream Setup",
+        description: "Site para montar seu setup virtualmente",
         src: a5.url,
         label: "Clique"
       }
