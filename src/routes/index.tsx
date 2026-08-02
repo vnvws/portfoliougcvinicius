@@ -7,7 +7,7 @@ import { NicheSection } from "@/components/site/NicheSection";
 import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
-import designAsset from "@/assets/design_sem_nome_1.png.asset.json";
+import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 import processAsset from "@/assets/processo/processo-criativo.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -167,9 +167,9 @@ function About() {
       <div className="grid grid-cols-12 items-start gap-8">
         <Reveal className="col-span-5">
           <img
-            src={designAsset.url}
+            src={mainCollageAsset.url}
             alt="Vinícius Araújo UGC Content"
-            className="w-full rounded-[18px] object-cover"
+            className="w-full rounded-[18px] object-contain"
             style={{
               aspectRatio: "1 / 1",
               border: "1px solid var(--color-neon)",
