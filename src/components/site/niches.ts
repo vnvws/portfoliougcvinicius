@@ -16,7 +16,7 @@ import video1 from "@/assets/videos/video-1.mp4.asset.json";
 // @ts-ignore
 import semLegenda from "@/assets/videos/sem-legenda.mp4.asset.json";
 // @ts-ignore
-import videoIphone from "@/assets/videos/video-iphone.mov.asset.json";
+import videoIphone from "@/assets/videos/tech-comparativo.mp4.asset.json";
 
 interface Asset {
   url: string;
