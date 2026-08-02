@@ -99,7 +99,7 @@ function Hero() {
           <span className="font-sans text-[12px] tracking-[0.34em] text-forest uppercase">
             UGC CREATOR MASCULINO - SÃO PAULO, BRASIL
           </span>
-          <h1 className="mt-2 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em] uppercase">
+          <h1 className="mt-8 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em] uppercase">
             Vinícius
             <br />
             <span
