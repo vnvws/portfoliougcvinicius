@@ -41,6 +41,12 @@ import appsOmie from "@/assets/videos/apps-omie.mp4.asset.json";
 import appsGancho1Alt from "@/assets/videos/apps-gancho-1-alt.mp4.asset.json";
 // @ts-ignore
 import appsVideo1Legendas from "@/assets/videos/apps-video-1-legendas.mp4.asset.json";
+// @ts-ignore
+import sedaCollege from "@/assets/seda-college.mp4.asset.json";
+// @ts-ignore
+import autoAgente from "@/assets/auto-agente.mp4.asset.json";
+// @ts-ignore
+import visionCursor from "@/assets/vision-cursor.mp4.asset.json";
 
 interface Asset {
   url: string;
@@ -67,6 +73,9 @@ const a6 = appsVideo12 as unknown as Asset;
 const a7 = appsOmie as unknown as Asset;
 const a8 = appsGancho1Alt as unknown as Asset;
 const a9 = appsVideo1Legendas as unknown as Asset;
+const a10 = sedaCollege as unknown as Asset;
+const a11 = autoAgente as unknown as Asset;
+const a12 = visionCursor as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -212,6 +221,24 @@ export const niches: Niche[] = [
         title: "My Dream Setup",
         description: "Site para montar seu setup virtualmente",
         src: a5.url,
+        label: "Clique"
+      },
+      {
+        title: "Seda College",
+        description: "Aprenda inglês com 30 minutos por dia",
+        src: a10.url,
+        label: "Clique"
+      },
+      {
+        title: "Auto Agente",
+        description: "Pratique para prova do detran em casa",
+        src: a11.url,
+        label: "Clique"
+      },
+      {
+        title: "Vision Cursor",
+        description: "Personalise o cursor do seu mouse",
+        src: a12.url,
         label: "Clique"
       }
     ],
