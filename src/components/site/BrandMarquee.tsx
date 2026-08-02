@@ -55,9 +55,12 @@ const brands: Brand[] = [
   { name: "WA", src: wa.url },
   { name: "A Promo Men", src: aPromoMen.url },
   { name: "House of Motors", src: houseOfMotors.url },
-  { name: "Informal" },
-  { name: "Alva" },
-  { name: "Touti" },
+  { name: "Informal", src: informal.url },
+  { name: "Alva", src: alvaAsset.url },
+  { name: "Touti", src: toutiAsset.url },
+  { name: "Vorax", src: vorax.url },
+  { name: "Teccon", src: teccon.url },
+  { name: "Blue Abstract", src: blueAbstract.url },
 ];
 
 function Logo({ name, src }: Brand) {
