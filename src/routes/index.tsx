@@ -9,6 +9,7 @@ import { niches } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 import processAsset from "@/assets/processo/processo-criativo.png.asset.json";
+import viniciusPhotoAsset from "@/assets/vinicius-photo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,9 +127,9 @@ function Hero() {
             }}
           >
             <img 
-              src={mainCollageAsset.url} 
+              src={viniciusPhotoAsset.url} 
               alt="Vinícius Araújo"
-              className="absolute inset-0 h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
             />
             <div className="grain absolute inset-0 opacity-40 pointer-events-none" />
             <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
@@ -181,9 +182,9 @@ function About() {
       <div className="grid grid-cols-12 items-start gap-8">
         <Reveal className="col-span-5">
           <img
-            src={mainCollageAsset.url}
+            src={viniciusPhotoAsset.url}
             alt="Vinícius Araújo UGC Content"
-            className="w-full rounded-[18px] object-contain"
+            className="w-full rounded-[18px] object-cover"
             style={{
               aspectRatio: "1 / 1",
               border: "1px solid var(--color-neon)",
