@@ -125,29 +125,27 @@ function Hero() {
               transform: "rotate(3deg)",
             }}
           >
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 50% 35%, color-mix(in oklab, var(--color-forest) 70%, transparent), transparent 65%)",
-              }}
+            <img 
+              src={mainCollageAsset.url} 
+              alt="Vinícius Araújo"
+              className="absolute inset-0 h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
             />
-            <div className="grain absolute inset-0 opacity-50" />
-            <div className="absolute inset-x-4 top-1.5 flex items-center gap-2">
+            <div className="grain absolute inset-0 opacity-40 pointer-events-none" />
+            <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
               <span
                 className="h-1 flex-1 rounded-full"
                 style={{ background: "var(--color-neon)" }}
               />
-              <span className="h-1 flex-1 rounded-full bg-white/25" />
-              <span className="h-1 flex-1 rounded-full bg-white/25" />
+              <span className="h-1 flex-1 rounded-full bg-white/30" />
+              <span className="h-1 flex-1 rounded-full bg-white/30" />
             </div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span
-                className="flex h-16 w-16 items-center justify-center rounded-full"
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
                 style={{ border: "1px solid var(--color-neon)", color: "var(--color-neon)" }}
               >
-                <Play size={24} strokeWidth={2.4} />
-              </span>
+                <Play size={22} fill="currentColor" className="ml-1 opacity-80" />
+              </div>
             </div>
           </div>
           <span
