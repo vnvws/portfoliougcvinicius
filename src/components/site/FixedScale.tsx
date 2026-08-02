@@ -10,7 +10,7 @@ const DESIGN_WIDTH = 1440;
 export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [scaledHeight, setScaledHeight] = useState<string | number>("auto");
+  const [scaledHeight, setScaledHeight] = useState<string | number>("100vh");
 
   useEffect(() => {
     const measure = () => {
@@ -18,8 +18,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
       setScale(currentScale);
 
       if (inner.current) {
-        // We set the container height to the scaled height of the content
-        // to prevent the empty space at the bottom (overflow-hidden container)
         setScaledHeight(inner.current.offsetHeight * currentScale);
       }
     };
@@ -27,7 +25,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
     measure();
     window.addEventListener("resize", measure);
 
-    // Also watch for content changes that might change the height
     const ro = new ResizeObserver(measure);
     if (inner.current) ro.observe(inner.current);
 
@@ -41,10 +38,12 @@ export function FixedScale({ children }: { children: ReactNode }) {
     <div
       style={{
         width: "100%",
+        minHeight: "100vh",
         height: scaledHeight,
         overflow: "hidden",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
         backgroundColor: "var(--color-bone)",
       }}
     >

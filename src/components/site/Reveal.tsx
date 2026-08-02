@@ -28,6 +28,7 @@ export function Reveal({
   className?: string;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  
   return (
     <div
       ref={ref}
