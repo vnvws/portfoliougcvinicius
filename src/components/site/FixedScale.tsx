@@ -22,12 +22,19 @@ export function FixedScale({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div style={{ width: "100%", overflowX: "hidden", display: "flex", justifyContent: "center" }}>
+    <div
+      style={{
+        width: "100%",
+        overflowX: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        backgroundColor: "var(--color-bone)",
+      }}
+    >
       <div
         ref={inner}
         style={{
           width: DESIGN_WIDTH,
-          minHeight: "100vh",
           transform: `scale(${scale})`,
           transformOrigin: "top center",
           flexShrink: 0,
