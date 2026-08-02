@@ -22,6 +22,13 @@ import houseOfMotors from "@/assets/brands/house-of-motors.jpg.asset.json";
 import wa from "@/assets/brands/wa.png.asset.json";
 import aPromoMen from "@/assets/brands/a-promo-men.jpg.asset.json";
 
+import informal from "@/assets/brands/informal.jpg.asset.json";
+import blueAbstract from "@/assets/brands/blue-abstract.jpg.asset.json";
+import toutiAsset from "@/assets/brands/touti.jpg.asset.json";
+import vorax from "@/assets/brands/vorax.png.asset.json";
+import alvaAsset from "@/assets/brands/alva.png.asset.json";
+import teccon from "@/assets/brands/teccon.png.asset.json";
+
 type Brand = { name: string; src?: string | undefined };
 
 const brands: Brand[] = [
