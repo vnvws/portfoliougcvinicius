@@ -22,6 +22,13 @@ import houseOfMotors from "@/assets/brands/house-of-motors.jpg.asset.json";
 import wa from "@/assets/brands/wa.png.asset.json";
 import aPromoMen from "@/assets/brands/a-promo-men.jpg.asset.json";
 
+import informal from "@/assets/brands/informal.jpg.asset.json";
+import blueAbstract from "@/assets/brands/blue-abstract.jpg.asset.json";
+import toutiAsset from "@/assets/brands/touti.jpg.asset.json";
+import vorax from "@/assets/brands/vorax.png.asset.json";
+import alvaAsset from "@/assets/brands/alva.png.asset.json";
+import teccon from "@/assets/brands/teccon.png.asset.json";
+
 type Brand = { name: string; src?: string | undefined };
 
 const brands: Brand[] = [
@@ -48,9 +55,12 @@ const brands: Brand[] = [
   { name: "WA", src: wa.url },
   { name: "A Promo Men", src: aPromoMen.url },
   { name: "House of Motors", src: houseOfMotors.url },
-  { name: "Informal" },
-  { name: "Alva" },
-  { name: "Touti" },
+  { name: "Informal", src: informal.url },
+  { name: "Alva", src: alvaAsset.url },
+  { name: "Touti", src: toutiAsset.url },
+  { name: "Vorax", src: vorax.url },
+  { name: "Teccon", src: teccon.url },
+  { name: "Blue Abstract", src: blueAbstract.url },
 ];
 
 function Logo({ name, src }: Brand) {
