@@ -90,6 +90,7 @@ export function InlineVideo({
           playsInline
           preload="metadata"
           disablePictureInPicture
+          controlsList="nodownload"
           controls={false}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
