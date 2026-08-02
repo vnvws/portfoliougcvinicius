@@ -30,6 +30,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  console.log("Rendering Index");
   return (
     <>
       <NeonCursor />

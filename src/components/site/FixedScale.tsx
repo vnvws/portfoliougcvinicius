@@ -13,22 +13,26 @@ export function FixedScale({ children }: { children: ReactNode }) {
   const [scaledHeight, setScaledHeight] = useState<string | number>("auto");
 
   useEffect(() => {
+    console.log("FixedScale mounted, DESIGN_WIDTH:", DESIGN_WIDTH);
     const measure = () => {
       const currentScale = window.innerWidth / DESIGN_WIDTH;
+      console.log("FixedScale measuring, scale:", currentScale);
       setScale(currentScale);
 
       if (inner.current) {
-        // We set the container height to the scaled height of the content
-        // to prevent the empty space at the bottom (overflow-hidden container)
-        setScaledHeight(inner.current.offsetHeight * currentScale);
+        const height = inner.current.offsetHeight * currentScale;
+        console.log("FixedScale new scaledHeight:", height);
+        setScaledHeight(height);
       }
     };
 
     measure();
     window.addEventListener("resize", measure);
 
-    // Also watch for content changes that might change the height
-    const ro = new ResizeObserver(measure);
+    const ro = new ResizeObserver((entries) => {
+      console.log("FixedScale ResizeObserver trigger");
+      measure();
+    });
     if (inner.current) ro.observe(inner.current);
 
     return () => {

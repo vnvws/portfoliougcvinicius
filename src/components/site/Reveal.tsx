@@ -28,6 +28,14 @@ export function Reveal({
   className?: string;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  
+  // Debug log for Reveal visibility
+  useEffect(() => {
+    if (inView) {
+      console.log("Reveal component in view", className);
+    }
+  }, [inView, className]);
+
   return (
     <div
       ref={ref}
