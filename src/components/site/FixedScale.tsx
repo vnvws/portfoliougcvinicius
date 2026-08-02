@@ -10,27 +10,15 @@ const DESIGN_WIDTH = 1440;
 export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [height, setHeight] = useState<number | undefined>(undefined);
 
   useEffect(() => {
-    let frame = 0;
     const measure = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const next = Math.min(1, window.innerWidth / DESIGN_WIDTH);
-        setScale(next);
-        if (inner.current) setHeight(inner.current.offsetHeight * next);
-      });
+      const next = Math.min(1, window.innerWidth / DESIGN_WIDTH);
+      setScale(next);
     };
     measure();
     window.addEventListener("resize", measure);
-    const ro = new ResizeObserver(measure);
-    if (inner.current) ro.observe(inner.current);
-    return () => {
-      window.removeEventListener("resize", measure);
-      ro.disconnect();
-      cancelAnimationFrame(frame);
-    };
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
   return (
