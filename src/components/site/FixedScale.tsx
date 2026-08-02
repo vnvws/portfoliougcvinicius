@@ -14,7 +14,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const measure = () => {
-      const currentScale = Math.min(1, window.innerWidth / DESIGN_WIDTH);
+      const currentScale = window.innerWidth / DESIGN_WIDTH;
       setScale(currentScale);
 
       if (inner.current) {
