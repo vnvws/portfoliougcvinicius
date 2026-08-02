@@ -65,7 +65,7 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="relative z-20 mx-auto flex w-[1240px] items-center justify-between pt-9">
+    <header className="relative z-20 mx-auto flex w-[1240px] items-center justify-between pt-4">
       <span className="font-display text-[18px] font-extrabold tracking-[-0.02em] uppercase text-ink">
         Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
       </span>
