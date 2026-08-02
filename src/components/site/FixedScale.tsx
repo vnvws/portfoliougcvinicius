@@ -10,7 +10,7 @@ const DESIGN_WIDTH = 1440;
 export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [scaledHeight, setScaledHeight] = useState<string | number>("100vh");
+  const [scaledHeight, setScaledHeight] = useState<string | number>("100%");
 
   useEffect(() => {
     const measure = () => {
@@ -45,6 +45,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
         flexDirection: "column",
         alignItems: "center",
         backgroundColor: "var(--color-bone)",
+        touchAction: "pan-y",
       }}
     >
       <div
