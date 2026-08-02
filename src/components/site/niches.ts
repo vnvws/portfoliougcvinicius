@@ -122,6 +122,8 @@ const t7 = techBaseusHeadphone as unknown as Asset;
 const t8 = techAllchemPcClean as unknown as Asset;
 const t9 = techAllchemPreventive as unknown as Asset;
 const t10 = techNegociunLenovo as unknown as Asset;
+const t11 = techNegociunPs5 as unknown as Asset;
+const t12 = techDdpaiDashcam as unknown as Asset;
 
 export type Niche = {
   id: string;
