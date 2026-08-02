@@ -10,37 +10,51 @@ const DESIGN_WIDTH = 1440;
 export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [height, setHeight] = useState<number | undefined>(undefined);
+  const [scaledHeight, setScaledHeight] = useState<string | number>("auto");
 
   useEffect(() => {
-    let frame = 0;
     const measure = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const next = Math.min(1, window.innerWidth / DESIGN_WIDTH);
-        setScale(next);
-        if (inner.current) setHeight(inner.current.offsetHeight * next);
-      });
+      const currentScale = Math.min(1, window.innerWidth / DESIGN_WIDTH);
+      setScale(currentScale);
+
+      if (inner.current) {
+        // We set the container height to the scaled height of the content
+        // to prevent the empty space at the bottom (overflow-hidden container)
+        setScaledHeight(inner.current.offsetHeight * currentScale);
+      }
     };
+
     measure();
     window.addEventListener("resize", measure);
+
+    // Also watch for content changes that might change the height
     const ro = new ResizeObserver(measure);
     if (inner.current) ro.observe(inner.current);
+
     return () => {
       window.removeEventListener("resize", measure);
       ro.disconnect();
-      cancelAnimationFrame(frame);
     };
   }, []);
 
   return (
-    <div style={{ width: "100%", overflowX: "hidden", height }}>
+    <div
+      style={{
+        width: "100%",
+        height: scaledHeight,
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        backgroundColor: "var(--color-bone)",
+      }}
+    >
       <div
         ref={inner}
         style={{
           width: DESIGN_WIDTH,
           transform: `scale(${scale})`,
-          transformOrigin: "top left",
+          transformOrigin: "top center",
+          flexShrink: 0,
         }}
       >
         {children}
