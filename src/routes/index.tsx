@@ -95,7 +95,7 @@ function Hero() {
         }}
       />
       <div className="relative flex items-end gap-14">
-        <div className="flex-1">
+        <div className="relative z-10 flex-1">
           <span className="font-sans text-[12px] tracking-[0.34em] text-forest uppercase">
             UGC CREATOR MASCULINO - SÃO PAULO, BRASIL
           </span>
