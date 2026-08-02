@@ -74,7 +74,11 @@ import techAllchemPcClean from "@/assets/tech-allchem-pc-clean.mp4.asset.json";
 // @ts-ignore
 import techAllchemPreventive from "@/assets/tech-allchem-preventive.mp4.asset.json";
 // @ts-ignore
-import techNegociunLenovo from "@/assets/tech-negociun-lenovo.mp4.asset.json";
+import techNegociunLenovo from "@/assets/videos/tech-negociun-lenovo.mp4.asset.json";
+// @ts-ignore
+import techNegociunPs5 from "@/assets/tech-negociun-ps5.mp4.asset.json";
+// @ts-ignore
+import techDdpaiDashcam from "@/assets/tech-ddpai-dashcam.mp4.asset.json";
 
 interface Asset {
   url: string;
@@ -118,6 +122,8 @@ const t7 = techBaseusHeadphone as unknown as Asset;
 const t8 = techAllchemPcClean as unknown as Asset;
 const t9 = techAllchemPreventive as unknown as Asset;
 const t10 = techNegociunLenovo as unknown as Asset;
+const t11 = techNegociunPs5 as unknown as Asset;
+const t12 = techDdpaiDashcam as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -379,6 +385,18 @@ export const niches: Niche[] = [
         title: "NEGOCIUN",
         description: "Notebook Lenovo com preço justo",
         src: t10.url,
+        label: "Clique"
+      },
+      {
+        title: "NEGOCIUN",
+        description: "O marketplace perfeito para comprar seu PS5",
+        src: t11.url,
+        label: "Clique"
+      },
+      {
+        title: "DDPAI",
+        description: "A dash Cam Plug and Play",
+        src: t12.url,
         label: "Clique"
       }
     ],
