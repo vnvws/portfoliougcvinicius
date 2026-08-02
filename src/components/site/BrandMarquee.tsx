@@ -8,6 +8,14 @@ import radnaq from "@/assets/brands/radnaq.png.asset.json";
 import tinder from "@/assets/brands/tinder.jpg.asset.json";
 import omie from "@/assets/brands/omie.png.asset.json";
 import pj from "@/assets/brands/pj.jpg.asset.json";
+import innerAi from "@/assets/inner-ai.jpg.asset.json";
+import upGas from "@/assets/up-gas.png.asset.json";
+import wine from "@/assets/wine.png.asset.json";
+import openEnglish from "@/assets/open-english.png.asset.json";
+import iracema from "@/assets/iracema.jpg.asset.json";
+import promocoesDoDia from "@/assets/promocoes-do-dia.png.asset.json";
+import lightning from "@/assets/lightning.png.asset.json";
+import ofertinhas from "@/assets/ofertinhas.jpg.asset.json";
 
 type Brand = { name: string; src?: string | undefined };
 
@@ -22,12 +30,15 @@ const brands: Brand[] = [
   { name: "Tinder", src: tinder.url },
   { name: "Omie", src: omie.url },
   { name: "PJ", src: pj.url },
-  { name: "Up Gas" },
-  { name: "Wine" },
-  { name: "Open English" },
+  { name: "Inner AI", src: innerAi.url },
+  { name: "Up Gas", src: upGas.url },
+  { name: "Wine", src: wine.url },
+  { name: "Open English", src: openEnglish.url },
+  { name: "Iracema", src: iracema.url },
+  { name: "Promoções do Dia", src: promocoesDoDia.url },
+  { name: "Lightning", src: lightning.url },
+  { name: "Ofertinhas Todo Dia", src: ofertinhas.url },
   { name: "Rainha" },
-  { name: "Inner AI" },
-  { name: "Iracema" },
   { name: "Joingo" },
   { name: "Informal" },
   { name: "House of Motors" },
