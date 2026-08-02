@@ -94,7 +94,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative mx-auto w-[1240px] pt-16 pb-24">
+    <section className="relative mx-auto w-[1240px] pt-8 pb-24">
       <div
         className="pointer-events-none absolute top-24 left-[-80px] h-[420px] w-[620px] rounded-full blur-[110px]"
         style={{
@@ -107,7 +107,7 @@ function Hero() {
           <span className="font-sans text-[12px] tracking-[0.34em] text-forest uppercase">
             UGC CREATOR MASCULINO - SÃO PAULO, BRASIL
           </span>
-          <h1 className="mt-5 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em] uppercase">
+          <h1 className="mt-2 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em] uppercase">
             Vinícius
             <br />
             <span
