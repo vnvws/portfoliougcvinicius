@@ -175,9 +175,9 @@ function About() {
       <div className="grid grid-cols-12 items-start gap-8">
         <Reveal className="col-span-5">
           <img
-            src={viniciusPhotoAsset.url}
+            src={aboutCollageAsset.url}
             alt="Vinícius Araújo UGC Content"
-            className="w-full rounded-[18px] object-cover"
+            className="w-full rounded-[18px] object-contain"
             style={{
               aspectRatio: "1 / 1",
               border: "1px solid var(--color-neon)",
