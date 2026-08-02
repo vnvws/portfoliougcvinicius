@@ -255,4 +255,35 @@ export const niches: Niche[] = [
       }
     ],
   },
+  {
+    id: "automotivo",
+    title: "Automotivo",
+    layout: "vertical",
+    videos: [
+      {
+        title: "LOOVI",
+        description: "Seu carro segurado por um valor justo",
+        src: c1.url,
+        label: "Clique"
+      },
+      {
+        title: "House Of Motors",
+        description: "Tecnologia de limpeza a seco com carnaúba polimerizada",
+        src: c2.url,
+        label: "Clique"
+      },
+      {
+        title: "Radnaq Automotive",
+        description: "Espuma para limpeza de estofados",
+        src: c3.url,
+        label: "Clique"
+      },
+      {
+        title: "Radnaq Automotive",
+        description: "O óleo ideal para o motor do seu carro",
+        src: c4.url,
+        label: "Clique"
+      }
+    ],
+  },
 ];
