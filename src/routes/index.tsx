@@ -30,12 +30,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  console.log("Rendering Index");
   return (
     <>
       <NeonCursor />
       <FixedScale>
-        <main className="grain relative overflow-hidden bg-bone font-sans text-ink">
+        <main className="grain relative w-full overflow-hidden bg-bone font-sans text-ink">
           <Nav />
           <Hero />
           <About />

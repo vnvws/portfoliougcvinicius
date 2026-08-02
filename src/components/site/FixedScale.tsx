@@ -10,29 +10,22 @@ const DESIGN_WIDTH = 1440;
 export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [scaledHeight, setScaledHeight] = useState<string | number>("auto");
+  const [scaledHeight, setScaledHeight] = useState<string | number>("100vh");
 
   useEffect(() => {
-    console.log("FixedScale mounted, DESIGN_WIDTH:", DESIGN_WIDTH);
     const measure = () => {
       const currentScale = window.innerWidth / DESIGN_WIDTH;
-      console.log("FixedScale measuring, scale:", currentScale);
       setScale(currentScale);
 
       if (inner.current) {
-        const height = inner.current.offsetHeight * currentScale;
-        console.log("FixedScale new scaledHeight:", height);
-        setScaledHeight(height);
+        setScaledHeight(inner.current.offsetHeight * currentScale);
       }
     };
 
     measure();
     window.addEventListener("resize", measure);
 
-    const ro = new ResizeObserver((entries) => {
-      console.log("FixedScale ResizeObserver trigger");
-      measure();
-    });
+    const ro = new ResizeObserver(measure);
     if (inner.current) ro.observe(inner.current);
 
     return () => {
@@ -45,10 +38,12 @@ export function FixedScale({ children }: { children: ReactNode }) {
     <div
       style={{
         width: "100%",
+        minHeight: "100vh",
         height: scaledHeight,
         overflow: "hidden",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
         backgroundColor: "var(--color-bone)",
       }}
     >
