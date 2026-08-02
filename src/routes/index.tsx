@@ -65,7 +65,7 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="relative z-20 mx-auto flex w-[1240px] items-center justify-between pt-9">
+    <header className="relative z-20 mx-auto flex w-[1240px] items-center justify-between pt-4">
       <span className="font-display text-[18px] font-extrabold tracking-[-0.02em] uppercase text-ink">
         Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
       </span>
@@ -86,7 +86,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative mx-auto w-[1240px] pt-8 pb-24">
+    <section className="relative mx-auto w-[1240px] pt-4 pb-24">
       <div
         className="pointer-events-none absolute top-24 left-[-80px] h-[420px] w-[620px] rounded-full blur-[110px]"
         style={{
@@ -132,7 +132,7 @@ function Hero() {
               }}
             />
             <div className="grain absolute inset-0 opacity-50" />
-            <div className="absolute inset-x-4 top-2 flex items-center gap-2">
+            <div className="absolute inset-x-4 top-1.5 flex items-center gap-2">
               <span
                 className="h-1 flex-1 rounded-full"
                 style={{ background: "var(--color-neon)" }}
