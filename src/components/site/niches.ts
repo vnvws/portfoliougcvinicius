@@ -55,6 +55,26 @@ import autoHouseOfMotors from "@/assets/videos/auto-house-of-motors.mp4.asset.js
 import autoRadnaqEspuma from "@/assets/videos/auto-radnaq-espuma.mp4.asset.json";
 // @ts-ignore
 import autoRadnaqOleo from "@/assets/radnaq-oleo.mp4.asset.json";
+// @ts-ignore
+import techPocketSafe from "@/assets/tech-pocket-safe.mp4.asset.json";
+// @ts-ignore
+import techBanskIphone from "@/assets/tech-bansk-iphone.mp4.asset.json";
+// @ts-ignore
+import techTecconMouse from "@/assets/tech-teccon-mouse.mp4.asset.json";
+// @ts-ignore
+import techJoingoBottle from "@/assets/tech-joingo-bottle.mov.asset.json";
+// @ts-ignore
+import techMancerMonitor from "@/assets/tech-mancer-monitor.mp4.asset.json";
+// @ts-ignore
+import tech8bitdoControl from "@/assets/tech-8bitdo-control.mp4.asset.json";
+// @ts-ignore
+import techBaseusHeadphone from "@/assets/tech-baseus-headphone.mp4.asset.json";
+// @ts-ignore
+import techAllchemPcClean from "@/assets/tech-allchem-pc-clean.mp4.asset.json";
+// @ts-ignore
+import techAllchemPreventive from "@/assets/tech-allchem-preventive.mp4.asset.json";
+// @ts-ignore
+import techNegociunLenovo from "@/assets/tech-negociun-lenovo.mp4.asset.json";
 
 interface Asset {
   url: string;
