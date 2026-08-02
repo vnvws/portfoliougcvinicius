@@ -140,14 +140,6 @@ function Hero() {
               <span className="h-1 flex-1 rounded-full bg-white/30" />
               <span className="h-1 flex-1 rounded-full bg-white/30" />
             </div>
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
-                style={{ border: "1px solid var(--color-neon)", color: "var(--color-neon)" }}
-              >
-                <Play size={22} fill="currentColor" className="ml-1 opacity-80" />
-              </div>
-            </div>
           </div>
           <span
             className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-4 py-1.5 font-sans text-[11px] tracking-[0.2em] uppercase"
