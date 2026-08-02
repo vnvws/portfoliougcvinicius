@@ -96,7 +96,7 @@ function Hero() {
           animation: "glow-pulse 5s ease-in-out infinite",
         }}
       />
-      <div className="relative flex items-center justify-between gap-14">
+      <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1">
           <span className="font-sans text-[12px] tracking-[0.34em] text-forest uppercase">
             UGC CREATOR MASCULINO - SÃO PAULO, BRASIL
