@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 
 type Props = {
   src: string;
-  poster?: string;
+  poster?: string | undefined;
   /** Prévia muda ao passar o mouse (sem clique). */
   previewOnHover?: boolean;
   iconSize?: number;
