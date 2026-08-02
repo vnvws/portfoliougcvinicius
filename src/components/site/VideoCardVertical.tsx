@@ -9,9 +9,11 @@ export type VideoItem = {
   src?: string;
   /** Imagem de capa opcional. */
   poster?: string;
+  /** Label opcional para o player (ex: "9:16", "Clique"). */
+  label?: string;
 };
 
-export function VideoCardVertical({ title, description, src, poster }: VideoItem) {
+export function VideoCardVertical({ title, description, src, poster, label }: VideoItem) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -34,7 +36,7 @@ export function VideoCardVertical({ title, description, src, poster }: VideoItem
         }}
       >
         {src ? (
-          <InlineVideo src={src} poster={poster} iconSize={20} label="9:16" />
+          <InlineVideo src={src} poster={poster} iconSize={20} label={label || "9:16"} />
         ) : (
           <>
             <div
