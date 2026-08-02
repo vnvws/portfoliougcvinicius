@@ -120,21 +120,6 @@ function Hero() {
               Araújo
             </span>
           </h1>
-          <div className="mt-8 flex items-center gap-5">
-            <span
-              className="rounded-full px-5 py-2 font-sans text-[12px] tracking-[0.24em] uppercase"
-              style={{
-                border: "1px solid var(--color-neon)",
-                color: "var(--color-ink)",
-                boxShadow: "0 0 22px -6px color-mix(in oklab, var(--color-neon) 70%, transparent)",
-              }}
-            >
-              UGC Creator
-            </span>
-            <p className="w-[330px] text-[14px] leading-relaxed text-forest">
-              Conteúdo vertical feito para parecer recomendação de amigo — e performar como anúncio.
-            </p>
-          </div>
         </div>
 
         <div className="relative w-[288px] shrink-0">
