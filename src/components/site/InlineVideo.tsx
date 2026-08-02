@@ -90,6 +90,7 @@ export function InlineVideo({
           playsInline
           preload="metadata"
           disablePictureInPicture
+          controlsList="nodownload"
           controls={false}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
@@ -204,6 +205,7 @@ function VideoLightbox({ src, onClose }: { src: string; onClose: () => void }) {
           ref={videoRef}
           src={src}
           controls
+          controlsList="nodownload"
           autoPlay
           className="max-h-[85vh] w-auto rounded-lg"
           onPlay={() => setPlaying(true)}
