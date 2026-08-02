@@ -47,6 +47,14 @@ import sedaCollege from "@/assets/seda-college.mp4.asset.json";
 import autoAgente from "@/assets/auto-agente.mp4.asset.json";
 // @ts-ignore
 import visionCursor from "@/assets/vision-cursor.mp4.asset.json";
+// @ts-ignore
+import autoLoovi from "@/assets/videos/auto-loovi.mp4.asset.json";
+// @ts-ignore
+import autoHouseOfMotors from "@/assets/videos/auto-house-of-motors.mp4.asset.json";
+// @ts-ignore
+import autoRadnaqEspuma from "@/assets/videos/auto-radnaq-espuma.mp4.asset.json";
+// @ts-ignore
+import autoRadnaqOleo from "@/assets/videos/auto-radnaq-oleo.mp4.asset.json";
 
 interface Asset {
   url: string;
@@ -76,6 +84,10 @@ const a9 = appsVideo1Legendas as unknown as Asset;
 const a10 = sedaCollege as unknown as Asset;
 const a11 = autoAgente as unknown as Asset;
 const a12 = visionCursor as unknown as Asset;
+const c1 = autoLoovi as unknown as Asset;
+const c2 = autoHouseOfMotors as unknown as Asset;
+const c3 = autoRadnaqEspuma as unknown as Asset;
+const c4 = autoRadnaqOleo as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -239,6 +251,37 @@ export const niches: Niche[] = [
         title: "Vision Cursor",
         description: "Personalise o cursor do seu mouse",
         src: a12.url,
+        label: "Clique"
+      }
+    ],
+  },
+  {
+    id: "automotivo",
+    title: "Automotivo",
+    layout: "vertical",
+    videos: [
+      {
+        title: "LOOVI",
+        description: "Seu carro segurado por um valor justo",
+        src: c1.url,
+        label: "Clique"
+      },
+      {
+        title: "House Of Motors",
+        description: "Tecnologia de limpeza a seco com carnaúba polimerizada",
+        src: c2.url,
+        label: "Clique"
+      },
+      {
+        title: "Radnaq Automotive",
+        description: "Espuma para limpeza de estofados",
+        src: c3.url,
+        label: "Clique"
+      },
+      {
+        title: "Radnaq Automotive",
+        description: "O óleo ideal para o motor do seu carro",
+        src: c4.url,
         label: "Clique"
       }
     ],
