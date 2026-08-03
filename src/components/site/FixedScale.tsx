@@ -13,23 +13,32 @@ export function FixedScale({ children }: { children: ReactNode }) {
   const [scaledHeight, setScaledHeight] = useState<string | number>("100%");
 
   useEffect(() => {
+    let raf = 0;
     const measure = () => {
-      const currentScale = window.innerWidth / DESIGN_WIDTH;
+      const width = document.documentElement.clientWidth || window.innerWidth;
+      const currentScale = width / DESIGN_WIDTH;
       setScale(currentScale);
 
       if (inner.current) {
-        setScaledHeight(inner.current.offsetHeight * currentScale);
+        setScaledHeight(Math.ceil(inner.current.offsetHeight * currentScale));
       }
+    };
+    const schedule = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(measure);
     };
 
     measure();
-    window.addEventListener("resize", measure);
+    window.addEventListener("resize", schedule);
+    window.addEventListener("orientationchange", schedule);
 
-    const ro = new ResizeObserver(measure);
+    const ro = new ResizeObserver(schedule);
     if (inner.current) ro.observe(inner.current);
 
     return () => {
-      window.removeEventListener("resize", measure);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("orientationchange", schedule);
       ro.disconnect();
     };
   }, []);
@@ -40,7 +49,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
         width: "100%",
         minHeight: "100vh",
         height: scaledHeight,
-        overflow: "hidden",
+        overflowX: "hidden",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
