@@ -5,14 +5,14 @@ import { useVideoControl } from "./FixedScale";
 import { getYouTubeEmbedUrl, getYouTubeId, getYouTubeThumbnail } from "./youtube";
 
 type Props = {
-  src?: string;
-  youtubeId?: string;
-  youtubeUrl?: string;
-  poster?: string;
+  src?: string | undefined;
+  youtubeId?: string | undefined;
+  youtubeUrl?: string | undefined;
+  poster?: string | undefined;
   /** Se a prévia muda ao passar o mouse */
-  previewOnHover?: boolean;
-  iconSize?: number;
-  label?: string;
+  previewOnHover?: boolean | undefined;
+  iconSize?: number | undefined;
+  label?: string | undefined;
 };
 
 /**
