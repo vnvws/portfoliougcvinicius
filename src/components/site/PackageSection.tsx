@@ -52,8 +52,8 @@ const PackageCard = ({
     </div>
 
     {isBestValue && (
-      <div className="absolute -top-2 -right-2">
-        <div className="bg-neon text-ink font-black text-[10px] px-4 py-1 rotate-12 rounded-full uppercase tracking-wider shadow-lg">
+      <div className="absolute top-4 -right-4">
+        <div className="bg-neon text-ink font-black text-[12px] px-6 py-2 -rotate-12 rounded-full uppercase tracking-wider shadow-lg z-50">
           Best Choice
         </div>
       </div>
