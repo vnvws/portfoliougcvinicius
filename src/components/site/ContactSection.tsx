@@ -186,8 +186,6 @@ function ContactRow({ label, value, href, last = false }: { label: string; value
   const valueContent = href ? (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
       className="text-[14px] font-bold text-ink text-right break-all transition-colors hover:text-neon"
     >
       {value}
