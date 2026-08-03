@@ -183,12 +183,9 @@ export default function ContactSection() {
 }
 
 function ContactRow({ label, value, href, last = false }: { label: string; value: string; href?: string; last?: boolean }) {
-  const isExternal = href ? !href.startsWith("mailto:") : false;
   const valueContent = href ? (
     <a
       href={href}
-      target={isExternal ? "_blank" : undefined}
-      rel={isExternal ? "noopener noreferrer" : undefined}
       className="text-[14px] font-bold text-ink text-right break-all transition-colors hover:text-neon"
     >
       {value}
