@@ -81,7 +81,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
           flexDirection: "column",
           alignItems: "center",
           backgroundColor: "var(--color-bone)",
-          touchAction: "pan-y",
+          touchAction: "auto",
           position: "relative",
         }}
       >
