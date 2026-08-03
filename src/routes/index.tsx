@@ -377,12 +377,12 @@ function FeedbackSection() {
         </Reveal>
       </div>
       
-      <div className="relative w-full px-12">
-        <div className="grid grid-cols-3 gap-6">
+      <div className="relative w-full overflow-x-auto px-12">
+        <div className="flex w-max gap-6 pb-6">
           {feedbacks.map((f, idx) => (
             <div 
               key={idx}
-              className="relative w-full overflow-hidden rounded-[22px] bg-white p-4 shadow-lg"
+              className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4 shadow-lg"
               style={{
                 border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
               }}
