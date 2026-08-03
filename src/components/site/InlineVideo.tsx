@@ -137,7 +137,6 @@ export function InlineVideo({
           loop
           playsInline
           preload="metadata"
-          crossOrigin="anonymous"
           disablePictureInPicture
           controlsList="nodownload"
           controls={false}
