@@ -249,8 +249,8 @@ function VideoLightbox({
   youtubeId,
   onClose,
 }: {
-  src?: string;
-  youtubeId?: string;
+  src?: string | undefined;
+  youtubeId?: string | undefined;
   onClose: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
