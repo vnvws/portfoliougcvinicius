@@ -36,7 +36,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contato" className="py-32 px-12 bg-bone">
+    <section id="contato" className="pt-32 pb-12 px-12 bg-bone">
       <div className="mx-auto w-[1240px] rounded-[32px] border border-forest/10 bg-white/50 p-16 shadow-xl backdrop-blur-sm">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           {/* Left Column */}
