@@ -9,7 +9,11 @@ section {
   contain-intrinsic-size: 1px 1000px;
 }
 
-header, .hero-section {
+/* Força seções críticas a serem visíveis para evitar flashes e saltos de layout */
+header, 
+.hero-section,
+[id="sobre"],
+#grupos-de-promocao {
   content-visibility: visible;
 }
 

@@ -317,27 +317,35 @@ function FeedbackSection() {
       </div>
       
       <div className="relative w-full overflow-hidden px-12">
-        <div className="animate-marquee flex w-max gap-6">
-          {[...feedbacks, ...feedbacks].map((f, idx) => (
-            <div 
-              key={idx}
-              className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4 shadow-lg"
-              style={{
-                border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
-              }}
-            >
-              <img 
-                src={f.url} 
-                alt={`Feedback ${idx + 1}`}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto object-contain"
-              />
-            </div>
+        <div className="flex w-max gap-6 animate-marquee">
+          {feedbacks.map((f, idx) => (
+            <FeedbackCard key={`f-${idx}`} src={f.url} index={idx} />
+          ))}
+          {feedbacks.map((f, idx) => (
+            <FeedbackCard key={`f-clone-${idx}`} src={f.url} index={idx} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function FeedbackCard({ src, index }: { src: string; index: number }) {
+  return (
+    <div 
+      className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4 shadow-lg"
+      style={{
+        border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
+      }}
+    >
+      <img 
+        src={src} 
+        alt={`Feedback ${index + 1}`}
+        loading="lazy"
+        decoding="async"
+        className="w-full h-auto object-contain"
+      />
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useLayoutEffect, type ReactNode } from "react";
+import { useEffect, useRef, useState, useLayoutEffect, type ReactNode, useMemo } from "react";
 
 const DESIGN_WIDTH = 1440;
 
@@ -11,6 +11,14 @@ export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [scaledHeight, setScaledHeight] = useState<string | number>("auto");
+
+  // Contexto para controlar que apenas um vídeo toque por vez
+  const [activeVideoSrc, setActiveVideoSrc] = useState<string | null>(null);
+
+  const contextValue = useMemo(() => ({
+    activeVideoSrc,
+    setActiveVideoSrc
+  }), [activeVideoSrc]);
 
   useLayoutEffect(() => {
     let raf = 0;
@@ -62,31 +70,46 @@ export function FixedScale({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        minHeight: "100svh",
-        height: scaledHeight,
-        overflowX: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        backgroundColor: "var(--color-bone)",
-        touchAction: "pan-y",
-        position: "relative",
-      }}
-    >
+    <VideoControlContext.Provider value={contextValue}>
       <div
-        ref={inner}
         style={{
-          width: DESIGN_WIDTH,
-          transform: `scale(${scale})`,
-          transformOrigin: "top center",
-          flexShrink: 0,
+          width: "100%",
+          minHeight: "100svh",
+          height: scaledHeight,
+          overflowX: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "var(--color-bone)",
+          touchAction: "pan-y",
+          position: "relative",
         }}
       >
-        {children}
+        <div
+          ref={inner}
+          style={{
+            width: DESIGN_WIDTH,
+            transform: `scale(${scale})`,
+            transformOrigin: "top center",
+            flexShrink: 0,
+          }}
+        >
+          {children}
+        </div>
       </div>
-    </div>
+    </VideoControlContext.Provider>
   );
 }
+
+import { createContext, useContext } from "react";
+
+const VideoControlContext = createContext<{
+  activeVideoSrc: string | null;
+  setActiveVideoSrc: (src: string | null) => void;
+} | null>(null);
+
+export const useVideoControl = () => {
+  const context = useContext(VideoControlContext);
+  if (!context) return { activeVideoSrc: null, setActiveVideoSrc: () => {} };
+  return context;
+};

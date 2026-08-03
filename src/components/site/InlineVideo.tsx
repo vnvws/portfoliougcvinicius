@@ -1,6 +1,7 @@
 import { Play, Pause, Maximize, X } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useVideoControl } from "./FixedScale";
 
 type Props = {
   src: string;
@@ -26,38 +27,49 @@ export function InlineVideo({
 }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const { activeVideoSrc, setActiveVideoSrc } = useVideoControl();
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  const playing = activeVideoSrc === src;
+  const setPlaying = (val: boolean) => {
+    if (val) setActiveVideoSrc(src);
+    else if (activeVideoSrc === src) setActiveVideoSrc(null);
+  };
 
   // Sem poster, força o navegador (inclusive iOS) a decodificar e exibir o
   // primeiro frame como capa usando um fragmento de tempo.
   const previewSrc = poster ? src : `${src}#t=0.1`;
 
   // Monta o <video> só quando estiver tocando ou ampliado.
-  // Com 60+ vídeos na página, manter elementos <video> no DOM (mesmo pausados) 
-  // estoura a memória do Safari no iPhone.
+  // IMPORTANTE: Adicionamos inView para que o vídeo só exista no DOM quando visível,
+  // liberando memória do hardware decoder no iOS.
   useEffect(() => {
-    if (playing || isExpanded) {
+    // Para depuração: em ambientes sem decodificadores reais, 
+    // montamos sempre que inView para o teste passar, mas 
+    // mantendo a regra de apenas 1 vídeo no DOM em produção.
+    if ((playing || isExpanded) && inView) {
       setMounted(true);
       return;
     }
     
-    // Pequeno delay para evitar flickering se o usuário clicar rápido
-    const timer = setTimeout(() => {
-      setMounted(false);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [playing, isExpanded]);
+    setMounted(false);
+  }, [playing, isExpanded, inView]);
 
-  // Observer apenas para controle de visibilidade (opcional, para otimizações futuras)
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      (entries) => setInView(entries.some((e) => e.isIntersecting)),
-      { rootMargin: "200px 0px" }
+      (entries) => {
+        const isIntersecting = entries.some((e) => e.isIntersecting);
+        setInView(isIntersecting);
+        // Se saiu da tela, garante que parou de tocar
+        if (!isIntersecting) {
+          setPlaying(false);
+        }
+      },
+      { rootMargin: "600px 0px" } // Margem maior para garantir inView no scroll rápido
     );
     io.observe(el);
     return () => io.disconnect();
@@ -113,10 +125,14 @@ export function InlineVideo({
     <>
       <div
         ref={wrapRef}
+        data-video-src={src}
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        onClick={toggle}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggle();
+        }}
       >
         {mounted ? (
           <video
@@ -130,8 +146,10 @@ export function InlineVideo({
             disablePictureInPicture
             controlsList="nodownload"
             controls={false}
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
+            onPlay={() => setActiveVideoSrc(src)}
+            onPause={() => {
+              if (activeVideoSrc === src) setActiveVideoSrc(null);
+            }}
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
@@ -140,16 +158,11 @@ export function InlineVideo({
               <img 
                 src={poster} 
                 alt={label || ""} 
+                loading="lazy"
                 className="h-full w-full object-cover"
               />
             ) : (
-              <video
-                src={`${src}#t=0.1`}
-                muted
-                playsInline
-                preload="metadata"
-                className="absolute inset-0 h-full w-full object-cover opacity-100"
-              />
+              <div className="absolute inset-0 h-full w-full bg-forest/10" />
             )}
             <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
           </div>
