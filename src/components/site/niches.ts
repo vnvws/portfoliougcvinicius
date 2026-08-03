@@ -95,6 +95,22 @@ import selfCareOAristocrata from "@/assets/O_Aristocrata_-_Sabote_para_Homem_de_
 import selfCareTouti from "@/assets/Touti_Cosmetics_-_Perfumes_de_times_de_Futebol.mp4.asset.json";
 // @ts-ignore
 import selfCareProperJack from "@/assets/PROPER_JACK_-_Assinatura_de_skincare_para_homens.mp4.asset.json";
+// @ts-ignore
+import modaPergy from "@/assets/videos/moda-pergy.mp4.asset.json";
+// @ts-ignore
+import modaLawe from "@/assets/videos/moda-lawe.mp4.asset.json";
+// @ts-ignore
+import modaInformalGastandoPouco from "@/assets/videos/moda-informal-gastando-pouco.mp4.asset.json";
+// @ts-ignore
+import modaInformalArrumeSe from "@/assets/videos/moda-informal-arrume-se.mp4.asset.json";
+// @ts-ignore
+import modaVeganoShoes from "@/assets/videos/moda-vegano-shoes.mp4.asset.json";
+// @ts-ignore
+import modaMinimalCamiseta from "@/assets/videos/moda-minimal-club-camiseta.mp4.asset.json";
+// @ts-ignore
+import modaMinimalJeans from "@/assets/videos/moda-minimal-club-jeans.mp4.asset.json";
+// @ts-ignore
+import modaStripMe from "@/assets/videos/moda-strip-me.mp4.asset.json";
 
 
 interface Asset {
@@ -149,6 +165,14 @@ const sc1 = selfCareAlva as unknown as Asset;
 const sc2 = selfCareOAristocrata as unknown as Asset;
 const sc3 = selfCareTouti as unknown as Asset;
 const sc4 = selfCareProperJack as unknown as Asset;
+const m1 = modaPergy as unknown as Asset;
+const m2 = modaLawe as unknown as Asset;
+const m3 = modaInformalGastandoPouco as unknown as Asset;
+const m4 = modaInformalArrumeSe as unknown as Asset;
+const m5 = modaVeganoShoes as unknown as Asset;
+const m6 = modaMinimalCamiseta as unknown as Asset;
+const m7 = modaMinimalJeans as unknown as Asset;
+const m8 = modaStripMe as unknown as Asset;
 
 
 export type Niche = {
