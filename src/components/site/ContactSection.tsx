@@ -42,14 +42,14 @@ export default function ContactSection() {
           {/* Left Column */}
           <div className="flex flex-col">
             <Reveal>
-              <div className="mb-8 flex items-center gap-2 text-[11px] font-bold tracking-[0.4em] text-neon uppercase font-mono">
+              <div className="mb-8 flex items-center gap-2 text-[11px] font-bold tracking-[0.4em] text-neon uppercase font-sans">
                 <Star size={14} fill="currentColor" />
                 CONTATO
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h2 className="font-serif text-[64px] leading-[1.1] font-bold text-ink mb-6">
+              <h2 className="font-display text-[64px] leading-[1.1] font-bold text-ink mb-6">
                 Vamos dar início a <span className="italic text-neon">sua próxima campanha</span>
               </h2>
             </Reveal>
@@ -73,13 +73,13 @@ export default function ContactSection() {
           {/* Right Column */}
           <Reveal delay={400}>
             <div className="rounded-3xl border border-forest/10 bg-white p-10 shadow-2xl transition-transform hover:scale-[1.01]">
-              <h3 className="font-serif text-[32px] font-bold text-ink mb-8">
+              <h3 className="font-display text-[32px] font-bold text-ink mb-8">
                 solicitar proposta
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-mono">NOME (OBRIGATÓRIO)</label>
+                  <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-sans">NOME (OBRIGATÓRIO)</label>
                   <input
                     required
                     name="name"
@@ -90,7 +90,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-mono">EMPRESA (OPCIONAL)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-sans">EMPRESA (OPCIONAL)</label>
                     <input
                       name="company"
                       placeholder="nome da marca"
@@ -98,7 +98,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-mono">EMAIL (OBRIGATÓRIO)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-sans">EMAIL (OBRIGATÓRIO)</label>
                     <input
                       required
                       type="email"
@@ -111,7 +111,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-mono">WHATSAPP (OPCIONAL)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-sans">WHATSAPP (OPCIONAL)</label>
                     <input
                       name="whatsapp"
                       placeholder="(11) 99999-9999"
@@ -119,7 +119,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-mono">ORÇAMENTO (OPCIONAL)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-sans">ORÇAMENTO (OPCIONAL)</label>
                     <select
                       name="budget"
                       className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all appearance-none cursor-pointer"
@@ -133,7 +133,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-mono">MENSAGEM (OBRIGATÓRIO)</label>
+                  <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-sans">MENSAGEM (OBRIGATÓRIO)</label>
                   <textarea
                     required
                     name="message"
@@ -168,7 +168,7 @@ export default function ContactSection() {
 function ContactRow({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
   return (
     <div className={`flex items-center justify-between p-5 ${!last ? 'border-b border-forest/5' : ''}`}>
-      <span className="text-[10px] font-bold tracking-widest text-forest/50 uppercase font-mono">{label}</span>
+      <span className="text-[10px] font-bold tracking-widest text-forest/50 uppercase font-sans">{label}</span>
       <span className="text-[14px] font-bold text-ink text-right break-all">{value}</span>
     </div>
   );
