@@ -35,43 +35,33 @@ export function InlineVideo({
   // primeiro frame como capa usando um fragmento de tempo.
   const previewSrc = poster ? src : `${src}#t=0.1`;
 
-  // Monta o <video> só perto da viewport E desmonta ao sair: com 60+ vídeos na
-  // página, manter todos montados estoura a memória do Safari/Chrome no iPhone
-  // (a aba é encerrada com "Não é possível abrir essa página").
+  // Monta o <video> só quando estiver tocando ou ampliado.
+  // Com 60+ vídeos na página, manter elementos <video> no DOM (mesmo pausados) 
+  // estoura a memória do Safari no iPhone.
   useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.some((e) => e.isIntersecting);
-        setInView(visible);
-      },
-      { rootMargin: "150px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  // Mantém o vídeo montado enquanto estiver tocando ou ampliado; libera memória
-  // (e o decoder do iOS) assim que o card sai da tela.
-  useEffect(() => {
-    if (inView) {
+    if (playing || isExpanded) {
       setMounted(true);
       return;
     }
     
-    // Se não estiver em vista, mas estiver em transição ou ampliado, espera.
-    if (playing || isExpanded) return;
-
-    // Se estiver montado mas fora da tela, desmonta para liberar hardware decoders (crítico para iOS)
-    if (mounted) {
+    // Pequeno delay para evitar flickering se o usuário clicar rápido
+    const timer = setTimeout(() => {
       setMounted(false);
-    }
-  }, [inView, playing, isExpanded, mounted]);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [playing, isExpanded]);
+
+  // Observer apenas para controle de visibilidade (opcional, para otimizações futuras)
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => setInView(entries.some((e) => e.isIntersecting)),
+      { rootMargin: "200px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const toggle = () => {
     const v = ref.current;
@@ -131,33 +121,33 @@ export function InlineVideo({
         {mounted ? (
           <video
             ref={ref}
-            src={previewSrc}
+            src={src}
             poster={poster}
-            muted={true}
+            muted={!playing}
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             disablePictureInPicture
             controlsList="nodownload"
             controls={false}
-            onLoadedMetadata={(e) => {
-              const v = e.currentTarget;
-              if (!poster && v.currentTime === 0) {
-                try {
-                  v.currentTime = 0.1;
-                } catch {
-                  /* ignora navegadores que ainda não permitem seek */
-                }
-              }
-            }}
             onPlay={() => setPlaying(true)}
             onPause={() => setPlaying(false)}
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
-          <div className="absolute inset-0 bg-ink/5 flex items-center justify-center" aria-hidden>
-             {/* Placeholder cinza escuro sutil enquanto carrega/fora da tela */}
-             <div className="w-8 h-8 rounded-full border border-forest/10" />
+          <div className="absolute inset-0 bg-ink/5">
+            {poster ? (
+              <img 
+                src={poster} 
+                alt={label || ""} 
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-forest/10">
+                <div className="w-8 h-8 rounded-full border border-neon/30 animate-pulse" />
+              </div>
+            )}
+            <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
           </div>
         )}
 

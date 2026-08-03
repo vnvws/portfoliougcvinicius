@@ -3,6 +3,16 @@
 
 @source "../src";
 
+/* Otimização de renderização para páginas longas */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
+
+header, .hero-section {
+  content-visibility: visible;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
