@@ -17,7 +17,7 @@ export function BackToTop() {
       aria-label="Voltar ao topo"
       data-cursor="link"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed right-6 bottom-6 z-50 flex h-12 w-12 cursor-none items-center justify-center rounded-full transition-all duration-300 hover:scale-110"
+      className="fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 hover:scale-110 md:right-6 md:bottom-6 md:cursor-none"
       style={{
         backgroundColor: "var(--color-ink)",
         color: "var(--color-neon)",
