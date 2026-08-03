@@ -13,17 +13,50 @@ const contactSchema = z.object({
 export const submitProposal = createServerFn({ method: "POST" })
   .inputValidator((data) => contactSchema.parse(data))
   .handler(async ({ data }) => {
-    // In a real scenario, this would use a Resend integration or similar.
-    // For now, we'll simulate the process and log the data.
-    console.log("Proposal received:", data);
-    
-    // We would use an Edge Function with Resend here if configured.
-    // Since we're in TanStack Start, we could also use a library like 'resend' 
-    // directly if the API key was available in process.env.
-    
-    // For this implementation, we'll assume the client-side will handle 
-    // the feedback since the actual email sending setup (Resend + Edge Function)
-    // requires external API keys and configuration beyond just the code.
-    
-    return { success: true };
+    const resendApiKey = process.env['RESEND_API_KEY'];
+    const lovableApiKey = process.env['LOVABLE_API_KEY'];
+
+    if (!resendApiKey || !lovableApiKey) {
+      console.error("Missing Resend configuration");
+      throw new Error("Erro na configuração do servidor de e-mail.");
+    }
+
+    const emailContent = `
+      Novo contato recebido do Portfólio:
+      
+      Nome: ${data.name}
+      Empresa: ${data.company || 'Não informado'}
+      E-mail: ${data.email}
+      WhatsApp: ${data.whatsapp || 'Não informado'}
+      Orçamento: ${data.budget || 'Não informado'}
+      Mensagem: ${data.message}
+    `;
+
+    try {
+      const response = await fetch("https://connector-gateway.lovable.dev/resend/emails", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${lovableApiKey}`,
+          "X-Connection-Api-Key": resendApiKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "Portfolio <onboarding@resend.dev>",
+          to: "comercial.viniciusugc@gmail.com",
+          subject: `Nova Proposta: ${data.name}`,
+          text: emailContent,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        console.error("Resend error:", error);
+        throw new Error("Falha ao enviar e-mail.");
+      }
+
+      return { success: true };
+    } catch (error) {
+      console.error("Submission error:", error);
+      throw new Error("Erro ao processar sua solicitação.");
+    }
   });
