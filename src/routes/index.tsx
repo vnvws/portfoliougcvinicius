@@ -317,12 +317,12 @@ function PhotoGallery() {
         </Reveal>
       </div>
       
-      <div className="relative w-full">
-        <div className="flex gap-6 animate-marquee-photos px-6">
-          {[...photos, ...photos].map((photo, idx) => (
+      <div className="relative w-full px-12">
+        <div className="grid grid-cols-4 gap-6">
+          {photos.map((photo, idx) => (
             <div 
               key={idx}
-              className="relative w-[400px] shrink-0 overflow-hidden rounded-[22px] bg-ink"
+              className="relative w-full overflow-hidden rounded-[22px] bg-ink"
               style={{
                 aspectRatio: "3 / 4",
                 border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
