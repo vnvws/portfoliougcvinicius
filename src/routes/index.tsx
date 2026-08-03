@@ -11,6 +11,16 @@ import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 import processAsset from "@/assets/processo/processo-criativo.png.asset.json";
 import viniciusPhotoAsset from "@/assets/vinicius-photo.jpg.asset.json";
 import aboutCollageAsset from "@/assets/about-collage.png.asset.json";
+import photoTech from "@/assets/photos/ugc-photo-tech.jpg.asset.json";
+import photoSkincare from "@/assets/photos/ugc-photo-skincare.jpg.asset.json";
+import photoSkincare2 from "@/assets/photos/ugc-photo-skincare-2.jpg.asset.json";
+import photoModa from "@/assets/photos/ugc-photo-moda.jpg.asset.json";
+import photoModa2 from "@/assets/photos/ugc-photo-moda-2.jpg.asset.json";
+import photoGroups from "@/assets/photos/ugc-photo-groups.jpg.asset.json";
+import photoSneakers from "@/assets/photos/ugc-photo-sneakers.jpg.asset.json";
+import photoDrinks from "@/assets/photos/ugc-photo-drinks.jpg.asset.json";
+import photoDrinks2 from "@/assets/photos/ugc-photo-drinks-2.jpg.asset.json";
+import photoWatch from "@/assets/photos/ugc-photo-watch.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -59,6 +69,7 @@ function Index() {
           </div>
 
           <CreativeProcess />
+          <PhotoGallery />
 
           <Contact />
         </main>
@@ -274,6 +285,57 @@ function CreativeProcess() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PhotoGallery() {
+  const photos = [
+    photoTech,
+    photoSkincare,
+    photoSkincare2,
+    photoModa,
+    photoModa2,
+    photoGroups,
+    photoSneakers,
+    photoDrinks,
+    photoDrinks2,
+    photoWatch,
+  ];
+
+  return (
+    <section className="py-32 overflow-hidden">
+      <div className="mx-auto w-[1240px] mb-12">
+        <Reveal>
+          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] uppercase text-forest">
+            Fotos em Alta Qualidade
+            <br />
+            para sua Marca
+          </h2>
+        </Reveal>
+      </div>
+      
+      <div className="relative w-full">
+        <div className="flex gap-6 animate-marquee-photos px-6">
+          {[...photos, ...photos].map((photo, idx) => (
+            <div 
+              key={idx}
+              className="relative w-[400px] shrink-0 overflow-hidden rounded-[22px] bg-ink"
+              style={{
+                aspectRatio: "3 / 4",
+                border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
+              }}
+            >
+              <img 
+                src={photo.url} 
+                alt="UGC High Quality"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
+              />
+              <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
+            </div>
+          ))}
         </div>
       </div>
     </section>

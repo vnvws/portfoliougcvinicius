@@ -42,6 +42,25 @@
   }
 }
 
+@keyframes marquee-photos {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-photos {
+  animation: marquee-photos 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-marquee-photos:hover {
+  animation-play-state: paused;
+}
+
 @keyframes neon-breathe {
   0%,
   100% {
