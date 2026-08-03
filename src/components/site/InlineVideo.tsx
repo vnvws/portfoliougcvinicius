@@ -125,6 +125,7 @@ export function InlineVideo({
     <>
       <div
         ref={wrapRef}
+        data-video-src={src}
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
