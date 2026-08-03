@@ -21,7 +21,7 @@ export function getYouTubeId(input: string | undefined | null): string | null {
 
   for (const pattern of patterns) {
     const match = url.match(pattern);
-    if (match) return match[1];
+    if (match?.[1]) return match[1];
   }
 
   return null;
