@@ -143,9 +143,13 @@ export function InlineVideo({
                 className="h-full w-full object-cover"
               />
             ) : (
-              <div className="flex h-full w-full items-center justify-center bg-forest/10">
-                <div className="w-8 h-8 rounded-full border border-neon/30 animate-pulse" />
-              </div>
+              <video
+                src={`${src}#t=0.1`}
+                muted
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 h-full w-full object-cover opacity-100"
+              />
             )}
             <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
           </div>
