@@ -129,33 +129,36 @@ export function InlineVideo({
         onClick={toggle}
       >
         {mounted ? (
-        <video
-          ref={ref}
-          src={previewSrc}
-          poster={poster}
-          muted={true}
-          loop
-          playsInline
-          preload="metadata"
-          disablePictureInPicture
-          controlsList="nodownload"
-          controls={false}
-          onLoadedMetadata={(e) => {
-            const v = e.currentTarget;
-            if (!poster && v.currentTime === 0) {
-              try {
-                v.currentTime = 0.1;
-              } catch {
-                /* ignora navegadores que ainda não permitem seek */
+          <video
+            ref={ref}
+            src={previewSrc}
+            poster={poster}
+            muted={true}
+            loop
+            playsInline
+            preload="metadata"
+            disablePictureInPicture
+            controlsList="nodownload"
+            controls={false}
+            onLoadedMetadata={(e) => {
+              const v = e.currentTarget;
+              if (!poster && v.currentTime === 0) {
+                try {
+                  v.currentTime = 0.1;
+                } catch {
+                  /* ignora navegadores que ainda não permitem seek */
+                }
               }
-            }
-          }}
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+            }}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         ) : (
-          <div className="absolute inset-0 bg-ink" aria-hidden />
+          <div className="absolute inset-0 bg-ink/5 flex items-center justify-center" aria-hidden>
+             {/* Placeholder cinza escuro sutil enquanto carrega/fora da tela */}
+             <div className="w-8 h-8 rounded-full border border-forest/10" />
+          </div>
         )}
 
         {/* Overlay de controle */}

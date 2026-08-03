@@ -59,7 +59,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
     <div
       style={{
         width: "100%",
-        minHeight: "100vh",
+        minHeight: "100svh",
         height: scaledHeight,
         overflowX: "hidden",
         display: "flex",
@@ -67,6 +67,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
         alignItems: "center",
         backgroundColor: "var(--color-bone)",
         touchAction: "pan-y",
+        position: "relative",
       }}
     >
       <div
