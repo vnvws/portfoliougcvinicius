@@ -10,7 +10,7 @@ const DESIGN_WIDTH = 1440;
 export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [scaledHeight, setScaledHeight] = useState<string | number>("100%");
+  const [scaledHeight, setScaledHeight] = useState<string | number>("auto");
 
   useEffect(() => {
     let raf = 0;

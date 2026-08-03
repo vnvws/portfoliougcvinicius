@@ -63,15 +63,15 @@ export function InlineVideo({
       setMounted(true);
       return;
     }
+    
+    // Se não estiver em vista, mas estiver em transição ou ampliado, espera.
     if (playing || isExpanded) return;
-    const v = ref.current;
-    if (v) {
-      v.pause();
-      v.removeAttribute("src");
-      v.load();
+
+    // Se estiver montado mas fora da tela, desmonta para liberar hardware decoders (crítico para iOS)
+    if (mounted) {
+      setMounted(false);
     }
-    setMounted(false);
-  }, [inView, playing, isExpanded]);
+  }, [inView, playing, isExpanded, mounted]);
 
   const toggle = () => {
     const v = ref.current;
