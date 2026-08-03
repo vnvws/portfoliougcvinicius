@@ -119,6 +119,12 @@ import viagensAirbnbContainer from "@/assets/videos/viagens-airbnb-container.mov
 import viagensAirbnbBa from "@/assets/videos/viagens-airbnb-buenos-aires.mp4.asset.json";
 // @ts-ignore
 import viagensPicnic from "@/assets/videos/viagens-picnic.mp4.asset.json";
+// @ts-ignore
+import youtubeDiffy from "@/assets/videos/youtube-diffy.mp4.asset.json";
+// @ts-ignore
+import youtubeRdc from "@/assets/videos/youtube-rdc-viagens.mp4.asset.json";
+// @ts-ignore
+import youtubeManclub from "@/assets/videos/youtube-manclub.mp4.asset.json";
 
 
 interface Asset {
@@ -185,6 +191,9 @@ const vg1 = viagensHolasim as unknown as Asset;
 const vg2 = viagensAirbnbContainer as unknown as Asset;
 const vg3 = viagensAirbnbBa as unknown as Asset;
 const vg4 = viagensPicnic as unknown as Asset;
+const yt1 = youtubeDiffy as unknown as Asset;
+const yt2 = youtubeRdc as unknown as Asset;
+const yt3 = youtubeManclub as unknown as Asset;
 
 
 export type Niche = {
