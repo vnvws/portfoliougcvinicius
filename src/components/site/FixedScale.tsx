@@ -15,16 +15,19 @@ export function FixedScale({ children }: { children: ReactNode }) {
   useEffect(() => {
     let raf = 0;
     const measure = () => {
+      // Use offsetWidth para largura real disponível sem scrollbar (mais estável no mobile)
       const width = window.innerWidth;
       const currentScale = width / DESIGN_WIDTH;
       setScale(currentScale);
 
       if (inner.current) {
-        // Altura real ocupada na página após o scale
-        const rect = inner.current.getBoundingClientRect();
-        setScaledHeight(Math.ceil(rect.height));
+        // No iOS Safari, scrollHeight ou offsetHeight podem ser imprecisos antes do layout final.
+        // O bounding box do elemento transformado escala com ele.
+        const height = inner.current.offsetHeight * currentScale;
+        setScaledHeight(Math.ceil(height));
       }
     };
+
     const schedule = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(measure);
@@ -32,22 +35,24 @@ export function FixedScale({ children }: { children: ReactNode }) {
 
     measure();
     
-    // Otimização: debounce/throttle implícito via RAF no resize
+    // Multiplos gatilhos para garantir recálculo
     window.addEventListener("resize", schedule);
     window.addEventListener("orientationchange", schedule);
     window.addEventListener("load", schedule);
     document.fonts?.ready.then(schedule).catch(() => {});
 
-    // Observer para mudanças de conteúdo interno
+    // ResizeObserver para o conteúdo interno (vídeos carregando, etc)
     const ro = new ResizeObserver(schedule);
     if (inner.current) ro.observe(inner.current);
 
-    // Safari iOS às vezes falha no primeiro cálculo após o carregamento total
-    const timer = setTimeout(schedule, 1000);
+    // Polling agressivo nos primeiros segundos para corrigir crashes/flashes do iOS
+    const interval = setInterval(measure, 1000);
+    const timeout = setTimeout(() => clearInterval(interval), 5000);
 
     return () => {
       cancelAnimationFrame(raf);
-      clearTimeout(timer);
+      clearInterval(interval);
+      clearTimeout(timeout);
       window.removeEventListener("resize", schedule);
       window.removeEventListener("orientationchange", schedule);
       window.removeEventListener("load", schedule);
