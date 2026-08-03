@@ -21,6 +21,16 @@ import photoSneakers from "@/assets/photos/ugc-photo-sneakers.jpg.asset.json";
 import photoDrinks from "@/assets/photos/ugc-photo-drinks.jpg.asset.json";
 import photoDrinks2 from "@/assets/photos/ugc-photo-drinks-2.jpg.asset.json";
 import photoWatch from "@/assets/photos/ugc-photo-watch.jpg.asset.json";
+import feedback1 from "@/assets/feedbacks/1.png.asset.json";
+import feedback2 from "@/assets/feedbacks/2.png.asset.json";
+import feedback3 from "@/assets/feedbacks/3.png.asset.json";
+import feedback4 from "@/assets/feedbacks/4.png.asset.json";
+import feedback5 from "@/assets/feedbacks/5.png.asset.json";
+import feedback6 from "@/assets/feedbacks/6.png.asset.json";
+import feedback7 from "@/assets/feedbacks/7.png.asset.json";
+import feedback8 from "@/assets/feedbacks/8.png.asset.json";
+import feedback9 from "@/assets/feedbacks/9.png.asset.json";
+import feedback10 from "@/assets/feedbacks/10.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -70,6 +80,7 @@ function Index() {
 
           <CreativeProcess />
           <PhotoGallery />
+          <FeedbackSection />
 
           <Contact />
         </main>
@@ -334,6 +345,53 @@ function PhotoGallery() {
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
               />
               <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FeedbackSection() {
+  const feedbacks = [
+    feedback1,
+    feedback2,
+    feedback3,
+    feedback4,
+    feedback5,
+    feedback6,
+    feedback7,
+    feedback8,
+    feedback9,
+    feedback10,
+  ];
+
+  return (
+    <section className="py-32 overflow-hidden bg-forest/5">
+      <div className="mx-auto w-[1240px] mb-12">
+        <Reveal>
+          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] uppercase text-forest">
+            Feedbacks
+          </h2>
+        </Reveal>
+      </div>
+      
+      <div className="relative w-full px-12">
+        <div className="grid grid-cols-3 gap-6">
+          {feedbacks.map((f, idx) => (
+            <div 
+              key={idx}
+              className="relative w-full overflow-hidden rounded-[22px] bg-white p-4 shadow-lg"
+              style={{
+                border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
+              }}
+            >
+              <img 
+                src={f.url} 
+                alt={`Feedback ${idx + 1}`}
+                className="w-full h-auto object-contain"
+              />
             </div>
           ))}
         </div>
