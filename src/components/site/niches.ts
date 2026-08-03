@@ -620,4 +620,29 @@ export const niches: Niche[] = [
       }
     ],
   },
+  {
+    id: "youtube",
+    title: "YouTube",
+    layout: "horizontal",
+    videos: [
+      {
+        title: "Diffy",
+        description: "Tutorial de aplicação de película premium",
+        src: yt1.url,
+        label: "Clique"
+      },
+      {
+        title: "RDC Viagens",
+        description: "Sua assinatura para viajar",
+        src: yt2.url,
+        label: "Clique"
+      },
+      {
+        title: "ManClub",
+        description: "Desmatador: depilador para a região íntima masculina",
+        src: yt3.url,
+        label: "Clique"
+      }
+    ],
+  },
 ];
