@@ -29,13 +29,15 @@ export function InlineVideo({
   const [playing, setPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Sem poster, força o navegador (inclusive iOS) a decodificar e exibir o
   // primeiro frame como capa usando um fragmento de tempo.
   const previewSrc = poster ? src : `${src}#t=0.1`;
 
-  // Só monta o <video> quando o card chega perto da viewport:
-  // evita dezenas de requisições simultâneas em conexões móveis.
+  // Monta o <video> só perto da viewport E desmonta ao sair: com 60+ vídeos na
+  // página, manter todos montados estoura a memória do Safari/Chrome no iPhone
+  // (a aba é encerrada com "Não é possível abrir essa página").
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -45,16 +47,31 @@ export function InlineVideo({
     }
     const io = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setInView(true);
-          io.disconnect();
-        }
+        const visible = entries.some((e) => e.isIntersecting);
+        setInView(visible);
       },
-      { rootMargin: "300px 0px" },
+      { rootMargin: "150px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  // Mantém o vídeo montado enquanto estiver tocando ou ampliado; libera memória
+  // (e o decoder do iOS) assim que o card sai da tela.
+  useEffect(() => {
+    if (inView) {
+      setMounted(true);
+      return;
+    }
+    if (playing || isExpanded) return;
+    const v = ref.current;
+    if (v) {
+      v.pause();
+      v.removeAttribute("src");
+      v.load();
+    }
+    setMounted(false);
+  }, [inView, playing, isExpanded]);
 
   const toggle = () => {
     const v = ref.current;
@@ -111,7 +128,7 @@ export function InlineVideo({
         onMouseLeave={onLeave}
         onClick={toggle}
       >
-        {inView ? (
+        {mounted ? (
         <video
           ref={ref}
           src={previewSrc}
