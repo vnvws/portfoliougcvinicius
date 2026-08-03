@@ -50,10 +50,8 @@ export default function ContactSection() {
 
             <Reveal delay={100}>
               <h2 className="font-serif text-[64px] leading-[1.1] font-bold text-ink mb-6">
-                a sua próxima campanha <br />
-                <span className="italic text-neon">começa aqui.</span>
+                Vamos dar início a <span className="italic text-neon">sua próxima campanha</span>
               </h2>
-
             </Reveal>
 
             <Reveal delay={200}>
