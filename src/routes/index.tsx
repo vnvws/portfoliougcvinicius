@@ -69,6 +69,7 @@ function Index() {
           </div>
 
           <CreativeProcess />
+          <PhotoGallery />
 
           <Contact />
         </main>
