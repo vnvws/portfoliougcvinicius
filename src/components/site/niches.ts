@@ -79,6 +79,14 @@ import techNegociunLenovo from "@/assets/tech-negociun-lenovo.mp4.asset.json";
 import techNegociunPs5 from "@/assets/tech-negociun-ps5.mp4.asset.json";
 // @ts-ignore
 import techDdpaiDashcam from "@/assets/tech-ddpai-dashcam.mp4.asset.json";
+// @ts-ignore
+import foodSmoo from "@/assets/videos/smoo.mp4.asset.json";
+// @ts-ignore
+import foodUpGas from "@/assets/videos/up-gas.mp4.asset.json";
+// @ts-ignore
+import foodWine from "@/assets/videos/wine.mp4.asset.json";
+// @ts-ignore
+import foodIracema from "@/assets/videos/iracema.mp4.asset.json";
 
 interface Asset {
   url: string;
@@ -124,6 +132,10 @@ const t9 = techAllchemPreventive as unknown as Asset;
 const t10 = techNegociunLenovo as unknown as Asset;
 const t11 = techNegociunPs5 as unknown as Asset;
 const t12 = techDdpaiDashcam as unknown as Asset;
+const f1 = foodSmoo as unknown as Asset;
+const f2 = foodUpGas as unknown as Asset;
+const f3 = foodWine as unknown as Asset;
+const f4 = foodIracema as unknown as Asset;
 
 export type Niche = {
   id: string;
@@ -397,6 +409,37 @@ export const niches: Niche[] = [
         title: "DDPAI",
         description: "A dash Cam Plug and Play",
         src: t12.url,
+        label: "Clique"
+      }
+    ],
+  },
+  {
+    id: "alimentos-e-bebidas",
+    title: "Alimentos & Bebidas",
+    layout: "vertical",
+    videos: [
+      {
+        title: "SMOO",
+        description: "Sorvete desidratado em pasta",
+        src: f1.url,
+        label: "Clique"
+      },
+      {
+        title: "UP GAS",
+        description: "O primeiro isotônico com gás do Brasil",
+        src: f2.url,
+        label: "Clique"
+      },
+      {
+        title: "WINE",
+        description: "Assinatura mensal de vinhos",
+        src: f3.url,
+        label: "Clique"
+      },
+      {
+        title: "Iracema",
+        description: "Nuts perfeitos para compor uma tábua de frios",
+        src: f4.url,
         label: "Clique"
       }
     ],
