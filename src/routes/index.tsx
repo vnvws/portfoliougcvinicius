@@ -317,7 +317,7 @@ function FeedbackSection() {
       </div>
       
       <div className="relative w-full overflow-hidden px-12">
-        <div className="animate-marquee flex w-max gap-6">
+        <div className="flex w-max gap-6 animate-marquee">
           {feedbacks.map((f, idx) => (
             <FeedbackCard key={`f-${idx}`} src={f.url} index={idx} />
           ))}

@@ -128,7 +128,10 @@ export function InlineVideo({
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        onClick={toggle}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggle();
+        }}
       >
         {mounted ? (
           <video
