@@ -51,10 +51,7 @@ export function InlineVideo({
       return;
     }
     
-    const timer = setTimeout(() => {
-      setMounted(false);
-    }, 300);
-    return () => clearTimeout(timer);
+    setMounted(false);
   }, [playing, isExpanded, inView]);
 
   useEffect(() => {
