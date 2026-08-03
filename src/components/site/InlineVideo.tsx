@@ -30,6 +30,10 @@ export function InlineVideo({
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
 
+  // Sem poster, força o navegador (inclusive iOS) a decodificar e exibir o
+  // primeiro frame como capa usando um fragmento de tempo.
+  const previewSrc = poster ? src : `${src}#t=0.1`;
+
   // Só monta o <video> quando o card chega perto da viewport:
   // evita dezenas de requisições simultâneas em conexões móveis.
   useEffect(() => {
@@ -110,15 +114,25 @@ export function InlineVideo({
         {inView ? (
         <video
           ref={ref}
-          src={src}
+          src={previewSrc}
           poster={poster}
           muted={true}
           loop
           playsInline
-          preload="none"
+          preload="metadata"
           disablePictureInPicture
           controlsList="nodownload"
           controls={false}
+          onLoadedMetadata={(e) => {
+            const v = e.currentTarget;
+            if (!poster && v.currentTime === 0) {
+              try {
+                v.currentTime = 0.1;
+              } catch {
+                /* ignora navegadores que ainda não permitem seek */
+              }
+            }
+          }}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           className="absolute inset-0 h-full w-full object-cover"
