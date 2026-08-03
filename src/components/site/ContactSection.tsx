@@ -167,7 +167,7 @@ export default function ContactSection() {
 
 function ContactRow({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
   return (
-    <div className={`flex items-center justify-between p-5 ${!last ? 'border-bottom border-forest/5' : ''}`}>
+    <div className={`flex items-center justify-between p-5 ${!last ? 'border-b border-forest/5' : ''}`}>
       <span className="text-[10px] font-bold tracking-widest text-forest/50 uppercase font-mono">{label}</span>
       <span className="text-[14px] font-bold text-ink text-right break-all">{value}</span>
     </div>
