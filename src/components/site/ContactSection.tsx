@@ -60,14 +60,27 @@ export default function ContactSection() {
               </p>
             </Reveal>
 
-            <Reveal delay={300} className="mt-auto">
-              <div className="overflow-hidden rounded-2xl border border-forest/10 bg-forest/[0.03]">
-                <ContactRow label="WHATSAPP" value="(11) 97839-3658" />
-                <ContactRow label="EMAIL" value="comercial.viniciusugc@gmail.com" />
-                <ContactRow label="INSTAGRAM" value="@_oviniciusaraujo" />
-                <ContactRow label="TIKTOK" value="@viniviews_" last />
-              </div>
-            </Reveal>
+function ContactRow({ label, value, href, last = false }: { label: string; value: string; href?: string; last?: boolean }) {
+  const valueContent = href ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-[14px] font-bold text-ink text-right break-all transition-colors hover:text-neon"
+    >
+      {value}
+    </a>
+  ) : (
+    <span className="text-[14px] font-bold text-ink text-right break-all">{value}</span>
+  );
+
+  return (
+    <div className={`flex items-center justify-between p-5 ${!last ? 'border-b border-forest/5' : ''}`}>
+      <span className="text-[10px] font-bold tracking-widest text-forest/50 uppercase font-sans">{label}</span>
+      {valueContent}
+    </div>
+  );
+}
           </div>
 
           {/* Right Column */}
