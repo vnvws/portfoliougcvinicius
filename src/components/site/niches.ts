@@ -111,6 +111,14 @@ import modaMinimalCamiseta from "@/assets/videos/moda-minimal-club-camiseta.mp4.
 import modaMinimalJeans from "@/assets/videos/moda-minimal-club-jeans.mp4.asset.json";
 // @ts-ignore
 import modaStripMe from "@/assets/videos/moda-strip-me.mp4.asset.json";
+// @ts-ignore
+import viagensHolasim from "@/assets/videos/viagens-holasim.mp4.asset.json";
+// @ts-ignore
+import viagensAirbnbContainer from "@/assets/videos/viagens-airbnb-container.mov.asset.json";
+// @ts-ignore
+import viagensAirbnbBa from "@/assets/videos/viagens-airbnb-buenos-aires.mp4.asset.json";
+// @ts-ignore
+import viagensPicnic from "@/assets/videos/viagens-picnic.mp4.asset.json";
 
 
 interface Asset {
@@ -173,6 +181,10 @@ const m5 = modaVeganoShoes as unknown as Asset;
 const m6 = modaMinimalCamiseta as unknown as Asset;
 const m7 = modaMinimalJeans as unknown as Asset;
 const m8 = modaStripMe as unknown as Asset;
+const vg1 = viagensHolasim as unknown as Asset;
+const vg2 = viagensAirbnbContainer as unknown as Asset;
+const vg3 = viagensAirbnbBa as unknown as Asset;
+const vg4 = viagensPicnic as unknown as Asset;
 
 
 export type Niche = {
@@ -564,6 +576,37 @@ export const niches: Niche[] = [
         title: "Strip Me",
         description: "Camisetas personalizadas",
         src: m8.url,
+        label: "Clique"
+      }
+    ],
+  },
+  {
+    id: "viagens",
+    title: "Viagens",
+    layout: "vertical",
+    videos: [
+      {
+        title: "HolaSim",
+        description: "E-Sim internacional em uma roadtrip pela Europa",
+        src: vg1.url,
+        label: "Clique"
+      },
+      {
+        title: "Airbnb",
+        description: "Casa container em Interlagos",
+        src: vg2.url,
+        label: "Clique"
+      },
+      {
+        title: "Airbnb",
+        description: "Apartamento de luxo em Buenos Aires",
+        src: vg3.url,
+        label: "Clique"
+      },
+      {
+        title: "Picnic",
+        description: "Cartão de crédito internacional na Argentina",
+        src: vg4.url,
         label: "Clique"
       }
     ],
