@@ -63,15 +63,15 @@ export function InlineVideo({
       setMounted(true);
       return;
     }
+    
+    // Se não estiver em vista, mas estiver em transição ou ampliado, espera.
     if (playing || isExpanded) return;
-    const v = ref.current;
-    if (v) {
-      v.pause();
-      v.removeAttribute("src");
-      v.load();
+
+    // Se estiver montado mas fora da tela, desmonta para liberar hardware decoders (crítico para iOS)
+    if (mounted) {
+      setMounted(false);
     }
-    setMounted(false);
-  }, [inView, playing, isExpanded]);
+  }, [inView, playing, isExpanded, mounted]);
 
   const toggle = () => {
     const v = ref.current;
@@ -129,33 +129,36 @@ export function InlineVideo({
         onClick={toggle}
       >
         {mounted ? (
-        <video
-          ref={ref}
-          src={previewSrc}
-          poster={poster}
-          muted={true}
-          loop
-          playsInline
-          preload="metadata"
-          disablePictureInPicture
-          controlsList="nodownload"
-          controls={false}
-          onLoadedMetadata={(e) => {
-            const v = e.currentTarget;
-            if (!poster && v.currentTime === 0) {
-              try {
-                v.currentTime = 0.1;
-              } catch {
-                /* ignora navegadores que ainda não permitem seek */
+          <video
+            ref={ref}
+            src={previewSrc}
+            poster={poster}
+            muted={true}
+            loop
+            playsInline
+            preload="metadata"
+            disablePictureInPicture
+            controlsList="nodownload"
+            controls={false}
+            onLoadedMetadata={(e) => {
+              const v = e.currentTarget;
+              if (!poster && v.currentTime === 0) {
+                try {
+                  v.currentTime = 0.1;
+                } catch {
+                  /* ignora navegadores que ainda não permitem seek */
+                }
               }
-            }
-          }}
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+            }}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         ) : (
-          <div className="absolute inset-0 bg-ink" aria-hidden />
+          <div className="absolute inset-0 bg-ink/5 flex items-center justify-center" aria-hidden>
+             {/* Placeholder cinza escuro sutil enquanto carrega/fora da tela */}
+             <div className="w-8 h-8 rounded-full border border-forest/10" />
+          </div>
         )}
 
         {/* Overlay de controle */}
