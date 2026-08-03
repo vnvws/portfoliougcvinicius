@@ -95,13 +95,15 @@ export function BrandMarquee() {
   return (
     <div className="group relative overflow-hidden py-10">
       <div
-        className="flex w-max items-center"
-        style={{ animation: "marquee-x 40s linear infinite" }}
+        className="flex w-max items-center animate-marquee"
         onMouseOver={(e) => (e.currentTarget.style.animationPlayState = "paused")}
         onMouseOut={(e) => (e.currentTarget.style.animationPlayState = "running")}
       >
-        {[...brands, ...brands].map((b, i) => (
+        {brands.map((b, i) => (
           <Logo key={`${b.name}-${i}`} name={b.name} src={b.src} />
+        ))}
+        {brands.map((b, i) => (
+          <Logo key={`${b.name}-clone-${i}`} name={b.name} src={b.src} />
         ))}
       </div>
       <div

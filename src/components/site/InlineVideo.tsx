@@ -36,28 +36,33 @@ export function InlineVideo({
   const previewSrc = poster ? src : `${src}#t=0.1`;
 
   // Monta o <video> só quando estiver tocando ou ampliado.
-  // Com 60+ vídeos na página, manter elementos <video> no DOM (mesmo pausados) 
-  // estoura a memória do Safari no iPhone.
+  // IMPORTANTE: Adicionamos inView para que o vídeo só exista no DOM quando visível,
+  // liberando memória do hardware decoder no iOS.
   useEffect(() => {
-    if (playing || isExpanded) {
+    if ((playing || isExpanded) && inView) {
       setMounted(true);
       return;
     }
     
-    // Pequeno delay para evitar flickering se o usuário clicar rápido
     const timer = setTimeout(() => {
       setMounted(false);
     }, 300);
     return () => clearTimeout(timer);
-  }, [playing, isExpanded]);
+  }, [playing, isExpanded, inView]);
 
-  // Observer apenas para controle de visibilidade (opcional, para otimizações futuras)
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      (entries) => setInView(entries.some((e) => e.isIntersecting)),
-      { rootMargin: "200px 0px" }
+      (entries) => {
+        const isIntersecting = entries.some((e) => e.isIntersecting);
+        setInView(isIntersecting);
+        // Se saiu da tela, garante que parou de tocar
+        if (!isIntersecting) {
+          setPlaying(false);
+        }
+      },
+      { rootMargin: "400px 0px" } // Margem maior para carregar um pouco antes
     );
     io.observe(el);
     return () => io.disconnect();
@@ -140,16 +145,11 @@ export function InlineVideo({
               <img 
                 src={poster} 
                 alt={label || ""} 
+                loading="lazy"
                 className="h-full w-full object-cover"
               />
             ) : (
-              <video
-                src={`${src}#t=0.1`}
-                muted
-                playsInline
-                preload="metadata"
-                className="absolute inset-0 h-full w-full object-cover opacity-100"
-              />
+              <div className="absolute inset-0 h-full w-full bg-forest/10" />
             )}
             <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
           </div>
