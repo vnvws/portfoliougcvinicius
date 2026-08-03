@@ -154,15 +154,24 @@ export function InlineVideo({
           />
         ) : (
           <div className="absolute inset-0 bg-ink/5">
-            {poster ? (
+            <video
+              src={previewSrc}
+              muted
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-cover"
+              onLoadedMetadata={(e) => {
+                const v = e.currentTarget;
+                v.currentTime = 0.1;
+              }}
+            />
+            {poster && (
               <img 
                 src={poster} 
                 alt={label || ""} 
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
-            ) : (
-              <div className="absolute inset-0 h-full w-full bg-forest/10" />
             )}
             <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
           </div>
