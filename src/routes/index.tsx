@@ -11,6 +11,16 @@ import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 import processAsset from "@/assets/processo/processo-criativo.png.asset.json";
 import viniciusPhotoAsset from "@/assets/vinicius-photo.jpg.asset.json";
 import aboutCollageAsset from "@/assets/about-collage.png.asset.json";
+import photoTech from "@/assets/photos/ugc-photo-tech.jpg.asset.json";
+import photoSkincare from "@/assets/photos/ugc-photo-skincare.jpg.asset.json";
+import photoSkincare2 from "@/assets/photos/ugc-photo-skincare-2.jpg.asset.json";
+import photoModa from "@/assets/photos/ugc-photo-moda.jpg.asset.json";
+import photoModa2 from "@/assets/photos/ugc-photo-moda-2.jpg.asset.json";
+import photoGroups from "@/assets/photos/ugc-photo-groups.jpg.asset.json";
+import photoSneakers from "@/assets/photos/ugc-photo-sneakers.jpg.asset.json";
+import photoDrinks from "@/assets/photos/ugc-photo-drinks.jpg.asset.json";
+import photoDrinks2 from "@/assets/photos/ugc-photo-drinks-2.jpg.asset.json";
+import photoWatch from "@/assets/photos/ugc-photo-watch.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
