@@ -1,6 +1,7 @@
 import { Play, Pause, Maximize, X } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useVideoControl } from "./FixedScale";
 
 type Props = {
   src: string;
@@ -26,10 +27,16 @@ export function InlineVideo({
 }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const { activeVideoSrc, setActiveVideoSrc } = useVideoControl();
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  const playing = activeVideoSrc === src;
+  const setPlaying = (val: boolean) => {
+    if (val) setActiveVideoSrc(src);
+    else if (activeVideoSrc === src) setActiveVideoSrc(null);
+  };
 
   // Sem poster, força o navegador (inclusive iOS) a decodificar e exibir o
   // primeiro frame como capa usando um fragmento de tempo.
@@ -135,8 +142,10 @@ export function InlineVideo({
             disablePictureInPicture
             controlsList="nodownload"
             controls={false}
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
+            onPlay={() => setActiveVideoSrc(src)}
+            onPause={() => {
+              if (activeVideoSrc === src) setActiveVideoSrc(null);
+            }}
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
