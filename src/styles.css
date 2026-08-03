@@ -92,6 +92,22 @@
   }
 }
 
+@keyframes pulse-neon {
+  0% {
+    box-shadow: 0 0 15px var(--color-neon);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 45px var(--color-neon);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 15px var(--color-neon);
+    transform: scale(1);
+  }
+}
+
+
 /*
  * Design system definition.
  *
