@@ -148,7 +148,7 @@ function Hero() {
               Araújo
             </span>
           </h1>
-          <div className="mt-12 flex justify-center">
+          <div className="mt-20 flex justify-center">
             <Reveal delay={400}>
               <a
                 href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
