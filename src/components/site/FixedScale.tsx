@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, useLayoutEffect, type ReactNode } from "react";
 
 const DESIGN_WIDTH = 1440;
 
@@ -12,17 +12,17 @@ export function FixedScale({ children }: { children: ReactNode }) {
   const [scale, setScale] = useState(1);
   const [scaledHeight, setScaledHeight] = useState<string | number>("auto");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let raf = 0;
     const measure = () => {
-      // Use offsetWidth para largura real disponível sem scrollbar (mais estável no mobile)
       const width = window.innerWidth;
       const currentScale = width / DESIGN_WIDTH;
       setScale(currentScale);
 
       if (inner.current) {
-        // No iOS Safari, scrollHeight ou offsetHeight podem ser imprecisos antes do layout final.
-        // O bounding box do elemento transformado escala com ele.
+        // No iOS, offsetHeight é mais estável que scrollHeight ou getBoundingClientRect
+        // em elementos transformados. Multiplicamos pela escala para saber o espaço
+        // visual ocupado na tela.
         const height = inner.current.offsetHeight * currentScale;
         setScaledHeight(Math.ceil(height));
       }
@@ -33,19 +33,20 @@ export function FixedScale({ children }: { children: ReactNode }) {
       raf = requestAnimationFrame(measure);
     };
 
+    // Executa imediatamente no mount
     measure();
     
-    // Multiplos gatilhos para garantir recálculo
+    // Gatilhos globais
     window.addEventListener("resize", schedule);
     window.addEventListener("orientationchange", schedule);
     window.addEventListener("load", schedule);
     document.fonts?.ready.then(schedule).catch(() => {});
 
-    // ResizeObserver para o conteúdo interno (vídeos carregando, etc)
+    // ResizeObserver para o conteúdo que muda dinamicamente
     const ro = new ResizeObserver(schedule);
     if (inner.current) ro.observe(inner.current);
 
-    // Polling agressivo nos primeiros segundos para corrigir crashes/flashes do iOS
+    // Polling nos primeiros segundos para corrigir saltos de layout do Safari
     const interval = setInterval(measure, 1000);
     const timeout = setTimeout(() => clearInterval(interval), 5000);
 
