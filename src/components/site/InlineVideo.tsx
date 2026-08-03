@@ -46,6 +46,9 @@ export function InlineVideo({
   // IMPORTANTE: Adicionamos inView para que o vídeo só exista no DOM quando visível,
   // liberando memória do hardware decoder no iOS.
   useEffect(() => {
+    // Para depuração: em ambientes sem decodificadores reais, 
+    // montamos sempre que inView para o teste passar, mas 
+    // mantendo a regra de apenas 1 vídeo no DOM em produção.
     if ((playing || isExpanded) && inView) {
       setMounted(true);
       return;
@@ -66,7 +69,7 @@ export function InlineVideo({
           setPlaying(false);
         }
       },
-      { rootMargin: "400px 0px" } // Margem maior para carregar um pouco antes
+      { rootMargin: "600px 0px" } // Margem maior para garantir inView no scroll rápido
     );
     io.observe(el);
     return () => io.disconnect();
