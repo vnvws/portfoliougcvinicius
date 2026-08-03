@@ -238,13 +238,7 @@ function CreativeProcess() {
             </h2>
           </Reveal>
           <Reveal delay={200} className="mt-12">
-            <div className="relative">
-              <img
-                src={processAsset.url}
-                alt="Exemplos de Conteúdo"
-                className="w-[580px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
-              />
-            </div>
+            <div className="relative" />
           </Reveal>
         </div>
 
