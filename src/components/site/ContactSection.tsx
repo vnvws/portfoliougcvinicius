@@ -49,10 +49,11 @@ export default function ContactSection() {
             </Reveal>
 
             <Reveal delay={100}>
-              <h2 className="font-display text-[64px] leading-[1.1] font-bold text-ink mb-6">
+              <h2 className="font-serif text-[64px] leading-[1.1] font-bold text-ink mb-6">
                 a sua próxima campanha <br />
                 <span className="italic text-neon">começa aqui.</span>
               </h2>
+
             </Reveal>
 
             <Reveal delay={200}>
@@ -74,9 +75,10 @@ export default function ContactSection() {
           {/* Right Column */}
           <Reveal delay={400}>
             <div className="rounded-3xl border border-forest/10 bg-white p-10 shadow-2xl transition-transform hover:scale-[1.01]">
-              <h3 className="font-display text-[32px] font-bold text-ink mb-8">
+              <h3 className="font-serif text-[32px] font-bold text-ink mb-8">
                 solicitar proposta
               </h3>
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase font-mono">NOME (OBRIGATÓRIO)</label>

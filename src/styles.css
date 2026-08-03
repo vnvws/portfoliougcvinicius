@@ -7,6 +7,8 @@
 
 @theme {
   --font-display: "Archivo", "Space Grotesk", sans-serif;
+  --font-serif: "DM Serif Display", serif;
+
   --font-sans: "Space Grotesk", sans-serif;
   --color-bone: oklch(0.947 0.014 76.5);
   --color-forest: oklch(0.436 0.043 165.5);
