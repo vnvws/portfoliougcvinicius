@@ -179,6 +179,8 @@ function Hero() {
             <img 
               src={viniciusPhotoAsset.url} 
               alt="Vinícius Araújo"
+              loading="eager"
+              decoding="async"
               className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
             />
             <div className="grain absolute inset-0 opacity-40 pointer-events-none" />
@@ -211,6 +213,8 @@ function About() {
           <img
             src={aboutCollageAsset.url}
             alt="Vinícius Araújo UGC Content"
+            loading="lazy"
+            decoding="async"
             className="w-full rounded-[18px] object-contain"
             style={{
               aspectRatio: "1 / 1",
@@ -274,7 +278,9 @@ function PhotoGallery() {
             >
               <img 
                 src={photo.url} 
-                alt="UGC High Quality"
+                alt="Foto UGC em alta qualidade produzida por Vinícius Araújo"
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
               />
               <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
@@ -323,6 +329,8 @@ function FeedbackSection() {
               <img 
                 src={f.url} 
                 alt={`Feedback ${idx + 1}`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto object-contain"
               />
             </div>

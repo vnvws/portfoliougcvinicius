@@ -25,8 +25,32 @@ export function InlineVideo({
   label,
 }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [inView, setInView] = useState(false);
+
+  // Só monta o <video> quando o card chega perto da viewport:
+  // evita dezenas de requisições simultâneas em conexões móveis.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const toggle = () => {
     const v = ref.current;
@@ -57,6 +81,7 @@ export function InlineVideo({
 
   const onEnter = () => {
     if (!previewOnHover || playing || isExpanded) return;
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
     const v = ref.current;
     if (v) {
       v.muted = true;
@@ -76,11 +101,13 @@ export function InlineVideo({
   return (
     <>
       <div
+        ref={wrapRef}
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
         onClick={toggle}
       >
+        {inView ? (
         <video
           ref={ref}
           src={src}
@@ -88,7 +115,7 @@ export function InlineVideo({
           muted={true}
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           disablePictureInPicture
           controlsList="nodownload"
           controls={false}
@@ -96,6 +123,9 @@ export function InlineVideo({
           onPause={() => setPlaying(false)}
           className="absolute inset-0 h-full w-full object-cover"
         />
+        ) : (
+          <div className="absolute inset-0 bg-ink" aria-hidden />
+        )}
 
         {/* Overlay de controle */}
         <div
@@ -124,7 +154,7 @@ export function InlineVideo({
           type="button"
           aria-label="Ampliar vídeo"
           onClick={openLightbox}
-          className="absolute right-3 bottom-3 z-10 flex h-8 w-8 cursor-none items-center justify-center rounded-full backdrop-blur-sm"
+          className="absolute right-3 bottom-3 z-10 flex h-8 w-8 items-center justify-center rounded-full backdrop-blur-sm md:cursor-none"
           style={{
             border: "1px solid color-mix(in oklab, var(--color-neon) 70%, transparent)",
             color: "var(--color-neon)",
@@ -192,29 +222,31 @@ function VideoLightbox({ src, onClose }: { src: string; onClose: () => void }) {
     >
       <button 
         onClick={onClose}
-        className="absolute top-6 right-6 z-[10000] p-2 text-white hover:text-neon transition-colors cursor-none"
+        aria-label="Fechar vídeo"
+        className="absolute top-4 right-4 z-[10000] p-2 text-white transition-colors hover:text-neon md:top-6 md:right-6 md:cursor-none"
       >
         <X size={32} />
       </button>
 
       <div 
-        className="relative max-h-full max-w-full overflow-hidden rounded-lg shadow-2xl"
+        className="relative max-h-full w-full max-w-[520px] overflow-hidden rounded-lg shadow-2xl md:w-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <video
           ref={videoRef}
           src={src}
           controls
+          playsInline
           controlsList="nodownload"
           autoPlay
-          className="max-h-[85vh] w-auto rounded-lg"
+          className="max-h-[80vh] w-full rounded-lg md:w-auto"
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
         />
         
         {!playing && (
           <div 
-            className="absolute inset-0 flex items-center justify-center bg-black/20 cursor-none"
+            className="absolute inset-0 flex items-center justify-center bg-black/20 md:cursor-none"
             onClick={togglePlay}
           >
             <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-neon bg-black/40 text-neon">
