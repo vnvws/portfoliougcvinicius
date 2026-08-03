@@ -63,7 +63,7 @@ function Index() {
         <main className="grain relative w-full overflow-hidden bg-bone font-sans text-ink">
           <Nav />
           <Hero />
-          <section className="relative pt-12">
+          <section className="relative -mt-16">
             <div className="mx-auto w-[1240px] pb-6">
               <p className="font-sans text-[11px] font-bold tracking-[0.32em] text-forest uppercase opacity-80">
                 Marcas que já confiaram
