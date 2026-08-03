@@ -148,6 +148,22 @@ function Hero() {
               Araújo
             </span>
           </h1>
+          <div className="mt-12 flex justify-center">
+            <Reveal delay={400}>
+              <a
+                href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
+                className="group relative inline-flex items-center justify-center rounded-full px-12 py-5 font-display text-[24px] font-black tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95"
+                style={{
+                  backgroundColor: "var(--color-neon)",
+                  color: "var(--color-ink)",
+                  boxShadow: "0 0 30px var(--color-neon)",
+                  animation: "pulse-neon 2s infinite"
+                }}
+              >
+                Contratar
+              </a>
+            </Reveal>
+          </div>
         </div>
 
         <div className="relative w-[288px] shrink-0">
