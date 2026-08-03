@@ -377,9 +377,9 @@ function FeedbackSection() {
         </Reveal>
       </div>
       
-      <div className="relative w-full overflow-x-auto px-12">
-        <div className="flex w-max gap-6 pb-6">
-          {feedbacks.map((f, idx) => (
+      <div className="relative w-full overflow-hidden px-12">
+        <div className="animate-marquee flex w-max gap-6">
+          {[...feedbacks, ...feedbacks].map((f, idx) => (
             <div 
               key={idx}
               className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4 shadow-lg"
