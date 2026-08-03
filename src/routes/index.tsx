@@ -21,6 +21,16 @@ import photoSneakers from "@/assets/photos/ugc-photo-sneakers.jpg.asset.json";
 import photoDrinks from "@/assets/photos/ugc-photo-drinks.jpg.asset.json";
 import photoDrinks2 from "@/assets/photos/ugc-photo-drinks-2.jpg.asset.json";
 import photoWatch from "@/assets/photos/ugc-photo-watch.jpg.asset.json";
+import feedback1 from "@/assets/feedbacks/1.png.asset.json";
+import feedback2 from "@/assets/feedbacks/2.png.asset.json";
+import feedback3 from "@/assets/feedbacks/3.png.asset.json";
+import feedback4 from "@/assets/feedbacks/4.png.asset.json";
+import feedback5 from "@/assets/feedbacks/5.png.asset.json";
+import feedback6 from "@/assets/feedbacks/6.png.asset.json";
+import feedback7 from "@/assets/feedbacks/7.png.asset.json";
+import feedback8 from "@/assets/feedbacks/8.png.asset.json";
+import feedback9 from "@/assets/feedbacks/9.png.asset.json";
+import feedback10 from "@/assets/feedbacks/10.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
