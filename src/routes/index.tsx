@@ -31,6 +31,7 @@ import feedback7 from "@/assets/feedbacks/7.png.asset.json";
 import feedback8 from "@/assets/feedbacks/8.png.asset.json";
 import feedback9 from "@/assets/feedbacks/9.png.asset.json";
 import feedback10 from "@/assets/feedbacks/10.png.asset.json";
+import { InvestmentSection } from "@/components/site/InvestmentSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -81,6 +82,8 @@ function Index() {
           <CreativeProcess />
           <PhotoGallery />
           <FeedbackSection />
+          <InvestmentSection />
+
 
           <Contact />
         </main>
