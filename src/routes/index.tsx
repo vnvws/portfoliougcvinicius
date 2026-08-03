@@ -122,7 +122,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative mx-auto w-[1240px] pt-4 pb-24">
+    <section className="relative mx-auto w-[1240px] pt-4 pb-8">
       <div
         className="pointer-events-none absolute top-24 left-[-80px] h-[420px] w-[620px] rounded-full blur-[110px]"
         style={{
