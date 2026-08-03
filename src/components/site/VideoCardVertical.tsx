@@ -7,14 +7,27 @@ export type VideoItem = {
   description: string;
   /** URL do vídeo real (mp4). */
   src?: string;
+  /** ID do vídeo no YouTube. */
+  youtubeId?: string;
+  /** URL completa do vídeo no YouTube (será convertida em ID). */
+  youtubeUrl?: string;
   /** Imagem de capa opcional. */
   poster?: string;
   /** Label opcional para o player (ex: "9:16", "Clique"). */
   label?: string;
 };
 
-export function VideoCardVertical({ title, description, src, poster, label }: VideoItem) {
+export function VideoCardVertical({
+  title,
+  description,
+  src,
+  youtubeId,
+  youtubeUrl,
+  poster,
+  label,
+}: VideoItem) {
   const [hover, setHover] = useState(false);
+  const hasMedia = Boolean(src || youtubeId || youtubeUrl);
 
   return (
     <figure
@@ -35,8 +48,15 @@ export function VideoCardVertical({ title, description, src, poster, label }: Vi
           transition: "transform 420ms cubic-bezier(0.16,1,0.3,1), box-shadow 420ms ease",
         }}
       >
-        {src ? (
-          <InlineVideo src={src} poster={poster} iconSize={20} label={label || "9:16"} />
+        {hasMedia ? (
+          <InlineVideo
+            src={src}
+            youtubeId={youtubeId}
+            youtubeUrl={youtubeUrl}
+            poster={poster}
+            iconSize={20}
+            label={label || "9:16"}
+          />
         ) : (
           <>
             <div
@@ -48,16 +68,16 @@ export function VideoCardVertical({ title, description, src, poster, label }: Vi
             />
             <div className="grain absolute inset-0 opacity-40" />
             <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className="flex h-14 w-14 items-center justify-center rounded-full"
-            style={{
-              border: "1px solid var(--color-neon)",
-              color: "var(--color-neon)",
-              animation: hover ? "play-pulse 900ms ease-in-out infinite" : undefined,
-            }}
-          >
-            <Play size={20} strokeWidth={2.4} />
-          </span>
+              <span
+                className="flex h-14 w-14 items-center justify-center rounded-full"
+                style={{
+                  border: "1px solid var(--color-neon)",
+                  color: "var(--color-neon)",
+                  animation: hover ? "play-pulse 900ms ease-in-out infinite" : undefined,
+                }}
+              >
+                <Play size={20} strokeWidth={2.4} />
+              </span>
             </div>
             <span
               className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"

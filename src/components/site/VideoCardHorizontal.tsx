@@ -3,8 +3,17 @@ import { useState } from "react";
 import { InlineVideo } from "./InlineVideo";
 import type { VideoItem } from "./VideoCardVertical";
 
-export function VideoCardHorizontal({ title, description, src, poster, label }: VideoItem) {
+export function VideoCardHorizontal({
+  title,
+  description,
+  src,
+  youtubeId,
+  youtubeUrl,
+  poster,
+  label,
+}: VideoItem) {
   const [hover, setHover] = useState(false);
+  const hasMedia = Boolean(src || youtubeId || youtubeUrl);
 
   return (
     <figure
@@ -25,8 +34,15 @@ export function VideoCardHorizontal({ title, description, src, poster, label }: 
           transition: "transform 420ms cubic-bezier(0.16,1,0.3,1), box-shadow 420ms ease",
         }}
       >
-        {src ? (
-          <InlineVideo src={src} poster={poster} iconSize={24} label={label || "16:9"} />
+        {hasMedia ? (
+          <InlineVideo
+            src={src}
+            youtubeId={youtubeId}
+            youtubeUrl={youtubeUrl}
+            poster={poster}
+            iconSize={24}
+            label={label || "16:9"}
+          />
         ) : (
           <>
             <div
@@ -38,16 +54,16 @@ export function VideoCardHorizontal({ title, description, src, poster, label }: 
             />
             <div className="grain absolute inset-0 opacity-40" />
             <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className="flex h-16 w-16 items-center justify-center rounded-full"
-            style={{
-              border: "1px solid var(--color-neon)",
-              color: "var(--color-neon)",
-              animation: hover ? "play-pulse 900ms ease-in-out infinite" : undefined,
-            }}
-          >
-            <Play size={24} strokeWidth={2.4} />
-          </span>
+              <span
+                className="flex h-16 w-16 items-center justify-center rounded-full"
+                style={{
+                  border: "1px solid var(--color-neon)",
+                  color: "var(--color-neon)",
+                  animation: hover ? "play-pulse 900ms ease-in-out infinite" : undefined,
+                }}
+              >
+                <Play size={24} strokeWidth={2.4} />
+              </span>
             </div>
             <span
               className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
