@@ -33,6 +33,8 @@ import feedback9 from "@/assets/feedbacks/9.png.asset.json";
 import feedback10 from "@/assets/feedbacks/10.png.asset.json";
 import InvestmentSection from "@/components/site/InvestmentSection";
 import PackageSection from "@/components/site/PackageSection";
+import ContactSection from "@/components/site/ContactSection";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -87,7 +89,7 @@ function Index() {
           <PackageSection />
 
 
-          <Contact />
+          <ContactSection />
         </main>
       </FixedScale>
       <BackToTop />
@@ -405,75 +407,3 @@ function FeedbackSection() {
   );
 }
 
-function Contact() {
-  return (
-    <section
-      id="contato"
-      className="grain relative overflow-hidden py-32"
-      style={{ backgroundColor: "var(--color-ink)" }}
-    >
-      <div
-        className="pointer-events-none absolute top-1/2 left-1/2 h-[380px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px]"
-        style={{
-          background: "color-mix(in oklab, var(--color-neon) 22%, transparent)",
-          animation: "glow-pulse 6s ease-in-out infinite",
-        }}
-      />
-      <div className="relative mx-auto flex w-[1240px] items-end justify-between">
-        <div>
-          <span
-            className="font-sans text-[11px] tracking-[0.34em] uppercase"
-            style={{ color: "var(--color-neon)" }}
-          >
-            Bora criar
-          </span>
-          <h2
-            className="mt-4 font-display text-[92px] leading-[0.84] font-black tracking-[-0.05em] uppercase"
-            style={{ color: "var(--color-bone)" }}
-          >
-            Sua marca
-            <br />
-            no feed certo
-          </h2>
-          <div className="mt-8 flex gap-6 text-[13px] tracking-[0.16em] uppercase">
-            <a
-              data-cursor="link"
-              href="mailto:contato@viniciusaraujo.ugc"
-              className="flex cursor-none items-center gap-2"
-              style={{ color: "var(--color-bone)" }}
-            >
-              <Mail size={15} /> E-mail
-            </a>
-            <a
-              data-cursor="link"
-              href="https://instagram.com"
-              className="flex cursor-none items-center gap-2"
-              style={{ color: "var(--color-bone)" }}
-            >
-              <Instagram size={15} /> Instagram
-            </a>
-          </div>
-        </div>
-
-        <a
-          data-cursor="link"
-          href="mailto:contato@viniciusaraujo.ugc"
-          className="mb-3 flex cursor-none items-center gap-3 rounded-full px-11 py-6 font-display text-[20px] font-bold tracking-[-0.01em] uppercase transition-transform duration-300 hover:scale-[1.04]"
-          style={{
-            border: "1px solid var(--color-neon)",
-            color: "var(--color-neon)",
-            animation: "neon-breathe 2.6s ease-in-out infinite",
-          }}
-        >
-          Fechar collab <ArrowUpRight size={22} />
-        </a>
-      </div>
-      <p
-        className="relative mx-auto mt-24 w-[1240px] text-[11px] tracking-[0.2em] uppercase"
-        style={{ color: "color-mix(in oklab, var(--color-bone) 45%, transparent)" }}
-      >
-        © {new Date().getFullYear()} Vinícius Araújo — UGC Creator
-      </p>
-    </section>
-  );
-}
