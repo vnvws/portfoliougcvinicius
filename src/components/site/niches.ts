@@ -87,6 +87,15 @@ import foodUpGas from "@/assets/videos/up-gas.mp4.asset.json";
 import foodWine from "@/assets/videos/wine.mp4.asset.json";
 // @ts-ignore
 import foodIracema from "@/assets/videos/iracema.mp4.asset.json";
+// @ts-ignore
+import selfCareAlva from "@/assets/ALVA_-_Desodorante_cristal_em_spray.mp4.asset.json";
+// @ts-ignore
+import selfCareOAristocrata from "@/assets/O_Aristocrata_-_Sabote_para_Homem_de_verdade.mp4.asset.json";
+// @ts-ignore
+import selfCareTouti from "@/assets/Touti_Cosmetics_-_Perfumes_de_times_de_Futebol.mp4.asset.json";
+// @ts-ignore
+import selfCareProperJack from "@/assets/PROPER_JACK_-_Assinatura_de_skincare_para_homens.mp4.asset.json";
+
 
 interface Asset {
   url: string;
@@ -136,6 +145,11 @@ const f1 = foodSmoo as unknown as Asset;
 const f2 = foodUpGas as unknown as Asset;
 const f3 = foodWine as unknown as Asset;
 const f4 = foodIracema as unknown as Asset;
+const sc1 = selfCareAlva as unknown as Asset;
+const sc2 = selfCareOAristocrata as unknown as Asset;
+const sc3 = selfCareTouti as unknown as Asset;
+const sc4 = selfCareProperJack as unknown as Asset;
+
 
 export type Niche = {
   id: string;
@@ -440,6 +454,37 @@ export const niches: Niche[] = [
         title: "Iracema",
         description: "Nuts perfeitos para compor uma tábua de frios",
         src: f4.url,
+        label: "Clique"
+      }
+    ],
+  },
+  {
+    id: "autocuidado",
+    title: "Autocuidado",
+    layout: "vertical",
+    videos: [
+      {
+        title: "ALVA",
+        description: "Desodorante cristal em spray",
+        src: sc1.url,
+        label: "Clique"
+      },
+      {
+        title: "O Aristocrata",
+        description: "Sabote para homem de verdade",
+        src: sc2.url,
+        label: "Clique"
+      },
+      {
+        title: "Touti Cosmetics",
+        description: "Perfumes de times de futebol",
+        src: sc3.url,
+        label: "Clique"
+      },
+      {
+        title: "PROPER JACK",
+        description: "Assinatura de skincare para homens",
+        src: sc4.url,
         label: "Clique"
       }
     ],
