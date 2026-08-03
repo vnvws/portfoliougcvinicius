@@ -80,6 +80,7 @@ function Index() {
 
           <CreativeProcess />
           <PhotoGallery />
+          <FeedbackSection />
 
           <Contact />
         </main>
