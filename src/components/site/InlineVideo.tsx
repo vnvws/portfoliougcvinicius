@@ -41,13 +41,14 @@ export function InlineVideo({
   useEffect(() => {
     if (playing || isExpanded) {
       setMounted(true);
-    } else {
-      // Pequeno delay para evitar flickering se o usuário clicar rápido
-      const timer = setTimeout(() => {
-        if (!playing && !isExpanded) setMounted(false);
-      }, 300);
-      return () => clearTimeout(timer);
+      return;
     }
+    
+    // Pequeno delay para evitar flickering se o usuário clicar rápido
+    const timer = setTimeout(() => {
+      setMounted(false);
+    }, 300);
+    return () => clearTimeout(timer);
   }, [playing, isExpanded]);
 
   // Observer apenas para controle de visibilidade (opcional, para otimizações futuras)
