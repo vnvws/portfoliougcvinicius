@@ -14,7 +14,7 @@ const InvestmentTable = ({ title, items }: { title: string; items: { label: stri
   </div>
 );
 
-export const InvestmentSection = () => {
+export default function InvestmentSection() {
   const data = {
     oneTime: [
       { label: "1 VÍDEO", price: "R$ 357" },
@@ -55,4 +55,4 @@ export const InvestmentSection = () => {
       </div>
     </section>
   );
-};
+}
