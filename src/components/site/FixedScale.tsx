@@ -31,6 +31,8 @@ export function FixedScale({ children }: { children: ReactNode }) {
     measure();
     window.addEventListener("resize", schedule);
     window.addEventListener("orientationchange", schedule);
+    window.addEventListener("load", schedule);
+    document.fonts?.ready.then(schedule).catch(() => {});
 
     const ro = new ResizeObserver(schedule);
     if (inner.current) ro.observe(inner.current);
@@ -39,6 +41,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", schedule);
       window.removeEventListener("orientationchange", schedule);
+      window.removeEventListener("load", schedule);
       ro.disconnect();
     };
   }, []);
