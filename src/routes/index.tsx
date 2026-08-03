@@ -84,6 +84,7 @@ function Index() {
           <PhotoGallery />
           <FeedbackSection />
           <InvestmentSection />
+          <PackageSection />
 
 
           <Contact />
