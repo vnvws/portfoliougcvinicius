@@ -2,10 +2,13 @@ import { Play, Pause, Maximize, X } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useVideoControl } from "./FixedScale";
+import { getYouTubeEmbedUrl, getYouTubeId, getYouTubeThumbnail } from "./youtube";
 
 type Props = {
-  src: string;
-  poster?: string | undefined;
+  src?: string;
+  youtubeId?: string;
+  youtubeUrl?: string;
+  poster?: string;
   /** Se a prévia muda ao passar o mouse */
   previewOnHover?: boolean;
   iconSize?: number;
@@ -15,11 +18,14 @@ type Props = {
 /**
  * Player inline configurado para:
  * - Reprodução com som apenas ao clicar
- * - Sem reprodução automática (exceto prévia sem som opcional no hover)
+ * - Sem reprodução automática
  * - Modal de visualização ampliada (Lightbox) no lugar de Fullscreen nativo
+ * - Suporte a vídeos nativos (src) e YouTube (youtubeId/youtubeUrl)
  */
 export function InlineVideo({
   src,
+  youtubeId: rawYoutubeId,
+  youtubeUrl,
   poster,
   previewOnHover = false,
   iconSize = 20,
@@ -30,33 +36,19 @@ export function InlineVideo({
   const { activeVideoSrc, setActiveVideoSrc } = useVideoControl();
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  const playing = activeVideoSrc === src;
+  const youtubeId = rawYoutubeId || getYouTubeId(youtubeUrl) || undefined;
+  const isYouTube = Boolean(youtubeId);
+  const videoKey = youtubeId || src || "";
+
+  const playing = activeVideoSrc === videoKey;
   const setPlaying = (val: boolean) => {
-    if (val) setActiveVideoSrc(src);
-    else if (activeVideoSrc === src) setActiveVideoSrc(null);
+    if (val) setActiveVideoSrc(videoKey);
+    else if (activeVideoSrc === videoKey) setActiveVideoSrc(null);
   };
 
-  // Sem poster, força o navegador (inclusive iOS) a decodificar e exibir o
-  // primeiro frame como capa usando um fragmento de tempo.
-  const previewSrc = poster ? src : `${src}#t=0.1`;
-
-  // Monta o <video> só quando estiver tocando ou ampliado.
-  // IMPORTANTE: Adicionamos inView para que o vídeo só exista no DOM quando visível,
-  // liberando memória do hardware decoder no iOS.
-  useEffect(() => {
-    // Para depuração: em ambientes sem decodificadores reais, 
-    // montamos sempre que inView para o teste passar, mas 
-    // mantendo a regra de apenas 1 vídeo no DOM em produção.
-    if ((playing || isExpanded) && inView) {
-      setMounted(true);
-      return;
-    }
-    
-    setMounted(false);
-  }, [playing, isExpanded, inView]);
-
+  // IntersectionObserver: só mantém o player real no DOM quando visível,
+  // liberando memória de decodificadores no iOS.
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -69,16 +61,32 @@ export function InlineVideo({
           setPlaying(false);
         }
       },
-      { rootMargin: "600px 0px" } // Margem maior para garantir inView no scroll rápido
+      { rootMargin: "600px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
-  const toggle = () => {
+  // Para vídeos nativos, sincroniza play/pause via ref.
+  useEffect(() => {
+    if (isYouTube) return;
     const v = ref.current;
     if (!v) return;
-    
+    if (playing) {
+      v.muted = false;
+      void v.play();
+    } else {
+      v.pause();
+    }
+  }, [playing, isYouTube]);
+
+  const toggle = () => {
+    if (isYouTube) {
+      setPlaying(!playing);
+      return;
+    }
+    const v = ref.current;
+    if (!v) return;
     if (v.paused) {
       v.muted = false;
       void v.play();
@@ -91,10 +99,7 @@ export function InlineVideo({
 
   const openLightbox = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (ref.current && !ref.current.paused) {
-      ref.current.pause();
-      setPlaying(false);
-    }
+    setPlaying(false);
     setIsExpanded(true);
   };
 
@@ -103,7 +108,7 @@ export function InlineVideo({
   };
 
   const onEnter = () => {
-    if (!previewOnHover || playing || isExpanded) return;
+    if (!previewOnHover || playing || isExpanded || isYouTube) return;
     if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
     const v = ref.current;
     if (v) {
@@ -113,7 +118,7 @@ export function InlineVideo({
   };
 
   const onLeave = () => {
-    if (playing || isExpanded) return;
+    if (playing || isExpanded || isYouTube) return;
     const v = ref.current;
     if (v) {
       v.pause();
@@ -121,11 +126,14 @@ export function InlineVideo({
     }
   };
 
+  const thumbnailUrl = isYouTube ? getYouTubeThumbnail(youtubeId!) : poster;
+  const shouldMountPlayer = (playing || isExpanded) && inView;
+
   return (
     <>
       <div
         ref={wrapRef}
-        data-video-src={src}
+        data-video-key={videoKey}
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
@@ -134,43 +142,50 @@ export function InlineVideo({
           toggle();
         }}
       >
-        {mounted ? (
-          <video
-            ref={ref}
-            src={src}
-            poster={poster}
-            muted={!playing}
-            loop
-            playsInline
-            preload="auto"
-            disablePictureInPicture
-            controlsList="nodownload"
-            controls={false}
-            onPlay={() => setActiveVideoSrc(src)}
-            onPause={() => {
-              if (activeVideoSrc === src) setActiveVideoSrc(null);
-            }}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+        {shouldMountPlayer ? (
+          isYouTube ? (
+            <iframe
+              src={getYouTubeEmbedUrl(youtubeId!, true)}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full border-0"
+            />
+          ) : (
+            <video
+              ref={ref}
+              src={src}
+              poster={poster}
+              muted={!playing}
+              loop
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              controlsList="nodownload"
+              controls={false}
+              onPlay={() => setActiveVideoSrc(videoKey)}
+              onPause={() => {
+                if (activeVideoSrc === videoKey) setActiveVideoSrc(null);
+              }}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          )
         ) : (
           <div className="absolute inset-0 bg-ink/5">
-            <video
-              src={previewSrc}
-              muted
-              playsInline
-              preload="metadata"
-              className="h-full w-full object-cover"
-              onLoadedMetadata={(e) => {
-                const v = e.currentTarget;
-                v.currentTime = 0.1;
-              }}
-            />
-            {poster && (
-              <img 
-                src={poster} 
-                alt={label || ""} 
+            {thumbnailUrl ? (
+              <img
+                src={thumbnailUrl}
+                alt={label || "Capa do vídeo"}
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <video
+                src={`${src}#t=0.1`}
+                muted
+                playsInline
+                preload="metadata"
+                className="h-full w-full object-cover"
               />
             )}
             <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
@@ -224,18 +239,26 @@ export function InlineVideo({
         ) : null}
       </div>
 
-      {isExpanded && <VideoLightbox src={src} onClose={closeLightbox} />}
+      {isExpanded && <VideoLightbox src={src} youtubeId={youtubeId} onClose={closeLightbox} />}
     </>
   );
 }
 
-function VideoLightbox({ src, onClose }: { src: string; onClose: () => void }) {
+function VideoLightbox({
+  src,
+  youtubeId,
+  onClose,
+}: {
+  src?: string;
+  youtubeId?: string;
+  onClose: () => void;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    
+
     const v = videoRef.current;
     if (v) {
       v.muted = false;
@@ -266,11 +289,11 @@ function VideoLightbox({ src, onClose }: { src: string; onClose: () => void }) {
   };
 
   return createPortal(
-    <div 
+    <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4 md:p-10 backdrop-blur-md"
       onClick={onClose}
     >
-      <button 
+      <button
         onClick={onClose}
         aria-label="Fechar vídeo"
         className="absolute top-4 right-4 z-[10000] p-2 text-white transition-colors hover:text-neon md:top-6 md:right-6 md:cursor-none"
@@ -278,24 +301,34 @@ function VideoLightbox({ src, onClose }: { src: string; onClose: () => void }) {
         <X size={32} />
       </button>
 
-      <div 
+      <div
         className="relative max-h-full w-full max-w-[520px] overflow-hidden rounded-lg shadow-2xl md:w-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <video
-          ref={videoRef}
-          src={src}
-          controls
-          playsInline
-          controlsList="nodownload"
-          autoPlay
-          className="max-h-[80vh] w-full rounded-lg md:w-auto"
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-        />
-        
-        {!playing && (
-          <div 
+        {youtubeId ? (
+          <iframe
+            src={getYouTubeEmbedUrl(youtubeId, true)}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="aspect-[9/16] max-h-[80vh] w-full rounded-lg md:w-auto"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={src}
+            controls
+            playsInline
+            controlsList="nodownload"
+            autoPlay
+            className="max-h-[80vh] w-full rounded-lg md:w-auto"
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+          />
+        )}
+
+        {!playing && !youtubeId && (
+          <div
             className="absolute inset-0 flex items-center justify-center bg-black/20 md:cursor-none"
             onClick={togglePlay}
           >
@@ -306,6 +339,6 @@ function VideoLightbox({ src, onClose }: { src: string; onClose: () => void }) {
         )}
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
