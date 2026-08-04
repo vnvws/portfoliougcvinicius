@@ -286,9 +286,9 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Vision Cursor",
-        description: "Personalise o cursor do seu mouse",
-        src: a12.url,
+        title: "Canva",
+        description: "Transformando foto em vídeo com a IA do Canva",
+        src: a8.url,
         label: "Clique"
       },
       {
