@@ -125,6 +125,10 @@ import youtubeDiffy from "@/assets/videos/youtube-diffy.mp4.asset.json";
 import youtubeRdc from "@/assets/videos/youtube-rdc-viagens.mp4.asset.json";
 // @ts-ignore
 import youtubeManclub from "@/assets/videos/youtube-manclub.mp4.asset.json";
+// @ts-ignore
+import promoBlackFriday2 from "@/assets/videos/promo-black-friday-2.mp4.asset.json";
+// @ts-ignore
+import promoDescobertaGrupo from "@/assets/videos/promo-descoberta-grupo.mp4.asset.json";
 
 
 interface Asset {
