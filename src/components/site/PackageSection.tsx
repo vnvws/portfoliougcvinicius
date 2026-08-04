@@ -1,5 +1,6 @@
 import React from "react";
-import { Check } from "lucide-react";
+import { Check, Star } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const PackageCard = ({
   title,
@@ -8,6 +9,7 @@ const PackageCard = ({
   price,
   note,
   isBestValue,
+  delay = 0,
 }: {
   title: string;
   subtitle: string;
@@ -15,78 +17,127 @@ const PackageCard = ({
   price: string;
   note?: string;
   isBestValue?: boolean;
+  delay?: number;
 }) => (
-  <div
-    className={`relative flex flex-col w-[350px] rounded-[32px] overflow-hidden ${
-      isBestValue ? "border-2 border-neon bg-forest/80" : "bg-white border-2 border-forest/10"
-    }`}
-  >
-    <div className={`py-6 text-center ${isBestValue ? "bg-forest text-white" : "bg-forest/10 text-forest"}`}>
-      <h3 className="text-2xl font-black tracking-tight">{title}</h3>
-    </div>
-    
-    <div className="flex-1 p-8 text-center space-y-4">
-      <h4 className={`text-2xl font-bold ${isBestValue ? "text-white" : "text-forest"}`}>{subtitle}</h4>
-      <div className={`h-[1px] w-full my-4 ${isBestValue ? "bg-white/20" : "bg-forest/10"}`} />
-      <ul className={`space-y-3 ${isBestValue ? "text-white/90" : "text-forest/80"}`}>
-        {items.map((item, idx) => (
-          <li key={idx} className="flex items-center gap-2 justify-center font-medium">
-            <Check size={18} className={isBestValue ? "text-neon" : "text-forest"} />
-            {item}
-          </li>
-        ))}
-      </ul>
-      <p className={`text-[12px] italic pt-4 ${isBestValue ? "text-white/60" : "text-forest/60"}`}>Direito de uso em ADS<br/>por 06 meses</p>
-    </div>
-
-    <div className="px-8 pb-8">
-      <div className="bg-white rounded-full py-4 text-center shadow-xl border-t-4 border-forest">
-        <span className="text-sm font-bold text-forest">R$</span>
-        <span className="text-4xl font-black text-forest ml-1">{price}</span>
+  <Reveal delay={delay} className="flex-1 min-w-[360px]">
+    <div
+      className={`group relative flex flex-col rounded-[42px] overflow-hidden transition-all duration-500 hover:-translate-y-2 ${
+        isBestValue 
+          ? "bg-forest text-white ring-4 ring-neon/30 shadow-[0_20px_80px_-15px_rgba(54,87,74,0.4)]" 
+          : "bg-white border border-forest/10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
+      }`}
+    >
+      {/* Header Area */}
+      <div className={`pt-10 pb-6 text-center ${isBestValue ? "bg-white/5" : "bg-forest/[0.03]"}`}>
+        <div className={`mx-auto mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] font-black tracking-[0.2em] ${
+          isBestValue ? "bg-neon text-ink" : "bg-forest/10 text-forest"
+        }`}>
+          {isBestValue && <Star size={10} fill="currentColor" />}
+          {title}
+        </div>
+        <h3 className={`text-4xl font-black tracking-tight mb-2 ${isBestValue ? "text-white" : "text-ink"}`}>
+          {subtitle}
+        </h3>
+        {note && (
+          <span className={`text-[11px] font-black tracking-widest px-3 py-1 rounded-full ${
+            isBestValue ? "bg-neon/20 text-neon" : "bg-forest text-white"
+          }`}>
+            {note}
+          </span>
+        )}
       </div>
-      {note && (
-        <p className={`text-center font-bold text-[14px] mt-3 ${isBestValue ? "text-neon" : "text-forest"}`}>
-          {note}
-        </p>
-      )}
-    </div>
-
-    {isBestValue && (
-      <div className="absolute top-4 -right-4">
-        <div className="bg-neon text-ink font-black text-[12px] px-6 py-2 -rotate-12 rounded-full tracking-wider shadow-lg z-50">
-          Best Choice
+      
+      {/* Content Area */}
+      <div className="flex-1 p-10 space-y-8">
+        <ul className="space-y-4">
+          {items.map((item, idx) => (
+            <li key={idx} className="flex items-center gap-4 text-[16px] font-bold">
+              <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
+                isBestValue ? "bg-neon text-ink" : "bg-forest/10 text-forest"
+              }`}>
+                <Check size={14} strokeWidth={3} />
+              </div>
+              <span className={isBestValue ? "text-white/90" : "text-forest/80"}>{item}</span>
+            </li>
+          ))}
+        </ul>
+        
+        <div className={`rounded-3xl p-6 transition-all ${
+          isBestValue ? "bg-white/10" : "bg-bone"
+        }`}>
+          <div className="flex flex-col items-center">
+            <span className={`text-[10px] font-black tracking-[0.2em] mb-1 ${
+              isBestValue ? "text-white/40" : "text-forest/40"
+            }`}>INVESTIMENTO</span>
+            <div className="flex items-baseline gap-1">
+              <span className={`text-sm font-black ${isBestValue ? "text-neon" : "text-forest"}`}>R$</span>
+              <span className={`text-5xl font-black tracking-tighter ${isBestValue ? "text-white" : "text-ink"}`}>
+                {price}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-    )}
-  </div>
+
+      {/* Footer Meta */}
+      <div className={`px-10 py-6 text-center text-[10px] font-bold tracking-widest border-t ${
+        isBestValue ? "border-white/10 text-white/40" : "border-forest/5 text-forest/40"
+      }`}>
+        DIREITO DE USO EM ADS POR 06 MESES
+      </div>
+
+      {isBestValue && (
+        <div className="absolute -right-12 top-8 rotate-45 bg-neon px-12 py-1 text-[10px] font-black tracking-[0.2em] text-ink shadow-xl">
+          MAIS VENDIDO
+        </div>
+      )}
+    </div>
+  </Reveal>
 );
 
 export default function PackageSection() {
   return (
-    <section className="py-32 px-6 bg-forest/5">
-      <h2 className="text-4xl md:text-5xl font-black text-forest mb-20 text-center tracking-tighter">Pacotes</h2>
-      <div className="flex flex-wrap gap-8 justify-center items-center">
-        <PackageCard
-          title="UGC 1"
-          subtitle="1 VÍDEO"
-          items={["Roteiro", "Gravação", "Edição", "Teste A/B"]}
-          price="427,00"
-        />
-        <PackageCard
-          title="UGC 2"
-          subtitle="3 VÍDEOS"
-          items={["Roteiro", "Gravação", "Edição"]}
-          price="750,00"
-          note="ECONOMIZE R$ 621"
-          isBestValue
-        />
-        <PackageCard
-          title="UGC 3"
-          subtitle="5 VÍDEOS"
-          items={["Roteiro", "Gravação", "Edição", "3 FOTOS"]}
-          price="1.440,00"
-          note="ECONOMIZE R$ 945"
-        />
+    <section className="py-32 px-12 bg-white relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 h-96 w-96 bg-neon/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 h-96 w-96 bg-forest/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="mx-auto w-[1240px] relative z-10">
+        <Reveal>
+          <div className="mb-4 text-center">
+            <span className="text-[11px] font-black tracking-[0.4em] text-neon">ESCOLHA SEU PLANO</span>
+          </div>
+          <h2 className="text-[72px] font-black text-ink mb-20 text-center tracking-tighter leading-none">
+            Pacotes de Conteúdo
+          </h2>
+        </Reveal>
+
+        <div className="flex flex-wrap gap-10 justify-center items-stretch">
+          <PackageCard
+            title="START"
+            subtitle="1 Vídeo"
+            items={["Roteiro Estratégico", "Gravação em 4K", "Edição Dinâmica", "Teste A/B de Hook"]}
+            price="427"
+            delay={100}
+          />
+          <PackageCard
+            title="RECOMENDADO"
+            subtitle="3 Vídeos"
+            items={["Roteiro Estratégico", "Gravação em 4K", "Edição Dinâmica", "Consultoria de Gancho"]}
+            price="750"
+            note="ECONOMIZE R$ 621"
+            isBestValue
+            delay={200}
+          />
+          <PackageCard
+            title="PREMIUM"
+            subtitle="5 Vídeos"
+            items={["Roteiro Estratégico", "Gravação em 4K", "Edição Dinâmica", "3 Fotos de Produto"]}
+            price="1.440"
+            note="ECONOMIZE R$ 945"
+            delay={300}
+          />
+        </div>
       </div>
     </section>
   );
