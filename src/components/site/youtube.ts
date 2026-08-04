@@ -50,7 +50,9 @@ export function getYouTubeEmbedUrl(id: string, autoplay = false, hideControls = 
     origin: typeof window !== 'undefined' ? window.location.origin : '',
     enablejsapi: "1",
     autoplay: autoplay ? "1" : "0",
-    mute: "0", // Garante que tenta tocar com som
+    mute: "0",
+    // Parâmetro extra para reforçar o inline no iOS
+    webkit_playsinline: "1",
   });
   
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
