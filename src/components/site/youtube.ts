@@ -48,7 +48,10 @@ export function getYouTubeEmbedUrl(id: string, autoplay = false, hideControls = 
     hl: "pt",
     widget_referrer: "https://youtube.com",
     origin: typeof window !== 'undefined' ? window.location.origin : '',
+    enablejsapi: "1",
+    autoplay: autoplay ? "1" : "0",
+    mute: "0", // Garante que tenta tocar com som
   });
-  if (autoplay) params.set("autoplay", "1");
+  
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
 }
