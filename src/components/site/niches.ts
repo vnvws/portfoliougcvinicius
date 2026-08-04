@@ -250,6 +250,18 @@ export const niches: Niche[] = [
         description: "Achado secreto de promoções",
         src: v12.url,
         label: "Clique"
+      },
+      {
+        title: "Promoções do Dia",
+        description: "Ofertas na Black Friday",
+        src: v13.url,
+        label: "Clique"
+      },
+      {
+        title: "Promoções do Dia",
+        description: "Descoberta do grupo",
+        src: v14.url,
+        label: "Clique"
       }
     ],
   },
