@@ -222,21 +222,9 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Waves Outlet",
-        description: "Sneakers do momento pagando pouco",
-        src: v7.url,
-        label: "Clique"
-      },
-      {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
         src: v8.url,
-        label: "Clique"
-      },
-      {
-        title: "Tem Promô",
-        description: "Grupo exclusivo de promoções",
-        src: v9.url,
         label: "Clique"
       },
       {
