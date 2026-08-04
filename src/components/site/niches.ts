@@ -222,18 +222,6 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "A Promo Men",
-        description: "Onde comprar tênis pagando barato",
-        src: v3.url,
-        label: "Clique"
-      },
-      {
-        title: "Tem Promô",
-        description: "Grupo exclusivo de promoções",
-        src: v4.url,
-        label: "Clique"
-      },
-      {
         title: "Urubu das Promos",
         description: "Creatina pagando barato",
         src: v5.url,
