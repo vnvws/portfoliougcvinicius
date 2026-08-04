@@ -129,6 +129,8 @@ import youtubeManclub from "@/assets/videos/youtube-manclub.mp4.asset.json";
 import promoBlackFriday2 from "@/assets/videos/promo-black-friday-2.mp4.asset.json";
 // @ts-ignore
 import promoDescobertaGrupo from "@/assets/videos/promo-descoberta-grupo.mp4.asset.json";
+// @ts-ignore
+import pegarPromoCueca from "@/assets/videos/pegar-promo-cueca-mash.mp4.asset.json";
 
 
 interface Asset {
