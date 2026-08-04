@@ -42,7 +42,7 @@ export default function ContactSection() {
           {/* Left Column */}
           <div className="flex flex-col">
             <Reveal>
-              <div className="mb-8 flex items-center gap-2 text-[11px] font-bold tracking-[0.4em] text-neon uppercase font-sans">
+              <div className="mb-8 flex items-center gap-2 text-[11px] font-bold tracking-[0.4em] text-neon uppercase">
                 <Star size={14} fill="currentColor" />
                 CONTATO
               </div>
