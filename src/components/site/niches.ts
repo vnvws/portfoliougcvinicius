@@ -243,9 +243,9 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Destaques Gerais",
-        description: "Seleção das melhores oportunidades do dia.",
-        src: v11.url,
+        title: "Pegar Promo",
+        description: "Comparativo de preço Cueca Mash",
+        src: v15.url,
         label: "Clique"
       },
       {
