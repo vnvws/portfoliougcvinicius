@@ -1,5 +1,5 @@
 import { Play, Pause, Maximize, X } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useVideoControl } from "./FixedScale";
 import { getYouTubeEmbedUrl, getYouTubeId, getYouTubeThumbnail } from "./youtube";
@@ -42,10 +42,14 @@ export function InlineVideo({
   const videoKey = youtubeId || src || "";
 
   const playing = activeVideoSrc === videoKey;
-  const setPlaying = (val: boolean) => {
-    if (val) setActiveVideoSrc(videoKey);
-    else if (activeVideoSrc === videoKey) setActiveVideoSrc(null);
-  };
+  
+  const setPlaying = useCallback((val: boolean) => {
+    if (val) {
+      setActiveVideoSrc(videoKey);
+    } else if (activeVideoSrc === videoKey) {
+      setActiveVideoSrc(null);
+    }
+  }, [videoKey, activeVideoSrc, setActiveVideoSrc]);
 
   // IntersectionObserver: só mantém o player real no DOM quando visível,
   // liberando memória de decodificadores no iOS.
@@ -57,7 +61,7 @@ export function InlineVideo({
         const isIntersecting = entries.some((e) => e.isIntersecting);
         setInView(isIntersecting);
         // Se saiu da tela, garante que parou de tocar
-        if (!isIntersecting) {
+        if (!isIntersecting && playing) {
           setPlaying(false);
         }
       },
@@ -65,36 +69,36 @@ export function InlineVideo({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [playing, setPlaying]);
 
   // Para vídeos nativos, sincroniza play/pause via ref.
   useEffect(() => {
     if (isYouTube) return;
     const v = ref.current;
     if (!v) return;
+    
     if (playing) {
       v.muted = false;
-      void v.play();
+      // Garante que tentamos tocar após o src estar pronto
+      v.play().catch(err => {
+        console.warn("Playback failed:", err);
+        setPlaying(false);
+      });
     } else {
       v.pause();
     }
-  }, [playing, isYouTube]);
+  }, [playing, isYouTube, src, setPlaying]);
 
-  const toggle = () => {
+  const toggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (isYouTube) {
       setPlaying(!playing);
       return;
     }
-    const v = ref.current;
-    if (!v) return;
-    if (v.paused) {
-      v.muted = false;
-      void v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
+    
+    // Se não está carregado no DOM ainda, apenas setamos playing como true
+    // O useEffect cuidará de dar o play assim que o ref estiver disponível
+    setPlaying(!playing);
   };
 
   const openLightbox = (e: React.MouseEvent) => {
@@ -137,10 +141,7 @@ export function InlineVideo({
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        onClick={(e) => {
-          e.stopPropagation();
-          toggle();
-        }}
+        onClick={toggle}
       >
         {shouldMountPlayer ? (
           isYouTube ? (
@@ -153,6 +154,7 @@ export function InlineVideo({
             />
           ) : (
             <video
+              key={src}
               ref={ref}
               src={src}
               poster={poster}
@@ -163,10 +165,6 @@ export function InlineVideo({
               disablePictureInPicture
               controlsList="nodownload"
               controls={false}
-              onPlay={() => setActiveVideoSrc(videoKey)}
-              onPause={() => {
-                if (activeVideoSrc === videoKey) setActiveVideoSrc(null);
-              }}
               className="absolute inset-0 h-full w-full object-cover"
             />
           )
