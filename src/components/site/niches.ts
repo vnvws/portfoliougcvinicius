@@ -216,15 +216,15 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Urubu das Promos",
-        description: "Onde comprar energético barato",
-        src: v6.url,
-        label: "Clique"
-      },
-      {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
         src: v8.url,
+        label: "Clique"
+      },
+      {
+        title: "Urubu das Promos",
+        description: "Onde comprar energético barato",
+        src: v6.url,
         label: "Clique"
       },
       {
