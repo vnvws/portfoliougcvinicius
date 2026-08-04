@@ -129,6 +129,8 @@ import youtubeManclub from "@/assets/videos/youtube-manclub.mp4.asset.json";
 import promoBlackFriday2 from "@/assets/videos/promo-black-friday-2.mp4.asset.json";
 // @ts-ignore
 import promoDescobertaGrupo from "@/assets/videos/promo-descoberta-grupo.mp4.asset.json";
+// @ts-ignore
+import pegarPromoCueca from "@/assets/videos/pegar-promo-cueca-mash.mp4.asset.json";
 
 
 interface Asset {
@@ -200,6 +202,7 @@ const yt2 = youtubeRdc as unknown as Asset;
 const yt3 = youtubeManclub as unknown as Asset;
 const v13 = promoBlackFriday2 as unknown as Asset;
 const v14 = promoDescobertaGrupo as unknown as Asset;
+const v15 = pegarPromoCueca as unknown as Asset;
 
 
 export type Niche = {
@@ -240,9 +243,9 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Destaques Gerais",
-        description: "Seleção das melhores oportunidades do dia.",
-        src: v11.url,
+        title: "Pegar Promo",
+        description: "Comparativo de preço Cueca Mash",
+        src: v15.url,
         label: "Clique"
       },
       {
