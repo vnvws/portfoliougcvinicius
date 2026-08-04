@@ -148,9 +148,12 @@ export function InlineVideo({
               <iframe
                 src={getYouTubeEmbedUrl(youtubeId!, true)}
                 title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
                 className="absolute top-1/2 left-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 border-0"
                 style={{ pointerEvents: 'none' }}
+                // @ts-ignore - attributes for mobile inline play
+                playsinline="1"
+                webkit-playsinline="1"
               />
             </div>
           ) : (
