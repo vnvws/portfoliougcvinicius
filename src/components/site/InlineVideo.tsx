@@ -153,6 +153,7 @@ export function InlineVideo({
             />
           ) : (
             <video
+              key={src}
               ref={ref}
               src={src}
               poster={poster}
