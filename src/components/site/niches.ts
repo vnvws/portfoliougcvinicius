@@ -210,30 +210,6 @@ export const niches: Niche[] = [
     layout: "vertical",
     videos: [
       {
-        title: "Promoções do Dia",
-        description: "As melhores promoções da Black Friday",
-        src: v1.url,
-        label: "Clique"
-      },
-      {
-        title: "A Promo Men",
-        description: "Ofertas exclusivas durante a semana do consumidor",
-        src: v2.url,
-        label: "Clique"
-      },
-      {
-        title: "A Promo Men",
-        description: "Onde comprar tênis pagando barato",
-        src: v3.url,
-        label: "Clique"
-      },
-      {
-        title: "Tem Promô",
-        description: "Grupo exclusivo de promoções",
-        src: v4.url,
-        label: "Clique"
-      },
-      {
         title: "Urubu das Promos",
         description: "Creatina pagando barato",
         src: v5.url,
@@ -246,21 +222,9 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Waves Outlet",
-        description: "Sneakers do momento pagando pouco",
-        src: v7.url,
-        label: "Clique"
-      },
-      {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
         src: v8.url,
-        label: "Clique"
-      },
-      {
-        title: "Tem Promô",
-        description: "Grupo exclusivo de promoções",
-        src: v9.url,
         label: "Clique"
       },
       {
