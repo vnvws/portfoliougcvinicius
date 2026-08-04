@@ -29,7 +29,7 @@ export function getYouTubeId(input: string | undefined | null): string | null {
 
 export function getYouTubeThumbnail(
   id: string,
-  quality: "maxresdefault" | "sddefault" | "hqdefault" | "mqdefault" = "maxresdefault",
+  quality: "maxresdefault" | "sddefault" | "hqdefault" | "mqdefault" = "hqdefault",
 ): string {
   return `https://img.youtube.com/vi/${id}/${quality}.jpg`;
 }
