@@ -202,6 +202,7 @@ const yt2 = youtubeRdc as unknown as Asset;
 const yt3 = youtubeManclub as unknown as Asset;
 const v13 = promoBlackFriday2 as unknown as Asset;
 const v14 = promoDescobertaGrupo as unknown as Asset;
+const v15 = pegarPromoCueca as unknown as Asset;
 
 
 export type Niche = {
