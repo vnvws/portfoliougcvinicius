@@ -39,13 +39,18 @@ export function getYouTubeEmbedUrl(id: string, autoplay = false): string {
     rel: "0",
     modestbranding: "1",
     playsinline: "1",
-    iv_load_policy: "3", // Remove anotações/cards
-    cc_load_policy: "0", // Tenta desativar legendas automáticas
-    controls: "0",       // DESATIVA controles para remover ícones (Play, Volume, etc)
-    disablekb: "1",      // Desativa atalhos de teclado
-    fs: "0",             // Desativa botão de tela cheia nativo do YT
+    iv_load_policy: "3",
+    cc_load_policy: "0",
+    cc_lang_pref: "pt",
+    controls: "0",
+    disablekb: "1",
+    fs: "0",
     hl: "pt",
+    widget_referrer: "https://youtube.com",
+    origin: typeof window !== 'undefined' ? window.location.origin : '',
   });
   if (autoplay) params.set("autoplay", "1");
+  // O parâmetro 'showinfo' foi descontinuado pelo YouTube, 
+  // então usamos a técnica de 'crop' (aumento de escala) no componente para esconder o topo.
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
 }
