@@ -24,15 +24,15 @@ export function NicheSection({ niche, index }: { niche: Niche; index: number }) 
     >
       <Reveal className="mb-8 flex items-end justify-between gap-6">
         <div>
-          <span className="text-[11px] tracking-[0.32em] text-forest uppercase">
+          <span className="text-[11px] tracking-[0.32em] text-forest">
             {String(index + 1).padStart(2, "0")} / Nicho
           </span>
-          <h3 className="mt-2 font-display text-[58px] leading-[0.9] font-extrabold tracking-[-0.03em] text-ink uppercase">
+          <h3 className="mt-2 font-display text-[58px] leading-[0.9] font-extrabold tracking-[-0.03em] text-ink">
             {niche.title}
           </h3>
         </div>
         <span
-          className="mb-2 shrink-0 rounded-full px-4 py-1.5 text-[11px] tracking-[0.18em] uppercase"
+          className="mb-2 shrink-0 rounded-full px-4 py-1.5 text-[11px] tracking-[0.18em]"
           style={{
             border: "1px solid color-mix(in oklab, var(--color-neon) 60%, transparent)",
             color: "var(--color-forest)",

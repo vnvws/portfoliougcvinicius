@@ -22,11 +22,11 @@ const PackageCard = ({
     }`}
   >
     <div className={`py-6 text-center ${isBestValue ? "bg-forest text-white" : "bg-forest/10 text-forest"}`}>
-      <h3 className="text-2xl font-black uppercase tracking-tight">{title}</h3>
+      <h3 className="text-2xl font-black tracking-tight">{title}</h3>
     </div>
     
     <div className="flex-1 p-8 text-center space-y-4">
-      <h4 className={`text-2xl font-bold uppercase ${isBestValue ? "text-white" : "text-forest"}`}>{subtitle}</h4>
+      <h4 className={`text-2xl font-bold ${isBestValue ? "text-white" : "text-forest"}`}>{subtitle}</h4>
       <div className={`h-[1px] w-full my-4 ${isBestValue ? "bg-white/20" : "bg-forest/10"}`} />
       <ul className={`space-y-3 ${isBestValue ? "text-white/90" : "text-forest/80"}`}>
         {items.map((item, idx) => (
@@ -53,7 +53,7 @@ const PackageCard = ({
 
     {isBestValue && (
       <div className="absolute top-4 -right-4">
-        <div className="bg-neon text-ink font-black text-[12px] px-6 py-2 -rotate-12 rounded-full uppercase tracking-wider shadow-lg z-50">
+        <div className="bg-neon text-ink font-black text-[12px] px-6 py-2 -rotate-12 rounded-full tracking-wider shadow-lg z-50">
           Best Choice
         </div>
       </div>
@@ -64,7 +64,7 @@ const PackageCard = ({
 export default function PackageSection() {
   return (
     <section className="py-32 px-6 bg-forest/5">
-      <h2 className="text-4xl md:text-5xl font-black text-forest mb-20 text-center uppercase tracking-tighter">Pacotes</h2>
+      <h2 className="text-4xl md:text-5xl font-black text-forest mb-20 text-center tracking-tighter">Pacotes</h2>
       <div className="flex flex-wrap gap-8 justify-center items-center">
         <PackageCard
           title="UGC 1"
