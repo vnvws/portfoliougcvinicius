@@ -20,10 +20,10 @@ header,
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-display: "Archivo", "Space Grotesk", sans-serif;
-  --font-serif: "DM Serif Display", serif;
-
-  --font-sans: "Space Grotesk", sans-serif;
+  --font-display: "Archivo", sans-serif;
+  --font-serif: "Archivo", sans-serif;
+  --font-sans: "Archivo", sans-serif;
+  
   --color-bone: oklch(0.947 0.014 76.5);
   --color-forest: oklch(0.436 0.043 165.5);
   --color-ink: oklch(0.263 0 0);
