@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2, ChevronRight } from "lucide-react";
 import { FixedScale } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -7,30 +7,12 @@ import { NicheSection } from "@/components/site/NicheSection";
 import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 
 import viniciusPhotoAsset from "@/assets/vinicius-photo.jpg.asset.json";
 import aboutCollageAsset from "@/assets/about-collage.png.asset.json";
-import photoTech from "@/assets/photos/ugc-photo-tech.jpg.asset.json";
-import photoSkincare from "@/assets/photos/ugc-photo-skincare.jpg.asset.json";
-import photoSkincare2 from "@/assets/photos/ugc-photo-skincare-2.jpg.asset.json";
-import photoModa from "@/assets/photos/ugc-photo-moda.jpg.asset.json";
-import photoModa2 from "@/assets/photos/ugc-photo-moda-2.jpg.asset.json";
-import photoGroups from "@/assets/photos/ugc-photo-groups.jpg.asset.json";
-import photoSneakers from "@/assets/photos/ugc-photo-sneakers.jpg.asset.json";
-import photoDrinks from "@/assets/photos/ugc-photo-drinks.jpg.asset.json";
-import photoDrinks2 from "@/assets/photos/ugc-photo-drinks-2.jpg.asset.json";
-import photoWatch from "@/assets/photos/ugc-photo-watch.jpg.asset.json";
-import feedback1 from "@/assets/feedbacks/1.png.asset.json";
-import feedback2 from "@/assets/feedbacks/2.png.asset.json";
-import feedback3 from "@/assets/feedbacks/3.png.asset.json";
-import feedback4 from "@/assets/feedbacks/4.png.asset.json";
-import feedback5 from "@/assets/feedbacks/5.png.asset.json";
-import feedback6 from "@/assets/feedbacks/6.png.asset.json";
-import feedback7 from "@/assets/feedbacks/7.png.asset.json";
-import feedback8 from "@/assets/feedbacks/8.png.asset.json";
-import feedback9 from "@/assets/feedbacks/9.png.asset.json";
-import feedback10 from "@/assets/feedbacks/10.png.asset.json";
 import InvestmentSection from "@/components/site/InvestmentSection";
 import PackageSection from "@/components/site/PackageSection";
 import ContactSection from "@/components/site/ContactSection";
@@ -56,6 +38,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [activeNicheId, setActiveNicheId] = useState("grupos-de-promocao");
+  const activeNiche = niches.find((n) => n.id === activeNicheId) || niches[0];
+
   return (
     <>
       <NeonCursor />
@@ -75,15 +60,35 @@ function Index() {
             <About />
           </div>
 
-          <div className="mx-auto flex w-[1240px] flex-col gap-16 pt-24 pb-32">
-            {niches
-              .map((niche, i) => (
-                <NicheSection key={niche.id} niche={niche} index={i} />
+          <section id="portfolio" className="mx-auto w-[1240px] pt-24 pb-32">
+            <div className="mb-16 flex flex-wrap gap-3">
+              {niches.map((niche) => (
+                <button
+                  key={niche.id}
+                  onClick={() => setActiveNicheId(niche.id)}
+                  className={cn(
+                    "cursor-none rounded-full px-8 py-3.5 text-[12px] font-bold tracking-[0.15em] transition-all duration-300",
+                    activeNicheId === niche.id
+                      ? "bg-ink text-neon shadow-[0_0_20px_rgba(57,255,20,0.3)]"
+                      : "bg-forest/5 text-forest hover:bg-forest/10"
+                  )}
+                  style={activeNicheId === niche.id ? { boxShadow: "0 0 20px var(--color-neon)" } : {}}
+                >
+                  {niche.title}
+                </button>
               ))}
-          </div>
+            </div>
 
-          
-          
+            <div className="relative min-h-[600px]">
+              <Reveal key={activeNicheId}>
+                <NicheSection 
+                  niche={activeNiche} 
+                  index={niches.findIndex(n => n.id === activeNicheId)} 
+                />
+              </Reveal>
+            </div>
+          </section>
+
           <FeedbackSection />
           <InvestmentSection />
           <PackageSection />
@@ -104,17 +109,9 @@ function Nav() {
         Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
       </span>
       <nav className="flex items-center gap-6 text-[10px] tracking-[0.15em] text-forest">
-        {niches
-          .map((niche) => (
-            <a
-              key={niche.id}
-              data-cursor="link"
-              className="cursor-none transition-colors hover:text-ink"
-              href={`#${niche.id}`}
-            >
-              {niche.title}
-            </a>
-          ))}
+        <a href="#sobre" className="cursor-none transition-colors hover:text-ink">SOBRE</a>
+        <a href="#portfolio" className="cursor-none transition-colors hover:text-ink">PORTFÓLIO</a>
+        <a href="#contato" className="cursor-none transition-colors hover:text-ink">CONTATO</a>
       </nav>
     </header>
   );
