@@ -229,7 +229,7 @@ export function InlineVideo({
 
         {label ? (
           <span
-            className="pointer-events-none absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
+            className="pointer-events-none absolute bottom-3 left-3 text-[10px] tracking-[0.18em] uppercase"
             style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
           >
             {label}
