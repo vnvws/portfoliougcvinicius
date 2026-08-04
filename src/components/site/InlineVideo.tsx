@@ -141,10 +141,7 @@ export function InlineVideo({
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        onClick={(e) => {
-          e.stopPropagation();
-          toggle();
-        }}
+        onClick={toggle}
       >
         {shouldMountPlayer ? (
           isYouTube ? (
