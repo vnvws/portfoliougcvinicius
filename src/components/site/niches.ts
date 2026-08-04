@@ -210,18 +210,6 @@ export const niches: Niche[] = [
     layout: "vertical",
     videos: [
       {
-        title: "Promoções do Dia",
-        description: "As melhores promoções da Black Friday",
-        src: v1.url,
-        label: "Clique"
-      },
-      {
-        title: "A Promo Men",
-        description: "Ofertas exclusivas durante a semana do consumidor",
-        src: v2.url,
-        label: "Clique"
-      },
-      {
         title: "Urubu das Promos",
         description: "Creatina pagando barato",
         src: v5.url,
