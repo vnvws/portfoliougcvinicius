@@ -307,11 +307,11 @@ function VideoLightbox({
       >
         {youtubeId ? (
           <iframe
-            src={getYouTubeEmbedUrl(youtubeId, true)}
+            src={getYouTubeEmbedUrl(youtubeId, true, false)} // Passa showControls=false mas o iframe permitirá controles nativos se necessário ou usaremos o lightbox
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className="aspect-[9/16] max-h-[80vh] w-full rounded-lg md:w-auto"
+            className="aspect-[9/16] max-h-[80vh] w-full rounded-lg md:w-auto border-0"
           />
         ) : (
           <video

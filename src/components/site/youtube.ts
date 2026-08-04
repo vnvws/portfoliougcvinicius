@@ -34,7 +34,7 @@ export function getYouTubeThumbnail(
   return `https://img.youtube.com/vi/${id}/${quality}.jpg`;
 }
 
-export function getYouTubeEmbedUrl(id: string, autoplay = false): string {
+export function getYouTubeEmbedUrl(id: string, autoplay = false, hideControls = true): string {
   const params = new URLSearchParams({
     rel: "0",
     modestbranding: "1",
@@ -42,15 +42,13 @@ export function getYouTubeEmbedUrl(id: string, autoplay = false): string {
     iv_load_policy: "3",
     cc_load_policy: "0",
     cc_lang_pref: "pt",
-    controls: "0",
-    disablekb: "1",
-    fs: "0",
+    controls: hideControls ? "0" : "1",
+    disablekb: hideControls ? "1" : "0",
+    fs: hideControls ? "0" : "1",
     hl: "pt",
     widget_referrer: "https://youtube.com",
     origin: typeof window !== 'undefined' ? window.location.origin : '',
   });
   if (autoplay) params.set("autoplay", "1");
-  // O parâmetro 'showinfo' foi descontinuado pelo YouTube, 
-  // então usamos a técnica de 'crop' (aumento de escala) no componente para esconder o topo.
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
 }
