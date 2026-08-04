@@ -83,7 +83,7 @@ function Index() {
           </div>
 
           
-          <PhotoGallery />
+          
           <FeedbackSection />
           <InvestmentSection />
           <PackageSection />
@@ -239,56 +239,6 @@ function About() {
 }
 
 
-function PhotoGallery() {
-  const photos = [
-    photoTech,
-    photoSkincare,
-    photoSkincare2,
-    photoModa,
-    photoModa2,
-    photoGroups,
-    photoSneakers,
-    photoDrinks,
-    photoDrinks2,
-    photoWatch,
-  ];
-
-  return (
-    <section className="py-20 overflow-hidden bg-forest/[0.02]">
-      <div className="mx-auto w-[1240px] mb-8">
-        <Reveal>
-          <h2 className="font-display text-[48px] font-black tracking-[-0.04em] text-forest">
-            Fotos em Alta Qualidade para sua Marca
-          </h2>
-        </Reveal>
-      </div>
-      
-      <div className="relative w-full px-12">
-        <div className="grid grid-cols-5 gap-4">
-          {photos.map((photo, idx) => (
-            <div 
-              key={idx}
-              className="relative w-full overflow-hidden rounded-[22px] bg-ink"
-              style={{
-                aspectRatio: "3 / 4",
-                border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
-              }}
-            >
-              <img 
-                src={photo.url} 
-                alt="Foto UGC em alta qualidade produzida por Vinícius Araújo"
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
-              />
-              <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function FeedbackSection() {
   const feedbacks = [
