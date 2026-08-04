@@ -42,7 +42,7 @@ export default function ContactSection() {
           {/* Left Column */}
           <div className="flex flex-col">
             <Reveal>
-              <div className="mb-8 flex items-center gap-2 text-[11px] font-bold tracking-[0.4em] text-neon uppercase">
+              <div className="mb-8 flex items-center gap-2 text-[11px] font-bold tracking-[0.4em] text-neon">
                 <Star size={14} fill="currentColor" />
                 CONTATO
               </div>
@@ -96,7 +96,7 @@ export default function ContactSection() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase">NOME (OBRIGATÓRIO)</label>
+                  <label className="text-[10px] font-bold tracking-widest text-forest/60">Nome (Obrigatório)</label>
                   <input
                     required
                     name="name"
@@ -107,7 +107,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase">EMPRESA (OPCIONAL)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Empresa (Opcional)</label>
                     <input
                       name="company"
                       placeholder="nome da marca"
@@ -115,7 +115,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase">EMAIL (OBRIGATÓRIO)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Email (Obrigatório)</label>
                     <input
                       required
                       type="email"
@@ -128,7 +128,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase">WHATSAPP (OPCIONAL)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60">WhatsApp (Opcional)</label>
                     <input
                       name="whatsapp"
                       placeholder="(11) 99999-9999"
@@ -136,7 +136,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase">ORÇAMENTO (OPCIONAL)</label>
+                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Orçamento (Opcional)</label>
                     <select
                       name="budget"
                       className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all appearance-none cursor-pointer"
@@ -150,7 +150,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60 uppercase">MENSAGEM (OBRIGATÓRIO)</label>
+                  <label className="text-[10px] font-bold tracking-widest text-forest/60">Mensagem (Obrigatório)</label>
                   <textarea
                     required
                     name="message"

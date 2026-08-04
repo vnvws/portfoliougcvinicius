@@ -65,7 +65,7 @@ function Index() {
           <Hero />
           <section className="relative -mt-16">
             <div className="mx-auto w-[1240px] pb-6">
-              <p className="text-[11px] font-bold tracking-[0.32em] text-forest uppercase opacity-80">
+              <p className="text-[11px] font-bold tracking-[0.32em] text-forest opacity-80">
                 Marcas que já confiaram
               </p>
             </div>
@@ -100,7 +100,7 @@ function Index() {
 function Nav() {
   return (
     <header className="relative z-20 mx-auto flex w-[1240px] items-center justify-between pt-4">
-      <span className="font-display text-[18px] font-extrabold tracking-[-0.02em] uppercase text-ink">
+      <span className="font-display text-[18px] font-extrabold tracking-[-0.02em] text-ink">
         Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
       </span>
       <nav className="flex items-center gap-6 text-[10px] tracking-[0.15em] text-forest uppercase">
@@ -132,10 +132,10 @@ function Hero() {
       />
       <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1">
-          <span className="text-[12px] tracking-[0.34em] text-forest uppercase">
-            UGC CREATOR MASCULINO - SÃO PAULO, BRASIL
+          <span className="text-[12px] tracking-[0.34em] text-forest">
+            UGC Creator Masculino - São Paulo, Brasil
           </span>
-          <h1 className="mt-8 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em] uppercase">
+          <h1 className="mt-8 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em]">
             Vinícius
             <br />
             <span
@@ -152,7 +152,7 @@ function Hero() {
             <Reveal delay={400}>
               <a
                 href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
-                className="group relative inline-flex items-center justify-center rounded-full px-12 py-5 font-display text-[24px] font-black tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95"
+                className="group relative inline-flex items-center justify-center rounded-full px-12 py-5 font-display text-[24px] font-black tracking-widest transition-all duration-300 hover:scale-105 active:scale-95"
                 style={{
                   backgroundColor: "var(--color-neon)",
                   color: "var(--color-ink)",
@@ -194,7 +194,7 @@ function Hero() {
             </div>
           </div>
           <span
-            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-4 py-1.5 text-[11px] tracking-[0.2em] uppercase"
+            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-4 py-1.5 text-[11px] tracking-[0.2em]"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
             Reels · TikTok · Stories
@@ -224,7 +224,7 @@ function About() {
           />
         </Reveal>
         <Reveal delay={140} className="col-span-6 col-start-7 pt-6">
-          <h3 className="font-display text-[32px] font-extrabold tracking-[-0.03em] uppercase text-ink">
+          <h3 className="font-display text-[32px] font-extrabold tracking-[-0.03em] text-ink">
             Me conheça
           </h3>
           <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line">
@@ -257,7 +257,7 @@ function PhotoGallery() {
     <section className="py-32 overflow-hidden">
       <div className="mx-auto w-[1240px] mb-12">
         <Reveal>
-          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] uppercase text-forest">
+          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
             Fotos em Alta Qualidade
             <br />
             para sua Marca
@@ -310,7 +310,7 @@ function FeedbackSection() {
     <section className="py-32 overflow-hidden bg-forest/5">
       <div className="mx-auto w-[1240px] mb-12">
         <Reveal>
-          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] uppercase text-forest">
+          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
             Feedbacks
           </h2>
         </Reveal>
