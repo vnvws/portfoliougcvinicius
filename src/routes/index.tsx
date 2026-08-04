@@ -60,7 +60,7 @@ function Index() {
     <>
       <NeonCursor />
       <FixedScale>
-        <main className="grain relative w-full overflow-hidden bg-bone font-sans text-ink">
+        <main className="grain relative w-full overflow-hidden bg-bone font-display text-ink">
           <Nav />
           <Hero />
           <section className="relative -mt-16">
