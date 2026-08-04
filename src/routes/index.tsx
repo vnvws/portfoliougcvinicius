@@ -50,7 +50,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [activeNicheId, setActiveNicheId] = useState("grupos-de-promocao");
-  const activeNiche = niches.find((n) => n.id === activeNicheId) || niches[0];
+  const activeNiche = (niches.find((n) => n.id === activeNicheId) || niches[0]) as Niche;
 
   return (
     <>
