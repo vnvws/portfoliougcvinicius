@@ -103,7 +103,7 @@ function Nav() {
       <span className="font-display text-[18px] font-extrabold tracking-[-0.02em] text-ink">
         Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
       </span>
-      <nav className="flex items-center gap-6 text-[10px] tracking-[0.15em] text-forest uppercase">
+      <nav className="flex items-center gap-6 text-[10px] tracking-[0.15em] text-forest">
         {niches
           .map((niche) => (
             <a

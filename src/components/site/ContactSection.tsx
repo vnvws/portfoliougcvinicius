@@ -163,13 +163,13 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative w-full overflow-hidden rounded-xl bg-neon py-5 text-[14px] font-bold tracking-[0.2em] text-ink uppercase transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
+                  className="group relative w-full overflow-hidden rounded-xl bg-neon py-5 text-[14px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
                   style={{
                     boxShadow: "0 4px 0 0 oklch(0.75 0.25 135)"
                   }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    {isSubmitting ? "ENVIANDO..." : "SOLICITAR PROPOSTA"}
+                    {isSubmitting ? "Enviando..." : "Solicitar Proposta"}
                     {!isSubmitting && <Send size={16} />}
                   </span>
                 </button>
@@ -196,7 +196,7 @@ function ContactRow({ label, value, href, last = false }: { label: string; value
 
   return (
     <div className={`flex items-center justify-between p-5 ${!last ? 'border-b border-forest/5' : ''}`}>
-      <span className="text-[10px] font-bold tracking-widest text-forest/50 uppercase">{label}</span>
+      <span className="text-[10px] font-bold tracking-widest text-forest/50">{label}</span>
       {valueContent}
     </div>
   );
