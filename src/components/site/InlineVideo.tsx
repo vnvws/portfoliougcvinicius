@@ -103,8 +103,7 @@ export function InlineVideo({
 
   const openLightbox = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setPlaying(false);
-    setIsExpanded(true);
+    // Lightbox desativado conforme solicitado
   };
 
   const closeLightbox = () => {
@@ -131,7 +130,7 @@ export function InlineVideo({
   };
 
   const thumbnailUrl = isYouTube ? getYouTubeThumbnail(youtubeId!) : poster;
-  const shouldMountPlayer = (playing || isExpanded) && inView;
+  const shouldMountPlayer = (playing) && inView;
 
   return (
     <>
@@ -215,19 +214,6 @@ export function InlineVideo({
           </span>
         </div>
 
-        <button
-          type="button"
-          aria-label="Ampliar vídeo"
-          onClick={openLightbox}
-          className="absolute right-3 bottom-3 z-10 flex h-8 w-8 items-center justify-center rounded-full backdrop-blur-sm md:cursor-none"
-          style={{
-            border: "1px solid color-mix(in oklab, var(--color-neon) 70%, transparent)",
-            color: "var(--color-neon)",
-            background: "rgba(0,0,0,0.35)",
-          }}
-        >
-          <Maximize size={14} />
-        </button>
 
         {label ? (
           <span
