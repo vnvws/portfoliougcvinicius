@@ -145,13 +145,15 @@ export function InlineVideo({
       >
         {shouldMountPlayer ? (
           isYouTube ? (
-            <iframe
-              src={getYouTubeEmbedUrl(youtubeId!, true)}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full border-0"
-            />
+            <div className="absolute inset-0 h-full w-full overflow-hidden pointer-events-none">
+              <iframe
+                src={getYouTubeEmbedUrl(youtubeId!, true)}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                className="absolute top-1/2 left-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 border-0"
+                style={{ pointerEvents: 'none' }}
+              />
+            </div>
           ) : (
             <video
               key={src}
