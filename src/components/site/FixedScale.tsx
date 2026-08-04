@@ -28,10 +28,12 @@ export function FixedScale({ children }: { children: ReactNode }) {
       setScale(currentScale);
 
       if (inner.current) {
-        // No iOS, offsetHeight é mais estável que scrollHeight ou getBoundingClientRect
-        // em elementos transformados. Multiplicamos pela escala para saber o espaço
-        // visual ocupado na tela.
-        const height = inner.current.offsetHeight * currentScale;
+        // Obter a altura real do conteúdo
+        const rect = inner.current.getBoundingClientRect();
+        // A altura escalada é a altura do rect, mas o Safari às vezes
+        // reporta valores errados durante o resize.
+        // Usamos o offsetHeight * currentScale como fallback confiável.
+        const height = Math.max(rect.height, inner.current.offsetHeight * currentScale);
         setScaledHeight(Math.ceil(height));
       }
     };
