@@ -65,7 +65,7 @@ function Index() {
           <Hero />
           <section className="relative -mt-16">
             <div className="mx-auto w-[1240px] pb-6">
-              <p className="font-sans text-[11px] font-bold tracking-[0.32em] text-forest uppercase opacity-80">
+              <p className="text-[11px] font-bold tracking-[0.32em] text-forest uppercase opacity-80">
                 Marcas que já confiaram
               </p>
             </div>
@@ -132,7 +132,7 @@ function Hero() {
       />
       <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1">
-          <span className="font-sans text-[12px] tracking-[0.34em] text-forest uppercase">
+          <span className="text-[12px] tracking-[0.34em] text-forest uppercase">
             UGC CREATOR MASCULINO - SÃO PAULO, BRASIL
           </span>
           <h1 className="mt-8 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em] uppercase">
@@ -194,7 +194,7 @@ function Hero() {
             </div>
           </div>
           <span
-            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-4 py-1.5 font-sans text-[11px] tracking-[0.2em] uppercase"
+            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-4 py-1.5 text-[11px] tracking-[0.2em] uppercase"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
             Reels · TikTok · Stories
