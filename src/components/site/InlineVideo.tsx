@@ -89,7 +89,15 @@ export function InlineVideo({
     }
   }, [playing, isYouTube, src, setPlaying]);
 
-  const toggle = () => {
+  const toggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isYouTube) {
+      setPlaying(!playing);
+      return;
+    }
+    
+    // Se não está carregado no DOM ainda, apenas setamos playing como true
+    // O useEffect cuidará de dar o play assim que o ref estiver disponível
     setPlaying(!playing);
   };
 
