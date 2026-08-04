@@ -254,19 +254,17 @@ function PhotoGallery() {
   ];
 
   return (
-    <section className="py-32 overflow-hidden">
-      <div className="mx-auto w-[1240px] mb-12">
+    <section className="py-20 overflow-hidden bg-forest/[0.02]">
+      <div className="mx-auto w-[1240px] mb-8">
         <Reveal>
-          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
-            Fotos em Alta Qualidade
-            <br />
-            para sua Marca
+          <h2 className="font-display text-[48px] font-black tracking-[-0.04em] text-forest">
+            Fotos em Alta Qualidade para sua Marca
           </h2>
         </Reveal>
       </div>
       
       <div className="relative w-full px-12">
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-5 gap-4">
           {photos.map((photo, idx) => (
             <div 
               key={idx}
