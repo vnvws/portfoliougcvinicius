@@ -29,7 +29,7 @@ export function getYouTubeId(input: string | undefined | null): string | null {
 
 export function getYouTubeThumbnail(
   id: string,
-  quality: "maxresdefault" | "sddefault" | "hqdefault" | "mqdefault" = "maxresdefault",
+  quality: "maxresdefault" | "sddefault" | "hqdefault" | "mqdefault" = "hqdefault",
 ): string {
   return `https://img.youtube.com/vi/${id}/${quality}.jpg`;
 }
@@ -48,7 +48,12 @@ export function getYouTubeEmbedUrl(id: string, autoplay = false, hideControls = 
     hl: "pt",
     widget_referrer: "https://youtube.com",
     origin: typeof window !== 'undefined' ? window.location.origin : '',
+    enablejsapi: "1",
+    autoplay: autoplay ? "1" : "0",
+    mute: "0",
+    // Parâmetro extra para reforçar o inline no iOS
+    webkit_playsinline: "1",
   });
-  if (autoplay) params.set("autoplay", "1");
+  
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
 }

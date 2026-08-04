@@ -144,14 +144,21 @@ export function InlineVideo({
       >
         {shouldMountPlayer ? (
           isYouTube ? (
-            <div className="absolute inset-0 h-full w-full overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 h-full w-full overflow-hidden">
               <iframe
                 src={getYouTubeEmbedUrl(youtubeId!, true)}
                 title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
                 className="absolute top-1/2 left-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 border-0"
-                style={{ pointerEvents: 'none' }}
+                style={{ pointerEvents: 'auto' }}
+                sandbox="allow-forms allow-scripts allow-same-origin allow-presentation allow-popups"
+                // @ts-ignore
+                playsinline="true"
+                webkit-playsinline="true"
               />
+              {/* Overlay invisível para capturar o clique e impedir pausa/redirecionamento se necessário, 
+                  mas mantendo pointer-events: auto no iframe para o YouTube processar o play inicial */}
+              <div className="absolute inset-0 z-10" onClick={(e) => e.stopPropagation()} style={{ pointerEvents: 'none' }} />
             </div>
           ) : (
             <video
