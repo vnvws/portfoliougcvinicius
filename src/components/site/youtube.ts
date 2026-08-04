@@ -39,6 +39,10 @@ export function getYouTubeEmbedUrl(id: string, autoplay = false): string {
     rel: "0",
     modestbranding: "1",
     playsinline: "1",
+    iv_load_policy: "3", // Remove anotações/cards
+    cc_load_policy: "0", // Tenta desativar legendas automáticas
+    controls: "1",       // Mantém controles para permitir navegação
+    hl: "pt",            // Força idioma para consistência
   });
   if (autoplay) params.set("autoplay", "1");
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
