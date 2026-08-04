@@ -1,27 +1,27 @@
-# Plano: Transição para Reprodutor YouTube
-
-O usuário sugeriu utilizar o reprodutor do YouTube para resolver os problemas de desempenho e estouro de memória no mobile (iOS), já que o motor do Safari tem limites rígidos para múltiplos elementos `<video>`.
-
-## Mudanças Propostas
-
-### 1. Refatoração do Componente `InlineVideo.tsx`
-- **Carregamento sob demanda**: Manteremos a lógica de `IntersectionObserver`, mas em vez de montar um elemento `<video>`, montaremos um `iframe` do YouTube apenas quando o vídeo for ativado (clique).
-- **Miniaturas de alta qualidade**: Utilizaremos as APIs do YouTube (`i.ytimg.com/vi/ID/maxresdefault.jpg`) para mostrar capas nítidas sem carregar o player pesado antecipadamente.
-- **Controle centralizado**: Continuaremos garantindo que apenas um vídeo seja reproduzido por vez, pausando/desmontando os outros para economizar recursos.
-
-### 2. Atualização da Estrutura de Dados (`niches.ts`)
-- Adicionaremos suporte para `youtubeId` no objeto `VideoItem`.
-- Criaremos uma função utilitária para extrair o ID de qualquer URL do YouTube (YouTube, Shorts, Live, etc).
-
-### 3. Melhoria na Performance Mobile
-- O YouTube lida de forma muito mais eficiente com a decodificação de hardware em dispositivos móveis do que arquivos brutos servidos diretamente, o que deve eliminar o erro "Esse site não pode ser exibido" no iPhone.
-
-## Próximos Passos
-1. Modificar `InlineVideo.tsx` para aceitar IDs do YouTube e renderizar iframes otimizados.
-2. Ajustar `VideoCardVertical` e `VideoCardHorizontal` para lidar com a nova fonte de dados.
-3. Solicitar ao usuário os links do YouTube para os vídeos atuais.
-
+---
+name: YouTube Migration Strategy
+description: Plan to migrate video storage and playback from local assets to YouTube Shorts for better performance.
+type: feature
 ---
 
-**Pergunta para o usuário:**
-Você já tem os links do YouTube para esses vídeos ou gostaria que eu configurasse a estrutura primeiro para que você possa ir preenchendo os IDs conforme faz os uploads?
+# YouTube Migration Strategy
+
+## Objectives
+- Improve site performance and responsiveness on mobile devices.
+- Reduce initial page load time and memory usage.
+- Leverage YouTube's optimized streaming infrastructure.
+
+## Proposed Changes
+1. **Infrastructure**: Use the existing `InlineVideo.tsx` and `youtube.ts` which already support YouTube embedding.
+2. **Data Model**: Update `niches.ts` to use `youtubeUrl` (Shorts) instead of local `src` assets.
+3. **UI/UX**: Maintain the custom "UGC" aesthetic by using YouTube thumbnails as posters and custom play overlays.
+
+## Performance Benefits
+- **Offloaded Decoding**: YouTube handles video compression and adaptive bitrate streaming.
+- **Lazy Loading**: YouTube iframes only initialize when needed.
+- **Caching**: Leverages Google's global CDN.
+
+## Implementation Steps
+- Confirm YouTube Shorts URLs for all video items.
+- Update `niches.ts` with new URLs.
+- Verify `InlineVideo.tsx` correctly handles Shorts-specific URL formats via `youtube.ts`.
