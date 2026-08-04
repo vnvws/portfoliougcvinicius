@@ -72,7 +72,7 @@ function Index() {
           </div>
 
           <section id="portfolio" className="mx-auto w-[1240px] pt-24 pb-32">
-            <div className="mb-20 flex flex-wrap justify-center gap-4 px-4">
+            <div className="mb-20 flex flex-nowrap justify-start lg:justify-center gap-4 px-4 overflow-x-auto no-scrollbar scroll-smooth pb-4">
               {niches.map((niche) => (
                 <button
                   key={niche.id}
