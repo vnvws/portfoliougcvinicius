@@ -274,12 +274,6 @@ export const niches: Niche[] = [
     layout: "vertical",
     videos: [
       {
-        title: "Omie",
-        description: "Software de gestão completo para seu negócio",
-        src: a7.url,
-        label: "Clique"
-      },
-      {
         title: "Open English",
         description: "Aprender inglês nunca foi tão fácil",
         src: a2.url,
@@ -289,12 +283,6 @@ export const niches: Niche[] = [
         title: "Canva",
         description: "Criando um post em segundos com a IA do Canva",
         src: a3.url,
-        label: "Clique"
-      },
-      {
-        title: "WaSpeed",
-        description: "Automatizando o seu atendimento no WhatsApp",
-        src: a4.url,
         label: "Clique"
       },
       {
@@ -316,21 +304,9 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "KalyFit",
-        description: "App que conta calorias a partir de fotos",
-        src: a6.url,
-        label: "Clique"
-      },
-      {
         title: "My Dream Setup",
         description: "Site para montar seu setup virtualmente",
         src: a5.url,
-        label: "Clique"
-      },
-      {
-        title: "Seda College",
-        description: "Aprenda inglês com 30 minutos por dia",
-        src: a10.url,
         label: "Clique"
       },
       {
