@@ -8,7 +8,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
 import type { Niche } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [activeNicheId, setActiveNicheId] = useState("grupos-de-promocao");
-  const activeNiche = (niches.find((n) => n.id === activeNicheId) || niches[0]) as Niche;
+  const activeNiche = useMemo(() => (niches.find((n) => n.id === activeNicheId) || niches[0]) as Niche, [activeNicheId]);
 
   return (
     <>
@@ -72,7 +72,7 @@ function Index() {
           </div>
 
           <section id="portfolio" className="mx-auto w-[1240px] pt-24 pb-32">
-            <div className="mb-20 flex flex-wrap justify-center gap-4 px-4">
+            <div className="mb-20 flex flex-nowrap justify-start lg:justify-center gap-4 px-4 overflow-x-auto no-scrollbar scroll-smooth pb-4">
               {niches.map((niche) => (
                 <button
                   key={niche.id}

@@ -291,6 +291,7 @@ header,
     position: relative;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Em telas de toque o cursor customizado não existe: devolve o cursor padrão */
@@ -307,6 +308,14 @@ header,
       animation: none !important;
     }
   }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* NEXUS-PRO:WATERMARK-HIDE:START */

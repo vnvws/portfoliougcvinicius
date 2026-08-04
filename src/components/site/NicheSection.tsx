@@ -47,7 +47,7 @@ export function NicheSection({ niche, index }: { niche: Niche; index: number }) 
         style={{ gridTemplateColumns: `repeat(${perRow}, minmax(0, 1fr))` }}
       >
         {niche.videos.map((video, i) => (
-          <Reveal key={`${niche.id}-${i}`} delay={(i % perRow) * 90}>
+          <Reveal key={`${niche.id}-${i}-${video.src || video.youtubeId}`} delay={(i % perRow) * 90}>
             {isHorizontal ? (
               <VideoCardHorizontal {...video} />
             ) : (
