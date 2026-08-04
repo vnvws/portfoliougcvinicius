@@ -179,7 +179,7 @@ export function InlineVideo({
               />
             ) : (
               <video
-                src={`${src}#t=0.1`}
+                src={`${src}#t=0.5`}
                 muted
                 playsInline
                 preload="metadata"
