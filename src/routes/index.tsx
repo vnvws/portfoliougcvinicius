@@ -8,8 +8,6 @@ import { Reveal } from "@/components/site/Reveal";
 import { niches } from "@/components/site/niches";
 import type { Niche } from "@/components/site/niches";
 import { BackToTop } from "@/components/site/BackToTop";
-import { useState, useMemo } from "react";
-import { cn } from "@/lib/utils";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 
 import viniciusPhotoAsset from "@/assets/vinicius-photo.jpg.asset.json";
