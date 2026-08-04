@@ -146,19 +146,16 @@ export function InlineVideo({
           isYouTube ? (
             <div className="absolute inset-0 h-full w-full overflow-hidden">
               <iframe
-                src={getYouTubeEmbedUrl(youtubeId!, true)}
+                src={getYouTubeEmbedUrl(youtubeId!, true, false)}
                 title="YouTube video player"
-                allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                className="absolute top-1/2 left-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 border-0"
+                allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                className="absolute inset-0 h-full w-full border-0"
                 style={{ pointerEvents: 'auto' }}
                 sandbox="allow-forms allow-scripts allow-same-origin allow-presentation allow-popups"
                 // @ts-ignore
                 playsinline="true"
                 webkit-playsinline="true"
               />
-              {/* Overlay invisível para capturar o clique e impedir pausa/redirecionamento se necessário, 
-                  mas mantendo pointer-events: auto no iframe para o YouTube processar o play inicial */}
-              <div className="absolute inset-0 z-10" onClick={(e) => e.stopPropagation()} style={{ pointerEvents: 'none' }} />
             </div>
           ) : (
             <video
@@ -198,28 +195,29 @@ export function InlineVideo({
           </div>
         )}
 
-        {/* Overlay de controle */}
-        <div
-          className="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
-          style={{ opacity: playing ? 0 : 1 }}
-        >
-          <span
-            className="flex items-center justify-center rounded-full backdrop-blur-sm"
-            style={{
-              height: iconSize * 2.8,
-              width: iconSize * 2.8,
-              border: "1px solid var(--color-neon)",
-              color: "var(--color-neon)",
-              background: "rgba(0,0,0,0.25)",
-            }}
+        {!isYouTube && (
+          <div
+            className="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
+            style={{ opacity: playing ? 0 : 1 }}
           >
-            {playing ? (
-              <Pause size={iconSize} strokeWidth={2.4} />
-            ) : (
-              <Play size={iconSize} strokeWidth={2.4} />
-            )}
-          </span>
-        </div>
+            <span
+              className="flex items-center justify-center rounded-full backdrop-blur-sm"
+              style={{
+                height: iconSize * 2.8,
+                width: iconSize * 2.8,
+                border: "1px solid var(--color-neon)",
+                color: "var(--color-neon)",
+                background: "rgba(0,0,0,0.25)",
+              }}
+            >
+              {playing ? (
+                <Pause size={iconSize} strokeWidth={2.4} />
+              ) : (
+                <Play size={iconSize} strokeWidth={2.4} />
+              )}
+            </span>
+          </div>
+        )}
 
 
         {label ? (
