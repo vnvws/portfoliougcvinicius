@@ -360,18 +360,6 @@ export const niches: Niche[] = [
     layout: "vertical",
     videos: [
       {
-        title: "Pocket Safe",
-        description: "A tag que protege seu Smartphone",
-        src: t1.url,
-        label: "Clique"
-      },
-      {
-        title: "BANSK",
-        description: "A capinha que mantém o design original do iPhone",
-        src: t2.url,
-        label: "Clique"
-      },
-      {
         title: "Teccon",
         description: "O melhor mouse gamer com fio",
         src: t3.url,
@@ -396,12 +384,6 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Baseus",
-        description: "Headphone sem fio",
-        src: t7.url,
-        label: "Clique"
-      },
-      {
         title: "Allchem",
         description: "Maneira segura de limpar seu PC gamer",
         src: t8.url,
@@ -411,12 +393,6 @@ export const niches: Niche[] = [
         title: "Allchem",
         description: "Limpeza preventiva com alcool isopropílico",
         src: t9.url,
-        label: "Clique"
-      },
-      {
-        title: "NEGOCIUN",
-        description: "Notebook Lenovo com preço justo",
-        src: t10.url,
         label: "Clique"
       },
       {
