@@ -41,8 +41,10 @@ export function getYouTubeEmbedUrl(id: string, autoplay = false): string {
     playsinline: "1",
     iv_load_policy: "3", // Remove anotações/cards
     cc_load_policy: "0", // Tenta desativar legendas automáticas
-    controls: "1",       // Mantém controles para permitir navegação
-    hl: "pt",            // Força idioma para consistência
+    controls: "0",       // DESATIVA controles para remover ícones (Play, Volume, etc)
+    disablekb: "1",      // Desativa atalhos de teclado
+    fs: "0",             // Desativa botão de tela cheia nativo do YT
+    hl: "pt",
   });
   if (autoplay) params.set("autoplay", "1");
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
