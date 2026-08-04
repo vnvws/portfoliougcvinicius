@@ -72,18 +72,18 @@ function Index() {
           </div>
 
           <section id="portfolio" className="mx-auto w-[1240px] pt-24 pb-32">
-            <div className="mb-16 flex flex-wrap gap-3">
+            <div className="mb-20 flex flex-wrap justify-center gap-4 px-4">
               {niches.map((niche) => (
                 <button
                   key={niche.id}
                   onClick={() => setActiveNicheId(niche.id)}
                   className={cn(
-                    "cursor-none rounded-full px-8 py-3.5 text-[12px] font-bold tracking-[0.15em] transition-all duration-300",
+                    "cursor-none rounded-2xl px-8 py-4 text-[13px] font-bold tracking-[0.18em] transition-all duration-500 active:scale-95",
+                    "liquid-glass hover:bg-white/10 hover:shadow-xl",
                     activeNicheId === niche.id
-                      ? "bg-ink text-neon shadow-[0_0_20px_rgba(57,255,20,0.3)]"
-                      : "bg-forest/5 text-forest hover:bg-forest/10"
+                      ? "liquid-glass-active text-ink"
+                      : "text-forest/70 hover:text-ink"
                   )}
-                  style={activeNicheId === niche.id ? { boxShadow: "0 0 20px var(--color-neon)" } : {}}
                 >
                   {niche.title}
                 </button>
