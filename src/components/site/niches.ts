@@ -125,6 +125,10 @@ import youtubeDiffy from "@/assets/videos/youtube-diffy.mp4.asset.json";
 import youtubeRdc from "@/assets/videos/youtube-rdc-viagens.mp4.asset.json";
 // @ts-ignore
 import youtubeManclub from "@/assets/videos/youtube-manclub.mp4.asset.json";
+// @ts-ignore
+import promoBlackFriday2 from "@/assets/videos/promo-black-friday-2.mp4.asset.json";
+// @ts-ignore
+import promoDescobertaGrupo from "@/assets/videos/promo-descoberta-grupo.mp4.asset.json";
 
 
 interface Asset {
@@ -194,6 +198,8 @@ const vg4 = viagensPicnic as unknown as Asset;
 const yt1 = youtubeDiffy as unknown as Asset;
 const yt2 = youtubeRdc as unknown as Asset;
 const yt3 = youtubeManclub as unknown as Asset;
+const v13 = promoBlackFriday2 as unknown as Asset;
+const v14 = promoDescobertaGrupo as unknown as Asset;
 
 
 export type Niche = {
@@ -243,6 +249,18 @@ export const niches: Niche[] = [
         title: "Promoções do Dia",
         description: "Achado secreto de promoções",
         src: v12.url,
+        label: "Clique"
+      },
+      {
+        title: "Promoções do Dia",
+        description: "Ofertas na Black Friday",
+        src: v13.url,
+        label: "Clique"
+      },
+      {
+        title: "Promoções do Dia",
+        description: "Descoberta do grupo",
+        src: v14.url,
         label: "Clique"
       }
     ],
