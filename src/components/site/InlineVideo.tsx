@@ -79,9 +79,13 @@ export function InlineVideo({
     const v = ref.current;
     if (!v) return;
     
+    if (!inView && playing) {
+      setPlaying(false);
+      return;
+    }
+
     if (playing) {
       v.muted = false;
-      // Garante que tentamos tocar após o src estar pronto
       v.play().catch(err => {
         console.warn("Playback failed:", err);
         setPlaying(false);
@@ -89,7 +93,7 @@ export function InlineVideo({
     } else {
       v.pause();
     }
-  }, [playing, isYouTube, src, setPlaying]);
+  }, [playing, isYouTube, src, setPlaying, inView]);
 
   const toggle = (e: React.MouseEvent) => {
     e.stopPropagation();
