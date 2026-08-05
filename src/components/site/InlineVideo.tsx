@@ -176,7 +176,7 @@ export function InlineVideo({
             />
           )
         ) : (
-          <div className="absolute inset-0 bg-ink/5">
+          
             {thumbnailUrl ? (
               <img
                 src={thumbnailUrl}
