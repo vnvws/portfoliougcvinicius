@@ -133,6 +133,9 @@ import promoDescobertaGrupo from "@/assets/videos/promo-descoberta-grupo.mp4.ass
 import pegarPromoCueca from "@/assets/videos/pegar-promo-cueca-mash.mp4.asset.json";
 // @ts-ignore
 import reiDaPromoGrupo from "@/assets/videos/rei-da-promo-grupo.mp4.asset.json";
+// @ts-ignore
+import redBullNew from "@/assets/videos/red-bull-new.mp4.asset.json";
+
 
 
 
@@ -207,6 +210,8 @@ const v13 = promoBlackFriday2 as unknown as Asset;
 const v14 = promoDescobertaGrupo as unknown as Asset;
 const v15 = pegarPromoCueca as unknown as Asset;
 const v16 = reiDaPromoGrupo as unknown as Asset;
+const v17 = redBullNew as unknown as Asset;
+
 
 
 
@@ -226,7 +231,7 @@ export const niches: Niche[] = [
       {
         title: "Urubu das Promos",
         description: "Creatina pagando barato",
-        src: v1.url,
+        src: v17.url,
         label: "Clique"
       },
       {
