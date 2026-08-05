@@ -176,7 +176,7 @@ export function InlineVideo({
             />
           )
         ) : (
-          
+          <div className="absolute inset-0">
             {thumbnailUrl ? (
               <img
                 src={thumbnailUrl}
@@ -193,7 +193,6 @@ export function InlineVideo({
                 className="h-full w-full object-cover"
               />
             )}
-            <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
           </div>
         )}
 
