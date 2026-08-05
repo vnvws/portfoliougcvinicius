@@ -151,7 +151,6 @@ function Hero() {
             style={{
               aspectRatio: "9 / 16",
               border: "2px solid var(--color-neon)",
-              boxShadow: "0 0 60px -12px color-mix(in oklab, var(--color-neon) 75%, transparent)",
               transform: "rotate(3deg)",
             }}
           >
