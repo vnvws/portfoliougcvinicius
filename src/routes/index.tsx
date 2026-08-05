@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Vinícius Araújo, UGC Creator masculino focado em alta conversão. Produção de vídeos reais para marcas: UGC, TikTok, Reels e Stories nos nichos de tech, moda, apps e lifestyle.",
+          "Vinícius Araújo, UGC Creator masculino focado em alta conversão. Produção de vídeos reais para marcas: UGC, TikTok, Reels e Shorts nos nichos de tech, moda, apps e lifestyle.",
       },
       { name: "keywords", content: "UGC, UGC Creator, UGC Creator masculino, UGC creator homem, criador de conteúdo, vídeo marketing, marketing de influência, TikTok Ads, Reels Ads" },
       { property: "og:title", content: "Vinícius Araújo | UGC Creator Masculino" },
@@ -44,7 +44,12 @@ export const Route = createFileRoute("/")({
         content: "Transforme sua marca com conteúdo UGC autêntico criado por um especialista. Vídeos verticais que geram conexão e vendas.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://portfoliougcvinicius.lovable.app/og-image.png" },
+      { property: "og:url", content: "https://portfoliougcvinicius.lovable.app" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Vinícius Araújo | UGC Creator Masculino" },
+      { name: "twitter:description", content: "Conteúdo UGC autêntico que converte. O criador ideal para sua campanha de tráfego pago ou orgânico." },
+      { name: "twitter:image", content: "https://portfoliougcvinicius.lovable.app/og-image.png" },
     ],
   }),
   component: Index,
@@ -304,4 +309,3 @@ function FeedbackCard({ src, index }: { src: string; index: number }) {
     </div>
   );
 }
-
