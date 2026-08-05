@@ -7,11 +7,13 @@ export function VideoCardHorizontal({
   title,
   description,
   src,
+  youtubeId,
+  youtubeUrl,
   poster,
   label,
 }: VideoItem) {
   const [hover, setHover] = useState(false);
-  const hasMedia = Boolean(src);
+  const hasMedia = Boolean(src || youtubeId || youtubeUrl);
 
   return (
     <figure
@@ -35,6 +37,8 @@ export function VideoCardHorizontal({
         {hasMedia ? (
           <InlineVideo
             src={src}
+            youtubeId={youtubeId}
+            youtubeUrl={youtubeUrl}
             poster={poster}
             iconSize={24}
             label={label || "16:9"}

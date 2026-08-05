@@ -7,6 +7,10 @@ export type VideoItem = {
   description: string;
   /** URL do vídeo real (mp4). */
   src?: string;
+  /** ID do vídeo no YouTube. */
+  youtubeId?: string;
+  /** URL completa do vídeo no YouTube (será convertida em ID). */
+  youtubeUrl?: string;
   /** Imagem de capa opcional. */
   poster?: string;
   /** Label opcional para o player (ex: "9:16", "Clique"). */
@@ -17,11 +21,13 @@ export function VideoCardVertical({
   title,
   description,
   src,
+  youtubeId,
+  youtubeUrl,
   poster,
   label,
 }: VideoItem) {
   const [hover, setHover] = useState(false);
-  const hasMedia = Boolean(src);
+  const hasMedia = Boolean(src || youtubeId || youtubeUrl);
 
   return (
     <figure
@@ -45,6 +51,8 @@ export function VideoCardVertical({
         {hasMedia ? (
           <InlineVideo
             src={src}
+            youtubeId={youtubeId}
+            youtubeUrl={youtubeUrl}
             poster={poster}
             iconSize={20}
             label={label || "9:16"}
