@@ -96,8 +96,8 @@ export function BrandMarquee() {
       <div
         className="flex w-max items-center animate-marquee"
         style={{ 
-          transformStyle: "preserve-3d", 
-          WebkitTransformStyle: "preserve-3d", 
+          transformStyle: "flat", 
+          WebkitTransformStyle: "flat", 
           backfaceVisibility: "hidden", 
           WebkitBackfaceVisibility: "hidden",
           willChange: 'transform'

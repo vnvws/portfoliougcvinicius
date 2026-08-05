@@ -256,8 +256,8 @@ function FeedbackSection() {
         <div 
           className="flex w-max gap-6 animate-marquee"
           style={{ 
-            transformStyle: "preserve-3d", 
-            WebkitTransformStyle: "preserve-3d", 
+            transformStyle: "flat", 
+            WebkitTransformStyle: "flat", 
             backfaceVisibility: "hidden", 
             WebkitBackfaceVisibility: "hidden",
             willChange: 'transform'
