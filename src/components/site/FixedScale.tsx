@@ -78,7 +78,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
           width: "100%",
           minHeight: "100svh",
           height: scaledHeight,
-          overflowX: "clip",
+          overflowX: "hidden",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
