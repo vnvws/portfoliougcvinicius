@@ -83,13 +83,13 @@ function Index() {
 
           <FeedbackSection />
           <Suspense fallback={<div className="h-48" />}>
-            <InvestmentSection />
+            <InvestmentSection className="optimize-section" />
           </Suspense>
           <Suspense fallback={<div className="h-96" />}>
-            <PackageSection />
+            <PackageSection className="optimize-section" />
           </Suspense>
           <Suspense fallback={<div className="h-96" />}>
-            <ContactSection />
+            <ContactSection className="optimize-section" />
           </Suspense>
         </main>
       </FixedScale>
