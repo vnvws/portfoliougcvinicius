@@ -164,7 +164,7 @@ function Hero() {
             <Reveal delay={400}>
               <a
                 href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
-                className="group relative inline-flex items-center justify-center rounded-full px-12 py-5 font-display text-[24px] font-black tracking-widest transition-all duration-300 hover:scale-105 active:scale-95"
+                className="group relative inline-flex items-center justify-center rounded-full px-12 py-5 font-display text-[24px] font-black tracking-widest transition-all duration-300 hover:scale-105 active:scale-95 touch-manipulation"
                 style={{
                   backgroundColor: "var(--color-neon)",
                   color: "var(--color-ink)",

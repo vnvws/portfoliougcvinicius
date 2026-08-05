@@ -102,13 +102,15 @@ export function BrandMarquee() {
     <div className="group relative overflow-hidden py-10 touch-pan-x" style={{ isolation: 'isolate' }}>
       <div
         className="flex w-max items-center animate-marquee"
-        style={{ 
-          transformStyle: "flat", 
-          WebkitTransformStyle: "flat", 
-          backfaceVisibility: "hidden", 
-          WebkitBackfaceVisibility: "hidden",
-          willChange: 'transform'
-        }}
+          style={{ 
+            transformStyle: "flat", 
+            WebkitTransformStyle: "flat", 
+            backfaceVisibility: "hidden", 
+            WebkitBackfaceVisibility: "hidden",
+            willChange: 'transform',
+            perspective: '1000px',
+            WebkitPerspective: '1000px'
+          }}
         onMouseEnter={(e) => {
           if (window.matchMedia("(pointer: fine)").matches) {
             e.currentTarget.style.animationPlayState = "paused";

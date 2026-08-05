@@ -42,7 +42,7 @@ export const LoadingScreen = () => {
             opacity: 0,
             transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
           }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bone grain"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bone grain h-[100dvh]"
           style={{ touchAction: 'none' }}
         >
           <div className="relative flex flex-col items-center max-w-[280px] w-full px-6">

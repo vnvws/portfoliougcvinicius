@@ -178,7 +178,7 @@ export function InlineVideo({
               muted={!playing}
               loop
               playsInline
-              preload="auto"
+              preload="none"
               disablePictureInPicture
               controlsList="nodownload"
               controls={false}
