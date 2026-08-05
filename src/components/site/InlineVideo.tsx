@@ -69,7 +69,7 @@ export function InlineVideo({
           setActiveVideoSrc(null);
         }
       },
-      { rootMargin: "200px 0px" },
+      { rootMargin: "600px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -201,15 +201,14 @@ export function InlineVideo({
               />
             ) : (
               <video
-                src={`${src}#t=2`}
+                src={`${src}#t=1.5`}
                 muted
                 playsInline
                 preload="metadata"
                 className="h-full w-full object-cover"
                 onLoadedData={(e) => {
                   const v = e.target as HTMLVideoElement;
-                  // Garante que o frame renderizado não seja o primeiro (possivelmente preto)
-                  if (v.currentTime < 1) v.currentTime = 2;
+                  if (v.currentTime < 1) v.currentTime = 1.5;
                 }}
               />
             )}

@@ -37,7 +37,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
     let lastHeight = 0;
 
     const measure = () => {
-      const width = window.innerWidth;
+      const width = Math.min(window.innerWidth, document.documentElement.clientWidth);
       const currentScale = width / DESIGN_WIDTH;
       
       if (width !== lastWidth) {
