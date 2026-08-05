@@ -248,8 +248,8 @@ function FeedbackSection() {
       
       <div className="relative w-full overflow-hidden px-12 touch-pan-x">
         <div 
-          className="flex w-max gap-6 animate-marquee translate-z-0"
-          style={{ transformStyle: "preserve-3d" }}
+          className="flex w-max gap-6 animate-marquee"
+          style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d" }}
           onMouseEnter={(e) => {
             if (window.matchMedia("(pointer: fine)").matches) {
               e.currentTarget.style.animationPlayState = "paused";

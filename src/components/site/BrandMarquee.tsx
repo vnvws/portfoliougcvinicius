@@ -94,8 +94,8 @@ export function BrandMarquee() {
   return (
     <div className="group relative overflow-hidden py-10 touch-pan-x">
       <div
-        className="flex w-max items-center animate-marquee translate-z-0"
-        style={{ transformStyle: "preserve-3d" }}
+        className="flex w-max items-center animate-marquee"
+        style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d" }}
         onMouseEnter={(e) => {
           if (window.matchMedia("(pointer: fine)").matches) {
             e.currentTarget.style.animationPlayState = "paused";
