@@ -80,7 +80,13 @@ function Logo({ name, src }: Brand) {
       }}
     >
       {src ? (
-        <img src={src} alt={`Logo ${name}`} loading="lazy" className="h-full w-full object-cover" />
+        <img 
+          src={src} 
+          alt={`Logo ${name}`} 
+          loading="lazy" 
+          decoding="async"
+          className="h-full w-full object-cover" 
+        />
       ) : (
         <span className="p-3 font-display text-[11px] leading-[1.1] font-bold tracking-[-0.01em] text-ink uppercase">
           {name}
