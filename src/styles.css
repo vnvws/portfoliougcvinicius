@@ -81,6 +81,9 @@ header,
   -webkit-transform-style: flat !important;
   display: flex !important;
   visibility: visible !important;
+  /* Safari iOS force composite layer */
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 @keyframes neon-breathe {

@@ -117,6 +117,10 @@ export function FixedScale({ children }: { children: ReactNode }) {
             WebkitBackfaceVisibility: "hidden",
             transformStyle: "flat",
             WebkitTransformStyle: "flat",
+            /* Safari iOS memory and compositing fix */
+            WebkitPerspective: "1000",
+            perspective: "1000",
+            isolation: "isolate",
           }}
         >
           {children}

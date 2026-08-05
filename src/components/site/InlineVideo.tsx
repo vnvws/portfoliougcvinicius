@@ -37,6 +37,7 @@ export function InlineVideo({
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [hasStartedLoading, setHasStartedLoading] = useState(false);
 
   const youtubeId = rawYoutubeId || getYouTubeId(youtubeUrl) || undefined;
   const isYouTube = Boolean(youtubeId);
@@ -47,6 +48,7 @@ export function InlineVideo({
   const setPlaying = useCallback((val: boolean) => {
     if (val) {
       setHasInteracted(true);
+      setHasStartedLoading(true);
       setActiveVideoSrc(videoKey);
     } else if (activeVideoSrc === videoKey) {
       setActiveVideoSrc(null);
@@ -86,10 +88,13 @@ export function InlineVideo({
 
     if (playing) {
       v.muted = false;
-      v.play().catch(err => {
-        console.warn("Playback failed:", err);
-        setPlaying(false);
-      });
+      const playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.warn("Playback failed:", err);
+          setPlaying(false);
+        });
+      }
     } else {
       v.pause();
     }
@@ -136,7 +141,7 @@ export function InlineVideo({
   };
 
   const thumbnailUrl = isYouTube ? getYouTubeThumbnail(youtubeId!) : poster;
-  const shouldMountPlayer = inView && (playing || hasInteracted);
+  const shouldMountPlayer = inView && hasStartedLoading;
 
   return (
     <>
@@ -190,39 +195,46 @@ export function InlineVideo({
               />
             ) : (
               <video
-                src={`${src}#t=0.5`}
+                src={src}
                 muted
                 playsInline
                 preload="metadata"
                 className="h-full w-full object-cover"
+                onLoadedData={(e) => {
+                  // Fallback: se não temos poster, tentamos pegar o primeiro frame
+                  // Mas o requisito pede thumbnails otimizadas, então poster é preferível
+                  (e.target as HTMLVideoElement).currentTime = 0.5;
+                }}
               />
             )}
           </div>
         )}
 
-        {!isYouTube && (
-          <div
-            className="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
-            style={{ opacity: playing ? 0 : 1 }}
+        <div
+          className="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
+          style={{ 
+            opacity: playing ? 0 : 1,
+            background: hasStartedLoading ? 'transparent' : 'rgba(0,0,0,0.1)'
+          }}
+        >
+          <span
+            className="flex items-center justify-center rounded-full backdrop-blur-sm transition-transform duration-300 active:scale-90"
+            style={{
+              height: iconSize * 2.8,
+              width: iconSize * 2.8,
+              border: "1px solid var(--color-neon)",
+              color: "var(--color-neon)",
+              background: "rgba(0,0,0,0.25)",
+              boxShadow: "0 0 20px rgba(57, 255, 20, 0.2)"
+            }}
           >
-            <span
-              className="flex items-center justify-center rounded-full backdrop-blur-sm"
-              style={{
-                height: iconSize * 2.8,
-                width: iconSize * 2.8,
-                border: "1px solid var(--color-neon)",
-                color: "var(--color-neon)",
-                background: "rgba(0,0,0,0.25)",
-              }}
-            >
-              {playing ? (
-                <Pause size={iconSize} strokeWidth={2.4} />
-              ) : (
-                <Play size={iconSize} strokeWidth={2.4} />
-              )}
-            </span>
-          </div>
-        )}
+            {playing ? (
+              <Pause size={iconSize} strokeWidth={2.4} />
+            ) : (
+              <Play size={iconSize} strokeWidth={2.4} className="ml-1" />
+            )}
+          </span>
+        </div>
 
 
         {label ? (
