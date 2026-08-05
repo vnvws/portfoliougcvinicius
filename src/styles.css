@@ -3,8 +3,8 @@
 
 @source "../src";
 
-/* Otimização de renderização para páginas longas */
-section {
+/* Otimização de renderização seletiva */
+.optimize-section {
   content-visibility: auto;
   contain-intrinsic-size: 1px 1000px;
 }
@@ -68,6 +68,8 @@ header,
   -webkit-backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 @keyframes neon-breathe {

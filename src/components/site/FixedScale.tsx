@@ -33,19 +33,29 @@ export function FixedScale({ children }: { children: ReactNode }) {
 
   useLayoutEffect(() => {
     let raf = 0;
+    let lastWidth = 0;
+    let lastHeight = 0;
+
     const measure = () => {
       const width = window.innerWidth;
       const currentScale = width / DESIGN_WIDTH;
-      setScale(currentScale);
+      
+      if (width !== lastWidth) {
+        setScale(currentScale);
+        lastWidth = width;
+      }
 
       if (inner.current) {
-        // Obter a altura real do conteúdo
         const rect = inner.current.getBoundingClientRect();
-        // A altura escalada é a altura do rect, mas o Safari às vezes
-        // reporta valores errados durante o resize.
-        // Usamos o offsetHeight * currentScale como fallback confiável.
-        const height = Math.max(rect.height, inner.current.offsetHeight * currentScale);
-        setScaledHeight(Math.ceil(height));
+        // Usamos offsetHeight como base para evitar recursão infinita se o rect.height mudar levemente
+        const contentHeight = inner.current.offsetHeight;
+        const newHeight = Math.ceil(contentHeight * currentScale);
+        
+        // Só atualiza se a diferença for significativa (> 2px) para evitar jitter no Safari
+        if (Math.abs(newHeight - lastHeight) > 2) {
+          setScaledHeight(newHeight);
+          lastHeight = newHeight;
+        }
       }
     };
 
@@ -54,27 +64,24 @@ export function FixedScale({ children }: { children: ReactNode }) {
       raf = requestAnimationFrame(measure);
     };
 
-    // Executa imediatamente no mount
     measure();
     
-    // Gatilhos globais
     window.addEventListener("resize", schedule);
     window.addEventListener("orientationchange", schedule);
     window.addEventListener("load", schedule);
-    document.fonts?.ready.then(schedule).catch(() => {});
 
-    // ResizeObserver para o conteúdo que muda dinamicamente
-    const ro = new ResizeObserver(schedule);
+    const ro = new ResizeObserver(() => {
+      // Quando o conteúdo muda, agendamos uma medição
+      schedule();
+    });
+    
     if (inner.current) ro.observe(inner.current);
 
-    // Polling nos primeiros segundos para corrigir saltos de layout do Safari
-    const interval = setInterval(measure, 1000);
-    const timeout = setTimeout(() => clearInterval(interval), 5000);
+    // Safari às vezes precisa de um tempo extra após o carregamento das fontes
+    document.fonts?.ready.then(schedule).catch(() => {});
 
     return () => {
       cancelAnimationFrame(raf);
-      clearInterval(interval);
-      clearTimeout(timeout);
       window.removeEventListener("resize", schedule);
       window.removeEventListener("orientationchange", schedule);
       window.removeEventListener("load", schedule);

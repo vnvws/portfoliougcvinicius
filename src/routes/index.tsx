@@ -83,13 +83,19 @@ function Index() {
 
           <FeedbackSection />
           <Suspense fallback={<div className="h-48" />}>
-            <InvestmentSection />
+            <div className="optimize-section">
+              <InvestmentSection />
+            </div>
           </Suspense>
           <Suspense fallback={<div className="h-96" />}>
-            <PackageSection />
+            <div className="optimize-section">
+              <PackageSection />
+            </div>
           </Suspense>
           <Suspense fallback={<div className="h-96" />}>
-            <ContactSection />
+            <div className="optimize-section">
+              <ContactSection />
+            </div>
           </Suspense>
         </main>
       </FixedScale>
@@ -249,7 +255,7 @@ function FeedbackSection() {
       <div className="relative w-full overflow-hidden px-12 touch-pan-x">
         <div 
           className="flex w-max gap-6 animate-marquee"
-          style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d" }}
+          style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
           onMouseEnter={(e) => {
             if (window.matchMedia("(pointer: fine)").matches) {
               e.currentTarget.style.animationPlayState = "paused";
