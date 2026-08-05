@@ -56,13 +56,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-
   return (
     <>
       <NeonCursor />
+      <TopNav />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
-          <TopNav />
           <Nav />
           <Hero />
           <section className="relative -mt-16">
