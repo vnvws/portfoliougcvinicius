@@ -115,7 +115,7 @@ function Index() {
 
 function TopNav() {
   return (
-    <nav className="sticky top-0 left-0 z-[100] h-8 w-full bg-ink">
+    <nav className="fixed top-0 left-0 right-0 z-[100] h-8 bg-ink" style={{ width: '100vw', transform: `scale(${1/window.devicePixelRatio})`, transformOrigin: 'top left' }}>
       <div className="mx-auto flex h-full max-w-[1240px] items-center justify-center gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide px-4">
         {niches.map((niche) => (
           <a
