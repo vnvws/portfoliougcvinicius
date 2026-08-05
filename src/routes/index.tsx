@@ -68,7 +68,7 @@ function Index() {
             <About />
           </div>
 
-          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16 space-y-24">
+          <section id="portfolio" className="optimize-section mx-auto w-[1240px] pt-12 pb-16 space-y-24">
             {niches.map((niche, index) => (
               <div key={niche.id} className="relative">
                 <Reveal>
@@ -237,7 +237,7 @@ function FeedbackSection() {
   ];
 
   return (
-    <section className="py-16 overflow-hidden bg-bone">
+    <section className="optimize-section py-16 overflow-hidden bg-bone">
       <div className="mx-auto w-[1240px] mb-8">
         <Reveal>
           <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
@@ -249,7 +249,7 @@ function FeedbackSection() {
       <div className="relative w-full overflow-hidden px-12 touch-pan-x">
         <div 
           className="flex w-max gap-6 animate-marquee"
-          style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d" }}
+          style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
           onMouseEnter={(e) => {
             if (window.matchMedia("(pointer: fine)").matches) {
               e.currentTarget.style.animationPlayState = "paused";
