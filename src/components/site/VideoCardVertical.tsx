@@ -43,9 +43,9 @@ export function VideoCardVertical({
           border: "1px solid color-mix(in oklab, var(--color-neon) 55%, transparent)",
           boxShadow: hover
             ? "0 0 0 1px var(--color-neon), 0 0 30px -2px color-mix(in oklab, var(--color-neon) 60%, transparent)"
-            : "0 0 14px -6px color-mix(in oklab, var(--color-neon) 45%, transparent)",
+            : "none",
           transform: hover ? "scale(1.035)" : "scale(1)",
-          transition: "transform 420ms cubic-bezier(0.16,1,0.3,1), box-shadow 420ms ease",
+          transition: "transform 420ms cubic-bezier(0.16,1,0.3,1)",
         }}
       >
         {hasMedia ? (
