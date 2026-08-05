@@ -114,22 +114,30 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="relative z-20 mx-auto flex w-[1240px] items-center justify-between pt-4">
-      <span className="font-display text-[18px] font-extrabold tracking-[-0.02em] text-ink">
-        Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
-      </span>
-      <nav className="flex items-center justify-end gap-x-4 text-[10px] tracking-[0.15em] text-forest overflow-hidden">
-        {niches.map((niche) => (
-          <a
-            key={niche.id}
-            href={`#${niche.id}`}
-            className="cursor-none transition-colors hover:text-ink whitespace-nowrap"
-          >
-            {niche.title.toUpperCase()}
-          </a>
-        ))}
-      </nav>
-    </header>
+    <div className="fixed top-0 left-0 right-0 z-[100] w-full px-4 pt-4 pointer-events-none">
+      <header 
+        className="mx-auto flex max-w-[1240px] items-center justify-between px-8 py-3 pointer-events-auto rounded-full bg-ink/90 backdrop-blur-md"
+        style={{
+          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 0 1px rgba(255, 255, 255, 0.1)",
+          border: "1px solid rgba(255, 255, 255, 0.1)"
+        }}
+      >
+        <span className="shrink-0 font-display text-[16px] font-extrabold tracking-[-0.02em] text-white">
+          Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
+        </span>
+        <nav className="ml-8 flex items-center justify-end gap-x-6 overflow-hidden text-[9px] font-bold tracking-[0.2em] text-white/70">
+          {niches.map((niche) => (
+            <a
+              key={niche.id}
+              href={`#${niche.id}`}
+              className="cursor-none transition-all hover:text-neon whitespace-nowrap"
+            >
+              {niche.title.toUpperCase()}
+            </a>
+          ))}
+        </nav>
+      </header>
+    </div>
   );
 }
 
