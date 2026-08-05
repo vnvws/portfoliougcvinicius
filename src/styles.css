@@ -3,16 +3,15 @@
 
 @source "../src";
 
-/* Otimização de renderização seletiva */
+/* Otimização de renderização seletiva - Desativado content-visibility pois causa bugs no Safari iOS */
 .optimize-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px;
+  /* content-visibility: auto; */
 }
 
 header, 
 .hero-section,
 [id="sobre"] {
-  content-visibility: visible;
+  /* content-visibility: visible; */
 }
 
 .liquid-glass {
@@ -82,8 +81,8 @@ header,
   display: flex !important;
   visibility: visible !important;
   /* Safari iOS force composite layer */
-  -webkit-perspective: 1000;
-  perspective: 1000;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
 }
 
 @keyframes neon-breathe {

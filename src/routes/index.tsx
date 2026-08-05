@@ -311,6 +311,7 @@ function FeedbackCard({ src, index }: { src: string; index: number }) {
       className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
+        transform: "translateZ(0)",
       }}
     >
       <img 
