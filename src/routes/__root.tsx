@@ -83,21 +83,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "viewport",
         content: "width=device-width, initial-scale=1",
       },
-      { title: "Vinícius Araújo — UGC Creator" },
+      { title: "Vinícius Araújo | UGC Creator Masculino" },
       {
         name: "description",
         content:
-          "Portfólio de Vinícius Araújo, UGC Creator: vídeos verticais para marcas em tech, moda, apps, alimentos, viagens e mais.",
+          "Portfólio de Vinícius Araújo, UGC Creator masculino especializado em vídeos nativos para TikTok, Reels e Shorts. Atendendo marcas de todos os nichos.",
       },
       { name: "author", content: "Vinícius Araújo" },
-      { property: "og:title", content: "Vinícius Araújo — UGC Creator" },
+      { property: "og:title", content: "Vinícius Araújo | UGC Creator Masculino" },
       {
         property: "og:description",
-        content: "Conteúdo UGC que converte: Reels, TikToks e Stories para marcas.",
+        content: "Conteúdo UGC autêntico que converte. O criador ideal para sua campanha de tráfego pago ou orgânico.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@viniciusugc" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
