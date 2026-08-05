@@ -92,9 +92,9 @@ function Logo({ name, src }: Brand) {
 
 export function BrandMarquee() {
   return (
-    <div className="group relative overflow-hidden py-10">
+    <div className="group relative overflow-hidden py-10 touch-pan-x">
       <div
-        className="flex w-max items-center animate-marquee"
+        className="flex w-max items-center animate-marquee translate-z-0"
         onMouseOver={(e) => (e.currentTarget.style.animationPlayState = "paused")}
         onMouseOut={(e) => (e.currentTarget.style.animationPlayState = "running")}
       >
