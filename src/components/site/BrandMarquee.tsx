@@ -95,6 +95,7 @@ export function BrandMarquee() {
     <div className="group relative overflow-hidden py-10 touch-pan-x">
       <div
         className="flex w-max items-center animate-marquee translate-z-0"
+        style={{ transformStyle: "preserve-3d" }}
         onMouseOver={(e) => (e.currentTarget.style.animationPlayState = "paused")}
         onMouseOut={(e) => (e.currentTarget.style.animationPlayState = "running")}
       >

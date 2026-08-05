@@ -73,6 +73,8 @@ header,
 .animate-marquee {
   animation: marquee-x 40s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 @keyframes neon-breathe {
