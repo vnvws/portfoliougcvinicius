@@ -221,49 +221,49 @@ export const niches: Niche[] = [
       {
         title: "Urubu das Promos",
         description: "Creatina pagando barato",
-        youtubeUrl: "https://youtube.com/shorts/gpbakssDqQA?feature=share",
+        src: v1.url,
         label: "Clique"
       },
       {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
-        youtubeUrl: "https://youtube.com/shorts/ZK99niuae6I?feature=share",
+        src: v2.url,
         label: "Clique"
       },
       {
         title: "Urubu das Promos",
         description: "Onde comprar energético barato",
-        youtubeUrl: "https://youtube.com/shorts/5AVBZ9Jr1h8?feature=share",
+        src: v5.url,
         label: "Clique"
       },
       {
         title: "Urubu das Promos",
         description: "Compras no mercado x no grupo",
-        youtubeUrl: "https://youtube.com/shorts/FQWlsdRk650?feature=share",
+        src: v10.url,
         label: "Clique"
       },
       {
         title: "Pegar Promo",
         description: "Comparativo de preço Cueca Mash",
-        youtubeUrl: "https://youtube.com/shorts/e4zZ3Tkl7kA?feature=share",
+        src: v15.url,
         label: "Clique"
       },
       {
         title: "Promoções do Dia",
         description: "Achado secreto de promoções",
-        youtubeUrl: "https://youtube.com/shorts/6rgS3QOxffo?feature=share",
+        src: v14.url,
         label: "Clique"
       },
       {
         title: "Promoções do Dia",
         description: "Ofertas na Black Friday",
-        youtubeUrl: "https://youtube.com/shorts/X_l5w-QgcKM?feature=share",
+        src: v13.url,
         label: "Clique"
       },
       {
         title: "Promoções do Dia",
         description: "Descoberta do grupo",
-        youtubeUrl: "https://youtube.com/shorts/P8aGesLY2ws?feature=share",
+        src: v11.url,
         label: "Clique"
       }
     ],
