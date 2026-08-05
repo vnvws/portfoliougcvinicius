@@ -131,6 +131,9 @@ import promoBlackFriday2 from "@/assets/videos/promo-black-friday-2.mp4.asset.js
 import promoDescobertaGrupo from "@/assets/videos/promo-descoberta-grupo.mp4.asset.json";
 // @ts-ignore
 import pegarPromoCueca from "@/assets/videos/pegar-promo-cueca-mash.mp4.asset.json";
+// @ts-ignore
+import reiDaPromoGrupo from "@/assets/videos/rei-da-promo-grupo.mp4.asset.json";
+
 
 
 interface Asset {
@@ -203,6 +206,8 @@ const yt3 = youtubeManclub as unknown as Asset;
 const v13 = promoBlackFriday2 as unknown as Asset;
 const v14 = promoDescobertaGrupo as unknown as Asset;
 const v15 = pegarPromoCueca as unknown as Asset;
+const v16 = reiDaPromoGrupo as unknown as Asset;
+
 
 
 export type Niche = {
@@ -225,9 +230,9 @@ export const niches: Niche[] = [
         label: "Clique"
       },
       {
-        title: "Urubu das Promos",
-        description: "Creatina pagando barato",
-        src: v1.url,
+        title: "Rei da Promo",
+        description: "Grupo com os melhores descontos da internet",
+        src: v16.url,
         label: "Clique"
       },
       {
