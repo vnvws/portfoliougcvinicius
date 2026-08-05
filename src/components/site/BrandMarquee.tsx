@@ -70,6 +70,7 @@ function Logo({ name, src }: Brand) {
       className="group relative mx-3 flex h-20 w-20 shrink-0 cursor-none items-center justify-center overflow-hidden rounded-full bg-white text-center transition-all duration-300 hover:scale-[1.1]"
       style={{ 
         border: "1px solid color-mix(in oklab, var(--color-forest) 22%, transparent)",
+        transform: "translateZ(0)",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow =

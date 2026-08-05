@@ -21,13 +21,25 @@ export function useInView<T extends HTMLElement>(threshold = 0.15) {
 export function Reveal({
   children,
   className,
+  delay = 0,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
 }) {
+  const { ref, inView } = useInView<HTMLDivElement>(0.1);
+
   return (
-    <div className={className}>
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translate3d(0, 0, 0)" : "translate3d(0, 20px, 0)",
+        transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        willChange: "transform, opacity",
+      }}
+    >
       {children}
     </div>
   );

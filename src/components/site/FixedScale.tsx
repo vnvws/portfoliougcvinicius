@@ -112,7 +112,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
             transform: `scale(${scale})`,
             transformOrigin: "top center",
             flexShrink: 0,
-            willChange: "transform",
+            /* willChange: "transform", */
             WebkitTransform: `scale(${scale})`,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
