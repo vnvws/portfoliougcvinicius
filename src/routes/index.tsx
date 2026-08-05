@@ -61,7 +61,8 @@ function Index() {
     <>
       <NeonCursor />
       <FixedScale>
-        <main className="relative w-full overflow-hidden bg-bone font-display text-ink">
+        <TopNav />
+        <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-8">
           <Nav />
           <Hero />
           <section className="relative -mt-16">
@@ -109,6 +110,24 @@ function Index() {
       </FixedScale>
       <BackToTop />
     </>
+  );
+}
+
+function TopNav() {
+  return (
+    <nav className="fixed top-0 left-1/2 z-[100] h-8 w-[1440px] -translate-x-1/2 bg-ink px-4">
+      <div className="mx-auto flex h-full max-w-[1240px] items-center justify-center gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
+        {niches.map((niche) => (
+          <a
+            key={niche.id}
+            href={`#${niche.id}`}
+            className="cursor-none text-[10px] font-bold tracking-[0.2em] text-neon transition-all hover:opacity-70"
+          >
+            {niche.title.toUpperCase()}
+          </a>
+        ))}
+      </div>
+    </nav>
   );
 }
 
