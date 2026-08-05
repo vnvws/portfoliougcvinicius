@@ -113,13 +113,14 @@ export function FixedScale({ children }: { children: ReactNode }) {
             transformOrigin: "top center",
             flexShrink: 0,
             willChange: "transform",
+            WebkitTransform: `scale(${scale})`,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transformStyle: "flat",
             WebkitTransformStyle: "flat",
             /* Safari iOS memory and compositing fix */
-            WebkitPerspective: "1000",
-            perspective: "1000",
+            WebkitPerspective: "1000px",
+            perspective: "1000px",
             isolation: "isolate",
           }}
         >

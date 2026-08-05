@@ -37,6 +37,7 @@ export function InlineVideo({
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [hasStartedLoading, setHasStartedLoading] = useState(false);
 
   const youtubeId = rawYoutubeId || getYouTubeId(youtubeUrl) || undefined;
@@ -183,12 +184,13 @@ export function InlineVideo({
               controls={false}
               className="absolute inset-0 h-full w-full object-cover"
               autoPlay
+              onError={() => setHasError(true)}
             />
           )
         ) : (
           <div className="absolute inset-0 bg-ink">
-            {thumbnailUrl ? (
-              <img
+            {(thumbnailUrl && !hasError) ? (
+              <img 
                 src={thumbnailUrl}
                 alt={label || "Capa do vídeo"}
                 loading="lazy"
