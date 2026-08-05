@@ -6,21 +6,25 @@ export const LoadingScreen = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Progress bar animation
+    // Start progress immediately
+    const duration = 1700;
+    const intervalTime = 16; // ~60fps for smoothness
+    const increment = (100 / (duration / intervalTime));
+    
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
+        const next = prev + increment;
+        if (next >= 100) {
           clearInterval(interval);
           return 100;
         }
-        return prev + 2;
+        return next;
       });
-    }, 30); // ~1.5s for progress bar to reach 100
+    }, intervalTime);
 
-    // Force hide after 1.7s
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 1700);
+    }, duration);
 
     return () => {
       clearInterval(interval);
@@ -29,22 +33,24 @@ export const LoadingScreen = () => {
   }, []);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {loading && (
         <motion.div
+          key="loader"
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
-            transition: { duration: 0.5, ease: "easeInOut" }
+            transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
           }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bone grain"
+          style={{ touchAction: 'none' }}
         >
           <div className="relative flex flex-col items-center max-w-[280px] w-full px-6">
             {/* Favicon / Logo */}
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="mb-12"
             >
               <div className="w-20 h-20 bg-ink rounded-2xl flex items-center justify-center neon-edge relative overflow-hidden group">
@@ -52,20 +58,19 @@ export const LoadingScreen = () => {
                   V<span className="text-neon">.</span>A
                 </span>
                 
-                {/* Subtle shine effect */}
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"
                   animate={{ x: ['-100%', '100%'] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
                 />
               </div>
             </motion.div>
 
             {/* Name */}
             <motion.div
-              initial={{ y: 20, opacity: 0 }}
+              initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
               className="text-center mb-8"
             >
               <h1 className="text-ink font-display text-xl font-bold tracking-tight uppercase">
@@ -82,19 +87,18 @@ export const LoadingScreen = () => {
                 className="absolute inset-y-0 left-0 bg-neon"
                 initial={{ width: "0%" }}
                 animate={{ width: `${progress}%` }}
-                transition={{ ease: "linear" }}
+                transition={{ type: "tween", ease: "linear", duration: 0.016 }}
               />
             </div>
             
             {/* Progress Percentage */}
             <div className="mt-3 flex justify-between w-full font-display text-[10px] text-ink/40 font-medium tabular-nums uppercase tracking-widest">
               <span>Loading experience</span>
-              <span>{Math.round(progress)}%</span>
+              <span>{Math.floor(progress)}%</span>
             </div>
           </div>
           
-          {/* Background Decorative Element */}
-          <div className="absolute bottom-10 left-10 text-[100px] font-display font-black text-ink/[0.02] select-none pointer-events-none uppercase leading-none">
+          <div className="absolute bottom-10 left-10 text-[100px] font-display font-black text-ink/[0.02] select-none pointer-events-none uppercase leading-none hidden sm:block">
             Vinícius<br/>Araújo
           </div>
         </motion.div>
@@ -102,3 +106,4 @@ export const LoadingScreen = () => {
     </AnimatePresence>
   );
 };
+
