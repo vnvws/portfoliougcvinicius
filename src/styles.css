@@ -53,15 +53,6 @@ header,
 }
 
 @keyframes marquee-x {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-x {
   0% {
     transform: translate3d(0, 0, 0);
   }
@@ -73,6 +64,10 @@ header,
 .animate-marquee {
   animation: marquee-x 40s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 @keyframes neon-breathe {
@@ -124,6 +119,10 @@ header,
     box-shadow: 0 0 15px var(--color-neon);
     transform: scale(1);
   }
+}
+
+@utility translate-z-0 {
+  transform: translateZ(0);
 }
 
 @utility liquid-glass {
