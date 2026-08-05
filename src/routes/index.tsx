@@ -68,7 +68,7 @@ function Index() {
             <About />
           </div>
 
-          <section id="portfolio" className="optimize-section mx-auto w-[1240px] pt-12 pb-16 space-y-24">
+          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16 space-y-24">
             {niches.map((niche, index) => (
               <div key={niche.id} className="relative">
                 <Reveal>
