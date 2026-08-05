@@ -77,8 +77,8 @@ header,
   -webkit-backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
+  transform-style: flat !important;
+  -webkit-transform-style: flat !important;
   display: flex !important;
   visibility: visible !important;
 }

@@ -115,8 +115,8 @@ export function FixedScale({ children }: { children: ReactNode }) {
             willChange: "transform",
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            transformStyle: "preserve-3d",
-            WebkitTransformStyle: "preserve-3d",
+            transformStyle: "flat",
+            WebkitTransformStyle: "flat",
           }}
         >
           {children}
