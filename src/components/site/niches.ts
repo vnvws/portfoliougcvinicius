@@ -230,7 +230,7 @@ export const niches: Niche[] = [
     videos: [
       {
         title: "Urubu das Promos",
-        description: "Creatina pagando barato",
+        description: "Urubu das Promos Onde comprar energético barato",
         src: v17.url,
         label: "Clique"
       },
@@ -242,7 +242,7 @@ export const niches: Niche[] = [
       },
       {
         title: "Urubu das Promos",
-        description: "Onde comprar energético barato",
+        description: "Urubu das Promos Creatina pagando barato",
         src: v5.url,
         label: "Clique"
       },
