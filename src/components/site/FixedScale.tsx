@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useLayoutEffect, type ReactNode, useMemo } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect, type ReactNode, useMemo, Suspense, lazy } from "react";
 
 const DESIGN_WIDTH = 1440;
 
