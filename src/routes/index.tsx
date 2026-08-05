@@ -197,7 +197,6 @@ function About() {
             style={{
               aspectRatio: "1 / 1",
               border: "1px solid var(--color-neon)",
-              boxShadow: "0 0 40px -10px color-mix(in oklab, var(--color-neon) 50%, transparent)",
             }}
           />
         </Reveal>
