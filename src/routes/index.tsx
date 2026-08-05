@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2, ChevronRight } from "lucide-react";
 import { FixedScale } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
@@ -22,9 +23,9 @@ import feedback7 from "@/assets/feedbacks/7.png.asset.json";
 import feedback8 from "@/assets/feedbacks/8.png.asset.json";
 import feedback9 from "@/assets/feedbacks/9.png.asset.json";
 import feedback10 from "@/assets/feedbacks/10.png.asset.json";
-import InvestmentSection from "@/components/site/InvestmentSection";
-import PackageSection from "@/components/site/PackageSection";
-import ContactSection from "@/components/site/ContactSection";
+const InvestmentSection = lazy(() => import("@/components/site/InvestmentSection"));
+const PackageSection = lazy(() => import("@/components/site/PackageSection"));
+const ContactSection = lazy(() => import("@/components/site/ContactSection"));
 
 
 export const Route = createFileRoute("/")({
@@ -52,7 +53,7 @@ function Index() {
     <>
       <NeonCursor />
       <FixedScale>
-        <main className="grain relative w-full overflow-hidden bg-bone font-display text-ink">
+        <main className="relative w-full overflow-hidden bg-bone font-display text-ink">
           <Nav />
           <Hero />
           <section className="relative -mt-16">
@@ -81,11 +82,15 @@ function Index() {
           </section>
 
           <FeedbackSection />
-          <InvestmentSection />
-          <PackageSection />
-
-
-          <ContactSection />
+          <Suspense fallback={<div className="h-96" />}>
+            <InvestmentSection />
+          </Suspense>
+          <Suspense fallback={<div className="h-96" />}>
+            <PackageSection />
+          </Suspense>
+          <Suspense fallback={<div className="h-96" />}>
+            <ContactSection />
+          </Suspense>
         </main>
       </FixedScale>
       <BackToTop />
@@ -111,13 +116,6 @@ function Nav() {
 function Hero() {
   return (
     <section className="relative mx-auto w-[1240px] pt-4 pb-8">
-      <div
-        className="pointer-events-none absolute top-24 left-[-80px] h-[420px] w-[620px] rounded-full blur-[110px]"
-        style={{
-          background: "color-mix(in oklab, var(--color-neon) 30%, transparent)",
-          animation: "glow-pulse 5s ease-in-out infinite",
-        }}
-      />
       <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1">
           <span className="text-[12px] tracking-[0.34em] text-forest">
@@ -129,8 +127,6 @@ function Hero() {
             <span
               style={{
                 color: "var(--color-forest)",
-                textShadow:
-                  "0 0 34px color-mix(in oklab, var(--color-neon) 45%, transparent), 0 0 4px color-mix(in oklab, var(--color-neon) 60%, transparent)",
               }}
             >
               Araújo
@@ -160,7 +156,6 @@ function Hero() {
             style={{
               aspectRatio: "9 / 16",
               border: "2px solid var(--color-neon)",
-              boxShadow: "0 0 60px -12px color-mix(in oklab, var(--color-neon) 75%, transparent)",
               transform: "rotate(3deg)",
             }}
           >
@@ -171,7 +166,7 @@ function Hero() {
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
             />
-            <div className="grain absolute inset-0 opacity-40 pointer-events-none" />
+            
             <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
               <span
                 className="h-1 flex-1 rounded-full"
@@ -207,7 +202,6 @@ function About() {
             style={{
               aspectRatio: "1 / 1",
               border: "1px solid var(--color-neon)",
-              boxShadow: "0 0 40px -10px color-mix(in oklab, var(--color-neon) 50%, transparent)",
             }}
           />
         </Reveal>
@@ -269,7 +263,7 @@ function FeedbackSection() {
 function FeedbackCard({ src, index }: { src: string; index: number }) {
   return (
     <div 
-      className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4 shadow-lg"
+      className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
       }}

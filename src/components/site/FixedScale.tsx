@@ -1,6 +1,17 @@
-import { useEffect, useRef, useState, useLayoutEffect, type ReactNode, useMemo } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect, type ReactNode, useMemo, createContext, useContext } from "react";
 
 const DESIGN_WIDTH = 1440;
+
+const VideoControlContext = createContext<{
+  activeVideoSrc: string | null;
+  setActiveVideoSrc: (src: string | null) => void;
+} | null>(null);
+
+export const useVideoControl = () => {
+  const context = useContext(VideoControlContext);
+  if (!context) return { activeVideoSrc: null, setActiveVideoSrc: () => {} };
+  return context;
+};
 
 /**
  * Canva-like "do not resize" behaviour: the page keeps the exact desktop
@@ -94,6 +105,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
             transform: `scale(${scale})`,
             transformOrigin: "top center",
             flexShrink: 0,
+            willChange: "transform",
           }}
         >
           {children}
@@ -102,16 +114,3 @@ export function FixedScale({ children }: { children: ReactNode }) {
     </VideoControlContext.Provider>
   );
 }
-
-import { createContext, useContext } from "react";
-
-const VideoControlContext = createContext<{
-  activeVideoSrc: string | null;
-  setActiveVideoSrc: (src: string | null) => void;
-} | null>(null);
-
-export const useVideoControl = () => {
-  const context = useContext(VideoControlContext);
-  if (!context) return { activeVideoSrc: null, setActiveVideoSrc: () => {} };
-  return context;
-};

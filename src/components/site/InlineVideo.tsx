@@ -36,6 +36,7 @@ export function InlineVideo({
   const { activeVideoSrc, setActiveVideoSrc } = useVideoControl();
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   const youtubeId = rawYoutubeId || getYouTubeId(youtubeUrl) || undefined;
   const isYouTube = Boolean(youtubeId);
@@ -45,6 +46,7 @@ export function InlineVideo({
   
   const setPlaying = useCallback((val: boolean) => {
     if (val) {
+      setHasInteracted(true);
       setActiveVideoSrc(videoKey);
     } else if (activeVideoSrc === videoKey) {
       setActiveVideoSrc(null);
@@ -61,11 +63,11 @@ export function InlineVideo({
         const isIntersecting = entries.some((e) => e.isIntersecting);
         setInView(isIntersecting);
         // Se saiu da tela, garante que parou de tocar
-        if (!isIntersecting && playing) {
-          setPlaying(false);
+        if (!isIntersecting && activeVideoSrc === videoKey) {
+          setActiveVideoSrc(null);
         }
       },
-      { rootMargin: "600px 0px" },
+      { rootMargin: "200px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -77,9 +79,13 @@ export function InlineVideo({
     const v = ref.current;
     if (!v) return;
     
+    if (!inView && playing) {
+      setPlaying(false);
+      return;
+    }
+
     if (playing) {
       v.muted = false;
-      // Garante que tentamos tocar após o src estar pronto
       v.play().catch(err => {
         console.warn("Playback failed:", err);
         setPlaying(false);
@@ -87,7 +93,7 @@ export function InlineVideo({
     } else {
       v.pause();
     }
-  }, [playing, isYouTube, src, setPlaying]);
+  }, [playing, isYouTube, src, setPlaying, inView]);
 
   const toggle = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -130,7 +136,7 @@ export function InlineVideo({
   };
 
   const thumbnailUrl = isYouTube ? getYouTubeThumbnail(youtubeId!) : poster;
-  const shouldMountPlayer = (playing) && inView;
+  const shouldMountPlayer = inView && (playing || hasInteracted);
 
   return (
     <>
@@ -166,7 +172,7 @@ export function InlineVideo({
               muted={!playing}
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
               disablePictureInPicture
               controlsList="nodownload"
               controls={false}
@@ -174,7 +180,7 @@ export function InlineVideo({
             />
           )
         ) : (
-          <div className="absolute inset-0 bg-ink/5">
+          <div className="absolute inset-0">
             {thumbnailUrl ? (
               <img
                 src={thumbnailUrl}
@@ -191,7 +197,6 @@ export function InlineVideo({
                 className="h-full w-full object-cover"
               />
             )}
-            <div className="grain absolute inset-0 opacity-20 pointer-events-none" />
           </div>
         )}
 
