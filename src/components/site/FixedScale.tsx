@@ -113,6 +113,10 @@ export function FixedScale({ children }: { children: ReactNode }) {
             transformOrigin: "top center",
             flexShrink: 0,
             willChange: "transform",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+            WebkitTransformStyle: "preserve-3d",
           }}
         >
           {children}
