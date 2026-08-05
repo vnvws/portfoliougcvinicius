@@ -37,6 +37,7 @@ export function InlineVideo({
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [hasStartedLoading, setHasStartedLoading] = useState(false);
 
   const youtubeId = rawYoutubeId || getYouTubeId(youtubeUrl) || undefined;
@@ -69,7 +70,7 @@ export function InlineVideo({
           setActiveVideoSrc(null);
         }
       },
-      { rootMargin: "200px 0px" },
+      { rootMargin: "600px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -183,12 +184,13 @@ export function InlineVideo({
               controls={false}
               className="absolute inset-0 h-full w-full object-cover"
               autoPlay
+              onError={() => setHasError(true)}
             />
           )
         ) : (
           <div className="absolute inset-0 bg-ink">
-            {thumbnailUrl ? (
-              <img
+            {(thumbnailUrl && !hasError) ? (
+              <img 
                 src={thumbnailUrl}
                 alt={label || "Capa do vídeo"}
                 loading="lazy"
@@ -201,15 +203,14 @@ export function InlineVideo({
               />
             ) : (
               <video
-                src={`${src}#t=2`}
+                src={`${src}#t=1.5`}
                 muted
                 playsInline
                 preload="metadata"
                 className="h-full w-full object-cover"
                 onLoadedData={(e) => {
                   const v = e.target as HTMLVideoElement;
-                  // Garante que o frame renderizado não seja o primeiro (possivelmente preto)
-                  if (v.currentTime < 1) v.currentTime = 2;
+                  if (v.currentTime < 1) v.currentTime = 1.5;
                 }}
               />
             )}

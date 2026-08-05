@@ -114,7 +114,7 @@ function Index() {
 
 function Nav() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-[100] w-full px-4 pt-4 pointer-events-none">
+    <div className="fixed top-0 left-0 right-0 z-[100] w-full px-4 pt-[calc(1rem+env(safe-area-inset-top))] pointer-events-none">
       <header 
         className="mx-auto flex max-w-[1240px] items-center justify-between px-8 py-3 pointer-events-auto rounded-full bg-ink/90 backdrop-blur-md"
         style={{
