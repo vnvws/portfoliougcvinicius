@@ -96,8 +96,14 @@ export function BrandMarquee() {
       <div
         className="flex w-max items-center animate-marquee translate-z-0"
         style={{ transformStyle: "preserve-3d" }}
-        onMouseOver={(e) => (e.currentTarget.style.animationPlayState = "paused")}
-        onMouseOut={(e) => (e.currentTarget.style.animationPlayState = "running")}
+        onMouseEnter={(e) => {
+          if (window.matchMedia("(pointer: fine)").matches) {
+            e.currentTarget.style.animationPlayState = "paused";
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.animationPlayState = "running";
+        }}
       >
         {brands.map((b, i) => (
           <Logo key={`${b.name}-${i}`} name={b.name} src={b.src} />

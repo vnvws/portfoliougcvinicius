@@ -250,6 +250,14 @@ function FeedbackSection() {
         <div 
           className="flex w-max gap-6 animate-marquee translate-z-0"
           style={{ transformStyle: "preserve-3d" }}
+          onMouseEnter={(e) => {
+            if (window.matchMedia("(pointer: fine)").matches) {
+              e.currentTarget.style.animationPlayState = "paused";
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.animationPlayState = "running";
+          }}
         >
           {feedbacks.map((f, idx) => (
             <FeedbackCard key={`f-${idx}`} src={f.url} index={idx} />
