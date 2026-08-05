@@ -177,11 +177,12 @@ export function InlineVideo({
               muted={!playing}
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               disablePictureInPicture
               controlsList="nodownload"
               controls={false}
               className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
             />
           )
         ) : (
