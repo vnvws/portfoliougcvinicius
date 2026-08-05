@@ -161,7 +161,7 @@ function Hero() {
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
             />
-            <div className="grain absolute inset-0 opacity-40 pointer-events-none" />
+            
             <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
               <span
                 className="h-1 flex-1 rounded-full"
