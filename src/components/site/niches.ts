@@ -221,25 +221,21 @@ export const niches: Niche[] = [
       {
         title: "Urubu das Promos",
         description: "Creatina pagando barato",
-        src: undefined, // AGUARDANDO ARQUIVO MP4
         label: "Pendente"
       },
       {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
-        src: undefined, // AGUARDANDO ARQUIVO MP4
         label: "Pendente"
       },
       {
         title: "Urubu das Promos",
         description: "Onde comprar energético barato",
-        src: undefined, // AGUARDANDO ARQUIVO MP4
         label: "Pendente"
       },
       {
         title: "Urubu das Promos",
         description: "Compras no mercado x no grupo",
-        src: undefined, // AGUARDANDO ARQUIVO MP4
         label: "Pendente"
       },
       {
