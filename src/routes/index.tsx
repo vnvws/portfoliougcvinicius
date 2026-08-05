@@ -114,13 +114,13 @@ function Index() {
 
 function TopNav() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] h-10 bg-ink w-full border-b border-neon/10">
-      <div className="mx-auto flex h-full items-center justify-start sm:justify-center gap-4 sm:gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide px-6">
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-ink w-full py-2 border-b border-neon/10">
+      <div className="mx-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 px-4 max-w-[1440px]">
         {niches.map((niche) => (
           <a
             key={niche.id}
             href={`#${niche.id}`}
-            className="cursor-none text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-neon transition-all hover:opacity-70 flex-shrink-0"
+            className="cursor-none text-[8px] sm:text-[10px] font-bold tracking-[0.1em] sm:tracking-[0.2em] text-neon transition-all hover:opacity-70 whitespace-nowrap"
           >
             {niche.title.toUpperCase()}
           </a>
