@@ -200,14 +200,15 @@ export function InlineVideo({
               />
             ) : (
               <video
-                src={src}
+                src={`${src}#t=2`}
                 muted
                 playsInline
                 preload="metadata"
                 className="h-full w-full object-cover"
                 onLoadedData={(e) => {
                   const v = e.target as HTMLVideoElement;
-                  v.currentTime = 2; // Pula os primeiros frames que costumam ser pretos
+                  // Garante que o frame renderizado não seja o primeiro (possivelmente preto)
+                  if (v.currentTime < 1) v.currentTime = 2;
                 }}
               />
             )}
