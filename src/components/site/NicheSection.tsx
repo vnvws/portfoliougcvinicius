@@ -15,10 +15,6 @@ export function NicheSection({ niche, index }: { niche: Niche; index: number }) 
       className="relative rounded-[22px] px-9 pt-8 pb-10"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-neon) 42%, transparent)",
-        boxShadow: inView
-          ? "0 0 0 1px color-mix(in oklab, var(--color-neon) 22%, transparent), 0 0 42px -10px color-mix(in oklab, var(--color-neon) 45%, transparent)"
-          : "0 0 20px -14px color-mix(in oklab, var(--color-neon) 30%, transparent)",
-        transition: "box-shadow 800ms ease",
         backgroundColor: "color-mix(in oklab, var(--color-forest) 5%, transparent)",
       }}
     >
