@@ -56,13 +56,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-
   return (
     <>
       <NeonCursor />
+      <TopNav />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
-          <TopNav />
           <Nav />
           <Hero />
           <section className="relative -mt-16">
@@ -115,7 +114,7 @@ function Index() {
 
 function TopNav() {
   return (
-    <nav className="sticky top-0 left-1/2 z-[100] h-8 w-[1440px] -translate-x-1/2 bg-ink">
+    <nav className="fixed top-0 left-0 right-0 z-[100] h-8 bg-ink w-full">
       <div className="mx-auto flex h-full max-w-[1240px] items-center justify-center gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide px-4">
         {niches.map((niche) => (
           <a
