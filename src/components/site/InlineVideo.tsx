@@ -36,6 +36,7 @@ export function InlineVideo({
   const { activeVideoSrc, setActiveVideoSrc } = useVideoControl();
   const [isExpanded, setIsExpanded] = useState(false);
   const [inView, setInView] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   const youtubeId = rawYoutubeId || getYouTubeId(youtubeUrl) || undefined;
   const isYouTube = Boolean(youtubeId);
@@ -45,6 +46,7 @@ export function InlineVideo({
   
   const setPlaying = useCallback((val: boolean) => {
     if (val) {
+      setHasInteracted(true);
       setActiveVideoSrc(videoKey);
     } else if (activeVideoSrc === videoKey) {
       setActiveVideoSrc(null);
@@ -61,11 +63,11 @@ export function InlineVideo({
         const isIntersecting = entries.some((e) => e.isIntersecting);
         setInView(isIntersecting);
         // Se saiu da tela, garante que parou de tocar
-        if (!isIntersecting && playing) {
-          setPlaying(false);
+        if (!isIntersecting && activeVideoSrc === videoKey) {
+          setActiveVideoSrc(null);
         }
       },
-      { rootMargin: "600px 0px" },
+      { rootMargin: "200px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
