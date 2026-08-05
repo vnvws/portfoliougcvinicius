@@ -64,11 +64,11 @@ function Index() {
             </div>
             <BrandMarquee />
           </section>
-          <div className="pt-24">
+          <div className="pt-12">
             <About />
           </div>
 
-          <section id="portfolio" className="mx-auto w-[1240px] pt-24 pb-32 space-y-48">
+          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16 space-y-24">
             {niches.map((niche, index) => (
               <div key={niche.id} className="relative">
                 <Reveal>
@@ -82,7 +82,7 @@ function Index() {
           </section>
 
           <FeedbackSection />
-          <Suspense fallback={<div className="h-96" />}>
+          <Suspense fallback={<div className="h-48" />}>
             <InvestmentSection />
           </Suspense>
           <Suspense fallback={<div className="h-96" />}>
@@ -190,7 +190,7 @@ function Hero() {
 
 function About() {
   return (
-    <section id="sobre" className="mx-auto w-[1240px] pb-24">
+    <section id="sobre" className="mx-auto w-[1240px] pb-12">
       <div className="grid grid-cols-12 items-start gap-8">
         <Reveal className="col-span-5">
           <img
@@ -237,8 +237,8 @@ function FeedbackSection() {
   ];
 
   return (
-    <section className="py-32 overflow-hidden bg-forest/5">
-      <div className="mx-auto w-[1240px] mb-12">
+    <section className="py-16 overflow-hidden bg-forest/5">
+      <div className="mx-auto w-[1240px] mb-8">
         <Reveal>
           <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
             Feedbacks
