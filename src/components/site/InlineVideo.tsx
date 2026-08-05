@@ -185,13 +185,18 @@ export function InlineVideo({
             />
           )
         ) : (
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-ink">
             {thumbnailUrl ? (
               <img
                 src={thumbnailUrl}
                 alt={label || "Capa do vídeo"}
                 loading="lazy"
-                className="h-full w-full object-cover"
+                decoding="async"
+                className="h-full w-full object-cover transition-opacity duration-500"
+                onLoad={(e) => {
+                  (e.target as HTMLImageElement).style.opacity = "1";
+                }}
+                style={{ opacity: 0 }}
               />
             ) : (
               <video
@@ -201,9 +206,8 @@ export function InlineVideo({
                 preload="metadata"
                 className="h-full w-full object-cover"
                 onLoadedData={(e) => {
-                  // Fallback: se não temos poster, tentamos pegar o primeiro frame
-                  // Mas o requisito pede thumbnails otimizadas, então poster é preferível
-                  (e.target as HTMLVideoElement).currentTime = 0.5;
+                  const v = e.target as HTMLVideoElement;
+                  v.currentTime = 2; // Pula os primeiros frames que costumam ser pretos
                 }}
               />
             )}
