@@ -122,8 +122,6 @@ function Hero() {
             <span
               style={{
                 color: "var(--color-forest)",
-                textShadow:
-                  "0 0 34px color-mix(in oklab, var(--color-neon) 45%, transparent), 0 0 4px color-mix(in oklab, var(--color-neon) 60%, transparent)",
               }}
             >
               Araújo
