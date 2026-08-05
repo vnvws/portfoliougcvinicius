@@ -53,11 +53,20 @@ header,
 }
 
 @keyframes marquee-x {
-  0% {
+  from {
     transform: translate3d(0, 0, 0);
   }
-  100% {
+  to {
     transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@-webkit-keyframes marquee-x {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  to {
+    -webkit-transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -70,6 +79,8 @@ header,
   -webkit-transform: translate3d(0, 0, 0);
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  display: flex !important;
+  visibility: visible !important;
 }
 
 @keyframes neon-breathe {

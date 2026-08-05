@@ -252,10 +252,16 @@ function FeedbackSection() {
         </Reveal>
       </div>
       
-      <div className="relative w-full overflow-hidden px-12 touch-pan-x">
+      <div className="relative w-full overflow-hidden px-12 touch-pan-x" style={{ isolation: 'isolate' }}>
         <div 
           className="flex w-max gap-6 animate-marquee"
-          style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+          style={{ 
+            transformStyle: "preserve-3d", 
+            WebkitTransformStyle: "preserve-3d", 
+            backfaceVisibility: "hidden", 
+            WebkitBackfaceVisibility: "hidden",
+            willChange: 'transform'
+          }}
           onMouseEnter={(e) => {
             if (window.matchMedia("(pointer: fine)").matches) {
               e.currentTarget.style.animationPlayState = "paused";
