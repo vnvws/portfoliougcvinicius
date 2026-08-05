@@ -9,12 +9,15 @@ section {
   contain-intrinsic-size: 1px 1000px;
 }
 
-/* Força seções críticas a serem visíveis para evitar flashes e saltos de layout */
 header, 
 .hero-section,
-[id="sobre"],
-#grupos-de-promocao {
+[id="sobre"] {
   content-visibility: visible;
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @custom-variant dark (&:is(.dark *));

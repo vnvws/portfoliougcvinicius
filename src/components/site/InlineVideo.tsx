@@ -132,7 +132,7 @@ export function InlineVideo({
   };
 
   const thumbnailUrl = isYouTube ? getYouTubeThumbnail(youtubeId!) : poster;
-  const shouldMountPlayer = (playing) && inView;
+  const shouldMountPlayer = inView && (playing || hasInteracted);
 
   return (
     <>
@@ -168,7 +168,7 @@ export function InlineVideo({
               muted={!playing}
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
               disablePictureInPicture
               controlsList="nodownload"
               controls={false}
