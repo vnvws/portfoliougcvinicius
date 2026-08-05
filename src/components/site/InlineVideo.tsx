@@ -177,33 +177,39 @@ export function InlineVideo({
               muted={!playing}
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               disablePictureInPicture
               controlsList="nodownload"
               controls={false}
               className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
             />
           )
         ) : (
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-ink">
             {thumbnailUrl ? (
               <img
                 src={thumbnailUrl}
                 alt={label || "Capa do vídeo"}
                 loading="lazy"
-                className="h-full w-full object-cover"
+                decoding="async"
+                className="h-full w-full object-cover transition-opacity duration-500"
+                onLoad={(e) => {
+                  (e.target as HTMLImageElement).style.opacity = "1";
+                }}
+                style={{ opacity: 0 }}
               />
             ) : (
               <video
-                src={src}
+                src={`${src}#t=2`}
                 muted
                 playsInline
                 preload="metadata"
                 className="h-full w-full object-cover"
                 onLoadedData={(e) => {
-                  // Fallback: se não temos poster, tentamos pegar o primeiro frame
-                  // Mas o requisito pede thumbnails otimizadas, então poster é preferível
-                  (e.target as HTMLVideoElement).currentTime = 0.5;
+                  const v = e.target as HTMLVideoElement;
+                  // Garante que o frame renderizado não seja o primeiro (possivelmente preto)
+                  if (v.currentTime < 1) v.currentTime = 2;
                 }}
               />
             )}

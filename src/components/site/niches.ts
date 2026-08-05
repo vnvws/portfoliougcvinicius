@@ -232,49 +232,49 @@ export const niches: Niche[] = [
         title: "Urubu das Promos",
         description: "Urubu das Promos Onde comprar energético barato",
         src: v17.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
         src: v16.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Urubu das Promos",
         description: "Urubu das Promos Creatina pagando barato",
         src: v5.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Urubu das Promos",
         description: "Compras no mercado x no grupo",
         src: v10.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Pegar Promo",
         description: "Comparativo de preço Cueca Mash",
         src: v15.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Achado secreto de promoções",
         src: v14.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Ofertas na Black Friday",
         src: v13.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Descoberta do grupo",
         src: v11.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -287,49 +287,49 @@ export const niches: Niche[] = [
         title: "Open English",
         description: "Aprender inglês nunca foi tão fácil",
         src: a2.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Canva",
         description: "Criando um post em segundos com a IA do Canva",
         src: a3.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Vision Cursor",
         description: "Personalise o cursor do seu mouse",
         src: a12.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Inner AI",
         description: "Plataforma completa com mais de 50 IAs",
         src: a1.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Lemon Cash",
         description: "Wallet híbrida multi moedas",
         src: a9.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "My Dream Setup",
         description: "Site para montar seu setup virtualmente",
         src: a5.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Auto Agente",
         description: "Pratique para prova do detran em casa",
         src: a11.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Canva",
         description: "Transformando foto em vídeo com a IA do Canva",
         src: a8.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -342,25 +342,25 @@ export const niches: Niche[] = [
         title: "LOOVI",
         description: "Seu carro segurado por um valor justo",
         src: c1.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "House Of Motors",
         description: "Tecnologia de limpeza a seco com carnaúba polimerizada",
         src: c2.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Radnaq Automotive",
         description: "Espuma para limpeza de estofados",
         src: c3.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Radnaq Automotive",
         description: "O óleo ideal para o motor do seu carro",
         src: c4.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -373,49 +373,49 @@ export const niches: Niche[] = [
         title: "Teccon",
         description: "O melhor mouse gamer com fio",
         src: t3.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "JOINGO",
         description: "A garrafa tripé",
         src: t4.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "MANCER",
         description: "Monitor gamer custo benefício",
         src: t5.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "8BitDo",
         description: "Controle sem fio com layout do X-Box",
         src: t6.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Allchem",
         description: "Maneira segura de limpar seu PC gamer",
         src: t8.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Allchem",
         description: "Limpeza preventiva com alcool isopropílico",
         src: t9.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "NEGOCIUN",
         description: "O marketplace perfeito para comprar seu PS5",
         src: t11.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "DDPAI",
         description: "A dash Cam Plug and Play",
         src: t12.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -428,25 +428,25 @@ export const niches: Niche[] = [
         title: "SMOO",
         description: "Sorvete desidratado em pasta",
         src: f1.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "UP GAS",
         description: "O primeiro isotônico com gás do Brasil",
         src: f2.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "WINE",
         description: "Assinatura mensal de vinhos",
         src: f3.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Iracema",
         description: "Nuts perfeitos para compor uma tábua de frios",
         src: f4.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -459,25 +459,25 @@ export const niches: Niche[] = [
         title: "ALVA",
         description: "Desodorante cristal em spray",
         src: sc1.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "O Aristocrata",
         description: "Sabote para homem de verdade",
         src: sc2.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Touti Cosmetics",
         description: "Perfumes de times de futebol",
         src: sc3.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "PROPER JACK",
         description: "Assinatura de skincare para homens",
         src: sc4.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -490,49 +490,49 @@ export const niches: Niche[] = [
         title: "PERGY",
         description: "Guarda-roupas otimizado com roupas básicas",
         src: m1.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "LAWE",
         description: "Moda básica de altíssima qualidade",
         src: m2.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Informal",
         description: "Se arrumando bem gastando pouco",
         src: m3.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Informal",
         description: "Arrume-se comigo pra quem não tem tempo sobrando",
         src: m4.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Vegano Shoes",
         description: "Bote de trilha leve e confortável",
         src: m5.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Minimal Club",
         description: "A 01 das camisetas pretas",
         src: m6.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Minimal Club",
         description: "A calça jeans mais confortável que já usei",
         src: m7.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Strip Me",
         description: "Camisetas personalizadas",
         src: m8.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -545,25 +545,25 @@ export const niches: Niche[] = [
         title: "HolaSim",
         description: "E-Sim internacional em uma roadtrip pela Europa",
         src: vg1.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Airbnb",
         description: "Casa container em Interlagos",
         src: vg2.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Airbnb",
         description: "Apartamento de luxo em Buenos Aires",
         src: vg3.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "Picnic",
         description: "Cartão de crédito internacional na Argentina",
         src: vg4.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
@@ -576,19 +576,19 @@ export const niches: Niche[] = [
         title: "Diffy",
         description: "Tutorial de aplicação de película premium",
         src: yt1.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "RDC Viagens",
         description: "Sua assinatura para viajar",
         src: yt2.url,
-        label: "Clique"
+        label: "9:16"
       },
       {
         title: "ManClub",
         description: "Desmatador: depilador para a região íntima masculina",
         src: yt3.url,
-        label: "Clique"
+        label: "9:16"
       }
     ],
   },
