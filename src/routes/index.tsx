@@ -31,17 +31,20 @@ const ContactSection = lazy(() => import("@/components/site/ContactSection"));
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Vinícius Araújo — UGC Creator | Portfólio" },
+      { title: "Vinícius Araújo | UGC Creator Masculino - Portfólio" },
       {
         name: "description",
         content:
-          "UGC Creator: vídeos verticais 9:16 para marcas de tech, moda, apps, alimentos, autocuidado e viagens. Veja o portfólio completo por nicho.",
+          "Vinícius Araújo, UGC Creator masculino focado em alta conversão. Produção de vídeos reais para marcas: UGC, TikTok, Reels e Stories nos nichos de tech, moda, apps e lifestyle.",
       },
-      { property: "og:title", content: "Vinícius Araújo — UGC Creator | Portfólio" },
+      { name: "keywords", content: "UGC, UGC Creator, UGC Creator masculino, UGC creator homem, criador de conteúdo, vídeo marketing, marketing de influência, TikTok Ads, Reels Ads" },
+      { property: "og:title", content: "Vinícius Araújo | UGC Creator Masculino" },
       {
         property: "og:description",
-        content: "Reels, TikToks e Stories que fazem marca virar conversa. Portfólio por nicho.",
+        content: "Transforme sua marca com conteúdo UGC autêntico criado por um especialista. Vídeos verticais que geram conexão e vendas.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
