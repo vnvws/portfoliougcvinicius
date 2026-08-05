@@ -61,8 +61,8 @@ function Index() {
     <>
       <NeonCursor />
       <FixedScale>
-        <TopNav />
-        <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-8">
+        <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
+          <TopNav />
           <Nav />
           <Hero />
           <section className="relative -mt-16">
@@ -115,8 +115,8 @@ function Index() {
 
 function TopNav() {
   return (
-    <nav className="fixed top-0 left-1/2 z-[100] h-8 w-[1440px] -translate-x-1/2 bg-ink px-4">
-      <div className="mx-auto flex h-full max-w-[1240px] items-center justify-center gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <nav className="absolute top-0 left-1/2 z-[100] h-8 w-[1440px] -translate-x-1/2 bg-ink">
+      <div className="mx-auto flex h-full max-w-[1240px] items-center justify-center gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide px-4">
         {niches.map((niche) => (
           <a
             key={niche.id}
