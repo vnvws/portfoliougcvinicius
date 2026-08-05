@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2, ChevronRight } from "lucide-react";
 import { FixedScale } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
@@ -22,9 +23,9 @@ import feedback7 from "@/assets/feedbacks/7.png.asset.json";
 import feedback8 from "@/assets/feedbacks/8.png.asset.json";
 import feedback9 from "@/assets/feedbacks/9.png.asset.json";
 import feedback10 from "@/assets/feedbacks/10.png.asset.json";
-import InvestmentSection from "@/components/site/InvestmentSection";
-import PackageSection from "@/components/site/PackageSection";
-import ContactSection from "@/components/site/ContactSection";
+const InvestmentSection = lazy(() => import("@/components/site/InvestmentSection"));
+const PackageSection = lazy(() => import("@/components/site/PackageSection"));
+const ContactSection = lazy(() => import("@/components/site/ContactSection"));
 
 
 export const Route = createFileRoute("/")({
@@ -81,11 +82,15 @@ function Index() {
           </section>
 
           <FeedbackSection />
-          <InvestmentSection />
-          <PackageSection />
-
-
-          <ContactSection />
+          <Suspense fallback={<div className="h-96" />}>
+            <InvestmentSection />
+          </Suspense>
+          <Suspense fallback={<div className="h-96" />}>
+            <PackageSection />
+          </Suspense>
+          <Suspense fallback={<div className="h-96" />}>
+            <ContactSection />
+          </Suspense>
         </main>
       </FixedScale>
       <BackToTop />
