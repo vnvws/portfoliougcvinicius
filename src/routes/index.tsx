@@ -59,7 +59,6 @@ function Index() {
   return (
     <>
       <NeonCursor />
-      <TopNav />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
           <Nav />
