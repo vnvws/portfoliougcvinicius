@@ -70,14 +70,13 @@ function Logo({ name, src }: Brand) {
       className="group relative mx-3 flex h-20 w-20 shrink-0 cursor-none items-center justify-center overflow-hidden rounded-full bg-white text-center transition-all duration-300 hover:scale-[1.1]"
       style={{ 
         border: "1px solid color-mix(in oklab, var(--color-forest) 22%, transparent)",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow =
           "0 0 0 1px var(--color-neon), 0 0 26px -4px color-mix(in oklab, var(--color-neon) 65%, transparent)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+        e.currentTarget.style.boxShadow = "none";
       }}
     >
       {src ? (
