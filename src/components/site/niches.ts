@@ -230,50 +230,50 @@ export const niches: Niche[] = [
     videos: [
       {
         title: "Urubu das Promos",
-        description: "Urubu das Promos Onde comprar energético barato",
-        src: v17.url,
+        description: "Onde comprar energético barato",
+        src: "https://www.youtube.com/embed/5AVBZ9Jr1h8",
         label: "9:16"
       },
       {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
-        src: v16.url,
+        src: "https://www.youtube.com/embed/ZK99niuae6I",
         label: "9:16"
       },
       {
         title: "Urubu das Promos",
-        description: "Urubu das Promos Creatina pagando barato",
-        src: v5.url,
+        description: "Creatina pagando barato",
+        src: "https://www.youtube.com/embed/gpbakssDqQA",
         label: "9:16"
       },
       {
         title: "Urubu das Promos",
         description: "Compras no mercado x no grupo",
-        src: v10.url,
+        src: "https://www.youtube.com/embed/FQWlsdRk650",
         label: "9:16"
       },
       {
         title: "Pegar Promo",
         description: "Comparativo de preço Cueca Mash",
-        src: v15.url,
+        src: "https://www.youtube.com/embed/e4zZ3Tkl7kA",
         label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Achado secreto de promoções",
-        src: v14.url,
+        src: "https://www.youtube.com/embed/P8aGesLY2ws",
         label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Ofertas na Black Friday",
-        src: v13.url,
+        src: "https://www.youtube.com/embed/X_l5w-QgcKM",
         label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Descoberta do grupo",
-        src: v11.url,
+        src: "https://www.youtube.com/embed/88FKJ9Hc29Y",
         label: "9:16"
       }
     ],
