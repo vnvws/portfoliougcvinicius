@@ -231,49 +231,49 @@ export const niches: Niche[] = [
       {
         title: "Urubu das Promos",
         description: "Onde comprar energético barato",
-        src: "https://www.youtube.com/embed/5AVBZ9Jr1h8",
+        youtubeUrl: "https://youtube.com/shorts/5AVBZ9Jr1h8",
         label: "9:16"
       },
       {
         title: "Rei da Promo",
         description: "Grupo com os melhores descontos da internet",
-        src: "https://www.youtube.com/embed/ZK99niuae6I",
+        youtubeUrl: "https://youtube.com/shorts/ZK99niuae6I",
         label: "9:16"
       },
       {
         title: "Urubu das Promos",
         description: "Creatina pagando barato",
-        src: "https://www.youtube.com/embed/gpbakssDqQA",
+        youtubeUrl: "https://youtube.com/shorts/gpbakssDqQA",
         label: "9:16"
       },
       {
         title: "Urubu das Promos",
         description: "Compras no mercado x no grupo",
-        src: "https://www.youtube.com/embed/FQWlsdRk650",
+        youtubeUrl: "https://youtube.com/shorts/FQWlsdRk650",
         label: "9:16"
       },
       {
         title: "Pegar Promo",
         description: "Comparativo de preço Cueca Mash",
-        src: "https://www.youtube.com/embed/e4zZ3Tkl7kA",
+        youtubeUrl: "https://youtube.com/shorts/e4zZ3Tkl7kA",
         label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Achado secreto de promoções",
-        src: "https://www.youtube.com/embed/P8aGesLY2ws",
+        youtubeUrl: "https://youtube.com/shorts/P8aGesLY2ws",
         label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Ofertas na Black Friday",
-        src: "https://www.youtube.com/embed/X_l5w-QgcKM",
+        youtubeUrl: "https://youtube.com/shorts/X_l5w-QgcKM",
         label: "9:16"
       },
       {
         title: "Promoções do Dia",
         description: "Descoberta do grupo",
-        src: "https://www.youtube.com/embed/88FKJ9Hc29Y",
+        youtubeUrl: "https://youtube.com/shorts/88FKJ9Hc29Y",
         label: "9:16"
       }
     ],
