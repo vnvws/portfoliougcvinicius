@@ -202,20 +202,18 @@ export function InlineVideo({
               <img 
                 src={thumbnailUrl}
                 alt={label || "Capa do vídeo"}
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover transition-opacity duration-500"
-                onLoad={(e) => {
-                  (e.target as HTMLImageElement).style.opacity = "1";
-                }}
-                style={{ opacity: 0 }}
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
+                className="h-full w-full object-cover"
+                onError={() => setHasError(true)}
               />
             ) : (
               <video
                 src={`${src}#t=1.5`}
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 className="h-full w-full object-cover"
                 onLoadedData={(e) => {
                   const v = e.target as HTMLVideoElement;
