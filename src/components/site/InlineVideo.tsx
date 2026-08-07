@@ -156,17 +156,26 @@ export function InlineVideo({
       >
         {shouldMountPlayer ? (
           isYouTube ? (
-            <div className="absolute inset-0 h-full w-full overflow-hidden">
+            <div className="absolute inset-0 h-full w-full overflow-hidden bg-black">
+              {/* Fallback de Thumbnail caso o iframe demore ou falhe */}
+              <img 
+                src={thumbnailUrl} 
+                alt="" 
+                className="absolute inset-0 h-full w-full object-cover opacity-50 blur-sm"
+              />
               <iframe
                 src={getYouTubeEmbedUrl(youtubeId!, true, false)}
                 title="YouTube video player"
                 allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                className="absolute inset-0 h-full w-full border-0"
-                style={{ pointerEvents: 'auto' }}
+                className="absolute inset-0 h-full w-full border-0 transition-opacity duration-700"
+                style={{ pointerEvents: 'auto', zIndex: 10 }}
                 sandbox="allow-forms allow-scripts allow-same-origin allow-presentation allow-popups"
                 // @ts-ignore
                 playsinline="true"
                 webkit-playsinline="true"
+                onLoad={(e) => {
+                  (e.target as HTMLIFrameElement).style.opacity = "1";
+                }}
               />
             </div>
           ) : (
