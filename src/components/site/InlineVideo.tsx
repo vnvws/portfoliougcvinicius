@@ -196,15 +196,17 @@ export function InlineVideo({
           <div className="absolute inset-0 bg-ink">
             {(thumbnailUrl && !hasError) ? (
               <img 
-                src={thumbnailUrl}
+                src={isYouTube ? `https://i.ytimg.com/vi/${youtubeId}/hq720.jpg` : thumbnailUrl}
                 alt={label || "Capa do vídeo"}
                 loading="eager"
                 fetchPriority="high"
                 decoding="sync"
                 className="h-full w-full object-cover"
                 onError={(e) => {
-                  if (isYouTube && !e.currentTarget.src.includes('hqdefault')) {
-                    e.currentTarget.src = getYouTubeThumbnail(youtubeId!, 'hqdefault');
+                  const target = e.currentTarget;
+                  if (isYouTube && target.src.includes('hq720')) {
+                    // Fallback para hqdefault se o 720p (que é melhor que o hq padrão) não existir
+                    target.src = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
                   } else {
                     setHasError(true);
                   }

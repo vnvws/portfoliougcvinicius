@@ -31,8 +31,8 @@ export function getYouTubeThumbnail(
   id: string,
   quality: "maxresdefault" | "sddefault" | "hqdefault" | "mqdefault" = "hqdefault",
 ): string {
-  // hqdefault é mais garantido para Shorts e vídeos recentes
-  return `https://img.youtube.com/vi/${id}/${quality}.jpg`;
+  // Retorna a melhor qualidade disponível. i.ytimg.com costuma ser mais rápido que img.youtube.com.
+  return `https://i.ytimg.com/vi/${id}/${quality}.jpg`;
 }
 
 export function getYouTubeEmbedUrl(id: string, autoplay = false, hideControls = true): string {
