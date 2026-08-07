@@ -341,25 +341,25 @@ export const niches: Niche[] = [
       {
         title: "LOOVI",
         description: "Seu carro segurado por um valor justo",
-        src: c1.url,
+        youtubeUrl: "https://www.youtube.com/shorts/J9pf9sw09Eg",
         label: "9:16"
       },
       {
         title: "House Of Motors",
         description: "Tecnologia de limpeza a seco com carnaúba polimerizada",
-        src: c2.url,
+        youtubeUrl: "https://www.youtube.com/shorts/tL9mTYpLUoU",
         label: "9:16"
       },
       {
         title: "Radnaq Automotive",
         description: "Espuma para limpeza de estofados",
-        src: c3.url,
+        youtubeUrl: "https://www.youtube.com/shorts/Ra4LIIQWTRE",
         label: "9:16"
       },
       {
         title: "Radnaq Automotive",
         description: "O óleo ideal para o motor do seu carro",
-        src: c4.url,
+        youtubeUrl: "https://www.youtube.com/shorts/79aZcXY09g0",
         label: "9:16"
       }
     ],
