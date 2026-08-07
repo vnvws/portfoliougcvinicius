@@ -65,16 +65,12 @@ export function InlineVideo({
       (entries) => {
         const isIntersecting = entries.some((e) => e.isIntersecting);
         setInView(isIntersecting);
-        // Se saiu da tela, garante que parou de tocar
-        if (!isIntersecting && activeVideoSrc === videoKey) {
-          setActiveVideoSrc(null);
-        }
       },
       { rootMargin: "600px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [playing, setPlaying]);
+  }, []);
 
   // Para vídeos nativos, sincroniza play/pause via ref.
   useEffect(() => {
