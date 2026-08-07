@@ -152,7 +152,7 @@ export function InlineVideo({
         className="absolute inset-0"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        onClick={toggle}
+        onClick={isYouTube && playing ? undefined : toggle}
       >
         {shouldMountPlayer ? (
           isYouTube ? (
@@ -218,10 +218,10 @@ export function InlineVideo({
         )}
 
         <div
-          className="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
+          className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none"
           style={{ 
             opacity: playing ? 0 : 1,
-            background: hasStartedLoading ? 'transparent' : 'rgba(0,0,0,0.1)'
+            background: hasStartedLoading && !isYouTube ? 'transparent' : 'rgba(0,0,0,0.1)'
           }}
         >
           <span
