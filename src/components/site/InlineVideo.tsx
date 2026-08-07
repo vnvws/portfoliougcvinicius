@@ -202,7 +202,13 @@ export function InlineVideo({
                 fetchPriority="high"
                 decoding="sync"
                 className="h-full w-full object-cover"
-                onError={() => setHasError(true)}
+                onError={(e) => {
+                  if (isYouTube && !e.currentTarget.src.includes('hqdefault')) {
+                    e.currentTarget.src = getYouTubeThumbnail(youtubeId!, 'hqdefault');
+                  } else {
+                    setHasError(true);
+                  }
+                }}
               />
             ) : (
               <video
