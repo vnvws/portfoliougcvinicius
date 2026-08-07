@@ -286,49 +286,49 @@ export const niches: Niche[] = [
       {
         title: "Open English",
         description: "Aprender inglês nunca foi tão fácil",
-        src: a2.url,
+        youtubeUrl: "https://youtube.com/shorts/lhXA3B0Vg5w",
         label: "9:16"
       },
       {
         title: "Canva",
         description: "Criando um post em segundos com a IA do Canva",
-        src: a3.url,
+        youtubeUrl: "https://youtube.com/shorts/v4n4fw78byk",
         label: "9:16"
       },
       {
         title: "Vision Cursor",
-        description: "Personalise o cursor do seu mouse",
-        src: a12.url,
+        description: "Personalize o cursor do seu mouse",
+        youtubeUrl: "https://youtube.com/shorts/JHDb4fS-5Kc",
         label: "9:16"
       },
       {
         title: "Inner AI",
         description: "Plataforma completa com mais de 50 IAs",
-        src: a1.url,
+        youtubeUrl: "https://youtube.com/shorts/RBxblF1oEUE",
         label: "9:16"
       },
       {
         title: "Lemon Cash",
         description: "Wallet híbrida multi moedas",
-        src: a9.url,
+        youtubeUrl: "https://youtube.com/shorts/EyFGaBLJ8Qw",
         label: "9:16"
       },
       {
         title: "My Dream Setup",
         description: "Site para montar seu setup virtualmente",
-        src: a5.url,
+        youtubeUrl: "https://youtube.com/shorts/f6_6t8LijXM",
         label: "9:16"
       },
       {
         title: "Auto Agente",
         description: "Pratique para prova do detran em casa",
-        src: a11.url,
+        youtubeUrl: "https://youtube.com/shorts/8sI2MSLxWwU",
         label: "9:16"
       },
       {
         title: "Canva",
         description: "Transformando foto em vídeo com a IA do Canva",
-        src: a8.url,
+        youtubeUrl: "https://youtube.com/shorts/OZ4DMDCyg3Y",
         label: "9:16"
       }
     ],
