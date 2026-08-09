@@ -279,6 +279,92 @@ export const niches: Niche[] = [
     ],
   },
   {
+    id: "moda",
+    title: "Moda",
+    layout: "vertical",
+    videos: [
+      {
+        title: "PERGY",
+        description: "Guarda-roupas otimizado com roupas básicas",
+        youtubeUrl: "https://youtube.com/shorts/1Odrd8LJJ0A",
+        label: "9:16"
+      },
+      {
+        title: "LAWE",
+        description: "Moda básica de altíssima qualidade",
+        youtubeUrl: "https://youtube.com/shorts/L13nfS5Xsmw",
+        label: "9:16"
+      },
+      {
+        title: "Informal",
+        description: "Como se vestir bem gastando pouco",
+        youtubeUrl: "https://youtube.com/shorts/BdmFMwP3e0E",
+        label: "9:16"
+      },
+      {
+        title: "Informal",
+        description: "Arrume-se comigo para o dia a dia",
+        youtubeUrl: "https://youtube.com/shorts/mmog5ygHlog",
+        label: "9:16"
+      },
+      {
+        title: "Vegano Shoes",
+        description: "Tênis sustentável e confortável",
+        youtubeUrl: "https://youtube.com/shorts/FEFcWi-tGTM",
+        label: "9:16"
+      },
+      {
+        title: "Minimal Club",
+        description: "A camiseta básica perfeita",
+        youtubeUrl: "https://youtube.com/shorts/utGFtVRUf5A",
+        label: "9:16"
+      },
+      {
+        title: "Minimal Club",
+        description: "Calça Jeans com caimento impecável",
+        youtubeUrl: "https://youtube.com/shorts/wOwe69fjguE",
+        label: "9:16"
+      },
+      {
+        title: "Strip Me",
+        description: "Camisetas com estampas exclusivas",
+        youtubeUrl: "https://youtube.com/shorts/SzArCI0y1xE",
+        label: "9:16"
+      }
+    ],
+  },
+  {
+    id: "viagens",
+    title: "Viagens",
+    layout: "vertical",
+    videos: [
+      {
+        title: "HolaSim",
+        description: "E-Sim internacional em uma roadtrip pela Europa",
+        youtubeUrl: "https://youtube.com/shorts/bePfSKXFfME",
+        label: "9:16"
+      },
+      {
+        title: "Airbnb",
+        description: "Casa container em Interlagos",
+        youtubeUrl: "https://youtube.com/shorts/a-xfNnSMIDA",
+        label: "9:16"
+      },
+      {
+        title: "Airbnb",
+        description: "Apartamento de luxo em Buenos Aires",
+        youtubeUrl: "https://youtube.com/shorts/1QUie9sqrV8",
+        label: "9:16"
+      },
+      {
+        title: "Picnic",
+        description: "Cartão de crédito internacional na Argentina",
+        youtubeUrl: "https://youtube.com/shorts/mbAqzvSo6dE",
+        label: "9:16"
+      }
+    ],
+  },
+  {
     id: "apps-e-servicos",
     title: "Apps e Serviços",
     layout: "vertical",
@@ -329,6 +415,37 @@ export const niches: Niche[] = [
         title: "Canva",
         description: "Transformando foto em vídeo com a IA do Canva",
         youtubeUrl: "https://youtube.com/shorts/OZ4DMDCyg3Y",
+        label: "9:16"
+      }
+    ],
+  },
+  {
+    id: "autocuidado",
+    title: "Autocuidado",
+    layout: "vertical",
+    videos: [
+      {
+        title: "ALVA",
+        description: "Desodorante cristal em spray",
+        youtubeUrl: "https://youtube.com/shorts/kbi32DpMugg",
+        label: "9:16"
+      },
+      {
+        title: "O Aristocrata",
+        description: "Sabote para homem de verdade",
+        youtubeUrl: "https://youtube.com/shorts/mJPITSNEZB8",
+        label: "9:16"
+      },
+      {
+        title: "Touti Cosmetics",
+        description: "Perfumes de times de futebol",
+        youtubeUrl: "https://youtube.com/shorts/IqbKipWZq9M",
+        label: "9:16"
+      },
+      {
+        title: "PROPER JACK",
+        description: "Assinatura de skincare para homens",
+        youtubeUrl: "https://youtube.com/shorts/d9_RKfbHb10",
         label: "9:16"
       }
     ],
@@ -446,123 +563,6 @@ export const niches: Niche[] = [
         title: "Iracema",
         description: "Nuts perfeitos para compor uma tábua de frios",
         youtubeUrl: "https://youtube.com/shorts/Puy6ypkVLUk",
-        label: "9:16"
-      }
-    ],
-  },
-  {
-    id: "autocuidado",
-    title: "Autocuidado",
-    layout: "vertical",
-    videos: [
-      {
-        title: "ALVA",
-        description: "Desodorante cristal em spray",
-        youtubeUrl: "https://youtube.com/shorts/kbi32DpMugg",
-        label: "9:16"
-      },
-      {
-        title: "O Aristocrata",
-        description: "Sabote para homem de verdade",
-        youtubeUrl: "https://youtube.com/shorts/mJPITSNEZB8",
-        label: "9:16"
-      },
-      {
-        title: "Touti Cosmetics",
-        description: "Perfumes de times de futebol",
-        youtubeUrl: "https://youtube.com/shorts/IqbKipWZq9M",
-        label: "9:16"
-      },
-      {
-        title: "PROPER JACK",
-        description: "Assinatura de skincare para homens",
-        youtubeUrl: "https://youtube.com/shorts/d9_RKfbHb10",
-        label: "9:16"
-      }
-    ],
-  },
-  {
-    id: "moda",
-    title: "Moda",
-    layout: "vertical",
-    videos: [
-      {
-        title: "PERGY",
-        description: "Guarda-roupas otimizado com roupas básicas",
-        youtubeUrl: "https://youtube.com/shorts/1Odrd8LJJ0A",
-        label: "9:16"
-      },
-      {
-        title: "LAWE",
-        description: "Moda básica de altíssima qualidade",
-        youtubeUrl: "https://youtube.com/shorts/L13nfS5Xsmw",
-        label: "9:16"
-      },
-      {
-        title: "Informal",
-        description: "Como se vestir bem gastando pouco",
-        youtubeUrl: "https://youtube.com/shorts/BdmFMwP3e0E",
-        label: "9:16"
-      },
-      {
-        title: "Informal",
-        description: "Arrume-se comigo para o dia a dia",
-        youtubeUrl: "https://youtube.com/shorts/mmog5ygHlog",
-        label: "9:16"
-      },
-      {
-        title: "Vegano Shoes",
-        description: "Tênis sustentável e confortável",
-        youtubeUrl: "https://youtube.com/shorts/FEFcWi-tGTM",
-        label: "9:16"
-      },
-      {
-        title: "Minimal Club",
-        description: "A camiseta básica perfeita",
-        youtubeUrl: "https://youtube.com/shorts/utGFtVRUf5A",
-        label: "9:16"
-      },
-      {
-        title: "Minimal Club",
-        description: "Calça Jeans com caimento impecável",
-        youtubeUrl: "https://youtube.com/shorts/wOwe69fjguE",
-        label: "9:16"
-      },
-      {
-        title: "Strip Me",
-        description: "Camisetas com estampas exclusivas",
-        youtubeUrl: "https://youtube.com/shorts/SzArCI0y1xE",
-        label: "9:16"
-      }
-    ],
-  },
-  {
-    id: "viagens",
-    title: "Viagens",
-    layout: "vertical",
-    videos: [
-      {
-        title: "HolaSim",
-        description: "E-Sim internacional em uma roadtrip pela Europa",
-        youtubeUrl: "https://youtube.com/shorts/bePfSKXFfME",
-        label: "9:16"
-      },
-      {
-        title: "Airbnb",
-        description: "Casa container em Interlagos",
-        youtubeUrl: "https://youtube.com/shorts/a-xfNnSMIDA",
-        label: "9:16"
-      },
-      {
-        title: "Airbnb",
-        description: "Apartamento de luxo em Buenos Aires",
-        youtubeUrl: "https://youtube.com/shorts/1QUie9sqrV8",
-        label: "9:16"
-      },
-      {
-        title: "Picnic",
-        description: "Cartão de crédito internacional na Argentina",
-        youtubeUrl: "https://youtube.com/shorts/mbAqzvSo6dE",
         label: "9:16"
       }
     ],
