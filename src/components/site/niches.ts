@@ -458,25 +458,25 @@ export const niches: Niche[] = [
       {
         title: "ALVA",
         description: "Desodorante cristal em spray",
-        src: sc1.url,
+        youtubeUrl: "https://youtube.com/shorts/kbi32DpMugg",
         label: "9:16"
       },
       {
         title: "O Aristocrata",
         description: "Sabote para homem de verdade",
-        src: sc2.url,
+        youtubeUrl: "https://youtube.com/shorts/mJPITSNEZB8",
         label: "9:16"
       },
       {
         title: "Touti Cosmetics",
         description: "Perfumes de times de futebol",
-        src: sc3.url,
+        youtubeUrl: "https://youtube.com/shorts/IqbKipWZq9M",
         label: "9:16"
       },
       {
         title: "PROPER JACK",
         description: "Assinatura de skincare para homens",
-        src: sc4.url,
+        youtubeUrl: "https://youtube.com/shorts/d9_RKfbHb10",
         label: "9:16"
       }
     ],
