@@ -136,6 +136,21 @@ header,
   }
 }
 
+@keyframes hint-arrow {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(6px);
+    opacity: 1;
+  }
+}
+
+.animate-hint-arrow {
+  animation: hint-arrow 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 @utility translate-z-0 {
   transform: translateZ(0);
 }
