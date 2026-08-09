@@ -91,20 +91,29 @@ function Index() {
               <PortfolioNav activeTab={activeTab} onTabChange={setActiveTab} />
             </div>
 
-            <div className="min-h-[600px] transition-all duration-500">
-              {niches.map((niche, index) => (
-                activeTab === niche.id && (
-                  <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <div className="mb-12 px-12">
-                      <h2 className="font-display text-[64px] font-black tracking-[-0.04em] text-forest leading-tight uppercase">
-                        {niche.title}
-                      </h2>
-                      <div className="mt-2 h-[2px] w-32 bg-neon/30" />
+            {/*
+              Altura reservada de forma estável: um "ghost" invisível define a altura
+              máxima (2 linhas de cards verticais + título), e o conteúdo ativo é
+              renderizado sobreposto. Assim trocar de nicho nunca altera a altura do
+              documento — nenhum jump vertical, nenhum scrollTo corretivo.
+            */}
+            <div className="relative">
+              <PortfolioSizer />
+              <div className="absolute inset-x-0 top-0">
+                {niches.map((niche, index) => (
+                  activeTab === niche.id && (
+                    <div key={niche.id} className="animate-in fade-in duration-500">
+                      <div className="mb-12 px-12">
+                        <h2 className="font-display text-[64px] font-black tracking-[-0.04em] text-forest leading-tight uppercase">
+                          {niche.title}
+                        </h2>
+                        <div className="mt-2 h-[2px] w-32 bg-neon/30" />
+                      </div>
+                      <PortfolioGrid niche={niche} index={index} />
                     </div>
-                    <PortfolioGrid niche={niche} index={index} />
-                  </div>
-                )
-              ))}
+                  )
+                ))}
+              </div>
             </div>
           </section>
 
@@ -135,6 +144,38 @@ function Index() {
 }
 
 function PortfolioGrid({ niche, index }: { niche: Niche; index: number }) {
+
+  return (
+    <PortfolioGridInner niche={niche} index={index} />
+  );
+}
+
+/** Reserva a altura máxima possível (título + 2 linhas de cards 9/16 + caption). */
+function PortfolioSizer() {
+  return (
+    <div aria-hidden className="invisible pointer-events-none select-none">
+      <div className="mb-12 px-12">
+        <h2 className="font-display text-[64px] font-black tracking-[-0.04em] leading-tight uppercase">
+          .
+        </h2>
+        <div className="mt-2 h-[2px] w-32" />
+      </div>
+      <div className="grid grid-cols-4 gap-x-6 gap-y-10 px-12">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i}>
+            <div className="w-full" style={{ aspectRatio: "9 / 16" }} />
+            <div className="pt-3">
+              <h4 className="font-display text-[15px] leading-tight font-bold">.</h4>
+              <p className="mt-1 font-sans text-[12px] leading-snug">.</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PortfolioGridInner({ niche, index }: { niche: Niche; index: number }) {
   const [visibleCount, setVisibleCount] = useState(12);
   const isAll = niche.id === "todos";
   
@@ -244,6 +285,8 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
         {niches.map((niche) => (
           <button
             key={niche.id}
+            type="button"
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => onTabChange(niche.id)}
             className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start ${
               activeTab === niche.id 
