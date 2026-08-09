@@ -285,6 +285,8 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
         {niches.map((niche) => (
           <button
             key={niche.id}
+            type="button"
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => onTabChange(niche.id)}
             className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start ${
               activeTab === niche.id 
