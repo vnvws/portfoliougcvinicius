@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2, ChevronRight } from "lucide-react";
+import { Play } from "lucide-react";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
