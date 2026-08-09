@@ -9,7 +9,7 @@ export function NicheSection({ niche, index }: { niche: Niche; index: number }) 
   return (
     <div className="relative">
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 px-12"
+        className="grid grid-cols-4 gap-x-6 gap-y-10 px-12"
       >
         {niche.videos.map((video, i) => (
           <Reveal key={`${niche.id}-${i}-${video.src || video.youtubeId}`} delay={i * 50}>

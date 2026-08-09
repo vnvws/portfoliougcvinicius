@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { Play } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight } from "lucide-react";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -192,7 +192,7 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
             onClick={() => onTabChange(niche.id)}
             className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start ${
               activeTab === niche.id 
-                ? 'text-forest scale-105' 
+                ? 'text-forest' 
                 : 'text-forest/30 hover:text-forest/60'
             }`}
           >
