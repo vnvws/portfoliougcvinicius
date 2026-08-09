@@ -65,11 +65,10 @@ function Index() {
       <NeonCursor />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
-          <Nav activeTab={activeTab} onTabChange={setActiveTab} />
           <Hero />
           
           <section className="relative -mt-16">
-            <div className="mx-auto w-[1240px] pb-6">
+            <div className="mx-auto w-[1240px] pb-6 px-12">
               <p className="text-[11px] font-bold tracking-[0.32em] text-forest opacity-80">
                 Marcas que já confiaram
               </p>
@@ -83,15 +82,25 @@ function Index() {
 
           {/* Portfolio Section - Tabbed for Maximum Performance */}
           <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
-            <div className="mb-12 flex flex-col items-center">
+            <div className="mb-8 flex flex-col items-center">
               <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
               <div className="h-[1px] w-24 bg-neon" />
+            </div>
+
+            <div className="mb-12">
+              <PortfolioNav activeTab={activeTab} onTabChange={setActiveTab} />
             </div>
 
             <div className="min-h-[600px] transition-all duration-500">
               {niches.map((niche, index) => (
                 activeTab === niche.id && (
-                  <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div className="mb-12 px-12">
+                      <h2 className="font-display text-[64px] font-black tracking-[-0.04em] text-forest leading-tight uppercase">
+                        {niche.title}
+                      </h2>
+                      <div className="mt-2 h-[2px] w-32 bg-neon/30" />
+                    </div>
                     <PortfolioGrid niche={niche} index={index} />
                   </div>
                 )
@@ -191,7 +200,6 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
             {activeTab === niche.id && (
               <div 
                 className="absolute -bottom-1 left-0 h-[2px] w-full bg-neon animate-in fade-in zoom-in duration-300" 
-                layoutId="activeTab"
               />
             )}
             <div className="absolute inset-x-0 -bottom-1 h-[1px] w-0 bg-forest/10 transition-all duration-300 group-hover:w-full" />
