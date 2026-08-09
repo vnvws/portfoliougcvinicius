@@ -372,49 +372,49 @@ export const niches: Niche[] = [
       {
         title: "Teccon",
         description: "O melhor mouse gamer com fio",
-        src: t3.url,
+        youtubeUrl: "https://youtube.com/shorts/CpMjjiDBckQ",
         label: "9:16"
       },
       {
         title: "JOINGO",
         description: "A garrafa tripé",
-        src: t4.url,
+        youtubeUrl: "https://youtube.com/shorts/TDNyNST1vlI",
         label: "9:16"
       },
       {
         title: "MANCER",
         description: "Monitor gamer custo benefício",
-        src: t5.url,
+        youtubeUrl: "https://youtube.com/shorts/Q_07vsl2DPw",
         label: "9:16"
       },
       {
         title: "8BitDo",
         description: "Controle sem fio com layout do X-Box",
-        src: t6.url,
+        youtubeUrl: "https://youtube.com/shorts/ziS1A4D710o",
         label: "9:16"
       },
       {
         title: "Allchem",
         description: "Maneira segura de limpar seu PC gamer",
-        src: t8.url,
+        youtubeUrl: "https://youtube.com/shorts/YuHQ6v360ug",
         label: "9:16"
       },
       {
         title: "Allchem",
-        description: "Limpeza preventiva com alcool isopropílico",
-        src: t9.url,
+        description: "Limpeza preventiva com álcool isopropílico",
+        youtubeUrl: "https://youtube.com/shorts/Odt2I4qzgHE",
         label: "9:16"
       },
       {
         title: "NEGOCIUN",
         description: "O marketplace perfeito para comprar seu PS5",
-        src: t11.url,
+        youtubeUrl: "https://youtube.com/shorts/ajM8rsZGSEw",
         label: "9:16"
       },
       {
         title: "DDPAI",
         description: "A dash Cam Plug and Play",
-        src: t12.url,
+        youtubeUrl: "https://youtube.com/shorts/S8timKpdT7E",
         label: "9:16"
       }
     ],
