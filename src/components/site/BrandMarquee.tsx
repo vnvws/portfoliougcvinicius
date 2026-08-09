@@ -103,13 +103,11 @@ export function BrandMarquee() {
       <div
         className="flex w-max items-center animate-marquee"
           style={{ 
-            transformStyle: "flat", 
-            WebkitTransformStyle: "flat", 
-            backfaceVisibility: "hidden", 
-            WebkitBackfaceVisibility: "hidden",
+            transform: "translate3d(0, 0, 0)",
+            WebkitTransform: "translate3d(0, 0, 0)",
             willChange: 'transform',
-            perspective: '1000px',
-            WebkitPerspective: '1000px'
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden"
           }}
         onMouseEnter={(e) => {
           if (window.matchMedia("(pointer: fine)").matches) {
