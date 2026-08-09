@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { Play, Instagram, Mail, ArrowUpRight } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight, ChevronRight } from "lucide-react";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -174,13 +174,68 @@ function PortfolioGrid({ niche, index }: { niche: Niche; index: number }) {
 
 function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    
+    const canScrollLeft = el.scrollLeft > 5;
+    const canScrollRight = el.scrollLeft < (el.scrollWidth - el.clientWidth - 5);
+    
+    setShowLeftArrow(canScrollLeft);
+    setShowRightArrow(canScrollRight);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    checkScroll();
+    
+    const ro = new ResizeObserver(checkScroll);
+    ro.observe(el);
+    
+    el.addEventListener('scroll', checkScroll, { passive: true });
+    
+    return () => {
+      ro.disconnect();
+      el.removeEventListener('scroll', checkScroll);
+    };
+  }, []);
+
+  const scroll = (direction: 'left' | 'right') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    
+    const scrollAmount = 280;
+    el.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  };
 
   return (
-    <div className="relative w-full px-12">
-      {/* Container with horizontal scroll on mobile, flex-wrap or just hidden scroll on desktop */}
+    <div className="relative w-full px-12 group/nav">
+      {/* Left Indicator */}
+      {showLeftArrow && (
+        <>
+          <div className="pointer-events-none absolute inset-y-0 left-12 z-20 w-24 bg-gradient-to-r from-bone via-bone/80 to-transparent transition-opacity duration-500" />
+          <button 
+            onClick={() => scroll('left')}
+            className="absolute left-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
+            aria-label="Ver nichos anteriores"
+          >
+            <ChevronRight className="rotate-180" size={20} strokeWidth={2.5} />
+          </button>
+        </>
+      )}
+
+      {/* Main Scrollable Area */}
       <div 
         ref={scrollRef}
-        className="flex w-full items-center gap-x-8 overflow-x-auto overflow-y-hidden pb-4 scrollbar-none snap-x snap-mandatory touch-pan-x"
+        className="flex w-full items-center gap-x-10 overflow-x-auto overflow-y-hidden pb-4 scrollbar-none snap-x snap-mandatory touch-pan-x"
         style={{
           msOverflowStyle: 'none',
           scrollbarWidth: 'none',
@@ -207,9 +262,23 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
         ))}
       </div>
       
-      {/* Fading indicators for mobile scroll */}
-      <div className="pointer-events-none absolute inset-y-0 right-12 w-16 bg-gradient-to-l from-bone to-transparent md:hidden" />
-      <div className="pointer-events-none absolute inset-y-0 left-12 w-16 bg-gradient-to-r from-bone to-transparent md:hidden" />
+      {/* Right Indicator */}
+      {showRightArrow && (
+        <>
+          <div className="pointer-events-none absolute inset-y-0 right-12 z-20 w-24 bg-gradient-to-l from-bone via-bone/80 to-transparent transition-opacity duration-500" />
+          <button 
+            onClick={() => scroll('right')}
+            className="absolute right-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
+            aria-label="Ver mais nichos"
+          >
+            <ChevronRight 
+              className="animate-hint-arrow" 
+              size={20} 
+              strokeWidth={2.5} 
+            />
+          </button>
+        </>
+      )}
     </div>
   );
 }
