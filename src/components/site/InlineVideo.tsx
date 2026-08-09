@@ -1,8 +1,8 @@
-import { Play, Pause, Maximize, X } from "lucide-react";
+import { Play, Pause, X } from "lucide-react";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useVideoControl } from "./FixedScale";
-import { getYouTubeEmbedUrl, getYouTubeId, getYouTubeThumbnail } from "./youtube";
+import { getYouTubeEmbedUrl, getYouTubeId } from "./youtube";
 
 type Props = {
   src?: string | undefined;
@@ -16,11 +16,11 @@ type Props = {
 };
 
 /**
- * Player inline configurado para:
- * - Reprodução com som apenas ao clicar
- * - Sem reprodução automática
- * - Modal de visualização ampliada (Lightbox) no lugar de Fullscreen nativo
- * - Suporte a vídeos nativos (src) e YouTube (youtubeId/youtubeUrl)
+ * Player inline otimizado com padrão Facade:
+ * - O iframe do YouTube só é montado após o clique (Sob demanda)
+ * - Mostra uma thumbnail estática de alta qualidade inicialmente
+ * - Gerencia um único player ativo por vez via FixedScale context
+ * - Desmonta players inativos ao sair da viewport
  */
 export function InlineVideo({
   src,
@@ -34,30 +34,28 @@ export function InlineVideo({
   const ref = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const { activeVideoSrc, setActiveVideoSrc } = useVideoControl();
-  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Estados para controle de montagem e interação
   const [inView, setInView] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [hasStartedLoading, setHasStartedLoading] = useState(false);
 
   const youtubeId = rawYoutubeId || getYouTubeId(youtubeUrl) || undefined;
   const isYouTube = Boolean(youtubeId);
   const videoKey = youtubeId || src || "";
 
-  const playing = activeVideoSrc === videoKey;
+  const isPlaying = activeVideoSrc === videoKey;
   
-  const setPlaying = useCallback((val: boolean) => {
-    if (val) {
-      setHasInteracted(true);
-      setHasStartedLoading(true);
-      setActiveVideoSrc(videoKey);
-    } else if (activeVideoSrc === videoKey) {
+  // Se pararmos de estar "inView", garantimos que o player seja resetado
+  // Isso ajuda a liberar memória no mobile
+  useEffect(() => {
+    if (!inView && isPlaying) {
       setActiveVideoSrc(null);
+      setHasInteracted(false);
     }
-  }, [videoKey, activeVideoSrc, setActiveVideoSrc]);
+  }, [inView, isPlaying, setActiveVideoSrc]);
 
-  // IntersectionObserver: só mantém o player real no DOM quando visível,
-  // liberando memória de decodificadores no iOS.
+  // IntersectionObserver: Monitora visibilidade
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -66,207 +64,116 @@ export function InlineVideo({
         const isIntersecting = entries.some((e) => e.isIntersecting);
         setInView(isIntersecting);
       },
-      { rootMargin: "600px 0px" },
+      { rootMargin: "200px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
-  // Para vídeos nativos, sincroniza play/pause via ref.
-  useEffect(() => {
-    if (isYouTube) return;
-    const v = ref.current;
-    if (!v) return;
-    
-    if (!inView && playing) {
-      setPlaying(false);
-      return;
-    }
-
-    if (playing) {
-      v.muted = false;
-      const playPromise = v.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => {
-          console.warn("Playback failed:", err);
-          setPlaying(false);
-        });
-      }
-    } else {
-      v.pause();
-    }
-  }, [playing, isYouTube, src, setPlaying, inView]);
-
-  const toggle = (e: React.MouseEvent) => {
+  const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (isYouTube) {
-      setPlaying(!playing);
-      return;
-    }
-    
-    // Se não está carregado no DOM ainda, apenas setamos playing como true
-    // O useEffect cuidará de dar o play assim que o ref estiver disponível
-    setPlaying(!playing);
+    setHasInteracted(true);
+    setActiveVideoSrc(videoKey);
   };
 
-  const openLightbox = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    // Lightbox desativado conforme solicitado
-  };
+  // Thumbnail do YouTube (Prioriza 720p, depois HQ)
+  const youtubeThumbnail = youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hq720.jpg` : poster;
 
-  const closeLightbox = () => {
-    setIsExpanded(false);
-  };
-
-  const onEnter = () => {
-    if (!previewOnHover || playing || isExpanded || isYouTube) return;
-    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
-    const v = ref.current;
-    if (v) {
-      v.muted = true;
-      void v.play();
-    }
-  };
-
-  const onLeave = () => {
-    if (playing || isExpanded || isYouTube) return;
-    const v = ref.current;
-    if (v) {
-      v.pause();
-      v.currentTime = 0;
-    }
-  };
-
-  const thumbnailUrl = isYouTube ? getYouTubeThumbnail(youtubeId!) : poster;
-  const shouldMountPlayer = inView && hasStartedLoading;
+  // Só montamos o player real se:
+  // 1. Estiver na viewport
+  // 2. O usuário clicou para dar play (Facade pattern)
+  // 3. Este vídeo é o ativo no contexto global
+  const shouldShowPlayer = inView && hasInteracted && isPlaying;
 
   return (
-    <>
-      <div
-        ref={wrapRef}
-        data-video-key={videoKey}
-        className="absolute inset-0"
-        onMouseEnter={onEnter}
-        onMouseLeave={onLeave}
-        onClick={isYouTube && playing ? undefined : toggle}
-      >
-        {shouldMountPlayer ? (
-          isYouTube ? (
-            <div className="absolute inset-0 h-full w-full overflow-hidden bg-black">
-              {/* Fallback de Thumbnail caso o iframe demore ou falhe */}
-              <img 
-                src={thumbnailUrl} 
-                alt="" 
-                className="absolute inset-0 h-full w-full object-cover opacity-50 blur-sm"
-              />
-              <iframe
-                src={getYouTubeEmbedUrl(youtubeId!, true, false)}
-                title="YouTube video player"
-                allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                className="absolute inset-0 h-full w-full border-0 transition-opacity duration-700"
-                style={{ pointerEvents: 'auto', zIndex: 10 }}
-                sandbox="allow-forms allow-scripts allow-same-origin allow-presentation allow-popups"
-                // @ts-ignore
-                playsinline="true"
-                webkit-playsinline="true"
-                onLoad={(e) => {
-                  (e.target as HTMLIFrameElement).style.opacity = "1";
-                }}
-              />
-            </div>
-          ) : (
-            <video
-              key={src}
-              ref={ref}
-              src={src}
-              poster={poster}
-              muted={!playing}
-              loop
-              playsInline
-              preload="none"
-              disablePictureInPicture
-              controlsList="nodownload"
-              controls={false}
-              className="absolute inset-0 h-full w-full object-cover"
-              autoPlay
-              onError={() => setHasError(true)}
+    <div
+      ref={wrapRef}
+      data-video-key={videoKey}
+      className="absolute inset-0 bg-ink overflow-hidden"
+      onClick={!shouldShowPlayer ? handlePlay : undefined}
+    >
+      {shouldShowPlayer ? (
+        isYouTube ? (
+          <div className="absolute inset-0 h-full w-full bg-black">
+            <iframe
+              src={getYouTubeEmbedUrl(youtubeId!, true, false)}
+              title="YouTube video player"
+              allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              className="absolute inset-0 h-full w-full border-0"
+              style={{ pointerEvents: 'auto' }}
+              sandbox="allow-forms allow-scripts allow-same-origin allow-presentation allow-popups"
+              // @ts-ignore
+              playsinline="true"
+              autoPlay="1"
             />
-          )
-        ) : (
-          <div className="absolute inset-0 bg-ink">
-            {(thumbnailUrl && !hasError) ? (
-              <img 
-                src={isYouTube ? `https://i.ytimg.com/vi/${youtubeId}/hq720.jpg` : thumbnailUrl}
-                alt={label || "Capa do vídeo"}
-                loading="eager"
-                fetchPriority="high"
-                decoding="sync"
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (isYouTube && target.src.includes('hq720')) {
-                    // Fallback para hqdefault se o 720p (que é melhor que o hq padrão) não existir
-                    target.src = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
-                  } else {
-                    setHasError(true);
-                  }
-                }}
-              />
-            ) : (
-              <video
-                src={`${src}#t=1.5`}
-                muted
-                playsInline
-                preload="auto"
-                className="h-full w-full object-cover"
-                onLoadedData={(e) => {
-                  const v = e.target as HTMLVideoElement;
-                  if (v.currentTime < 1) v.currentTime = 1.5;
-                }}
-              />
-            )}
           </div>
-        )}
-
-        <div
-          className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none"
-          style={{ 
-            opacity: playing ? 0 : 1,
-            background: hasStartedLoading && !isYouTube ? 'transparent' : 'rgba(0,0,0,0.1)'
-          }}
-        >
-          <span
-            className="flex items-center justify-center rounded-full backdrop-blur-sm transition-transform duration-300 active:scale-90"
-            style={{
-              height: iconSize * 2.8,
-              width: iconSize * 2.8,
-              border: "1px solid var(--color-neon)",
-              color: "var(--color-neon)",
-              background: "rgba(0,0,0,0.25)",
-              boxShadow: "0 0 20px rgba(57, 255, 20, 0.2)"
-            }}
-          >
-            {playing ? (
-              <Pause size={iconSize} strokeWidth={2.4} />
-            ) : (
+        ) : (
+          <video
+            ref={ref}
+            src={src}
+            poster={poster}
+            loop
+            playsInline
+            autoPlay
+            disablePictureInPicture
+            controlsList="nodownload"
+            className="absolute inset-0 h-full w-full object-cover"
+            onError={() => setHasError(true)}
+          />
+        )
+      ) : (
+        /* Facade (Thumbnail + Play Button) */
+        <div className="absolute inset-0 cursor-none">
+          {(youtubeThumbnail && !hasError) ? (
+            <img 
+              src={youtubeThumbnail}
+              alt={label || "Capa do vídeo"}
+              loading="eager"
+              fetchPriority="high"
+              className="h-full w-full object-cover"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (isYouTube && target.src.includes('hq720')) {
+                  target.src = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+                } else {
+                  setHasError(true);
+                }
+              }}
+            />
+          ) : !isYouTube && (
+            <div className="h-full w-full bg-ink flex items-center justify-center">
+              <span className="text-neon/20 text-[8px] tracking-widest uppercase">Carregando...</span>
+            </div>
+          )}
+          
+          {/* Overlay de Play */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors hover:bg-black/0">
+            <span
+              className="flex items-center justify-center rounded-full backdrop-blur-sm transition-transform duration-300 active:scale-90"
+              style={{
+                height: iconSize * 2.8,
+                width: iconSize * 2.8,
+                border: "1px solid var(--color-neon)",
+                color: "var(--color-neon)",
+                background: "rgba(0,0,0,0.25)",
+                boxShadow: "0 0 20px rgba(57, 255, 20, 0.2)"
+              }}
+            >
               <Play size={iconSize} strokeWidth={2.4} className="ml-1" />
-            )}
-          </span>
+            </span>
+          </div>
         </div>
+      )}
 
-
-        {label ? (
-          <span
-            className="pointer-events-none absolute bottom-3 left-3 text-[10px] tracking-[0.18em] uppercase"
-            style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
-          >
-            {label}
-          </span>
-        ) : null}
-      </div>
-
-      {isExpanded && <VideoLightbox src={src} youtubeId={youtubeId} onClose={closeLightbox} />}
-    </>
+      {label && !isPlaying && (
+        <span
+          className="pointer-events-none absolute bottom-3 left-3 text-[10px] tracking-[0.18em] uppercase"
+          style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
+        >
+          {label}
+        </span>
+      )}
+    </div>
   );
 }
 

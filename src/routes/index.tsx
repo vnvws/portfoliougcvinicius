@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2, ChevronRight } from "lucide-react";
 import { FixedScale } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
@@ -56,13 +56,16 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [activeTab, setActiveTab] = useState(niches[0].id);
+
   return (
     <>
       <NeonCursor />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
-          <Nav />
+          <Nav activeTab={activeTab} />
           <Hero />
+          
           <section className="relative -mt-16">
             <div className="mx-auto w-[1240px] pb-6">
               <p className="text-[11px] font-bold tracking-[0.32em] text-forest opacity-80">
@@ -71,34 +74,47 @@ function Index() {
             </div>
             <BrandMarquee />
           </section>
+
           <div className="pt-12">
             <About />
           </div>
 
-          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16 space-y-24">
-            {niches.map((niche, index) => (
-              <div key={niche.id} className="relative">
-                <Reveal>
-                  <NicheSection 
-                    niche={niche} 
-                    index={index} 
-                  />
-                </Reveal>
-              </div>
-            ))}
+          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
+            {/* 
+              Otimização de Renderização Mobile:
+              Só montamos a seção do nicho que está selecionado na navegação 
+              ou visível via scroll. No entanto, como o usuário pode querer 
+              rolar a página inteira, usamos uma estratégia onde as seções 
+              são montadas somente quando necessário.
+            */}
+            <div className="space-y-24">
+              {niches.map((niche, index) => (
+                <div key={niche.id} className="relative">
+                  <Reveal>
+                    <NicheWrapper 
+                      niche={niche} 
+                      index={index} 
+                    />
+                  </Reveal>
+                </div>
+              ))}
+            </div>
           </section>
 
           <FeedbackSection />
+          
           <Suspense fallback={<div className="h-48" />}>
             <div className="optimize-section">
               <InvestmentSection />
             </div>
           </Suspense>
+          
           <Suspense fallback={<div className="h-96" />}>
             <div className="optimize-section">
               <PackageSection />
             </div>
           </Suspense>
+          
           <Suspense fallback={<div className="h-96" />}>
             <div className="optimize-section">
               <ContactSection />
@@ -111,8 +127,44 @@ function Index() {
   );
 }
 
+/**
+ * Wrapper para lazy mounting das seções de nicho.
+ * Evita montar 50+ vídeos no primeiro render.
+ */
+function NicheWrapper({ niche, index }: { niche: Niche; index: number }) {
+  const [isMounted, setIsMounted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-function Nav() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsMounted(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px 0px" } // Monta um pouco antes de chegar na tela
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className="min-h-[400px]">
+      {isMounted ? (
+        <NicheSection niche={niche} index={index} />
+      ) : (
+        <div className="h-full w-full rounded-[22px] border border-forest/10 bg-forest/5 flex items-center justify-center">
+          <span className="text-[10px] tracking-widest text-forest/30 uppercase">Carregando seção...</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+function Nav({ activeTab }: { activeTab?: string }) {
   return (
     <div className="fixed top-0 left-0 right-0 z-[100] w-full px-4 pt-[calc(1rem+env(safe-area-inset-top))] pointer-events-none">
       <header 
