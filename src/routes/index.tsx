@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2, ChevronRight } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight } from "lucide-react";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -9,15 +9,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { niches as rawNiches } from "@/components/site/niches";
 import type { Niche } from "@/components/site/niches";
 
-const niches: Niche[] = [
-  {
-    id: "todos",
-    title: "Todos",
-    layout: "vertical",
-    videos: rawNiches.flatMap(n => n.videos)
-  },
-  ...rawNiches
-];
+const niches: Niche[] = rawNiches;
 import { BackToTop } from "@/components/site/BackToTop";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 
@@ -73,11 +65,10 @@ function Index() {
       <NeonCursor />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
-          <Nav activeTab={activeTab} onTabChange={setActiveTab} />
           <Hero />
           
           <section className="relative -mt-16">
-            <div className="mx-auto w-[1240px] pb-6">
+            <div className="mx-auto w-[1240px] pb-6 px-12">
               <p className="text-[11px] font-bold tracking-[0.32em] text-forest opacity-80">
                 Marcas que já confiaram
               </p>
@@ -91,15 +82,25 @@ function Index() {
 
           {/* Portfolio Section - Tabbed for Maximum Performance */}
           <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
-            <div className="mb-12 flex flex-col items-center">
+            <div className="mb-8 flex flex-col items-center">
               <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
               <div className="h-[1px] w-24 bg-neon" />
+            </div>
+
+            <div className="mb-12">
+              <PortfolioNav activeTab={activeTab} onTabChange={setActiveTab} />
             </div>
 
             <div className="min-h-[600px] transition-all duration-500">
               {niches.map((niche, index) => (
                 activeTab === niche.id && (
-                  <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div className="mb-12 px-12">
+                      <h2 className="font-display text-[64px] font-black tracking-[-0.04em] text-forest leading-tight uppercase">
+                        {niche.title}
+                      </h2>
+                      <div className="mt-2 h-[2px] w-32 bg-neon/30" />
+                    </div>
                     <PortfolioGrid niche={niche} index={index} />
                   </div>
                 )
@@ -171,48 +172,44 @@ function PortfolioGrid({ niche, index }: { niche: Niche; index: number }) {
 // Removido NicheWrapper pois agora usamos Abas Reais para otimização de memória extrema.
 
 
-function Nav({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
-  const scrollToPortfolio = (id: string) => {
-    onTabChange(id);
-    const element = document.getElementById('portfolio');
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[100] w-full px-4 pt-[calc(1rem+env(safe-area-inset-top))] pointer-events-none">
-      <header 
-        className="mx-auto flex max-w-[1240px] items-center justify-between px-8 py-3 pointer-events-auto rounded-full bg-ink/90 backdrop-blur-md"
+    <div className="relative w-full px-12">
+      {/* Container with horizontal scroll on mobile, flex-wrap or just hidden scroll on desktop */}
+      <div 
+        ref={scrollRef}
+        className="flex w-full items-center gap-x-8 overflow-x-auto overflow-y-hidden pb-4 scrollbar-none snap-x snap-mandatory touch-pan-x"
         style={{
-          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 0 1px rgba(255, 255, 255, 0.1)",
-          border: "1px solid rgba(255, 255, 255, 0.1)"
+          msOverflowStyle: 'none',
+          scrollbarWidth: 'none',
         }}
       >
-        <span className="shrink-0 font-display text-[16px] font-extrabold tracking-[-0.02em] text-white">
-          Vinícius<span style={{ color: "var(--color-neon)" }}>.</span>Araújo
-        </span>
-        <nav className="ml-8 flex items-center justify-end gap-x-6 overflow-hidden text-[9px] font-bold tracking-[0.2em] text-white/70">
-          {niches.map((niche) => (
-            <button
-              key={niche.id}
-              onClick={() => scrollToPortfolio(niche.id)}
-              className={`cursor-none transition-all hover:text-neon whitespace-nowrap uppercase ${activeTab === niche.id ? 'text-neon' : ''}`}
-            >
-              {niche.title}
-            </button>
-          ))}
-        </nav>
-      </header>
+        {niches.map((niche) => (
+          <button
+            key={niche.id}
+            onClick={() => onTabChange(niche.id)}
+            className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start ${
+              activeTab === niche.id 
+                ? 'text-forest' 
+                : 'text-forest/30 hover:text-forest/60'
+            }`}
+          >
+            <span className="relative z-10">{niche.title}</span>
+            {activeTab === niche.id && (
+              <div 
+                className="absolute -bottom-1 left-0 h-[2px] w-full bg-neon animate-in fade-in zoom-in duration-300" 
+              />
+            )}
+            <div className="absolute inset-x-0 -bottom-1 h-[1px] w-0 bg-forest/10 transition-all duration-300 group-hover:w-full" />
+          </button>
+        ))}
+      </div>
+      
+      {/* Fading indicators for mobile scroll */}
+      <div className="pointer-events-none absolute inset-y-0 right-12 w-16 bg-gradient-to-l from-bone to-transparent md:hidden" />
+      <div className="pointer-events-none absolute inset-y-0 left-12 w-16 bg-gradient-to-r from-bone to-transparent md:hidden" />
     </div>
   );
 }
