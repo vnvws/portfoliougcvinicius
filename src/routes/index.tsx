@@ -63,7 +63,7 @@ function Index() {
       <NeonCursor />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
-          <Nav activeTab={activeTab} />
+          <Nav activeTab={activeTab} onTabChange={setActiveTab} />
           <Hero />
           
           <section className="relative -mt-16">
@@ -79,24 +79,20 @@ function Index() {
             <About />
           </div>
 
+          {/* Portfolio Section - Tabbed for Maximum Performance */}
           <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
-            {/* 
-              Otimização de Renderização Mobile:
-              Só montamos a seção do nicho que está selecionado na navegação 
-              ou visível via scroll. No entanto, como o usuário pode querer 
-              rolar a página inteira, usamos uma estratégia onde as seções 
-              são montadas somente quando necessário.
-            */}
-            <div className="space-y-24">
+            <div className="mb-12 flex flex-col items-center">
+              <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
+              <div className="h-[1px] w-24 bg-neon" />
+            </div>
+
+            <div className="min-h-[600px] transition-all duration-500">
               {niches.map((niche, index) => (
-                <div key={niche.id} className="relative">
-                  <Reveal>
-                    <NicheWrapper 
-                      niche={niche} 
-                      index={index} 
-                    />
-                  </Reveal>
-                </div>
+                activeTab === niche.id && (
+                  <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <NicheSection niche={niche} index={index} />
+                  </div>
+                )
               ))}
             </div>
           </section>
@@ -127,48 +123,27 @@ function Index() {
   );
 }
 
-/**
- * Wrapper para lazy mounting das seções de nicho.
- * Evita montar 50+ vídeos no primeiro render.
- */
-function NicheWrapper({ niche, index }: { niche: Niche; index: number }) {
-  const [isMounted, setIsMounted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry?.isIntersecting) {
-          setIsMounted(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "600px 0px" } // Monta um pouco antes de chegar na tela
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="min-h-[400px]">
-      {isMounted ? (
-        <NicheSection niche={niche} index={index} />
-      ) : (
-        <div className="h-full w-full rounded-[22px] border border-forest/10 bg-forest/5 flex items-center justify-center">
-          <span className="text-[10px] tracking-widest text-forest/30 uppercase">Carregando seção...</span>
-        </div>
-      )}
-    </div>
-  );
-}
+// Removido NicheWrapper pois agora usamos Abas Reais para otimização de memória extrema.
 
 
-function Nav({ activeTab }: { activeTab?: string }) {
+function Nav({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
+  const scrollToPortfolio = (id: string) => {
+    onTabChange(id);
+    const element = document.getElementById('portfolio');
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-[100] w-full px-4 pt-[calc(1rem+env(safe-area-inset-top))] pointer-events-none">
       <header 
@@ -183,13 +158,13 @@ function Nav({ activeTab }: { activeTab?: string }) {
         </span>
         <nav className="ml-8 flex items-center justify-end gap-x-6 overflow-hidden text-[9px] font-bold tracking-[0.2em] text-white/70">
           {niches.map((niche) => (
-            <a
+            <button
               key={niche.id}
-              href={`#${niche.id}`}
-              className="cursor-none transition-all hover:text-neon whitespace-nowrap"
+              onClick={() => scrollToPortfolio(niche.id)}
+              className={`cursor-none transition-all hover:text-neon whitespace-nowrap uppercase ${activeTab === niche.id ? 'text-neon' : ''}`}
             >
-              {niche.title.toUpperCase()}
-            </a>
+              {niche.title}
+            </button>
           ))}
         </nav>
       </header>
