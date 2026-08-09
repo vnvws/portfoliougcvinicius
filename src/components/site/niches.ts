@@ -489,49 +489,49 @@ export const niches: Niche[] = [
       {
         title: "PERGY",
         description: "Guarda-roupas otimizado com roupas básicas",
-        src: m1.url,
+        youtubeUrl: "https://youtube.com/shorts/1Odrd8LJJ0A",
         label: "9:16"
       },
       {
         title: "LAWE",
         description: "Moda básica de altíssima qualidade",
-        src: m2.url,
+        youtubeUrl: "https://youtube.com/shorts/L13nfS5Xsmw",
         label: "9:16"
       },
       {
         title: "Informal",
-        description: "Se arrumando bem gastando pouco",
-        src: m3.url,
+        description: "Como se vestir bem gastando pouco",
+        youtubeUrl: "https://youtube.com/shorts/BdmFMwP3e0E",
         label: "9:16"
       },
       {
         title: "Informal",
-        description: "Arrume-se comigo pra quem não tem tempo sobrando",
-        src: m4.url,
+        description: "Arrume-se comigo para o dia a dia",
+        youtubeUrl: "https://youtube.com/shorts/mmog5ygHlog",
         label: "9:16"
       },
       {
         title: "Vegano Shoes",
-        description: "Bote de trilha leve e confortável",
-        src: m5.url,
+        description: "Tênis sustentável e confortável",
+        youtubeUrl: "https://youtube.com/shorts/FEFcWi-tGTM",
         label: "9:16"
       },
       {
         title: "Minimal Club",
-        description: "A 01 das camisetas pretas",
-        src: m6.url,
+        description: "A camiseta básica perfeita",
+        youtubeUrl: "https://youtube.com/shorts/utGFtVRUf5A",
         label: "9:16"
       },
       {
         title: "Minimal Club",
-        description: "A calça jeans mais confortável que já usei",
-        src: m7.url,
+        description: "Calça Jeans com caimento impecável",
+        youtubeUrl: "https://youtube.com/shorts/wOwe69fjguE",
         label: "9:16"
       },
       {
         title: "Strip Me",
-        description: "Camisetas personalizadas",
-        src: m8.url,
+        description: "Camisetas com estampas exclusivas",
+        youtubeUrl: "https://youtube.com/shorts/SzArCI0y1xE",
         label: "9:16"
       }
     ],
