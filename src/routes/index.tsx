@@ -56,7 +56,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [activeTab, setActiveTab] = useState(niches[0].id);
+  const [activeTab, setActiveTab] = useState(niches[0]?.id || "");
 
   return (
     <>
@@ -136,17 +136,21 @@ function NicheWrapper({ niche, index }: { niche: Niche; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
           setIsMounted(true);
           observer.disconnect();
         }
       },
-      { rootMargin: "400px 0px" } // Monta um pouco antes de chegar na tela
+      { rootMargin: "600px 0px" } // Monta um pouco antes de chegar na tela
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
@@ -194,6 +198,12 @@ function Nav({ activeTab }: { activeTab?: string }) {
 }
 
 function Hero() {
+  const { setActiveVideoSrc } = useVideoControl();
+  
+  // Limpar qualquer vídeo ativo ao carregar o Hero (topo da página)
+  useEffect(() => {
+    setActiveVideoSrc(null);
+  }, [setActiveVideoSrc]);
   return (
     <section className="relative mx-auto w-[1240px] pt-4 pb-8">
       <div className="relative flex items-center justify-between gap-14 px-12">
