@@ -1,13 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { ArrowUpRight, Instagram, Mail, Play, CheckCircle2, ChevronRight } from "lucide-react";
-import { FixedScale } from "@/components/site/FixedScale";
+import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { NicheSection } from "@/components/site/NicheSection";
 import { Reveal } from "@/components/site/Reveal";
-import { niches } from "@/components/site/niches";
+import { niches as rawNiches } from "@/components/site/niches";
 import type { Niche } from "@/components/site/niches";
+
+const niches: Niche[] = [
+  {
+    id: "todos",
+    title: "Todos",
+    layout: "vertical",
+    videos: rawNiches.flatMap(n => n.videos)
+  },
+  ...rawNiches
+];
 import { BackToTop } from "@/components/site/BackToTop";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 
@@ -56,13 +66,16 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [activeTab, setActiveTab] = useState(niches[0]?.id || "");
+
   return (
     <>
       <NeonCursor />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
-          <Nav />
+          <Nav activeTab={activeTab} onTabChange={setActiveTab} />
           <Hero />
+          
           <section className="relative -mt-16">
             <div className="mx-auto w-[1240px] pb-6">
               <p className="text-[11px] font-bold tracking-[0.32em] text-forest opacity-80">
@@ -71,34 +84,43 @@ function Index() {
             </div>
             <BrandMarquee />
           </section>
+
           <div className="pt-12">
             <About />
           </div>
 
-          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16 space-y-24">
-            {niches.map((niche, index) => (
-              <div key={niche.id} className="relative">
-                <Reveal>
-                  <NicheSection 
-                    niche={niche} 
-                    index={index} 
-                  />
-                </Reveal>
-              </div>
-            ))}
+          {/* Portfolio Section - Tabbed for Maximum Performance */}
+          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
+            <div className="mb-12 flex flex-col items-center">
+              <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
+              <div className="h-[1px] w-24 bg-neon" />
+            </div>
+
+            <div className="min-h-[600px] transition-all duration-500">
+              {niches.map((niche, index) => (
+                activeTab === niche.id && (
+                  <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <PortfolioGrid niche={niche} index={index} />
+                  </div>
+                )
+              ))}
+            </div>
           </section>
 
           <FeedbackSection />
+          
           <Suspense fallback={<div className="h-48" />}>
             <div className="optimize-section">
               <InvestmentSection />
             </div>
           </Suspense>
+          
           <Suspense fallback={<div className="h-96" />}>
             <div className="optimize-section">
               <PackageSection />
             </div>
           </Suspense>
+          
           <Suspense fallback={<div className="h-96" />}>
             <div className="optimize-section">
               <ContactSection />
@@ -111,8 +133,62 @@ function Index() {
   );
 }
 
+function PortfolioGrid({ niche, index }: { niche: Niche; index: number }) {
+  const [visibleCount, setVisibleCount] = useState(12);
+  const isAll = niche.id === "todos";
+  
+  const displayedVideos = isAll ? niche.videos.slice(0, visibleCount) : niche.videos;
+  const hasMore = isAll && visibleCount < niche.videos.length;
 
-function Nav() {
+  const loadMore = () => {
+    setVisibleCount(prev => prev + 12);
+  };
+
+  return (
+    <div className="space-y-12">
+      <NicheSection 
+        niche={{
+          ...niche,
+          videos: displayedVideos
+        }} 
+        index={index} 
+      />
+      
+      {hasMore && (
+        <div className="flex justify-center pb-12">
+          <button
+            onClick={loadMore}
+            className="group relative inline-flex items-center justify-center rounded-full border border-forest/20 bg-forest/5 px-10 py-4 font-bold tracking-widest text-forest transition-all hover:bg-forest hover:text-white"
+          >
+            Carregar mais vídeos
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Removido NicheWrapper pois agora usamos Abas Reais para otimização de memória extrema.
+
+
+function Nav({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
+  const scrollToPortfolio = (id: string) => {
+    onTabChange(id);
+    const element = document.getElementById('portfolio');
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-[100] w-full px-4 pt-[calc(1rem+env(safe-area-inset-top))] pointer-events-none">
       <header 
@@ -127,13 +203,13 @@ function Nav() {
         </span>
         <nav className="ml-8 flex items-center justify-end gap-x-6 overflow-hidden text-[9px] font-bold tracking-[0.2em] text-white/70">
           {niches.map((niche) => (
-            <a
+            <button
               key={niche.id}
-              href={`#${niche.id}`}
-              className="cursor-none transition-all hover:text-neon whitespace-nowrap"
+              onClick={() => scrollToPortfolio(niche.id)}
+              className={`cursor-none transition-all hover:text-neon whitespace-nowrap uppercase ${activeTab === niche.id ? 'text-neon' : ''}`}
             >
-              {niche.title.toUpperCase()}
-            </a>
+              {niche.title}
+            </button>
           ))}
         </nav>
       </header>
@@ -142,6 +218,12 @@ function Nav() {
 }
 
 function Hero() {
+  const { setActiveVideoSrc } = useVideoControl();
+  
+  // Limpar qualquer vídeo ativo ao carregar o Hero (topo da página)
+  useEffect(() => {
+    setActiveVideoSrc(null);
+  }, [setActiveVideoSrc]);
   return (
     <section className="relative mx-auto w-[1240px] pt-4 pb-8">
       <div className="relative flex items-center justify-between gap-14 px-12">
