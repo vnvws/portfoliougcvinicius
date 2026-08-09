@@ -427,25 +427,25 @@ export const niches: Niche[] = [
       {
         title: "SMOO",
         description: "Sorvete desidratado em pasta",
-        src: f1.url,
+        youtubeUrl: "https://youtube.com/shorts/h7CdCkwJa3g",
         label: "9:16"
       },
       {
         title: "UP GAS",
         description: "O primeiro isotônico com gás do Brasil",
-        src: f2.url,
+        youtubeUrl: "https://youtube.com/shorts/LSDuFgCl7A8",
         label: "9:16"
       },
       {
         title: "WINE",
         description: "Assinatura mensal de vinhos",
-        src: f3.url,
+        youtubeUrl: "https://youtube.com/shorts/Juwj4kL3zMA",
         label: "9:16"
       },
       {
         title: "Iracema",
         description: "Nuts perfeitos para compor uma tábua de frios",
-        src: f4.url,
+        youtubeUrl: "https://youtube.com/shorts/Puy6ypkVLUk",
         label: "9:16"
       }
     ],
