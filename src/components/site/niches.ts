@@ -544,25 +544,25 @@ export const niches: Niche[] = [
       {
         title: "HolaSim",
         description: "E-Sim internacional em uma roadtrip pela Europa",
-        src: vg1.url,
+        youtubeUrl: "https://youtube.com/shorts/bePfSKXFfME",
         label: "9:16"
       },
       {
         title: "Airbnb",
         description: "Casa container em Interlagos",
-        src: vg2.url,
+        youtubeUrl: "https://youtube.com/shorts/a-xfNnSMIDA",
         label: "9:16"
       },
       {
         title: "Airbnb",
         description: "Apartamento de luxo em Buenos Aires",
-        src: vg3.url,
+        youtubeUrl: "https://youtube.com/shorts/1QUie9sqrV8",
         label: "9:16"
       },
       {
         title: "Picnic",
         description: "Cartão de crédito internacional na Argentina",
-        src: vg4.url,
+        youtubeUrl: "https://youtube.com/shorts/mbAqzvSo6dE",
         label: "9:16"
       }
     ],
