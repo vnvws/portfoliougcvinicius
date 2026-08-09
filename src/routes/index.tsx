@@ -6,8 +6,18 @@ import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { NicheSection } from "@/components/site/NicheSection";
 import { Reveal } from "@/components/site/Reveal";
-import { niches } from "@/components/site/niches";
+import { niches as rawNiches } from "@/components/site/niches";
 import type { Niche } from "@/components/site/niches";
+
+const niches: Niche[] = [
+  {
+    id: "todos",
+    title: "Todos",
+    layout: "vertical",
+    videos: rawNiches.flatMap(n => n.videos)
+  },
+  ...rawNiches
+];
 import { BackToTop } from "@/components/site/BackToTop";
 import mainCollageAsset from "@/assets/main-collage.png.asset.json";
 
@@ -90,7 +100,7 @@ function Index() {
               {niches.map((niche, index) => (
                 activeTab === niche.id && (
                   <div key={niche.id} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <NicheSection niche={niche} index={index} />
+                    <PortfolioGrid niche={niche} index={index} />
                   </div>
                 )
               ))}
@@ -120,6 +130,41 @@ function Index() {
       </FixedScale>
       <BackToTop />
     </>
+  );
+}
+
+function PortfolioGrid({ niche, index }: { niche: Niche; index: number }) {
+  const [visibleCount, setVisibleCount] = useState(12);
+  const isAll = niche.id === "todos";
+  
+  const displayedVideos = isAll ? niche.videos.slice(0, visibleCount) : niche.videos;
+  const hasMore = isAll && visibleCount < niche.videos.length;
+
+  const loadMore = () => {
+    setVisibleCount(prev => prev + 12);
+  };
+
+  return (
+    <div className="space-y-12">
+      <NicheSection 
+        niche={{
+          ...niche,
+          videos: displayedVideos
+        }} 
+        index={index} 
+      />
+      
+      {hasMore && (
+        <div className="flex justify-center pb-12">
+          <button
+            onClick={loadMore}
+            className="group relative inline-flex items-center justify-center rounded-full border border-forest/20 bg-forest/5 px-10 py-4 font-bold tracking-widest text-forest transition-all hover:bg-forest hover:text-white"
+          >
+            Carregar mais vídeos
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
