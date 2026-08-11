@@ -390,7 +390,7 @@ function Hero() {
           <Reveal delay={300} className="w-full">
             <div className="mt-10 flex w-full max-w-[680px] items-start justify-between gap-6">
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-[#7dff00]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
                   <Share2 size={18} />
                 </div>
                 <div className="flex flex-col">
@@ -404,7 +404,7 @@ function Hero() {
               </div>
 
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-[#7dff00]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
                   <TrendingUp size={18} />
                 </div>
                 <div className="flex flex-col">
@@ -418,7 +418,7 @@ function Hero() {
               </div>
 
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-[#7dff00]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
                   <Video size={18} />
                 </div>
                 <div className="flex flex-col">
