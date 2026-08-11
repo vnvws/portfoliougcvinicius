@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle } from "lucide-react";
+import { InlineVideo } from "@/components/site/InlineVideo";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -108,6 +109,8 @@ function Index() {
           <div className="pt-12">
             <About />
           </div>
+          
+          <EngagementSection />
 
           {/* Portfolio Section - Tabbed for Maximum Performance */}
           <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
@@ -519,6 +522,64 @@ function About() {
             </p>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function EngagementSection() {
+  const engagementVideos = [
+    {
+      url: "https://youtube.com/shorts/bePfSKXFfME?feature=share",
+      label: "+De 122 mil views no Instagram"
+    },
+    {
+      url: "https://youtube.com/shorts/k8V2_CJa-8M?feature=share",
+      label: "+De 190 mil views no TikTok"
+    },
+    {
+      url: "https://youtube.com/shorts/Ra4LIIQWTRE?si=cj8Cf5wOQe9vdqtz",
+      label: "+De 420 mil views no TikTok"
+    }
+  ];
+
+  return (
+    <section className="mx-auto w-[1240px] pt-12 pb-20">
+      <div className="mb-12 flex flex-col items-center">
+        <Reveal>
+          <h2 className="font-display text-[48px] font-black tracking-[-0.04em] text-forest uppercase text-center">
+            Mais engajamento e mais conversão
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
+          <div className="mt-4 h-[1px] w-24 bg-neon" />
+        </Reveal>
+      </div>
+
+      <div className="flex justify-center px-12">
+        <div className="grid grid-cols-3 gap-8 w-full">
+          {engagementVideos.map((video, idx) => (
+            <Reveal key={video.url} delay={200 + idx * 100}>
+              <div className="flex flex-col items-center">
+                <div 
+                  className="relative w-full overflow-hidden rounded-[22px] bg-ink shadow-2xl"
+                  style={{ 
+                    aspectRatio: "9 / 16",
+                    border: "1px solid rgba(125, 255, 0, 0.2)"
+                  }}
+                >
+                  <InlineVideo 
+                    youtubeUrl={video.url} 
+                    label={video.label}
+                  />
+                </div>
+                <p className="mt-4 text-center font-display text-[14px] font-bold tracking-wider text-forest/80 uppercase">
+                  {video.label}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
