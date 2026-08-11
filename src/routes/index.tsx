@@ -487,7 +487,7 @@ function Hero() {
             className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
-            REELS · TIKTOK · STORIES
+            UGC CREATOR MASCULINO
           </span>
         </div>
       </div>
