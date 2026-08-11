@@ -93,7 +93,7 @@ export const LoadingScreen = () => {
             
             {/* Progress Percentage */}
             <div className="mt-3 flex justify-between w-full font-display text-[10px] text-ink/40 font-medium tabular-nums uppercase tracking-widest">
-              <span>Loading experience</span>
+              <span>Preparando experiência</span>
               <span>{Math.floor(progress)}%</span>
             </div>
           </div>
