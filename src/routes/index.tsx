@@ -377,7 +377,7 @@ function Hero() {
             <h1 className="mt-4 font-display text-[clamp(64px,10vw,120px)] leading-[0.85] font-black tracking-[-0.05em] text-ink uppercase">
               Vinícius
               <br />
-              <span className="text-forest">Araújo</span>
+              <span className="text-[#7dff00]">Araújo</span>
             </h1>
           </Reveal>
 
@@ -437,7 +437,7 @@ function Hero() {
             <div className="mt-14 flex items-center gap-10">
               <a
                 href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
-                className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-forest px-10 py-4 font-display text-[18px] font-black tracking-widest text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95 touch-manipulation shadow-[0_0_20px_rgba(57,255,20,0.35),0_0_40px_rgba(57,255,20,0.15)] hover:shadow-[0_0_25px_rgba(57,255,20,0.45),0_0_50px_rgba(57,255,20,0.25)]"
+                className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-forest px-10 py-4 font-display text-[18px] font-black tracking-widest text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95 touch-manipulation shadow-[0_0_20px_rgba(125,255,0,0.35),0_0_40px_rgba(125,255,0,0.15)] hover:shadow-[0_0_25px_rgba(125,255,0,0.45),0_0_50px_rgba(125,255,0,0.25)]"
               >
                 <span>CONTRATAR</span>
                 <ChevronRight size={20} className="transition-transform duration-300 group-hover:translate-x-1.5" />
