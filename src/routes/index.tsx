@@ -582,6 +582,8 @@ function EngagementSection() {
         </div>
       </div>
     </section>
+  );
+}
 
 
 
