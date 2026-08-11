@@ -147,16 +147,6 @@ header,
   }
 }
 
-@keyframes arrow-slide {
-  0% { transform: translateX(0); opacity: 1; }
-  50% { transform: translateX(4px); opacity: 0.7; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-
-.animate-arrow-slide {
-  animation: arrow-slide 1.5s ease-in-out infinite;
-}
-
 .animate-hint-arrow {
   animation: hint-arrow 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }

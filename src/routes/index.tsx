@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, TrendingUp, Target } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight, ChevronRight } from "lucide-react";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -67,20 +67,13 @@ function Index() {
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
           <Hero />
           
-          <section className="relative mt-8 mb-12">
-            <div className="mx-auto w-[1240px] px-12 flex items-center gap-6 mb-8">
-              <div className="h-[1px] flex-1 bg-forest/10" />
-              <p className="text-[11px] font-bold tracking-[0.4em] text-forest/60 uppercase whitespace-nowrap">
+          <section className="relative -mt-16">
+            <div className="mx-auto w-[1240px] pb-6 px-12">
+              <p className="text-[11px] font-bold tracking-[0.32em] text-forest opacity-80">
                 Marcas que já confiaram
               </p>
-              <div className="h-[1px] flex-1 bg-forest/10" />
             </div>
-            
-            <div className="relative mx-auto w-[1240px] px-12">
-              <div className="bg-forest/[0.02] rounded-[32px] overflow-hidden py-4">
-                <BrandMarquee />
-              </div>
-            </div>
+            <BrandMarquee />
           </section>
 
           <div className="pt-12">
@@ -336,128 +329,78 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
 function Hero() {
   const { setActiveVideoSrc } = useVideoControl();
   
+  // Limpar qualquer vídeo ativo ao carregar o Hero (topo da página)
   useEffect(() => {
     setActiveVideoSrc(null);
   }, [setActiveVideoSrc]);
-
   return (
-    <section className="relative mx-auto w-[1240px] pt-12 pb-16">
-      <div className="relative flex items-center justify-between gap-16 px-12">
-        {/* Left Column: Content */}
-        <div className="relative z-10 w-[55%] flex flex-col gap-8">
-          <Reveal>
-            <span className="text-[12px] font-bold tracking-[0.32em] text-forest uppercase">
-              UGC Creator Masculino · São Paulo, Brasil
-            </span>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <h1 className="font-display text-[100px] leading-[0.9] font-black tracking-[-0.04em] flex flex-col">
-              <span className="text-ink">Vinícius</span>
-              <span className="text-forest">Araújo</span>
-            </h1>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="max-w-[480px] text-[18px] leading-[1.6] text-forest/80 font-medium">
-              UGC Creator especializado em criar vídeos autênticos e estratégicos que geram conexão, autoridade e conversão para marcas que querem crescer.
-            </p>
-          </Reveal>
-
-          {/* Diferenciais */}
-          <Reveal delay={300}>
-            <div className="flex items-center gap-10 mt-2">
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest/70">
-                  <Play size={18} fill="currentColor" strokeWidth={0} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink">Vídeos que</span>
-                  <span className="text-[13px] font-bold leading-tight text-ink">conectam</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest/70">
-                  <TrendingUp size={20} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink">Conteúdo que</span>
-                  <span className="text-[13px] font-bold leading-tight text-ink">converte</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest/70">
-                  <Target size={20} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink">Estratégia com</span>
-                  <span className="text-[13px] font-bold leading-tight text-ink">propósito</span>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* CTAs */}
-          <Reveal delay={400}>
-            <div className="flex items-center gap-8 mt-4">
-              <a
-                href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
-                className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-forest px-10 py-4.5 font-display text-[18px] font-black tracking-wider text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(57,255,20,0.15)] hover:shadow-[0_0_30px_rgba(57,255,20,0.3)]"
-              >
-                <span>Contratar</span>
-                <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
-                
-                {/* Neon Hover Effect */}
-                <div className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 ring-2 ring-neon/40 pointer-events-none" />
-              </a>
-
-              <a
-                href="#portfolio"
-                className="group relative text-[16px] font-bold text-forest tracking-wide"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Ver portfólio
-                <div className="absolute -bottom-1 left-0 h-[1px] w-full scale-x-100 bg-forest/30 transition-transform duration-300 group-hover:scale-x-0" />
-                <div className="absolute -bottom-1 left-0 h-[1px] w-full scale-x-0 bg-neon transition-transform duration-300 group-hover:scale-x-100" />
-              </a>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* Right Column: Photography */}
-        <div className="relative w-[40%] flex justify-end">
-          <Reveal delay={200} className="relative">
-            <div
-              className="relative w-[340px] overflow-hidden rounded-[32px] border border-forest bg-ink/5"
+    <section className="relative mx-auto w-[1240px] pt-4 pb-8">
+      <div className="relative flex items-center justify-between gap-14 px-12">
+        <div className="relative z-10 flex-1">
+          <span className="text-[12px] tracking-[0.34em] text-forest">
+            UGC Creator Masculino - São Paulo, Brasil
+          </span>
+          <h1 className="mt-8 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em]">
+            Vinícius
+            <br />
+            <span
               style={{
-                aspectRatio: "3 / 4",
+                color: "var(--color-forest)",
               }}
             >
-              <img 
-                src={viniciusPhotoAsset.url} 
-                alt="Vinícius Araújo"
-                loading="eager"
-                decoding="async"
-                className="h-full w-full object-cover grayscale-[0.2] contrast-[1.05]"
-              />
-              
-              {/* Neon Point Decor */}
-              <div className="absolute left-6 top-6 h-2 w-2 rounded-full bg-neon shadow-[0_0_10px_var(--color-neon)]" />
+              Araújo
+            </span>
+          </h1>
+          <div className="mt-20 flex justify-center">
+            <Reveal delay={400}>
+              <a
+                href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
+                className="group relative inline-flex items-center justify-center rounded-full px-12 py-5 font-display text-[24px] font-black tracking-widest transition-all duration-300 hover:scale-105 active:scale-95 touch-manipulation"
+                style={{
+                  backgroundColor: "var(--color-neon)",
+                  color: "var(--color-ink)",
+                  boxShadow: "0 0 30px var(--color-neon)",
+                  animation: "pulse-neon 2s infinite"
+                }}
+              >
+                Contratar
+              </a>
+            </Reveal>
+          </div>
+        </div>
 
-              {/* Badge Overlaid */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 shadow-xl">
-                <span className="h-1.5 w-1.5 rounded-full bg-neon animate-pulse" />
-                <span className="text-[11px] font-bold tracking-[0.15em] text-white uppercase">
-                  Reels · TikTok · Stories · Ads
-                </span>
-              </div>
+        <div className="relative w-[288px] shrink-0">
+          <div
+            className="relative overflow-hidden rounded-[22px] bg-ink"
+            style={{
+              aspectRatio: "9 / 16",
+              border: "2px solid var(--color-neon)",
+              transform: "rotate(3deg)",
+            }}
+          >
+            <img 
+              src={viniciusPhotoAsset.url} 
+              alt="Vinícius Araújo"
+              loading="eager"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
+            />
+            
+            <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
+              <span
+                className="h-1 flex-1 rounded-full"
+                style={{ background: "var(--color-neon)" }}
+              />
+              <span className="h-1 flex-1 rounded-full bg-white/30" />
+              <span className="h-1 flex-1 rounded-full bg-white/30" />
             </div>
-          </Reveal>
+          </div>
+          <span
+            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-4 py-1.5 text-[11px] tracking-[0.2em]"
+            style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
+          >
+            Reels · TikTok · Stories
+          </span>
         </div>
       </div>
     </section>
