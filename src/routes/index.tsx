@@ -71,25 +71,25 @@ function Index() {
   return (
     <>
       <NeonCursor />
-      {/* Top Navigation Bar */}
-      <nav className="fixed top-0 left-0 z-[100] w-full bg-[#252525] py-3 shadow-lg">
-        <div className="mx-auto flex w-full max-w-[1440px] items-center justify-center px-12 overflow-x-auto scrollbar-none">
-          <div className="flex items-center gap-x-8 whitespace-nowrap">
-            {niches.map((niche) => (
-              <button
-                key={niche.id}
-                onClick={() => scrollToPortfolio(niche.id)}
-                className="font-display text-[12px] font-bold tracking-[0.1em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 cursor-none"
-              >
-                {niche.title}
-              </button>
-            ))}
-          </div>
-        </div>
-      </nav>
-
       <FixedScale>
-        <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-24">
+        <main className="relative w-full overflow-hidden bg-bone font-display text-ink">
+          {/* Top Navigation Bar - Static in Header */}
+          <nav className="w-full bg-[#252525] py-2.5">
+            <div className="mx-auto flex w-full max-w-[1240px] items-center justify-center px-12">
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+                {niches.map((niche) => (
+                  <button
+                    key={niche.id}
+                    onClick={() => scrollToPortfolio(niche.id)}
+                    className="font-display text-[10px] font-bold tracking-[0.08em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 cursor-none whitespace-nowrap"
+                  >
+                    {niche.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </nav>
+
           <Hero />
           
           <section className="relative mt-8 mb-20">
