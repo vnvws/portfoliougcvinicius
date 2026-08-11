@@ -358,7 +358,7 @@ function Hero() {
 
           <Reveal delay={200}>
             <p className="mt-8 max-w-[540px] text-[18px] leading-[1.6] text-ink/80 font-normal">
-              UGC Creator especializado em criar vídeos autênticos e estratégicos que geram conexão, autoridade e conversão para marcas que querem crescer.
+              Vídeos UGC com presença masculina para apresentar produtos e serviços de um jeito natural, direto e feito para social e ads.
             </p>
           </Reveal>
 
