@@ -353,9 +353,12 @@ header,
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-marquee,
+    .animate-marquee {
+      animation-duration: 48s !important;
+      animation-play-state: running !important;
+    }
     .animate-marquee-slow {
-      animation-duration: 120s !important;
+      animation-duration: 68s !important;
       animation-play-state: running !important;
     }
   }
