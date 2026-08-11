@@ -67,7 +67,7 @@ function Index() {
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
           <Hero />
           
-          <section className="relative -mt-4 mb-20">
+          <section className="relative mt-8 mb-20">
             <div className="mx-auto w-[1240px] px-12">
               <div className="flex items-center gap-6">
                 <div className="h-[1px] flex-1 bg-forest/10" />
