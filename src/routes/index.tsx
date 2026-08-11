@@ -337,45 +337,86 @@ function Hero() {
   useEffect(() => {
     setActiveVideoSrc(null);
   }, [setActiveVideoSrc]);
+
   return (
-    <section className="relative mx-auto w-[1240px] pt-4 pb-8">
+    <section className="relative mx-auto w-[1240px] pt-4 pb-20">
       <div className="relative flex items-center justify-between gap-14 px-12">
-        <div className="relative z-10 flex-1">
-          <span className="text-[12px] tracking-[0.34em] text-forest">
-            UGC Creator Masculino - São Paulo, Brasil
-          </span>
-          <h1 className="mt-8 font-display text-[136px] leading-[0.82] font-black tracking-[-0.055em]">
-            Vinícius
-            <br />
-            <span
-              style={{
-                color: "var(--color-forest)",
-              }}
-            >
-              Araújo
+        <div className="relative z-10 flex-1 flex flex-col items-start text-left">
+          <Reveal>
+            <span className="text-[12px] font-semibold tracking-[0.34em] text-forest uppercase">
+              UGC Creator Masculino · São Paulo, Brasil
             </span>
-          </h1>
-          <div className="mt-20 flex justify-center">
-            <Reveal delay={400}>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <h1 className="mt-4 font-display text-[clamp(64px,10vw,120px)] leading-[0.85] font-black tracking-[-0.05em] text-ink uppercase">
+              Vinícius
+              <br />
+              <span className="text-forest">Araújo</span>
+            </h1>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <p className="mt-8 max-w-[540px] text-[18px] leading-[1.6] text-ink/80 font-normal">
+              UGC Creator especializado em criar vídeos autênticos e estratégicos que geram conexão, autoridade e conversão para marcas que querem crescer.
+            </p>
+          </Reveal>
+
+          <Reveal delay={300} className="w-full">
+            <div className="mt-10 flex w-full max-w-[600px] items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                  <Play size={18} fill="currentColor" />
+                </div>
+                <span className="text-[13px] font-bold leading-tight text-ink/90 uppercase tracking-wider">
+                  Vídeos que<br />conectam
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                  <BarChart3 size={18} />
+                </div>
+                <span className="text-[13px] font-bold leading-tight text-ink/90 uppercase tracking-wider">
+                  Conteúdo que<br />converte
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                  <Target size={18} />
+                </div>
+                <span className="text-[13px] font-bold leading-tight text-ink/90 uppercase tracking-wider">
+                  Estratégia com<br />propósito
+                </span>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={400}>
+            <div className="mt-14 flex items-center gap-10">
               <a
                 href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
-                className="group relative inline-flex items-center justify-center rounded-full px-12 py-5 font-display text-[24px] font-black tracking-widest transition-all duration-300 hover:scale-105 active:scale-95 touch-manipulation"
-                style={{
-                  backgroundColor: "var(--color-neon)",
-                  color: "var(--color-ink)",
-                  boxShadow: "0 0 30px var(--color-neon)",
-                  animation: "pulse-neon 2s infinite"
-                }}
+                className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-forest px-10 py-4 font-display text-[18px] font-black tracking-widest text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95 touch-manipulation shadow-[0_0_20px_rgba(57,255,20,0.35),0_0_40px_rgba(57,255,20,0.15)] hover:shadow-[0_0_25px_rgba(57,255,20,0.45),0_0_50px_rgba(57,255,20,0.25)]"
               >
-                Contratar
+                <span>CONTRATAR</span>
+                <ChevronRight size={20} className="transition-transform duration-300 group-hover:translate-x-1.5" />
               </a>
-            </Reveal>
-          </div>
+
+              <a
+                href="#portfolio"
+                className="group relative font-display text-[16px] font-bold tracking-widest text-forest transition-all duration-300 hover:opacity-70"
+              >
+                <span>VER PORTFÓLIO</span>
+                <div className="absolute -bottom-1 left-0 h-[1px] w-full bg-forest/30 transition-all duration-300 group-hover:bg-forest group-hover:h-[1.5px]" />
+              </a>
+            </div>
+          </Reveal>
         </div>
 
-        <div className="relative w-[288px] shrink-0">
+        <div className="relative w-[340px] shrink-0">
           <div
-            className="relative overflow-hidden rounded-[22px] bg-ink"
+            className="relative overflow-hidden rounded-[22px] bg-ink shadow-2xl"
             style={{
               aspectRatio: "9 / 16",
               border: "2px solid var(--color-neon)",
@@ -387,7 +428,7 @@ function Hero() {
               alt="Vinícius Araújo"
               loading="eager"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
+              className="absolute inset-0 h-full w-full object-cover"
             />
             
             <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
@@ -400,10 +441,10 @@ function Hero() {
             </div>
           </div>
           <span
-            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-4 py-1.5 text-[11px] tracking-[0.2em]"
+            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
-            Reels · TikTok · Stories
+            REELS · TIKTOK · STORIES
           </span>
         </div>
       </div>
