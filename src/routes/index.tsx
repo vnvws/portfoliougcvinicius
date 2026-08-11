@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
-import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video } from "lucide-react";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
@@ -363,32 +363,47 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={300} className="w-full">
-            <div className="mt-10 flex w-full max-w-[600px] items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest">
-                  <Play size={18} fill="currentColor" />
+            <div className="mt-10 flex w-full max-w-[680px] items-start justify-between gap-6">
+              <div className="flex items-start gap-3 flex-1 min-w-0">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                  <Share2 size={18} />
                 </div>
-                <span className="text-[13px] font-bold leading-tight text-ink/90 uppercase tracking-wider">
-                  Vídeos que<br />conectam
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                    FEITO PARA SOCIAL
+                  </span>
+                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                    Reels, TikTok e Shorts
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest">
-                  <BarChart3 size={18} />
+              <div className="flex items-start gap-3 flex-1 min-w-0">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                  <TrendingUp size={18} />
                 </div>
-                <span className="text-[13px] font-bold leading-tight text-ink/90 uppercase tracking-wider">
-                  Conteúdo que<br />converte
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                    PRONTO PARA ADS
+                  </span>
+                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                    Conteúdo pensado para campanhas
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest/5 text-forest">
-                  <Target size={18} />
+              <div className="flex items-start gap-3 flex-1 min-w-0">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                  <Video size={18} />
                 </div>
-                <span className="text-[13px] font-bold leading-tight text-ink/90 uppercase tracking-wider">
-                  Estratégia com<br />propósito
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                    PRODUÇÃO COMPLETA
+                  </span>
+                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                    Roteiro, gravação e edição
+                  </span>
+                </div>
               </div>
             </div>
           </Reveal>
