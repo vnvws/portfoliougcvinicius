@@ -67,7 +67,7 @@ function Index() {
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink pt-12">
           <Hero />
           
-          <section className="relative -mt-16">
+          <section className="relative -mt-4 mb-20">
             <div className="mx-auto w-[1240px] pb-6 px-12 flex flex-col items-center">
               <p className="text-[11px] font-bold tracking-[0.32em] text-forest/40 uppercase">
                 Marcas que já confiaram
