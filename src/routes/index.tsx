@@ -68,8 +68,8 @@ function Index() {
           <Hero />
           
           <section className="relative -mt-16">
-            <div className="mx-auto w-[1240px] pb-6 px-12">
-              <p className="text-[11px] font-bold tracking-[0.32em] text-forest opacity-80">
+            <div className="mx-auto w-[1240px] pb-6 px-12 flex flex-col items-center">
+              <p className="text-[11px] font-bold tracking-[0.32em] text-forest/40 uppercase">
                 Marcas que já confiaram
               </p>
             </div>
