@@ -85,6 +85,21 @@ header,
   perspective: 1000px;
 }
 
+.animate-marquee-slow {
+  animation: marquee-x 60s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform-style: flat !important;
+  -webkit-transform-style: flat !important;
+  display: flex !important;
+  visibility: visible !important;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
 @keyframes neon-breathe {
   0%,
   100% {
@@ -340,7 +355,8 @@ header,
   @media (prefers-reduced-motion: reduce) {
     .animate-marquee,
     .animate-marquee-slow {
-      animation: none !important;
+      animation-duration: 120s !important;
+      animation-play-state: running !important;
     }
   }
 }
