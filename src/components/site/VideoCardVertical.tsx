@@ -79,12 +79,7 @@ export function VideoCardVertical({
                 <Play size={20} strokeWidth={2.4} />
               </span>
             </div>
-            <span
-              className="absolute bottom-3 left-3 font-sans text-[10px] tracking-[0.18em] uppercase"
-              style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
-            >
-              9:16
-            </span>
+            {/* Removido o label verde 9:16 conforme solicitado */}
           </>
         )}
       </div>

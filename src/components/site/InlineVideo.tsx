@@ -165,14 +165,7 @@ export function InlineVideo({
         </div>
       )}
 
-      {label && !isPlaying && (
-        <span
-          className="pointer-events-none absolute bottom-3 left-3 text-[10px] tracking-[0.18em] uppercase"
-          style={{ color: "color-mix(in oklab, var(--color-neon) 80%, white)" }}
-        >
-          {label}
-        </span>
-      )}
+      {/* Removido o label verde conforme solicitado */}
     </div>
   );
 }
