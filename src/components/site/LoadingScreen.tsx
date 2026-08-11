@@ -77,7 +77,7 @@ export const LoadingScreen = () => {
                 Vinícius Araújo
               </h1>
               <p className="text-ink/60 font-display text-[10px] tracking-[0.2em] uppercase mt-1">
-                UGC Creative Studio
+                Estúdio Criativo UGC
               </p>
             </motion.div>
 
