@@ -121,7 +121,7 @@ function Index() {
             </div>
 
             <div className="mb-12">
-              <PortfolioNav activeTab={activeTab} onTabChange={setActiveTab} />
+              <PortfolioNav activeTab={activeTab} onTabChange={setActiveTab} scrollToId="portfolio" />
             </div>
 
             <div className="relative">
@@ -213,7 +213,7 @@ const PortfolioGridInner = memo(function PortfolioGridInner({ niche, index }: { 
 // Removido NicheWrapper pois agora usamos Abas Reais para otimização de memória extrema.
 
 
-function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
+function PortfolioNav({ activeTab, onTabChange, scrollToId }: { activeTab: string; onTabChange: (id: string) => void, scrollToId?: string }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
@@ -287,7 +287,13 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
             key={niche.id}
             type="button"
             onMouseDown={(e) => e.preventDefault()}
-            onClick={() => onTabChange(niche.id)}
+            onClick={() => {
+              onTabChange(niche.id);
+              if (scrollToId && window.innerWidth < 1024) {
+                const el = document.getElementById(scrollToId);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             aria-selected={activeTab === niche.id}
             role="tab"
             aria-label={`Nicho ${niche.title}`}
@@ -535,11 +541,11 @@ function About() {
             }}
           />
         </Reveal>
-        <Reveal delay={140} className="col-span-6 col-start-7 pt-6">
+        <Reveal delay={140} className="w-full lg:col-span-6 lg:col-start-7 pt-0 lg:pt-6">
           <h3 className="font-display text-[32px] font-extrabold tracking-[-0.03em] text-ink">
             Me conheça
           </h3>
-          <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line">
+          <div className="mt-4 space-y-4 text-[15px] lg:text-[16px] leading-[1.6] text-forest whitespace-pre-line">
             <p>
               {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald’s, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
             </p>

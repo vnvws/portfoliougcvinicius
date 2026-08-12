@@ -19,7 +19,7 @@ const PackageCard = ({
   isBestValue?: boolean;
   delay?: number;
 }) => (
-  <Reveal delay={delay} className="flex-1 min-w-[360px]">
+  <Reveal delay={delay} className="flex-1 min-w-full sm:min-w-[360px]">
     <div
       className={`group relative flex flex-col rounded-[42px] overflow-hidden transition-all duration-500 hover:-translate-y-2 ${
         isBestValue 
