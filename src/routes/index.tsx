@@ -75,9 +75,9 @@ function Index() {
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink">
           {/* Top Navigation Bar - Static in Header */}
-          <nav className="w-full bg-[#252525] py-2.5">
-            <div className="mx-auto flex w-full max-w-[1240px] items-center justify-center px-12">
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <nav className="w-full bg-[#252525] py-2.5 sticky top-0 z-[100]">
+            <div className="mx-auto flex w-full lg:max-w-[1240px] items-center lg:justify-center px-6 lg:px-12">
+              <div className="flex items-center lg:justify-center gap-x-6 gap-y-2 overflow-x-auto scrollbar-none whitespace-nowrap">
                 {niches.map((niche) => (
                   <button
                     key={niche.id}
