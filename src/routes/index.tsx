@@ -94,7 +94,7 @@ function Index() {
 
           <Hero />
           
-          <section className="relative mt-8 mb-20">
+          <section className="relative mt-8 sm:mt-0 mb-20 sm:mb-8">
             <div className="mx-auto w-[1240px] px-12">
               <div className="flex items-center gap-6">
                 <div className="h-[1px] flex-1 bg-forest/10" />
@@ -107,7 +107,7 @@ function Index() {
             <BrandMarquee />
           </section>
 
-          <div className="pt-12">
+          <div className="pt-12 sm:pt-4">
             <About />
           </div>
           
@@ -338,7 +338,7 @@ function Hero() {
   }, [setActiveVideoSrc]);
 
   return (
-    <section className="relative mx-auto w-[1240px] pt-4 pb-20">
+    <section className="relative mx-auto w-[1240px] pt-4 pb-20 sm:pb-8">
       <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1 flex flex-col items-start text-left">
           <Reveal>
@@ -469,7 +469,7 @@ function Hero() {
 
 function About() {
   return (
-    <section id="sobre" className="mx-auto w-[1240px] pb-12">
+    <section id="sobre" className="mx-auto w-[1240px] pb-12 sm:pb-8">
       <div className="grid grid-cols-12 items-start gap-8">
         <Reveal className="col-span-5">
           <img
