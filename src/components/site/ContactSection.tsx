@@ -75,7 +75,7 @@ export default function ContactSection() {
                 <ContactRow
                   label="INSTAGRAM"
                   value="@_oviniciusaraujo"
-                  href="https://www.instagram.com/_oviniciusaraujo"
+                  href="https://www.instagram.com/_oviniciusaraujo/"
                 />
                 <ContactRow
                   label="TIKTOK"
