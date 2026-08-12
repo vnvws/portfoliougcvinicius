@@ -408,7 +408,7 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={400}>
-            <div className="mt-14 flex items-center gap-10">
+            <div className="mt-10 lg:mt-14 flex flex-col sm:flex-row items-center gap-8 lg:gap-10">
               <div className="flex items-center gap-4">
                 <a
                   href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
