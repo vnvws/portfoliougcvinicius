@@ -567,10 +567,10 @@ function EngagementSection() {
   ];
 
   return (
-    <section className="mx-auto w-[1240px] pt-12 pb-20">
-      <div className="mb-12 flex flex-col items-center">
+    <section className="mx-auto w-full lg:w-[1240px] pt-12 pb-20">
+      <div className="mb-12 flex flex-col items-center px-6 lg:px-12">
         <Reveal>
-          <h2 className="font-display text-[48px] font-black tracking-[-0.04em] text-forest uppercase text-center">
+          <h2 className="font-display text-[32px] lg:text-[48px] font-black tracking-[-0.04em] text-forest uppercase text-center">
             Mais engajamento e mais conversão
           </h2>
         </Reveal>
@@ -579,10 +579,10 @@ function EngagementSection() {
         </Reveal>
       </div>
 
-      <div className="flex justify-center px-12">
-        <div className="grid grid-cols-3 gap-8 w-full">
+      <div className="flex lg:justify-center overflow-x-auto scrollbar-none snap-x snap-mandatory px-6 lg:px-12 pb-8">
+        <div className="flex lg:grid lg:grid-cols-3 gap-6 lg:gap-8 w-max lg:w-full">
           {engagementVideos.map((video, idx) => (
-            <Reveal key={video.url} delay={200 + idx * 100}>
+            <Reveal key={video.url} delay={200 + idx * 100} className="w-[80vw] sm:w-[320px] lg:w-auto shrink-0 snap-center">
               <div className="flex flex-col items-center">
                 <div 
                   className="relative w-full overflow-hidden rounded-[22px] bg-ink shadow-2xl"
@@ -596,7 +596,7 @@ function EngagementSection() {
                     label={video.label}
                   />
                 </div>
-                <p className="mt-4 text-center font-display text-[14px] font-bold tracking-wider text-forest/80 uppercase">
+                <p className="mt-4 text-center font-display text-[12px] lg:text-[14px] font-bold tracking-wider text-forest/80 uppercase">
                   {video.label}
                 </p>
               </div>
