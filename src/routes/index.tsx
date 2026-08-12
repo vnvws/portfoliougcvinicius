@@ -472,42 +472,49 @@ function Hero() {
           </Reveal>
         </div>
 
-        <div className="relative w-[340px] shrink-0">
-          <div
-            className="relative overflow-hidden rounded-[22px] bg-ink shadow-2xl"
-            style={{
-              aspectRatio: "9 / 16",
-              border: "2px solid var(--color-neon)",
-              transform: "rotate(3deg)",
-            }}
-          >
-            <img 
-              src={viniciusPhotoAsset.url} 
-              alt="Vinícius Araújo - UGC Creator Masculino"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            
-            <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
-              <span
-                className="h-1 flex-1 rounded-full"
-                style={{ background: "var(--color-neon)" }}
-              />
-              <span className="h-1 flex-1 rounded-full bg-white/30" />
-              <span className="h-1 flex-1 rounded-full bg-white/30" />
-            </div>
-          </div>
-          <span
-            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg"
-            style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
-          >
-            UGC CREATOR MASCULINO
-          </span>
+        <div className="hidden lg:block relative w-[340px] shrink-0">
+          <HeroPhoto />
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroPhoto({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <div 
+      className={`relative mx-auto overflow-hidden rounded-[22px] bg-ink shadow-2xl ${mobile ? 'w-full max-w-[320px]' : 'w-[340px]'}`}
+      style={{
+        aspectRatio: "9 / 16",
+        border: "2px solid var(--color-neon)",
+        transform: mobile ? "none" : "rotate(3deg)",
+      }}
+    >
+      <img 
+        src={viniciusPhotoAsset.url} 
+        alt="Vinícius Araújo - UGC Creator Masculino"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      
+      <div className="absolute inset-x-4 top-2 flex items-center gap-1.5 z-10">
+        <span
+          className="h-1 flex-1 rounded-full"
+          style={{ background: "var(--color-neon)" }}
+        />
+        <span className="h-1 flex-1 rounded-full bg-white/30" />
+        <span className="h-1 flex-1 rounded-full bg-white/30" />
+      </div>
+      
+      <span
+        className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg"
+        style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
+      >
+        UGC CREATOR MASCULINO
+      </span>
+    </div>
   );
 }
 
