@@ -114,7 +114,7 @@ function Index() {
           <EngagementSection />
 
           {/* Portfolio Section - Tabbed for Maximum Performance */}
-          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
+          <section id="portfolio" className="mx-auto w-full lg:w-[1240px] pt-12 pb-16 px-0 lg:px-12">
             <div className="mb-8 flex flex-col items-center">
               <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
               <div className="h-[1px] w-24 bg-neon" />
