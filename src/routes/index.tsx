@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef, memo } from "react";
-import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle, MessageCircle } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle, MessageCircle, X } from "lucide-react";
 import { useInView } from "@/components/site/Reveal";
 import { InlineVideo } from "@/components/site/InlineVideo";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
@@ -164,6 +164,7 @@ function Index() {
         </main>
       </FixedScale>
       <BackToTop />
+      <ExitPopup />
     </>
   );
 }
