@@ -520,9 +520,9 @@ function HeroPhoto({ mobile = false }: { mobile?: boolean }) {
 
 function About() {
   return (
-    <section id="sobre" className="mx-auto w-[1240px] pb-12 sm:pb-8">
-      <div className="grid grid-cols-12 items-start gap-8">
-        <Reveal className="col-span-5">
+    <section id="sobre" className="mx-auto w-full lg:w-[1240px] px-6 lg:px-12 pb-12 lg:pb-8">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 items-center lg:items-start gap-12 lg:gap-8">
+        <Reveal className="w-full lg:col-span-5">
           <img
             src={aboutCollageAsset.url}
             alt="Vinícius Araújo UGC Content"
