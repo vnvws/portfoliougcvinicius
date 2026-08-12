@@ -258,7 +258,7 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
   };
 
   return (
-    <div className="relative w-full px-12 group/nav">
+    <div className="relative w-full px-6 lg:px-12 group/nav">
       {/* Left Indicator */}
       {showLeftArrow && (
         <>
