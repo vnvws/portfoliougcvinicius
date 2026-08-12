@@ -128,8 +128,8 @@ function Index() {
               {niches.map((niche, index) => (
                 activeTab === niche.id && (
                   <div key={niche.id} className="animate-in fade-in duration-500">
-                    <div className="mb-12 px-12">
-                      <h2 className="font-display text-[64px] font-black tracking-[-0.04em] text-forest leading-tight uppercase">
+                    <div className="mb-8 lg:mb-12 px-6 lg:px-12">
+                      <h2 className="font-display text-[42px] lg:text-[64px] font-black tracking-[-0.04em] text-forest leading-tight uppercase">
                         {niche.title}
                       </h2>
                       <div className="mt-2 h-[2px] w-32 bg-neon/30" />
