@@ -47,12 +47,14 @@ export function FixedScale({ children }: { children: ReactNode }) {
 
       if (inner.current) {
         const rect = inner.current.getBoundingClientRect();
-        // Usamos offsetHeight como base para evitar recursão infinita se o rect.height mudar levemente
+        // Usamos offsetHeight como base para evitar recursão infinita
         const contentHeight = inner.current.offsetHeight;
-        const newHeight = Math.ceil(contentHeight * currentScale);
+        // Usamos Math.round para evitar sub-pixels que causam jitter no Safari
+        // Adicionamos um pequeno buffer de 2px para garantir que não corte conteúdo por arredondamento
+        const newHeight = Math.round(contentHeight * currentScale);
         
-        // Só atualiza se a diferença for significativa (> 2px) para evitar jitter no Safari
-        if (Math.abs(newHeight - lastHeight) > 2) {
+        // Só atualiza se a diferença for significativa (> 1px)
+        if (Math.abs(newHeight - lastHeight) >= 1) {
           setScaledHeight(newHeight);
           lastHeight = newHeight;
         }
@@ -97,6 +99,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
           height: scaledHeight,
           position: "relative",
           overflow: "clip",
+          contain: "paint",
           backgroundColor: "var(--color-bone)",
           paddingBottom: "env(safe-area-inset-bottom)",
 
