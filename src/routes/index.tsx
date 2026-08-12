@@ -338,9 +338,9 @@ function Hero() {
   }, [setActiveVideoSrc]);
 
   return (
-    <section className="relative mx-auto w-[1240px] pt-4 pb-20 sm:pb-8">
-      <div className="relative flex items-center justify-between gap-14 px-12">
-        <div className="relative z-10 flex-1 flex flex-col items-start text-left">
+    <section className="relative mx-auto w-full lg:w-[1240px] pt-12 lg:pt-4 pb-20 lg:pb-8">
+      <div className="relative flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 px-6 lg:px-12">
+        <div className="relative z-10 flex-1 flex flex-col items-start text-left w-full lg:w-auto">
           <Reveal>
             <span className="text-[12px] font-semibold tracking-[0.34em] text-forest uppercase">
               UGC Creator Masculino · São Paulo, Brasil
