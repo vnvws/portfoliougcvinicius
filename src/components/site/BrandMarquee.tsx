@@ -100,12 +100,10 @@ function Logo({ name, src }: Brand) {
 
 export function BrandMarquee() {
   return (
-    <div className="group relative overflow-hidden py-10 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
+    <div className="group relative overflow-hidden py-6 lg:py-10 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
       <div
         className="flex w-max items-center animate-marquee"
           style={{ 
-            transform: "translate3d(0, 0, 0)",
-            WebkitTransform: "translate3d(0, 0, 0)",
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden"
           }}
@@ -126,11 +124,11 @@ export function BrandMarquee() {
         ))}
       </div>
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 w-40"
+        className="pointer-events-none absolute inset-y-0 left-0 w-12 lg:w-40"
         style={{ background: "linear-gradient(to right, var(--color-bone), transparent)" }}
       />
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-40"
+        className="pointer-events-none absolute inset-y-0 right-0 w-12 lg:w-40"
         style={{ background: "linear-gradient(to left, var(--color-bone), transparent)" }}
       />
     </div>
