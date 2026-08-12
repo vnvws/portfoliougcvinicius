@@ -107,7 +107,7 @@ function Index() {
             <BrandMarquee />
           </section>
 
-          <div className="pt-12 sm:pt-0">
+          <div className="pt-12 sm:pt-0 sm:-mt-[120px]">
             <About />
           </div>
           
@@ -338,7 +338,7 @@ function Hero() {
   }, [setActiveVideoSrc]);
 
   return (
-    <section className="relative mx-auto w-[1240px] pt-4 pb-20 sm:pb-4">
+    <section className="relative mx-auto w-[1240px] pt-4 pb-20 sm:pb-0">
       <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1 flex flex-col items-start text-left">
           <Reveal>
