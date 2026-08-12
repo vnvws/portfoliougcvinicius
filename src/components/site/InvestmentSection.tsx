@@ -2,7 +2,7 @@ import React from "react";
 import { Reveal } from "./Reveal";
 
 const InvestmentTable = ({ title, items }: { title: string; items: { label: string; price: string }[] }) => (
-  <div className="flex-1 min-w-[320px] bg-white rounded-[32px] p-8 border border-forest/10 transition-shadow">
+  <div className="flex-1 min-w-full sm:min-w-[320px] bg-white rounded-[32px] p-6 lg:p-8 border border-forest/10 transition-shadow">
     <h3 className="text-2xl font-black text-ink mb-8 text-center tracking-tight border-b border-forest/5 pb-4">{title}</h3>
     <div className="space-y-3">
       {items.map((item, idx) => (
