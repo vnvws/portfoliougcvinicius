@@ -94,7 +94,7 @@ function Index() {
 
           <Hero />
           
-          <section className="relative mt-8 sm:mt-0 mb-20 sm:mb-2">
+          <section className="relative mt-8 sm:mt-[-40px] mb-20 sm:mb-2">
             <div className="mx-auto w-[1240px] px-12">
               <div className="flex items-center gap-6">
                 <div className="h-[1px] flex-1 bg-forest/10" />
