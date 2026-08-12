@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef, memo } from "react";
-import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle, MessageCircle } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle, MessageCircle, X } from "lucide-react";
 import { useInView } from "@/components/site/Reveal";
 import { InlineVideo } from "@/components/site/InlineVideo";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
@@ -164,6 +164,7 @@ function Index() {
         </main>
       </FixedScale>
       <BackToTop />
+      <ExitPopup />
     </>
   );
 }
@@ -706,6 +707,69 @@ function FeedbackCard({ src, index }: { src: string; index: number }) {
         decoding="async"
         className="w-full h-auto object-contain"
       />
+    </div>
+  );
+}
+
+function ExitPopup() {
+  const [isOpen, setIsOpen] = useState(false);
+  const { ref, inView } = useInView<HTMLDivElement>(0.1);
+  const [hasShown, setHasShown] = useState(false);
+
+  useEffect(() => {
+    if (inView && !hasShown) {
+      setIsOpen(true);
+      setHasShown(true);
+    }
+  }, [inView, hasShown]);
+
+  if (!isOpen) return <div ref={ref} className="h-1 w-full" />;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/60 p-6 backdrop-blur-sm animate-in fade-in duration-300">
+      <div className="relative w-full max-w-[500px] overflow-hidden rounded-[32px] border border-forest/10 bg-white p-12 shadow-2xl animate-in zoom-in-95 duration-300">
+        <button 
+          onClick={() => setIsOpen(false)}
+          className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-forest/5 text-forest transition-all hover:bg-neon hover:text-ink"
+          aria-label="Fechar popup"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-forest/5 text-neon">
+            <MessageCircle size={32} />
+          </div>
+          
+          <h3 className="mb-4 font-display text-[32px] font-bold leading-tight text-ink uppercase">
+            Vamos decolar <span className="text-neon">sua marca?</span>
+          </h3>
+          
+          <p className="mb-10 text-[16px] leading-relaxed text-forest/70">
+            Peça agora sua proposta personalizada. Eu volto em até 24h úteis para darmos início à sua próxima campanha.
+          </p>
+
+          <a
+            href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex w-full items-center justify-center gap-3 rounded-2xl bg-neon py-5 text-[14px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98]"
+            style={{
+              boxShadow: "0 4px 0 0 oklch(0.75 0.25 135)"
+            }}
+          >
+            SOLICITAR PROPOSTA
+            <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+          </a>
+          
+          <button 
+            onClick={() => setIsOpen(false)}
+            className="mt-6 text-[12px] font-bold tracking-widest text-forest/40 uppercase transition-colors hover:text-forest"
+          >
+            TALVEZ DEPOIS
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
