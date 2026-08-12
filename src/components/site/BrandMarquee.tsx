@@ -1,33 +1,15 @@
-import tempromo from "@/assets/brands/tempromo.jpg.asset.json";
-import oipele from "@/assets/brands/oipele.jpg.asset.json";
 import canva from "@/assets/brands/canva.png.asset.json";
+import tinder from "@/assets/brands/tinder.png.asset.json";
+import wine from "@/assets/brands/wine.png.asset.json";
+import openEnglish from "@/assets/brands/open-english.png.asset.json";
+import omie from "@/assets/brands/omie.png.asset.json";
 import picnic from "@/assets/brands/picnic.png.asset.json";
-import lucydays from "@/assets/brands/lucydays.jpg.asset.json";
+import rainha from "@/assets/brands/rainha.png.asset.json";
+import alva from "@/assets/brands/alva.png.asset.json";
+import touti from "@/assets/brands/touti.jpg.asset.json";
+import innerAi from "@/assets/brands/inner-ai.png.asset.json";
 import manclub from "@/assets/brands/manclub.png.asset.json";
 import radnaq from "@/assets/brands/radnaq.png.asset.json";
-import tinder from "@/assets/brands/tinder.jpg.asset.json";
-import omie from "@/assets/brands/omie.png.asset.json";
-import pj from "@/assets/brands/pj.jpg.asset.json";
-import innerAi from "@/assets/inner-ai.jpg.asset.json";
-import upGas from "@/assets/up-gas.png.asset.json";
-import wine from "@/assets/wine.png.asset.json";
-import openEnglish from "@/assets/open-english.png.asset.json";
-import iracema from "@/assets/iracema.jpg.asset.json";
-import promocoesDoDia from "@/assets/promocoes-do-dia.png.asset.json";
-import lightning from "@/assets/lightning.png.asset.json";
-import ofertinhas from "@/assets/ofertinhas.jpg.asset.json";
-import rainha from "@/assets/brands/rainha.jpg.asset.json";
-import joingo from "@/assets/brands/joingo.jpg.asset.json";
-import houseOfMotors from "@/assets/brands/house-of-motors.jpg.asset.json";
-import wa from "@/assets/brands/wa.png.asset.json";
-import aPromoMen from "@/assets/brands/a-promo-men.jpg.asset.json";
-
-import informal from "@/assets/brands/informal.jpg.asset.json";
-import blueAbstract from "@/assets/brands/blue-abstract.jpg.asset.json";
-import toutiAsset from "@/assets/brands/touti.jpg.asset.json";
-import vorax from "@/assets/brands/vorax.png.asset.json";
-import alvaAsset from "@/assets/brands/alva.png.asset.json";
-import teccon from "@/assets/brands/teccon.png.asset.json";
 
 type Brand = { name: string; src?: string | undefined };
 
@@ -39,28 +21,11 @@ const brands: Brand[] = [
   { name: "Omie", src: omie.url },
   { name: "Picnic", src: picnic.url },
   { name: "Rainha", src: rainha.url },
-  { name: "Alva", src: alvaAsset.url },
-  { name: "Touti", src: toutiAsset.url },
+  { name: "Alva", src: alva.url },
+  { name: "Touti", src: touti.url },
   { name: "Inner AI", src: innerAi.url },
   { name: "ManClub", src: manclub.url },
   { name: "Radnaq", src: radnaq.url },
-  { name: "House of Motors", src: houseOfMotors.url },
-  { name: "Informal", src: informal.url },
-  { name: "Vorax", src: vorax.url },
-  { name: "Teccon", src: teccon.url },
-  { name: "Tem Promô", src: tempromo.url },
-  { name: "Ofertinhas Todo Dia", src: ofertinhas.url },
-  { name: "Promoções do Dia", src: promocoesDoDia.url },
-  { name: "Oipele Parfum", src: oipele.url },
-  { name: "LucyDays", src: lucydays.url },
-  { name: "PJ", src: pj.url },
-  { name: "Up Gas", src: upGas.url },
-  { name: "Iracema", src: iracema.url },
-  { name: "WA", src: wa.url },
-  { name: "Joingo", src: joingo.url },
-  { name: "A Promo Men", src: aPromoMen.url },
-  { name: "Lightning", src: lightning.url },
-  { name: "Blue Abstract", src: blueAbstract.url },
 ];
 
 function Logo({ name, src }: Brand) {
