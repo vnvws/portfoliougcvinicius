@@ -36,9 +36,9 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contato" className="pt-20 lg:pt-32 pb-12 px-6 lg:px-12 bg-bone">
-      <div className="mx-auto w-full lg:w-[1240px] rounded-[32px] border border-forest/10 bg-white/50 p-8 lg:p-16 shadow-xl backdrop-blur-sm">
-        <div className="grid grid-cols-1 gap-12 lg:gap-16 lg:grid-cols-2">
+    <section id="contato" className="pt-32 pb-12 px-12 bg-bone">
+      <div className="mx-auto w-[1240px] rounded-[32px] border border-forest/10 bg-white/50 p-16 shadow-xl backdrop-blur-sm">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           {/* Left Column */}
           <div className="flex flex-col">
             <Reveal>
@@ -49,7 +49,7 @@ export default function ContactSection() {
             </Reveal>
 
             <Reveal delay={100}>
-              <h2 className="font-display text-[42px] lg:text-[64px] leading-[1.1] font-bold text-ink mb-6">
+              <h2 className="font-display text-[64px] leading-[1.1] font-bold text-ink mb-6">
                 Vamos dar início a <span className="italic text-neon">sua próxima campanha</span>
               </h2>
             </Reveal>
@@ -105,7 +105,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold tracking-widest text-forest/60">Empresa (Opcional)</label>
                     <input
@@ -126,7 +126,7 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold tracking-widest text-forest/60">WhatsApp (Opcional)</label>
                     <input

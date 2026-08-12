@@ -9,7 +9,8 @@
 }
 
 header, 
-.hero-section {
+.hero-section,
+[id="sobre"] {
   contain: content;
 }
 
@@ -52,19 +53,19 @@ header,
 
 @keyframes marquee-x {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @-webkit-keyframes marquee-x {
   from {
-    -webkit-transform: translateX(0);
+    -webkit-transform: translate3d(0, 0, 0);
   }
   to {
-    -webkit-transform: translateX(-50%);
+    -webkit-transform: translate3d(-50%, 0, 0);
   }
 }
 
