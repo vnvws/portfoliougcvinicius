@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef, memo } from "react";
 import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle, MessageCircle } from "lucide-react";
+import { useInView } from "@/components/site/Reveal";
 import { InlineVideo } from "@/components/site/InlineVideo";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
@@ -539,19 +540,50 @@ function About() {
   );
 }
 
+function CountUp({ end, duration = 2000, prefix = "", suffix = "" }: { end: number; duration?: number; prefix?: string; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const { ref, inView } = useInView<HTMLSpanElement>(0.1);
+  const hasStarted = useRef(false);
+
+  useEffect(() => {
+    if (inView && !hasStarted.current) {
+      hasStarted.current = true;
+      let startTimestamp: number | null = null;
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+  }, [inView, end, duration]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {prefix}{count.toLocaleString('pt-BR')}{suffix}
+    </span>
+  );
+}
+
 function EngagementSection() {
   const engagementVideos = [
     {
       url: "https://youtube.com/shorts/bePfSKXFfME?feature=share",
-      label: "+De 122 mil views no Instagram"
+      views: 122,
+      platform: "Instagram"
     },
     {
       url: "https://youtube.com/shorts/k8V2_CJa-8M?feature=share",
-      label: "+De 190 mil views no TikTok"
+      views: 190,
+      platform: "TikTok"
     },
     {
       url: "https://youtube.com/shorts/Ra4LIIQWTRE?si=cj8Cf5wOQe9vdqtz",
-      label: "+De 420 mil views no TikTok"
+      views: 420,
+      platform: "TikTok"
     }
   ];
 
@@ -582,11 +614,10 @@ function EngagementSection() {
                 >
                   <InlineVideo 
                     youtubeUrl={video.url} 
-                    label={video.label}
                   />
                 </div>
                 <p className="mt-4 text-center font-display text-[14px] font-bold tracking-wider text-forest/80 uppercase">
-                  {video.label}
+                  +De <CountUp end={video.views} suffix=" mil" /> views no {video.platform}
                 </p>
               </div>
             </Reveal>
