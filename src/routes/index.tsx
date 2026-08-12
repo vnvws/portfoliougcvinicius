@@ -631,16 +631,16 @@ function FeedbackSection() {
   ];
 
   return (
-    <section className="py-16 overflow-hidden bg-bone">
-      <div className="mx-auto w-[1240px] mb-8">
+    <section className="py-20 lg:py-16 overflow-hidden bg-bone">
+      <div className="mx-auto w-full lg:w-[1240px] px-6 lg:px-12 mb-8">
         <Reveal>
-          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
+          <h2 className="font-display text-[48px] lg:text-[72px] font-black tracking-[-0.04em] text-forest">
             Feedbacks
           </h2>
         </Reveal>
       </div>
       
-      <div className="relative w-full overflow-hidden px-12 touch-pan-x" style={{ isolation: 'isolate' }}>
+      <div className="relative w-full overflow-hidden px-6 lg:px-12 touch-pan-x" style={{ isolation: 'isolate' }}>
         <div 
           className="flex w-max gap-6 animate-marquee"
           style={{ 
