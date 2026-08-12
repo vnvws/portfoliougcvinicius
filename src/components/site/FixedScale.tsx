@@ -32,28 +32,26 @@ export function FixedScale({ children }: { children: ReactNode }) {
   }), [activeVideoSrc]);
 
   useLayoutEffect(() => {
-    let raf = 0;
+    let rafId: number | null = null;
     let lastWidth = 0;
     let lastHeight = 0;
+    let isPinching = false;
 
     const measure = () => {
+      rafId = null;
+      
       const width = Math.min(window.innerWidth, document.documentElement.clientWidth);
       const currentScale = width / DESIGN_WIDTH;
       
-      if (width !== lastWidth) {
+      if (Math.abs(width - lastWidth) > 0.5) {
         setScale(currentScale);
         lastWidth = width;
       }
 
       if (inner.current) {
-        const rect = inner.current.getBoundingClientRect();
-        // Usamos offsetHeight como base para evitar recursão infinita
         const contentHeight = inner.current.offsetHeight;
-        // Usamos Math.round para evitar sub-pixels que causam jitter no Safari
-        // Adicionamos um pequeno buffer de 2px para garantir que não corte conteúdo por arredondamento
         const newHeight = Math.round(contentHeight * currentScale);
         
-        // Só atualiza se a diferença for significativa (> 1px)
         if (Math.abs(newHeight - lastHeight) >= 1) {
           setScaledHeight(newHeight);
           lastHeight = newHeight;
@@ -62,31 +60,45 @@ export function FixedScale({ children }: { children: ReactNode }) {
     };
 
     const schedule = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(measure);
+      if (isPinching) return;
+      if (rafId === null) {
+        rafId = requestAnimationFrame(measure);
+      }
+    };
+
+    const handleVisualViewportChange = () => {
+      const vv = window.visualViewport;
+      if (!vv) return;
+      
+      if (Math.abs(vv.scale - 1) > 0.01) {
+        isPinching = true;
+      } else {
+        isPinching = false;
+        schedule();
+      }
     };
 
     measure();
     
     window.addEventListener("resize", schedule);
     window.addEventListener("orientationchange", schedule);
-    window.addEventListener("load", schedule);
+    window.visualViewport?.addEventListener("resize", handleVisualViewportChange);
+    window.visualViewport?.addEventListener("scroll", handleVisualViewportChange);
 
     const ro = new ResizeObserver(() => {
-      // Quando o conteúdo muda, agendamos uma medição
       schedule();
     });
     
     if (inner.current) ro.observe(inner.current);
 
-    // Safari às vezes precisa de um tempo extra após o carregamento das fontes
     document.fonts?.ready.then(schedule).catch(() => {});
 
     return () => {
-      cancelAnimationFrame(raf);
+      if (rafId !== null) cancelAnimationFrame(rafId);
       window.removeEventListener("resize", schedule);
       window.removeEventListener("orientationchange", schedule);
-      window.removeEventListener("load", schedule);
+      window.visualViewport?.removeEventListener("resize", handleVisualViewportChange);
+      window.visualViewport?.removeEventListener("scroll", handleVisualViewportChange);
       ro.disconnect();
     };
   }, []);
