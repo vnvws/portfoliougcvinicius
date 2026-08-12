@@ -348,7 +348,7 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="mt-4 font-display text-[clamp(64px,10vw,120px)] leading-[0.85] font-black tracking-[-0.05em] text-ink uppercase">
+            <h1 className="mt-4 font-display text-[clamp(48px,12vw,120px)] leading-[0.85] font-black tracking-[-0.05em] text-ink uppercase">
               Vinícius
               <br />
               <span className="text-[#7dff00]">Araújo</span>
@@ -356,7 +356,7 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-8 max-w-[540px] text-[18px] leading-[1.6] text-ink/80 font-normal">
+            <p className="mt-6 lg:mt-8 max-w-[540px] text-[16px] lg:text-[18px] leading-[1.6] text-ink/80 font-normal">
               Vídeos UGC com presença masculina para apresentar produtos e serviços de um jeito natural, direto e feito para social e ads.
             </p>
           </Reveal>
