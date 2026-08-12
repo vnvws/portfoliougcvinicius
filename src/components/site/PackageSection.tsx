@@ -19,7 +19,7 @@ const PackageCard = ({
   isBestValue?: boolean;
   delay?: number;
 }) => (
-  <Reveal delay={delay} className="flex-1 min-w-[360px]">
+  <Reveal delay={delay} className="flex-1 min-w-full sm:min-w-[360px]">
     <div
       className={`group relative flex flex-col rounded-[42px] overflow-hidden transition-all duration-500 hover:-translate-y-2 ${
         isBestValue 
@@ -97,17 +97,17 @@ const PackageCard = ({
 
 export default function PackageSection() {
   return (
-    <section className="py-16 px-12 bg-bone relative overflow-hidden">
+    <section className="py-20 lg:py-16 px-6 lg:px-12 bg-bone relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 h-96 w-96 bg-neon/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 h-96 w-96 bg-forest/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="mx-auto w-[1240px] relative z-10">
+      <div className="mx-auto w-full lg:w-[1240px] relative z-10">
         <Reveal>
           <div className="mb-4 text-center">
             <span className="text-[11px] font-black tracking-[0.4em] text-neon">ESCOLHA SEU PLANO</span>
           </div>
-          <h2 className="text-[72px] font-black text-ink mb-20 text-center tracking-tighter leading-none">
+          <h2 className="text-[48px] lg:text-[72px] font-black text-ink mb-12 lg:mb-20 text-center tracking-tighter leading-none">
             Pacotes de Conteúdo
           </h2>
         </Reveal>

@@ -46,7 +46,8 @@ export function FixedScale({ children }: { children: ReactNode }) {
       }
 
       const width = Math.min(window.innerWidth, document.documentElement.clientWidth);
-      const currentScale = width / DESIGN_WIDTH;
+      const isDesktop = width >= 1024;
+      const currentScale = isDesktop ? width / DESIGN_WIDTH : 1;
       
       if (Math.abs(width - lastWidth) > 0.5) {
         setScale(currentScale);
@@ -109,18 +110,20 @@ export function FixedScale({ children }: { children: ReactNode }) {
       <div
         style={{
           width: "100%",
-          height: scaledHeight,
+          height: scale === 1 ? "auto" : scaledHeight,
           position: "relative",
-          overflow: "clip",
-          contain: "paint",
+          overflow: scale === 1 ? "visible" : "clip",
+          contain: scale === 1 ? "none" : "paint",
           backgroundColor: "var(--color-bone)",
           paddingBottom: "env(safe-area-inset-bottom)",
-
         }}
       >
         <div
           ref={inner}
-          style={{
+          style={scale === 1 ? {
+            width: "100%",
+            position: "relative",
+          } : {
             position: "absolute",
             top: 0,
             left: "50%",
