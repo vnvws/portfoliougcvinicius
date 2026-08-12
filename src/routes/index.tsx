@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef, memo } from "react";
 import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle } from "lucide-react";
 import { InlineVideo } from "@/components/site/InlineVideo";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
@@ -82,7 +82,8 @@ function Index() {
                   <button
                     key={niche.id}
                     onClick={() => scrollToPortfolio(niche.id)}
-                    className="font-display text-[10px] font-bold tracking-[0.08em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 cursor-none whitespace-nowrap"
+                    aria-label={`Ver nicho ${niche.title}`}
+                    className="font-display text-[10px] font-bold tracking-[0.08em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 focus-visible:outline-2 focus-visible:outline-neon focus-visible:outline-offset-4 cursor-none whitespace-nowrap"
                   >
                     {niche.title}
                   </button>
@@ -174,7 +175,7 @@ function PortfolioGrid({ niche, index }: { niche: Niche; index: number }) {
 }
 
 
-function PortfolioGridInner({ niche, index }: { niche: Niche; index: number }) {
+const PortfolioGridInner = memo(function PortfolioGridInner({ niche, index }: { niche: Niche; index: number }) {
   const [visibleCount, setVisibleCount] = useState(12);
   const isAll = niche.id === "todos";
   
@@ -207,7 +208,7 @@ function PortfolioGridInner({ niche, index }: { niche: Niche; index: number }) {
       )}
     </div>
   );
-}
+});
 
 // Removido NicheWrapper pois agora usamos Abas Reais para otimização de memória extrema.
 
@@ -287,7 +288,10 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
             type="button"
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => onTabChange(niche.id)}
-            className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start ${
+            aria-selected={activeTab === niche.id}
+            role="tab"
+            aria-label={`Nicho ${niche.title}`}
+            className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start focus-visible:text-neon ${
               activeTab === niche.id 
                 ? 'text-forest' 
                 : 'text-forest/30 hover:text-forest/60'
@@ -435,8 +439,9 @@ function Hero() {
           >
             <img 
               src={viniciusPhotoAsset.url} 
-              alt="Vinícius Araújo"
+              alt="Vinícius Araújo - UGC Creator Masculino"
               loading="eager"
+              fetchPriority="high"
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />

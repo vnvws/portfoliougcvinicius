@@ -3,15 +3,15 @@
 
 @source "../src";
 
-/* Otimização de renderização seletiva - Desativado content-visibility pois causa bugs no Safari iOS */
+/* Otimização de renderização seletiva */
 .optimize-section {
-  /* content-visibility: auto; */
+  contain: paint;
 }
 
 header, 
 .hero-section,
 [id="sobre"] {
-  /* content-visibility: visible; */
+  contain: content;
 }
 
 .liquid-glass {

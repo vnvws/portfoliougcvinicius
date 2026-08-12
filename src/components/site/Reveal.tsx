@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, memo, type ReactNode } from "react";
 
 export function useInView<T extends HTMLElement>(threshold = 0.15) {
   const ref = useRef<T>(null);
@@ -18,7 +18,7 @@ export function useInView<T extends HTMLElement>(threshold = 0.15) {
   return { ref, inView };
 }
 
-export function Reveal({
+export const Reveal = memo(function Reveal({
   children,
   className,
   delay = 0,
@@ -43,4 +43,4 @@ export function Reveal({
       {children}
     </div>
   );
-}
+});

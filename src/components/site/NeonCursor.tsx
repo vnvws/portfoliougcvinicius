@@ -5,8 +5,15 @@ export function NeonCursor() {
   const [active, setActive] = useState(false);
   const [visible, setVisible] = useState(false);
 
+  const [isTouch, setIsTouch] = useState(false);
+  
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const checkTouch = () => window.matchMedia("(pointer: coarse)").matches;
+    if (checkTouch()) {
+      setIsTouch(true);
+      return;
+    }
+    
     let x = 0;
     let y = 0;
     let cx = 0;
@@ -37,6 +44,8 @@ export function NeonCursor() {
       cancelAnimationFrame(raf);
     };
   }, []);
+
+  if (isTouch) return null;
 
   return (
     <div
