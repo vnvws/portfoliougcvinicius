@@ -29,7 +29,7 @@ const PackageCard = ({
     >
       {/* Header Area */}
       <div className={`pt-10 pb-6 text-center ${isBestValue ? "bg-white/5" : "bg-forest/[0.03]"}`}>
-        <div className={`mx-auto mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] font-black tracking-[0.2em] ${
+        <div className={`mx-auto mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] font-black tracking-[0.2em] mobile-text-micro ${
           isBestValue ? "bg-neon text-ink" : "bg-forest/10 text-forest"
         }`}>
           {isBestValue && <Star size={10} fill="currentColor" />}
@@ -39,7 +39,7 @@ const PackageCard = ({
           {subtitle}
         </h3>
         {note && (
-          <span className={`text-[11px] font-black tracking-widest px-3 py-1 rounded-full ${
+          <span className={`text-[11px] font-black tracking-widest px-3 py-1 rounded-full mobile-text-micro ${
             isBestValue ? "bg-neon/20 text-neon" : "bg-forest text-white"
           }`}>
             {note}
@@ -51,7 +51,7 @@ const PackageCard = ({
       <div className="flex-1 p-10 space-y-8">
         <ul className="space-y-4">
           {items.map((item, idx) => (
-            <li key={idx} className="flex items-center gap-4 text-[16px] font-bold">
+            <li key={idx} className="flex items-center gap-4 text-[16px] font-bold mobile-text-small">
               <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
                 isBestValue ? "bg-neon text-ink" : "bg-forest/10 text-forest"
               }`}>
@@ -66,7 +66,7 @@ const PackageCard = ({
           isBestValue ? "bg-white/10" : "bg-bone"
         }`}>
           <div className="flex flex-col items-center">
-            <span className={`text-[10px] font-black tracking-[0.2em] mb-1 ${
+            <span className={`text-[10px] font-black tracking-[0.2em] mb-1 mobile-text-micro ${
               isBestValue ? "text-white/40" : "text-forest/40"
             }`}>INVESTIMENTO</span>
             <div className="flex items-baseline gap-1">
@@ -80,14 +80,14 @@ const PackageCard = ({
       </div>
 
       {/* Footer Meta */}
-      <div className={`px-10 py-6 text-center text-[10px] font-bold tracking-widest border-t ${
+      <div className={`px-10 py-6 text-center text-[10px] font-bold tracking-widest border-t mobile-text-micro ${
         isBestValue ? "border-white/10 text-white/40" : "border-forest/5 text-forest/40"
       }`}>
         DIREITO DE USO EM ADS POR 06 MESES
       </div>
 
       {isBestValue && (
-        <div className="absolute -right-12 top-8 rotate-45 bg-neon px-12 py-1 text-[10px] font-black tracking-[0.2em] text-ink shadow-xl">
+        <div className="absolute -right-12 top-8 rotate-45 bg-neon px-12 py-1 text-[10px] font-black tracking-[0.2em] text-ink shadow-xl mobile-text-micro">
           MAIS VENDIDO
         </div>
       )}
@@ -105,7 +105,7 @@ export default function PackageSection() {
       <div className="mx-auto w-[1240px] relative z-10">
         <Reveal>
           <div className="mb-4 text-center">
-            <span className="text-[11px] font-black tracking-[0.4em] text-neon">ESCOLHA SEU PLANO</span>
+            <span className="text-[11px] font-black tracking-[0.4em] text-neon mobile-text-micro">ESCOLHA SEU PLANO</span>
           </div>
           <h2 className="text-[72px] font-black text-ink mb-20 text-center tracking-tighter leading-none">
             Pacotes de Conteúdo
