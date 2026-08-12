@@ -262,10 +262,10 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
       {/* Left Indicator */}
       {showLeftArrow && (
         <>
-          <div className="pointer-events-none absolute inset-y-0 left-12 z-20 w-24 bg-gradient-to-r from-bone via-bone/80 to-transparent transition-opacity duration-500" />
+          <div className="pointer-events-none absolute inset-y-0 left-6 lg:left-12 z-20 w-16 lg:w-24 bg-gradient-to-r from-bone via-bone/80 to-transparent transition-opacity duration-500" />
           <button 
             onClick={() => scroll('left')}
-            className="absolute left-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
+            className="absolute left-[30px] lg:left-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
             aria-label="Ver nichos anteriores"
           >
             <ChevronRight className="rotate-180" size={20} strokeWidth={2.5} />
