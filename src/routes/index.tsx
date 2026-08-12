@@ -311,10 +311,10 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
       {/* Right Indicator */}
       {showRightArrow && (
         <>
-          <div className="pointer-events-none absolute inset-y-0 right-12 z-20 w-24 bg-gradient-to-l from-bone via-bone/80 to-transparent transition-opacity duration-500" />
+          <div className="pointer-events-none absolute inset-y-0 right-6 lg:right-12 z-20 w-16 lg:w-24 bg-gradient-to-l from-bone via-bone/80 to-transparent transition-opacity duration-500" />
           <button 
             onClick={() => scroll('right')}
-            className="absolute right-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
+            className="absolute right-[30px] lg:right-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
             aria-label="Ver mais nichos"
           >
             <ChevronRight 
