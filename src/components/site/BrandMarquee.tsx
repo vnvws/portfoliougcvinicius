@@ -101,7 +101,7 @@ function Logo({ name, src }: Brand) {
 
 export function BrandMarquee() {
   return (
-    <div className="group relative overflow-hidden py-10 sm:py-4 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
+    <div className="group relative overflow-hidden py-10 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
       <div
         className="flex w-max items-center animate-marquee"
           style={{ 
