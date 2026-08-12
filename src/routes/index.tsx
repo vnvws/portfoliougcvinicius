@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState, useEffect, useRef, memo } from "react";
-import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle } from "lucide-react";
+import { Play, Instagram, Mail, ArrowUpRight, ChevronRight, BarChart3, Target, Share2, TrendingUp, Video, PlayCircle, MessageCircle } from "lucide-react";
 import { InlineVideo } from "@/components/site/InlineVideo";
 import { FixedScale, useVideoControl } from "@/components/site/FixedScale";
 import { NeonCursor } from "@/components/site/NeonCursor";
@@ -409,20 +409,60 @@ function Hero() {
 
           <Reveal delay={400}>
             <div className="mt-14 flex items-center gap-10">
-              <a
-                href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
-                className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-forest px-10 py-4 font-display text-[18px] font-black tracking-widest text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95 touch-manipulation shadow-[0_0_20px_rgba(125,255,0,0.35),0_0_40px_rgba(125,255,0,0.15)] hover:shadow-[0_0_25px_rgba(125,255,0,0.45),0_0_50px_rgba(125,255,0,0.25)]"
-              >
-                <span>CONTRATAR</span>
-                <ChevronRight size={20} className="transition-transform duration-300 group-hover:translate-x-1.5" />
-              </a>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Falar comigo pelo WhatsApp"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                >
+                  <MessageCircle size={22} />
+                </a>
+                <a
+                  href="https://www.instagram.com/viniciusugc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ver meu Instagram"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                >
+                  <Instagram size={22} />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@viniciusugc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ver meu TikTok"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                >
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    className="h-[22px] w-[22px]"
+                  >
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                  </svg>
+                </a>
+                <a
+                  href="mailto:comercial.viniciusugc@gmail.com"
+                  aria-label="Enviar um e-mail"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                >
+                  <Mail size={22} />
+                </a>
+              </div>
 
               <a
                 href="#portfolio"
-                className="group relative font-display text-[16px] font-bold tracking-widest text-forest transition-all duration-300 hover:opacity-70"
+                className="group relative flex items-center gap-2 font-display text-[18px] font-black tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
               >
                 <span>VER PORTFÓLIO</span>
-                <div className="absolute -bottom-1 left-0 h-[1px] w-full bg-forest/30 transition-all duration-300 group-hover:bg-forest group-hover:h-[1.5px]" />
+                <ChevronRight size={22} className="transition-transform duration-300 group-hover:translate-x-1.5" />
+                <div className="absolute -bottom-1 left-0 h-[2px] w-full bg-forest/20 transition-all duration-300 group-hover:bg-forest group-hover:h-[3px]" />
               </a>
             </div>
           </Reveal>
