@@ -420,7 +420,7 @@ function Hero() {
                   <MessageCircle size={22} />
                 </a>
                 <a
-                  href="https://www.instagram.com/viniciusugc/"
+                  href="https://www.instagram.com/_oviniciusaraujo/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu Instagram"
@@ -429,7 +429,7 @@ function Hero() {
                   <Instagram size={22} />
                 </a>
                 <a
-                  href="https://www.tiktok.com/@viniciusugc"
+                  href="https://www.tiktok.com/@viniviews_"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu TikTok"
