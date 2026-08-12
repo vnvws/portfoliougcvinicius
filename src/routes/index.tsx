@@ -616,9 +616,14 @@ function EngagementSection() {
                     youtubeUrl={video.url} 
                   />
                 </div>
-                <p className="mt-4 text-center font-display text-[14px] font-bold tracking-wider text-forest/80 uppercase">
-                  +De <CountUp end={video.views} suffix=" mil" /> views no {video.platform}
-                </p>
+                <div className="mt-4 text-center font-display uppercase">
+                  <p className="text-[24px] font-black tracking-tighter text-forest leading-none">
+                    +De <CountUp end={video.views} suffix=" mil" />
+                  </p>
+                  <p className="mt-1 text-[12px] font-bold tracking-widest text-forest/50">
+                    views no {video.platform}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
