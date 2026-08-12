@@ -46,7 +46,8 @@ export function FixedScale({ children }: { children: ReactNode }) {
       }
 
       const width = Math.min(window.innerWidth, document.documentElement.clientWidth);
-      const currentScale = width / DESIGN_WIDTH;
+      const isDesktop = width >= 1024;
+      const currentScale = isDesktop ? width / DESIGN_WIDTH : 1;
       
       if (Math.abs(width - lastWidth) > 0.5) {
         setScale(currentScale);
