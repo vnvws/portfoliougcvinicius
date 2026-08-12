@@ -7,8 +7,8 @@ const InvestmentTable = ({ title, items }: { title: string; items: { label: stri
     <div className="space-y-3">
       {items.map((item, idx) => (
         <div key={idx} className="flex justify-between items-center px-4 py-4 rounded-xl border border-transparent hover:border-neon/30 hover:bg-neon/5 transition-all group">
-          <span className="text-[16px] font-bold tracking-tight text-forest group-hover:text-ink transition-colors mobile-text-small">{item.label}</span>
-          <span className="text-[18px] font-black text-ink bg-bone px-3 py-1 rounded-lg group-hover:bg-neon group-hover:text-ink transition-all mobile-text-body">{item.price}</span>
+          <span className="text-[16px] font-bold tracking-tight text-forest group-hover:text-ink transition-colors">{item.label}</span>
+          <span className="text-[18px] font-black text-ink bg-bone px-3 py-1 rounded-lg group-hover:bg-neon group-hover:text-ink transition-all">{item.price}</span>
         </div>
       ))}
     </div>
