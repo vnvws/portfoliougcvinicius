@@ -439,8 +439,9 @@ function Hero() {
           >
             <img 
               src={viniciusPhotoAsset.url} 
-              alt="Vinícius Araújo"
+              alt="Vinícius Araújo - UGC Creator Masculino"
               loading="eager"
+              fetchPriority="high"
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />
