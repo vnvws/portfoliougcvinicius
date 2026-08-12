@@ -191,12 +191,12 @@ function ContactRow({ label, value, href, last = false }: { label: string; value
       {value}
     </a>
   ) : (
-    <span className="text-[14px] font-bold text-ink text-right break-all">{value}</span>
+    <span className="text-[14px] font-bold text-ink text-right break-all mobile-text-small">{value}</span>
   );
 
   return (
     <div className={`flex items-center justify-between p-5 ${!last ? 'border-b border-forest/5' : ''}`}>
-      <span className="text-[10px] font-bold tracking-widest text-forest/50">{label}</span>
+      <span className="text-[10px] font-bold tracking-widest text-forest/50 mobile-text-micro">{label}</span>
       {valueContent}
     </div>
   );
