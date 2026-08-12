@@ -391,3 +391,43 @@ iframe[src*="lovable.dev/badge"] {
   height: 0 !important;
 }
 /* NEXUS-PRO:WATERMARK-HIDE:END */
+
+/* Otimização de Legibilidade Mobile para FixedScale */
+/* O scale padrão é aprox. 0.27x no iPhone SE (375/1440) a 0.30x (430/1440 no Pro Max) */
+/* Queremos 14px-16px visuais. 16px visual / 0.28 scale = ~58px CSS */
+/* Usamos sm (que é o breakpoint mobile no projeto para compensações) */
+
+@utility mobile-text-body {
+  @media (max-width: 640px) {
+    font-size: 52px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@utility mobile-text-small {
+  @media (max-width: 640px) {
+    font-size: 40px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+@utility mobile-text-nav {
+  @media (max-width: 640px) {
+    font-size: 38px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+@utility mobile-text-micro {
+  @media (max-width: 640px) {
+    font-size: 34px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+@utility mobile-text-heading-sm {
+  @media (max-width: 640px) {
+    font-size: 72px !important;
+    line-height: 1.1 !important;
+  }
+}
