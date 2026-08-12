@@ -96,8 +96,10 @@ export function FixedScale({ children }: { children: ReactNode }) {
           width: "100%",
           height: scaledHeight,
           position: "relative",
-          overflow: "clip", // Evita que o overflow do elemento interno escalado gere scroll
+          overflow: "clip",
           backgroundColor: "var(--color-bone)",
+          paddingBottom: "env(safe-area-inset-bottom)",
+
         }}
       >
         <div
