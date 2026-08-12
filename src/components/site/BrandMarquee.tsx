@@ -67,7 +67,9 @@ function Logo({ name, src }: Brand) {
   return (
     <div
       data-cursor="link"
-      className="group relative mx-3 flex h-20 w-20 shrink-0 cursor-none items-center justify-center overflow-hidden rounded-full bg-white text-center transition-all duration-300 hover:scale-[1.1]"
+      role="listitem"
+      aria-label={`Logo da marca ${name}`}
+      className="group relative mx-3 flex h-20 w-20 shrink-0 cursor-none items-center justify-center overflow-hidden rounded-full bg-white text-center transition-all duration-300 hover:scale-[1.1] focus-visible:outline-2 focus-visible:outline-neon focus-visible:outline-offset-4"
       style={{ 
         border: "1px solid color-mix(in oklab, var(--color-forest) 22%, transparent)",
         transform: "translateZ(0)",
@@ -99,7 +101,7 @@ function Logo({ name, src }: Brand) {
 
 export function BrandMarquee() {
   return (
-    <div className="group relative overflow-hidden py-10 touch-pan-x" style={{ isolation: 'isolate' }}>
+    <div className="group relative overflow-hidden py-10 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
       <div
         className="flex w-max items-center animate-marquee"
           style={{ 
