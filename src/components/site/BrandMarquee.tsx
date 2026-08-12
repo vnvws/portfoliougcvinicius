@@ -14,18 +14,18 @@ import radnaq from "@/assets/brands/radnaq.png.asset.json";
 type Brand = { name: string; src?: string | undefined };
 
 const brands: Brand[] = [
-  { name: "Canva", src: canva.url },
-  { name: "Tinder", src: tinder.url },
-  { name: "Wine", src: wine.url },
-  { name: "Open English", src: openEnglish.url },
-  { name: "Omie", src: omie.url },
-  { name: "Picnic", src: picnic.url },
-  { name: "Rainha", src: rainha.url },
-  { name: "Alva", src: alva.url },
-  { name: "Touti", src: touti.url },
-  { name: "Inner AI", src: innerAi.url },
-  { name: "ManClub", src: manclub.url },
-  { name: "Radnaq", src: radnaq.url },
+  { name: "Canva", src: (canva as any).url },
+  { name: "Tinder", src: (tinder as any).url },
+  { name: "Wine", src: (wine as any).url },
+  { name: "Open English", src: (openEnglish as any).url },
+  { name: "Omie", src: (omie as any).url },
+  { name: "Picnic", src: (picnic as any).url },
+  { name: "Rainha", src: (rainha as any).url },
+  { name: "Alva", src: (alva as any).url },
+  { name: "Touti", src: (touti as any).url },
+  { name: "Inner AI", src: (innerAi as any).url },
+  { name: "ManClub", src: (manclub as any).url },
+  { name: "Radnaq", src: (radnaq as any).url },
 ];
 
 function Logo({ name, src }: Brand) {
