@@ -360,6 +360,10 @@ function Hero() {
               Vídeos UGC com presença masculina para apresentar produtos e serviços de um jeito natural, direto e feito para social e ads.
             </p>
           </Reveal>
+          
+          <Reveal delay={250} className="block lg:hidden w-full mt-8">
+            <HeroPhoto mobile />
+          </Reveal>
 
           <Reveal delay={300} className="w-full">
             <div className="mt-8 lg:mt-10 flex w-full max-w-[680px] flex-col sm:flex-row items-start justify-between gap-6">
