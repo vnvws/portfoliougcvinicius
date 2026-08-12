@@ -71,31 +71,14 @@ header,
 
 .animate-marquee {
   animation: marquee-x 40s linear infinite;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform-style: flat !important;
-  -webkit-transform-style: flat !important;
   display: flex !important;
   visibility: visible !important;
-  /* Safari iOS force composite layer */
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
 }
 
 .animate-marquee-slow {
   animation: marquee-x 60s linear infinite;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform-style: flat !important;
-  -webkit-transform-style: flat !important;
   display: flex !important;
   visibility: visible !important;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
 }
 
 @keyframes neon-breathe {
@@ -164,9 +147,6 @@ header,
   animation: hint-arrow 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-@utility translate-z-0 {
-  transform: translateZ(0);
-}
 
 @utility liquid-glass {
   background: rgba(255, 255, 255, 0.03);

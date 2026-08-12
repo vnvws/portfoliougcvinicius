@@ -35,11 +35,16 @@ export function FixedScale({ children }: { children: ReactNode }) {
     let rafId: number | null = null;
     let lastWidth = 0;
     let lastHeight = 0;
-    let isPinching = false;
 
     const measure = () => {
       rafId = null;
       
+      // Bloquear se houver zoom nativo (Safari pinch-to-zoom)
+      const vv = window.visualViewport;
+      if (vv && Math.abs(vv.scale - 1) > 0.01) {
+        return;
+      }
+
       const width = Math.min(window.innerWidth, document.documentElement.clientWidth);
       const currentScale = width / DESIGN_WIDTH;
       
@@ -60,7 +65,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
     };
 
     const schedule = () => {
-      if (isPinching) return;
       if (rafId === null) {
         rafId = requestAnimationFrame(measure);
       }
@@ -70,26 +74,24 @@ export function FixedScale({ children }: { children: ReactNode }) {
       const vv = window.visualViewport;
       if (!vv) return;
       
-      if (Math.abs(vv.scale - 1) > 0.01) {
-        isPinching = true;
-      } else {
-        isPinching = false;
+      // Se voltarmos ao zoom 100% (reset), re-sincronizamos o layout uma vez
+      if (Math.abs(vv.scale - 1) < 0.01) {
         schedule();
       }
     };
 
     measure();
     
-    window.addEventListener("resize", schedule);
-    window.addEventListener("orientationchange", schedule);
-    window.visualViewport?.addEventListener("resize", handleVisualViewportChange);
-    window.visualViewport?.addEventListener("scroll", handleVisualViewportChange);
-
+    // Resize Observer monitora o layout, não o visual viewport.
     const ro = new ResizeObserver(() => {
       schedule();
     });
     
     if (inner.current) ro.observe(inner.current);
+
+    window.addEventListener("resize", schedule);
+    window.addEventListener("orientationchange", schedule);
+    window.visualViewport?.addEventListener("resize", handleVisualViewportChange);
 
     document.fonts?.ready.then(schedule).catch(() => {});
 
@@ -98,7 +100,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
       window.removeEventListener("resize", schedule);
       window.removeEventListener("orientationchange", schedule);
       window.visualViewport?.removeEventListener("resize", handleVisualViewportChange);
-      window.visualViewport?.removeEventListener("scroll", handleVisualViewportChange);
       ro.disconnect();
     };
   }, []);
@@ -127,12 +128,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
             transform: `translateX(-50%) scale(${scale})`,
             transformOrigin: "top center",
             WebkitTransform: `translateX(-50%) scale(${scale})`,
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            transformStyle: "flat",
-            WebkitTransformStyle: "flat",
-            WebkitPerspective: "1000px",
-            perspective: "1000px",
             isolation: "isolate",
           }}
         >
