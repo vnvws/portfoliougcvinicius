@@ -94,31 +94,28 @@ export function FixedScale({ children }: { children: ReactNode }) {
       <div
         style={{
           width: "100%",
-          minHeight: "100svh",
           height: scaledHeight,
-          overflowX: "hidden",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          backgroundColor: "var(--color-bone)",
-          touchAction: "auto",
           position: "relative",
+          overflow: "clip",
+          backgroundColor: "var(--color-bone)",
+          paddingBottom: "env(safe-area-inset-bottom)",
+
         }}
       >
         <div
           ref={inner}
           style={{
+            position: "absolute",
+            top: 0,
+            left: "50%",
             width: DESIGN_WIDTH,
-            transform: `scale(${scale})`,
+            transform: `translateX(-50%) scale(${scale})`,
             transformOrigin: "top center",
-            flexShrink: 0,
-            /* willChange: "transform", */
-            WebkitTransform: `scale(${scale})`,
+            WebkitTransform: `translateX(-50%) scale(${scale})`,
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transformStyle: "flat",
             WebkitTransformStyle: "flat",
-            /* Safari iOS memory and compositing fix */
             WebkitPerspective: "1000px",
             perspective: "1000px",
             isolation: "isolate",
