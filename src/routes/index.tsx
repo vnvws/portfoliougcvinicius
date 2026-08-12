@@ -338,7 +338,7 @@ function Hero() {
   }, [setActiveVideoSrc]);
 
   return (
-    <section className="relative mx-auto w-[1240px] pt-4 pb-20">
+    <section className="relative mx-auto w-[1240px] pt-4 pb-20 sm:pb-8">
       <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1 flex flex-col items-start text-left">
           <Reveal>
