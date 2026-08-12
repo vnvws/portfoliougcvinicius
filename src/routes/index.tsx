@@ -456,7 +456,7 @@ function Hero() {
             </div>
           </div>
           <span
-            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg"
+            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg mobile-text-micro"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
             UGC CREATOR MASCULINO
@@ -488,7 +488,7 @@ function About() {
           <h3 className="font-display text-[32px] font-extrabold tracking-[-0.03em] text-ink">
             Me conheça
           </h3>
-          <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line">
+          <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line mobile-text-body">
             <p>
               {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald’s, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
             </p>
@@ -545,7 +545,7 @@ function EngagementSection() {
                     label={video.label}
                   />
                 </div>
-                <p className="mt-4 text-center font-display text-[14px] font-bold tracking-wider text-forest/80 uppercase">
+                <p className="mt-4 text-center font-display text-[14px] font-bold tracking-wider text-forest/80 uppercase mobile-text-small">
                   {video.label}
                 </p>
               </div>
