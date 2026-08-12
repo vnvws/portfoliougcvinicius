@@ -47,10 +47,10 @@ export default function InvestmentSection() {
   };
 
   return (
-    <section className="py-32 px-12 bg-bone">
-      <div className="mx-auto w-[1240px]">
+    <section className="py-20 lg:py-32 px-6 lg:px-12 bg-bone">
+      <div className="mx-auto w-full lg:w-[1240px]">
         <Reveal>
-          <h2 className="text-[72px] font-black text-ink mb-20 text-center tracking-tighter leading-none">
+          <h2 className="text-[48px] lg:text-[72px] font-black text-ink mb-12 lg:mb-20 text-center tracking-tighter leading-none">
             Investimentos
           </h2>
         </Reveal>
