@@ -94,8 +94,8 @@ function Index() {
 
           <Hero />
           
-          <section className="relative mt-8 sm:mt-0 mb-20 sm:mb-8">
-            <div className="mx-auto w-[1240px] px-12">
+          <section className="relative mt-8 lg:mt-0 mb-12 lg:mb-20">
+            <div className="mx-auto w-full lg:w-[1240px] px-6 lg:px-12">
               <div className="flex items-center gap-6">
                 <div className="h-[1px] flex-1 bg-forest/10" />
                 <p className="flex-shrink-0 text-[11px] font-bold tracking-[0.32em] text-forest/40 uppercase whitespace-nowrap">
