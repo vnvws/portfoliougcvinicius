@@ -107,15 +107,16 @@ export function FixedScale({ children }: { children: ReactNode }) {
   return (
     <VideoControlContext.Provider value={contextValue}>
       <div
+        className="fixed-scale-container"
         style={{
           width: "100%",
           height: scaledHeight,
           position: "relative",
-          overflow: "clip",
-          contain: "paint",
+          overflow: "visible",
+          contain: "none",
+          WebkitOverflowScrolling: "touch",
           backgroundColor: "var(--color-bone)",
           paddingBottom: "env(safe-area-inset-bottom)",
-
         }}
       >
         <div
@@ -126,10 +127,11 @@ export function FixedScale({ children }: { children: ReactNode }) {
             top: 0,
             left: "50%",
             width: DESIGN_WIDTH,
-            transform: `translateX(-50%) scale(${scale})`,
+            transform: `translate3d(-50%, 0, 0) scale(${scale})`,
             transformOrigin: "top center",
-            WebkitTransform: `translateX(-50%) scale(${scale})`,
+            WebkitTransform: `translate3d(-50%, 0, 0) scale(${scale})`,
             isolation: "isolate",
+            willChange: "transform",
           }}
         >
           {children}

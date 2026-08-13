@@ -5,13 +5,13 @@
 
 /* Otimização de renderização seletiva */
 .optimize-section {
-  contain: paint;
+  /* contain: paint; - Removido para evitar bugs de renderização no iOS Safari */
 }
 
 header, 
 .hero-section,
 [id="sobre"] {
-  contain: content;
+  /* contain: layout paint; - Removido para evitar bugs de renderização no iOS Safari */
 }
 
 .liquid-glass {
@@ -372,14 +372,26 @@ iframe[src*="lovable.dev/badge"] {
 
 @layer utilities {
   @media (max-width: 767px) {
+    /* Estabilização Mobile */
+    .fixed-scale-container {
+      overflow: visible !important;
+      contain: none !important;
+      min-height: 100vh;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+
     .fixed-scale-content {
-      /* Estabilização e Legibilidade Mobile */
       image-rendering: -webkit-optimize-contrast;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      
-      /* Ajuste de saturação para telas OLED comuns em mobile */
       filter: saturate(1.05);
+      
+      /* Força a renderização do conteúdo no iOS Safari */
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     /* Melhora o contraste de textos pequenos no mobile devido ao scaling */
@@ -390,6 +402,8 @@ iframe[src*="lovable.dev/badge"] {
     .fixed-scale-content h3 {
       text-shadow: 0 0 1px rgba(0,0,0,0.01);
       letter-spacing: 0.01em;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     /* Otimização de toque em botões escalados */
@@ -399,6 +413,8 @@ iframe[src*="lovable.dev/badge"] {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
   }
 }
