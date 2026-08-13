@@ -30,7 +30,7 @@ function Logo({ name, src }: Brand) {
     <div
       role="listitem"
       aria-label={`Logo da marca ${name}`}
-      className="group relative mx-3 flex h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white transition-all duration-300 hover:scale-[1.05]"
+      className="group relative mx-3 flex h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 shrink-0 items-center justify-center overflow-hidden rounded-full transition-all duration-300 hover:scale-[1.05]"
       style={{ 
         border: "1px solid color-mix(in oklab, var(--color-forest) 10%, transparent)",
       }}
@@ -39,7 +39,7 @@ function Logo({ name, src }: Brand) {
         src={src} 
         alt={`Logo ${name}`} 
         loading="eager"
-        className="h-[55%] w-[55%] max-h-[46px] lg:max-h-[56px] w-auto object-contain pointer-events-none" 
+        className="h-full w-full object-cover object-center pointer-events-none" 
         onError={(e) => {
           (e.target as HTMLImageElement).style.display = 'none';
         }}
