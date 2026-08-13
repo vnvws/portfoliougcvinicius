@@ -369,3 +369,36 @@ iframe[src*="lovable.dev/badge"] {
   height: 0 !important;
 }
 /* NEXUS-PRO:WATERMARK-HIDE:END */
+
+@layer utilities {
+  @media (max-width: 767px) {
+    .fixed-scale-content {
+      /* Estabilização e Legibilidade Mobile */
+      image-rendering: -webkit-optimize-contrast;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      
+      /* Ajuste de saturação para telas OLED comuns em mobile */
+      filter: saturate(1.05);
+    }
+
+    /* Melhora o contraste de textos pequenos no mobile devido ao scaling */
+    .fixed-scale-content span,
+    .fixed-scale-content p,
+    .fixed-scale-content h1,
+    .fixed-scale-content h2,
+    .fixed-scale-content h3 {
+      text-shadow: 0 0 1px rgba(0,0,0,0.01);
+      letter-spacing: 0.01em;
+    }
+
+    /* Otimização de toque em botões escalados */
+    .fixed-scale-content button,
+    .fixed-scale-content a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
