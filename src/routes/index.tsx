@@ -31,7 +31,7 @@ const InvestmentSection = lazy(() => import("@/components/site/InvestmentSection
 const PackageSection = lazy(() => import("@/components/site/PackageSection"));
 const ContactSection = lazy(() => import("@/components/site/ContactSection"));
 const ProcessSection = lazy(() => import("@/components/site/ProcessSection"));
-const FeedbackSection = lazy(() => import("@/components/site/FeedbackSection.tsx")).catch(() => ({ default: () => null }));
+
 
 
 
