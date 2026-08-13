@@ -8,7 +8,7 @@ interface InvestmentItem {
 
 const InvestmentTable = ({ title, items, note }: { title: string; items: InvestmentItem[]; note?: string }) => (
   <div className="flex-1 min-w-[300px] flex flex-col">
-    <h3 className="text-[28px] font-black text-forest mb-10 tracking-tight uppercase leading-none">
+    <h3 className="text-[28px] font-black text-ink mb-10 tracking-tight uppercase leading-none">
       {title}
     </h3>
     <div className="flex flex-col border-t border-forest/10">
@@ -19,7 +19,7 @@ const InvestmentTable = ({ title, items, note }: { title: string; items: Investm
             idx % 2 === 0 ? 'bg-forest/[0.03]' : 'bg-transparent'
           }`}
         >
-          <span className="text-[14px] font-medium tracking-[0.08em] text-forest uppercase">
+          <span className="text-[14px] font-medium tracking-[0.08em] text-forest/80 uppercase">
             {item.label}
           </span>
           <span className="text-[18px] font-black text-ink tabular-nums">
@@ -29,7 +29,7 @@ const InvestmentTable = ({ title, items, note }: { title: string; items: Investm
       ))}
     </div>
     {note && (
-      <p className="mt-4 text-[12px] font-bold tracking-widest text-forest uppercase">
+      <p className="mt-4 text-[12px] font-bold tracking-widest text-forest/40 uppercase">
         {note}
       </p>
     )}
