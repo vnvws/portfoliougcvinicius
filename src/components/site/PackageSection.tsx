@@ -107,7 +107,7 @@ export default function PackageSection() {
           <div className="mb-4 text-center">
             <span className="text-[11px] font-black tracking-[0.4em] text-neon">ESCOLHA SEU PLANO</span>
           </div>
-          <h2 className="text-[72px] font-black text-ink mb-20 text-center tracking-tighter leading-none">
+          <h2 className="text-[72px] font-black text-forest mb-20 text-center tracking-tighter leading-none">
             Pacotes de Conteúdo
           </h2>
         </Reveal>
