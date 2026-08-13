@@ -372,14 +372,24 @@ iframe[src*="lovable.dev/badge"] {
 
 @layer utilities {
   @media (max-width: 767px) {
+    /* Estabilização Mobile */
+    .fixed-scale-container {
+      overflow: visible !important;
+      contain: none !important;
+      min-height: 100vh;
+    }
+
     .fixed-scale-content {
-      /* Estabilização e Legibilidade Mobile */
       image-rendering: -webkit-optimize-contrast;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      
-      /* Ajuste de saturação para telas OLED comuns em mobile */
       filter: saturate(1.05);
+      
+      /* Força a renderização do conteúdo no iOS Safari */
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     /* Melhora o contraste de textos pequenos no mobile devido ao scaling */
