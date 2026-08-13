@@ -651,8 +651,8 @@ function FeedbackSection() {
   ];
 
   return (
-    <section className="py-16 overflow-hidden bg-bone">
-      <div className="mx-auto w-[1240px] mb-8">
+    <section className="pt-16 pb-0 overflow-hidden bg-bone">
+      <div className="mx-auto w-[1240px] mb-4">
         <Reveal>
           <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
             Feedbacks
