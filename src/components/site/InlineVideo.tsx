@@ -115,6 +115,7 @@ export function InlineVideo({
             loop
             playsInline
             autoPlay
+            preload="none"
             disablePictureInPicture
             controlsList="nodownload"
             className="absolute inset-0 h-full w-full object-cover"

@@ -56,8 +56,6 @@ export function BrandMarquee() {
         style={{ 
           transform: "translate3d(0, 0, 0)",
           WebkitTransform: "translate3d(0, 0, 0)",
-          backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden"
         }}
       >
         {/* Render 3 copies to ensure seamless loop on any screen width */}

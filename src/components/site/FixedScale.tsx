@@ -112,8 +112,8 @@ export function FixedScale({ children }: { children: ReactNode }) {
           width: "100%",
           height: scaledHeight,
           position: "relative",
-          overflow: "clip",
-          contain: "paint",
+          overflow: "visible",
+          contain: "none",
           WebkitOverflowScrolling: "touch",
           backgroundColor: "var(--color-bone)",
           paddingBottom: "env(safe-area-inset-bottom)",
@@ -130,7 +130,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
             transform: `translateX(-50%) scale(${scale})`,
             transformOrigin: "top center",
             WebkitTransform: `translateX(-50%) scale(${scale})`,
-            isolation: "isolate",
           }}
         >
           {children}

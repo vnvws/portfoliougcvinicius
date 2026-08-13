@@ -673,11 +673,8 @@ function FeedbackSection() {
         <div 
           className="flex w-max gap-6 animate-marquee"
           style={{ 
-            transformStyle: "flat", 
-            WebkitTransformStyle: "flat", 
-            backfaceVisibility: "hidden", 
-            WebkitBackfaceVisibility: "hidden",
-            willChange: 'transform'
+            transform: "translate3d(0, 0, 0)",
+            WebkitTransform: "translate3d(0, 0, 0)",
           }}
           onMouseEnter={(e) => {
             if (window.matchMedia("(pointer: fine)").matches) {
@@ -706,7 +703,6 @@ function FeedbackCard({ src, index }: { src: string; index: number }) {
       className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
-        transform: "translateZ(0)",
       }}
     >
       <img 
