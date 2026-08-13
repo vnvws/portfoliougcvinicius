@@ -5,13 +5,13 @@
 
 /* Otimização de renderização seletiva */
 .optimize-section {
-  /* contain: paint; - Removido para evitar bugs de renderização no iOS Safari */
+  contain: paint;
 }
 
 header, 
 .hero-section,
 [id="sobre"] {
-  /* contain: layout paint; - Removido para evitar bugs de renderização no iOS Safari */
+  contain: content;
 }
 
 .liquid-glass {
