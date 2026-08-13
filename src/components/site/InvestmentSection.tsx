@@ -7,31 +7,31 @@ interface InvestmentItem {
 }
 
 const InvestmentTable = ({ title, items, note }: { title: string; items: InvestmentItem[]; note?: string }) => (
-  <div className="flex flex-col h-full">
-    <h3 className="text-[clamp(14px,2vw,24px)] font-black text-forest mb-[clamp(12px,4vw,32px)] tracking-tight uppercase leading-none whitespace-nowrap">
+  <div className="flex flex-col h-full overflow-hidden">
+    <h3 className="text-[clamp(11px,3vw,24px)] font-black text-forest mb-[clamp(12px,4vw,32px)] tracking-tight uppercase leading-none whitespace-nowrap">
       {title}
     </h3>
     <div className="flex flex-col flex-1 border-t border-forest/10 relative">
       {items.map((item, idx) => (
         <div 
           key={idx} 
-          className={`flex justify-between items-center px-[clamp(4px,1.5vw,16px)] py-[clamp(8px,1.2vw,14px)] transition-colors ${
+          className={`flex justify-between items-center px-[clamp(2px,1vw,16px)] py-[clamp(6px,1.2vw,14px)] transition-colors ${
             idx % 2 === 0 ? 'bg-forest/[0.03]' : 'bg-transparent'
           }`}
         >
-          <span className="text-[clamp(9px,1.2vw,14px)] font-medium tracking-[clamp(0.02em,0.1vw,0.08em)] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-2">
+          <span className="text-[clamp(7.5px,2.2vw,14px)] font-medium tracking-[clamp(0.01em,0.1vw,0.08em)] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-1">
             {item.label.split('').map((char, i) => (
-              <span key={i} className="inline-block" style={{ marginRight: '0.1em' }}>{char}</span>
+              <span key={i} className="inline-block" style={{ marginRight: '0.05em' }}>{char === ' ' ? '\u00A0' : char}</span>
             ))}
           </span>
-          <span className="text-[clamp(11px,1.5vw,22px)] font-bold text-forest tabular-nums whitespace-nowrap text-right">
+          <span className="text-[clamp(9px,2.8vw,22px)] font-bold text-forest tabular-nums whitespace-nowrap text-right shrink-0">
             {item.price}
           </span>
         </div>
       ))}
     </div>
     {note && (
-      <p className="mt-[clamp(8px,1vw,16px)] text-[clamp(8px,1vw,12px)] font-bold tracking-widest text-forest/40 uppercase">
+      <p className="mt-[clamp(6px,1vw,16px)] text-[clamp(7px,1.8vw,12px)] font-bold tracking-widest text-forest/40 uppercase whitespace-nowrap">
         {note}
       </p>
     )}
@@ -70,14 +70,14 @@ export default function InvestmentSection() {
 
   return (
     <section className="pt-12 pb-32 bg-bone overflow-hidden">
-      <div className="mx-auto w-full max-w-[1240px] px-[clamp(12px,4vw,48px)]">
+      <div className="mx-auto w-full max-w-[1240px] px-[clamp(8px,3vw,48px)]">
         <Reveal>
-          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(32px,8vw,96px)] text-center tracking-tighter leading-none uppercase">
+          <h2 className="text-[clamp(32px,8vw,72px)] font-black text-forest mb-[clamp(24px,8vw,96px)] text-center tracking-tighter leading-none uppercase">
             Investimentos
           </h2>
         </Reveal>
         
-        <div className="grid grid-cols-3 gap-x-[clamp(4px,2vw,48px)] relative">
+        <div className="grid grid-cols-3 gap-x-[clamp(2px,1.5vw,48px)] relative">
           {/* Vertical dividers */}
           <div className="absolute left-[33.33%] top-0 bottom-0 w-[1px] bg-forest/10" />
           <div className="absolute left-[66.66%] top-0 bottom-0 w-[1px] bg-forest/10" />
