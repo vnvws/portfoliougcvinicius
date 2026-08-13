@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "canva-placeholder-id",
+  "asset_id": "2c19cc2a-09be-4876-96ba-aa33f2abd8f3",
   "project_id": "ae42e0a5-de4b-43ae-9f9a-15991eb6e5e2",
-  "url": "/__l5e/user-uploads/15.png",
-  "r2_key": "user-uploads/15.png",
-  "original_filename": "15.png",
-  "size": 0,
+  "url": "/__l5e/assets-v1/2c19cc2a-09be-4876-96ba-aa33f2abd8f3/canva.png",
+  "r2_key": "a/v1/ae42e0a5-de4b-43ae-9f9a-15991eb6e5e2/2c19cc2a-09be-4876-96ba-aa33f2abd8f3/canva.png",
+  "original_filename": "canva.png",
+  "size": 629399,
   "content_type": "image/png",
-  "created_at": "2026-08-13T00:50:00Z"
+  "created_at": "2026-08-12T22:42:44Z"
 }
