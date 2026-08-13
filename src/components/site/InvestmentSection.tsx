@@ -15,14 +15,14 @@ const InvestmentTable = ({ title, items, note }: { title: string; items: Investm
       {items.map((item, idx) => (
         <div 
           key={idx} 
-          className={`flex justify-between items-center px-[clamp(4px,1.5vw,20px)] py-[clamp(8px,1.2vw,18px)] rounded-xl mb-1 transition-colors ${
+          className={`flex justify-between items-center px-[clamp(6px,2vw,24px)] py-[clamp(8px,1.2vw,18px)] rounded-xl mb-1 transition-colors ${
             idx % 2 === 0 ? 'bg-forest/[0.04]' : 'bg-transparent'
           }`}
         >
-          <span className="text-[clamp(8px,1.8vw,16px)] font-medium tracking-[0.05em] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-2">
+          <span className="text-[clamp(9px,1.8vw,16px)] font-medium tracking-[0.05em] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-2">
             {item.label}
           </span>
-          <span className="text-[clamp(10px,2.2vw,20px)] font-black text-[#7dff00] tabular-nums whitespace-nowrap text-right drop-shadow-[0_0_8px_rgba(125,255,0,0.2)]">
+          <span className="text-[clamp(10px,2.2vw,20px)] font-black text-[#7dff00] tabular-nums whitespace-nowrap text-right drop-shadow-[0_0_2px_rgba(0,0,0,0.1)]">
             {item.price}
           </span>
         </div>
