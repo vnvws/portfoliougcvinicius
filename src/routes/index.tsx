@@ -148,19 +148,27 @@ function Index() {
           <FeedbackSection />
 
           <Suspense fallback={<div className="h-96" />}>
-            <ProcessSection />
+            <div className="optimize-section">
+              <ProcessSection />
+            </div>
           </Suspense>
 
           <Suspense fallback={<div className="h-48" />}>
-            <InvestmentSection />
+            <div className="optimize-section">
+              <InvestmentSection />
+            </div>
           </Suspense>
           
           <Suspense fallback={<div className="h-96" />}>
-            <PackageSection />
+            <div className="optimize-section">
+              <PackageSection />
+            </div>
           </Suspense>
 
           <Suspense fallback={<div className="h-96" />}>
-            <ContactSection />
+            <div className="optimize-section">
+              <ContactSection />
+            </div>
           </Suspense>
         </main>
       </FixedScale>
