@@ -120,6 +120,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
       >
         <div
           ref={inner}
+          className="fixed-scale-content"
           style={{
             position: "absolute",
             top: 0,
