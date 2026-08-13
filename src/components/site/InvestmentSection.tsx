@@ -79,8 +79,8 @@ export default function InvestmentSection() {
         
         <div className="grid grid-cols-3 gap-x-[clamp(2px,1.5vw,48px)] relative">
           {/* Vertical dividers */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[1px] bg-forest/10" />
-          <div className="absolute left-[66.66%] top-0 bottom-0 w-[1px] bg-forest/10" />
+          <div className="absolute left-[33.33%] top-0 bottom-0 w-[1px] bg-forest/5" />
+          <div className="absolute left-[66.66%] top-0 bottom-0 w-[1px] bg-forest/5" />
 
           <Reveal delay={100} className="h-full">
             <InvestmentTable title="CONTRATE 1 VEZ" items={data.oneTime} />
