@@ -377,6 +377,8 @@ iframe[src*="lovable.dev/badge"] {
       overflow: visible !important;
       contain: none !important;
       min-height: 100vh;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     .fixed-scale-content {
@@ -400,6 +402,8 @@ iframe[src*="lovable.dev/badge"] {
     .fixed-scale-content h3 {
       text-shadow: 0 0 1px rgba(0,0,0,0.01);
       letter-spacing: 0.01em;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     /* Otimização de toque em botões escalados */
@@ -409,6 +413,8 @@ iframe[src*="lovable.dev/badge"] {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
   }
 }
