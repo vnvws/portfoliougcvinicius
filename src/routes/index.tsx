@@ -30,6 +30,9 @@ import feedback10 from "@/assets/feedbacks/10.png.asset.json";
 const InvestmentSection = lazy(() => import("@/components/site/InvestmentSection"));
 const PackageSection = lazy(() => import("@/components/site/PackageSection"));
 const ContactSection = lazy(() => import("@/components/site/ContactSection"));
+const ProcessSection = lazy(() => import("@/components/site/ProcessSection"));
+
+
 
 
 export const Route = createFileRoute("/")({
@@ -143,7 +146,13 @@ function Index() {
           </section>
 
           <FeedbackSection />
-          
+
+          <Suspense fallback={<div className="h-96" />}>
+            <div className="optimize-section">
+              <ProcessSection />
+            </div>
+          </Suspense>
+
           <Suspense fallback={<div className="h-48" />}>
             <div className="optimize-section">
               <InvestmentSection />
@@ -155,6 +164,7 @@ function Index() {
               <PackageSection />
             </div>
           </Suspense>
+
           
           <Suspense fallback={<div className="h-96" />}>
             <div className="optimize-section">
