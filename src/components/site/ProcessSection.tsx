@@ -76,8 +76,8 @@ export default function ProcessSection() {
                   className={`relative flex flex-col sm:flex-row items-start ${isEven ? 'sm:flex-row-reverse' : ''}`}
                 >
                   {/* Step Marker */}
-                  <div className="absolute left-0 sm:left-1/2 top-0 flex h-10 w-10 -translate-x-0 sm:-translate-x-1/2 items-center justify-center rounded-full border-2 border-forest bg-bone z-10">
-                    <Check size={16} className="text-forest" strokeWidth={3} />
+                  <div className="absolute left-0 sm:left-1/2 top-0 flex h-10 w-10 -translate-x-0 sm:-translate-x-1/2 items-center justify-center rounded-full border-2 border-forest bg-bone z-10 transition-colors group">
+                    <Check size={16} className="text-forest sm:group-hover:text-neon transition-colors" strokeWidth={3} />
                   </div>
 
                   {/* Content Container */}
@@ -102,9 +102,17 @@ export default function ProcessSection() {
                         <ul className={`space-y-3 ${isEven ? 'text-left' : 'text-left sm:text-right'}`}>
                           {step.bullets.map((bullet, bIdx) => (
                             <li key={bIdx} className={`flex items-start gap-3 text-[clamp(14px,1.6vw,15px)] leading-[1.5] text-ink/70 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
-                              {!isEven && <span className="hidden sm:block flex-1">{bullet}</span>}
+                              {/* Left alignment logic for desktop */}
+                              {!isEven && (
+                                <span className="hidden sm:block flex-1">{bullet}</span>
+                              )}
+                              
                               <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-neon mt-2" />
-                              {(isEven || true) && <span className={`flex-1 ${!isEven ? 'sm:hidden' : ''}`}>{bullet}</span>}
+                              
+                              {/* Right/Mobile alignment logic */}
+                              <span className={`flex-1 ${!isEven ? 'sm:hidden' : ''}`}>
+                                {bullet}
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -120,4 +128,5 @@ export default function ProcessSection() {
     </section>
   );
 }
+
 
