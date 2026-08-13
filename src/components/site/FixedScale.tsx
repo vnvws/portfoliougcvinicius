@@ -111,8 +111,8 @@ export function FixedScale({ children }: { children: ReactNode }) {
           width: "100%",
           height: scaledHeight,
           position: "relative",
-          overflow: "clip",
-          contain: "paint",
+          overflow: "visible",
+          contain: "none",
           backgroundColor: "var(--color-bone)",
           paddingBottom: "env(safe-area-inset-bottom)",
 

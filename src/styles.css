@@ -11,7 +11,7 @@
 header, 
 .hero-section,
 [id="sobre"] {
-  contain: content;
+  contain: layout paint;
 }
 
 .liquid-glass {
