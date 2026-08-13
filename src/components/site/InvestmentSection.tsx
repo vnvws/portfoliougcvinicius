@@ -19,10 +19,10 @@ const InvestmentTable = ({ title, items, note }: { title: string; items: Investm
             idx % 2 === 0 ? 'bg-forest/[0.04]' : 'bg-transparent'
           }`}
         >
-          <span className="text-[clamp(9px,1.8vw,16px)] font-medium tracking-[0.05em] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-2">
+          <span className="text-[clamp(10px,1.8vw,16px)] font-medium tracking-[0.05em] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-2">
             {item.label}
           </span>
-          <span className="text-[clamp(10px,2.2vw,20px)] font-black text-[#7dff00] tabular-nums whitespace-nowrap text-right drop-shadow-[0_0_2px_rgba(0,0,0,0.1)]">
+          <span className="text-[clamp(11px,2.2vw,22px)] font-bold text-forest tabular-nums whitespace-nowrap text-right">
             {item.price}
           </span>
         </div>
