@@ -3,15 +3,15 @@
 
 @source "../src";
 
-/* Otimização de renderização seletiva */
+/* Otimização de renderização seletiva - Removendo contenção agressiva que causa bugs no Safari iOS com FixedScale */
 .optimize-section {
-  contain: paint;
+  /* contain: paint; */
 }
 
 header, 
 .hero-section,
 [id="sobre"] {
-  contain: content;
+  /* contain: content; */
 }
 
 .liquid-glass {
