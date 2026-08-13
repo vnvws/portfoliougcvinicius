@@ -138,9 +138,7 @@ function Index() {
                       </h2>
                       <div className="mt-2 h-[2px] w-32 bg-neon/30" />
                     </div>
-                    <div className="portfolio-grid-wrapper min-h-[500px]">
-                      <PortfolioGrid niche={niche} index={index} />
-                    </div>
+                    <PortfolioGrid niche={niche} index={index} />
                   </div>
                 )
               ))}
@@ -150,19 +148,27 @@ function Index() {
           <FeedbackSection />
 
           <Suspense fallback={<div className="h-96" />}>
-            <ProcessSection />
+            <div className="optimize-section">
+              <ProcessSection />
+            </div>
           </Suspense>
 
           <Suspense fallback={<div className="h-48" />}>
-            <InvestmentSection />
+            <div className="optimize-section">
+              <InvestmentSection />
+            </div>
           </Suspense>
           
           <Suspense fallback={<div className="h-96" />}>
-            <PackageSection />
+            <div className="optimize-section">
+              <PackageSection />
+            </div>
           </Suspense>
 
           <Suspense fallback={<div className="h-96" />}>
-            <ContactSection />
+            <div className="optimize-section">
+              <ContactSection />
+            </div>
           </Suspense>
         </main>
       </FixedScale>

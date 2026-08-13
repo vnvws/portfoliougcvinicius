@@ -5,13 +5,13 @@
 
 /* Otimização de renderização seletiva */
 .optimize-section {
-  /* contain: paint; - Removido para evitar bugs de renderização no iOS Safari */
+  contain: paint;
 }
 
 header, 
 .hero-section,
 [id="sobre"] {
-  /* contain: layout paint; - Removido para evitar bugs de renderização no iOS Safari */
+  contain: content;
 }
 
 .liquid-glass {
@@ -370,51 +370,3 @@ iframe[src*="lovable.dev/badge"] {
 }
 /* NEXUS-PRO:WATERMARK-HIDE:END */
 
-@layer utilities {
-  @media (max-width: 767px) {
-    /* Estabilização Mobile */
-    .fixed-scale-container {
-      overflow: visible !important;
-      contain: none !important;
-      min-height: 100vh;
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
-    }
-
-    .fixed-scale-content {
-      image-rendering: -webkit-optimize-contrast;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      filter: saturate(1.05);
-      
-      /* Força a renderização do conteúdo no iOS Safari */
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    /* Melhora o contraste de textos pequenos no mobile devido ao scaling */
-    .fixed-scale-content span,
-    .fixed-scale-content p,
-    .fixed-scale-content h1,
-    .fixed-scale-content h2,
-    .fixed-scale-content h3 {
-      text-shadow: 0 0 1px rgba(0,0,0,0.01);
-      letter-spacing: 0.01em;
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
-    }
-
-    /* Otimização de toque em botões escalados */
-    .fixed-scale-content button,
-    .fixed-scale-content a {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
-    }
-  }
-}
