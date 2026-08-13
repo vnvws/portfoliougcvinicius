@@ -54,55 +54,57 @@ const steps: Step[] = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-16 px-12 bg-bone relative overflow-hidden">
+    <section className="py-24 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden">
       <div className="mx-auto w-full max-w-[1240px]">
         <Reveal>
-          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-20 text-center tracking-tighter leading-none">
+          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(40px,8vw,80px)] text-center tracking-tighter leading-none">
             Processo Criativo
           </h2>
         </Reveal>
 
-        <div className="relative mx-auto max-w-4xl px-4">
+        <div className="relative mx-auto max-w-4xl">
           {/* Vertical line connector */}
-          <div className="absolute left-[20px] top-[10px] bottom-[10px] w-[2px] bg-forest/20 sm:left-1/2 sm:-ml-[1px]" />
+          <div className="absolute left-[19px] top-[10px] bottom-[10px] w-[2px] bg-forest/10 sm:left-1/2 sm:-ml-[1px]" />
 
-          <div className="space-y-16">
+          <div className="space-y-[clamp(40px,8vw,80px)]">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
                 <Reveal 
                   key={step.number} 
                   delay={idx * 100}
-                  className={`relative flex flex-col sm:flex-row items-start sm:items-center ${isEven ? 'sm:flex-row-reverse' : ''}`}
+                  className={`relative flex flex-col sm:flex-row items-start ${isEven ? 'sm:flex-row-reverse' : ''}`}
                 >
                   {/* Step Marker */}
-                  <div className="absolute left-0 sm:left-1/2 top-0 flex h-10 w-10 -translate-x-0 sm:-translate-x-1/2 items-center justify-center rounded-full border-2 border-forest bg-bone z-10 transition-colors group">
-                    <Check size={16} className="text-forest sm:group-hover:text-neon transition-colors" />
+                  <div className="absolute left-0 sm:left-1/2 top-0 flex h-10 w-10 -translate-x-0 sm:-translate-x-1/2 items-center justify-center rounded-full border-2 border-forest bg-bone z-10">
+                    <Check size={16} className="text-forest" strokeWidth={3} />
                   </div>
 
                   {/* Content Container */}
                   <div className={`w-full sm:w-[45%] pl-14 sm:pl-0 ${isEven ? 'sm:pl-12 text-left' : 'sm:pr-12 sm:text-right'}`}>
                     <div className="flex flex-col">
-                      <div className={`flex items-baseline gap-3 mb-2 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
-                        <span className="text-[12px] font-bold tracking-[0.2em] text-forest/40">
+                      <div className={`flex items-baseline gap-3 mb-3 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
+                        <span className="text-[clamp(10px,1.5vw,12px)] font-bold tracking-[0.2em] text-forest/30 tabular-nums">
                           {step.number}
                         </span>
-                        <h3 className="text-[clamp(20px,3vw,24px)] font-bold text-forest leading-tight">
+                        <h3 className="text-[clamp(20px,2.5vw,28px)] font-bold text-forest leading-tight tracking-tight">
                           {step.title}
                         </h3>
                       </div>
                       
-                      <p className="text-[15px] sm:text-[17px] leading-relaxed text-ink/80 font-normal mb-3">
-                        {step.description}
-                      </p>
+                      {step.description && (
+                        <p className="text-[clamp(15px,1.8vw,17px)] leading-[1.6] text-ink/80 font-normal mb-4">
+                          {step.description}
+                        </p>
+                      )}
                       
                       {step.bullets && (
-                        <ul className={`space-y-2 ${isEven ? 'text-left' : 'text-left sm:text-right'}`}>
+                        <ul className={`space-y-3 ${isEven ? 'text-left' : 'text-left sm:text-right'}`}>
                           {step.bullets.map((bullet, bIdx) => (
-                            <li key={bIdx} className={`flex items-start gap-2 text-[14px] sm:text-[15px] leading-relaxed text-ink/70 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
-                              {!isEven && <span className="hidden sm:block truncate">{bullet}</span>}
-                              <span className="shrink-0 text-neon mt-1.5">•</span>
-                              {(isEven || true) && <span className={`${!isEven ? 'sm:hidden' : ''}`}>{bullet}</span>}
+                            <li key={bIdx} className={`flex items-start gap-3 text-[clamp(14px,1.6vw,15px)] leading-[1.5] text-ink/70 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
+                              {!isEven && <span className="hidden sm:block flex-1">{bullet}</span>}
+                              <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-neon mt-2" />
+                              {(isEven || true) && <span className={`flex-1 ${!isEven ? 'sm:hidden' : ''}`}>{bullet}</span>}
                             </li>
                           ))}
                         </ul>
@@ -118,3 +120,4 @@ export default function ProcessSection() {
     </section>
   );
 }
+
