@@ -72,7 +72,7 @@ export default function InvestmentSection() {
     <section className="pt-12 pb-32 bg-bone overflow-hidden">
       <div className="mx-auto w-full max-w-[1240px] px-[clamp(8px,3vw,48px)]">
         <Reveal>
-          <h2 className="text-[clamp(32px,8vw,72px)] font-black text-forest mb-[clamp(24px,8vw,96px)] text-center tracking-tighter leading-none uppercase">
+          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(24px,8vw,96px)] text-center tracking-tighter leading-none">
             Investimentos
           </h2>
         </Reveal>
