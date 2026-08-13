@@ -130,7 +130,7 @@ function Index() {
                 activeTab === niche.id && (
                   <div key={niche.id} className="animate-in fade-in duration-500">
                     <div className="mb-12 px-12">
-                      <h2 className="font-display text-[64px] font-black tracking-[-0.04em] text-forest leading-tight uppercase">
+                      <h2 className="font-display text-[clamp(42px,6vw,64px)] font-black tracking-[-0.04em] text-forest leading-tight">
                         {niche.title}
                       </h2>
                       <div className="mt-2 h-[2px] w-32 bg-neon/30" />
@@ -527,9 +527,9 @@ function About() {
           />
         </Reveal>
         <Reveal delay={140} className="col-span-6 col-start-7 pt-6">
-          <h3 className="font-display text-[32px] font-extrabold tracking-[-0.03em] text-ink">
+          <h2 className="font-display text-[clamp(42px,6vw,72px)] font-black tracking-[-0.04em] text-forest leading-none">
             Me conheça
-          </h3>
+          </h2>
           <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line">
             <p>
               {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald’s, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
@@ -592,7 +592,7 @@ function EngagementSection() {
     <section className="mx-auto w-[1240px] pt-12 pb-20">
       <div className="mb-12 flex flex-col items-center">
         <Reveal>
-          <h2 className="font-display text-[48px] font-black tracking-[-0.04em] text-forest uppercase text-center">
+          <h2 className="font-display text-[clamp(32px,5vw,48px)] font-black tracking-[-0.04em] text-forest text-center leading-[1.1]">
             Mais engajamento e mais conversão
           </h2>
         </Reveal>
@@ -654,7 +654,7 @@ function FeedbackSection() {
     <section className="pt-16 pb-0 overflow-hidden bg-bone">
       <div className="mx-auto w-[1240px] mb-4">
         <Reveal>
-          <h2 className="font-display text-[72px] font-black tracking-[-0.04em] text-forest">
+          <h2 className="font-display text-[clamp(42px,6vw,72px)] font-black tracking-[-0.04em] text-forest leading-none">
             Feedbacks
           </h2>
         </Reveal>
@@ -741,9 +741,9 @@ function ExitPopup() {
             <MessageCircle size={32} />
           </div>
           
-          <h3 className="mb-4 font-display text-[32px] font-bold leading-tight text-ink uppercase">
+          <h2 className="mb-4 font-display text-[clamp(28px,4vw,32px)] font-black leading-tight text-forest">
             Vamos decolar <span className="text-neon">sua marca?</span>
-          </h3>
+          </h2>
           
           <p className="mb-10 text-[16px] leading-relaxed text-forest/70">
             Peça agora sua proposta personalizada. Eu volto em até 24h úteis para darmos início à sua próxima campanha.
