@@ -30,18 +30,17 @@ function Logo({ name, src }: Brand) {
     <div
       role="listitem"
       aria-label={`Logo da marca ${name}`}
-      className="group relative mx-4 flex h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white transition-all duration-300 hover:scale-[1.05]"
+      className="group relative mx-3 flex h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white transition-all duration-300 hover:scale-[1.05]"
       style={{ 
-        border: "1px solid color-mix(in oklab, var(--color-forest) 15%, transparent)",
+        border: "1px solid color-mix(in oklab, var(--color-forest) 10%, transparent)",
       }}
     >
       <img 
         src={src} 
         alt={`Logo ${name}`} 
         loading="eager"
-        className="h-[65%] w-[65%] object-contain pointer-events-none" 
+        className="h-[55%] w-[55%] max-h-[46px] lg:max-h-[56px] w-auto object-contain pointer-events-none" 
         onError={(e) => {
-          // Hide broken image icon if loading fails
           (e.target as HTMLImageElement).style.display = 'none';
         }}
       />
@@ -51,7 +50,7 @@ function Logo({ name, src }: Brand) {
 
 export function BrandMarquee() {
   return (
-    <div className="group relative overflow-hidden py-10 lg:py-16 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
+    <div className="group relative overflow-hidden py-6 lg:py-10 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
       <div
         className="flex w-max items-center animate-marquee"
         style={{ 
