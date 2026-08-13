@@ -107,6 +107,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
   return (
     <VideoControlContext.Provider value={contextValue}>
       <div
+        className="fixed-scale-container"
         style={{
           width: "100%",
           height: scaledHeight,
@@ -116,7 +117,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
           WebkitOverflowScrolling: "touch",
           backgroundColor: "var(--color-bone)",
           paddingBottom: "env(safe-area-inset-bottom)",
-
         }}
       >
         <div
