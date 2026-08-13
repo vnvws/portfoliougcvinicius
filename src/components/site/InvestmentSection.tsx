@@ -8,32 +8,32 @@ interface InvestmentItem {
 
 const InvestmentTable = ({ title, items, note }: { title: string; items: InvestmentItem[]; note?: string }) => (
   <div className="flex flex-col h-full overflow-hidden">
-    <h3 className="text-[clamp(11px,3vw,24px)] font-black text-forest mb-[clamp(12px,4vw,32px)] tracking-tight uppercase leading-none whitespace-nowrap">
+    <h3 className="text-[clamp(11px,2.5vw,22px)] font-black text-forest mb-[clamp(16px,4vw,40px)] tracking-tight uppercase leading-none text-center">
       {title}
     </h3>
-    <div className="flex flex-col flex-1 border-t border-forest/10 relative">
+    <div className="flex flex-col flex-1 relative">
       {items.map((item, idx) => (
         <div 
           key={idx} 
-          className={`flex justify-between items-center px-[clamp(2px,1vw,16px)] py-[clamp(6px,1.2vw,14px)] transition-colors ${
-            idx % 2 === 0 ? 'bg-forest/[0.03]' : 'bg-transparent'
+          className={`flex justify-between items-center px-[clamp(4px,1.5vw,20px)] py-[clamp(8px,1.2vw,18px)] rounded-xl mb-1 transition-colors ${
+            idx % 2 === 0 ? 'bg-forest/[0.04]' : 'bg-transparent'
           }`}
         >
-          <span className="text-[clamp(7.5px,2.2vw,14px)] font-medium tracking-[clamp(0.01em,0.1vw,0.08em)] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-1">
-            {item.label.split('').map((char, i) => (
-              <span key={i} className="inline-block" style={{ marginRight: '0.05em' }}>{char === ' ' ? '\u00A0' : char}</span>
-            ))}
+          <span className="text-[clamp(8px,1.8vw,16px)] font-medium tracking-[0.05em] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-2">
+            {item.label}
           </span>
-          <span className="text-[clamp(9px,2.8vw,22px)] font-bold text-forest tabular-nums whitespace-nowrap text-right shrink-0">
+          <span className="text-[clamp(10px,2.2vw,20px)] font-black text-[#7dff00] tabular-nums whitespace-nowrap text-right drop-shadow-[0_0_8px_rgba(125,255,0,0.2)]">
             {item.price}
           </span>
         </div>
       ))}
     </div>
     {note && (
-      <p className="mt-[clamp(6px,1vw,16px)] text-[clamp(7px,1.8vw,12px)] font-bold tracking-widest text-forest/40 uppercase whitespace-nowrap">
-        {note}
-      </p>
+      <div className="mt-6 flex justify-center">
+        <p className="text-[clamp(8px,1.5vw,14px)] font-bold tracking-[0.2em] text-forest/50 uppercase">
+          {note}
+        </p>
+      </div>
     )}
   </div>
 );
@@ -79,8 +79,8 @@ export default function InvestmentSection() {
         
         <div className="grid grid-cols-3 gap-x-[clamp(2px,1.5vw,48px)] relative">
           {/* Vertical dividers */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[1px] bg-forest/10" />
-          <div className="absolute left-[66.66%] top-0 bottom-0 w-[1px] bg-forest/10" />
+          <div className="absolute left-[33.33%] top-0 bottom-0 w-[1px] bg-forest/5" />
+          <div className="absolute left-[66.66%] top-0 bottom-0 w-[1px] bg-forest/5" />
 
           <Reveal delay={100} className="h-full">
             <InvestmentTable title="CONTRATE 1 VEZ" items={data.oneTime} />
