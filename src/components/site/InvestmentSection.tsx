@@ -1,17 +1,38 @@
 import React from "react";
 import { Reveal } from "./Reveal";
 
-const InvestmentTable = ({ title, items }: { title: string; items: { label: string; price: string }[] }) => (
-  <div className="flex-1 min-w-[320px] bg-white rounded-[32px] p-8 border border-forest/10 transition-shadow">
-    <h3 className="text-2xl font-black text-ink mb-8 text-center tracking-tight border-b border-forest/5 pb-4">{title}</h3>
-    <div className="space-y-3">
+interface InvestmentItem {
+  label: string;
+  price: string;
+}
+
+const InvestmentTable = ({ title, items, note }: { title: string; items: InvestmentItem[]; note?: string }) => (
+  <div className="flex-1 min-w-[300px] flex flex-col">
+    <h3 className="text-[28px] font-black text-ink mb-10 tracking-tight uppercase leading-none">
+      {title}
+    </h3>
+    <div className="flex flex-col border-t border-forest/10">
       {items.map((item, idx) => (
-        <div key={idx} className="flex justify-between items-center px-4 py-4 rounded-xl border border-transparent hover:border-neon/30 hover:bg-neon/5 transition-all group">
-          <span className="text-[16px] font-bold tracking-tight text-forest group-hover:text-ink transition-colors">{item.label}</span>
-          <span className="text-[18px] font-black text-ink bg-bone px-3 py-1 rounded-lg group-hover:bg-neon group-hover:text-ink transition-all">{item.price}</span>
+        <div 
+          key={idx} 
+          className={`flex justify-between items-center px-4 py-3.5 transition-colors ${
+            idx % 2 === 0 ? 'bg-forest/[0.03]' : 'bg-transparent'
+          }`}
+        >
+          <span className="text-[14px] font-medium tracking-[0.08em] text-forest/80 uppercase">
+            {item.label}
+          </span>
+          <span className="text-[18px] font-black text-ink tabular-nums">
+            {item.price === "---" ? "" : item.price}
+          </span>
         </div>
       ))}
     </div>
+    {note && (
+      <p className="mt-4 text-[12px] font-bold tracking-widest text-forest/40 uppercase">
+        {note}
+      </p>
+    )}
   </div>
 );
 
@@ -33,7 +54,6 @@ export default function InvestmentSection() {
       { label: "10 Vídeos", price: "R$ 2.000" },
       { label: "15 Vídeos", price: "R$ 3.000" },
       { label: "20 Vídeos", price: "R$ 4.000" },
-      { label: "(Mínimo 3 meses)", price: "---" },
     ],
     additional: [
       { label: "Teste AB", price: "R$ 70" },
@@ -50,19 +70,36 @@ export default function InvestmentSection() {
     <section className="pt-12 pb-32 px-12 bg-bone">
       <div className="mx-auto w-[1240px]">
         <Reveal>
-          <h2 className="text-[72px] font-black text-ink mb-12 text-center tracking-tighter leading-none">
+          <h2 className="text-[72px] font-black text-ink mb-24 text-center tracking-tighter leading-none uppercase">
             Investimentos
           </h2>
         </Reveal>
-        <div className="flex flex-wrap gap-10 justify-center items-start">
-          <Reveal delay={100} className="flex-1">
-            <InvestmentTable title="Contrate 1 vez" items={data.oneTime} />
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+          {/* Vertical dividers (Desktop only) */}
+          <div className="hidden md:block absolute left-1/3 top-0 bottom-0 w-[1px] bg-forest/10" />
+          <div className="hidden md:block absolute left-2/3 top-0 bottom-0 w-[1px] bg-forest/10" />
+
+          <Reveal delay={100}>
+            <div className="md:pr-6">
+              <InvestmentTable title="Contrate 1 vez" items={data.oneTime} />
+            </div>
           </Reveal>
-          <Reveal delay={200} className="flex-1">
-            <InvestmentTable title="Com recorrência" items={data.recurring} />
+          
+          <Reveal delay={200}>
+            <div className="md:px-6">
+              <InvestmentTable 
+                title="Com recorrência" 
+                items={data.recurring} 
+                note="(Mínimo 3 meses)"
+              />
+            </div>
           </Reveal>
-          <Reveal delay={300} className="flex-1">
-            <InvestmentTable title="Adicionais" items={data.additional} />
+          
+          <Reveal delay={300}>
+            <div className="md:pl-6">
+              <InvestmentTable title="Adicionais" items={data.additional} />
+            </div>
           </Reveal>
         </div>
       </div>
