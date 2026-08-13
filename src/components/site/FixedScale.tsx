@@ -113,6 +113,7 @@ export function FixedScale({ children }: { children: ReactNode }) {
           position: "relative",
           overflow: "visible",
           contain: "none",
+          WebkitOverflowScrolling: "touch",
           backgroundColor: "var(--color-bone)",
           paddingBottom: "env(safe-area-inset-bottom)",
 
