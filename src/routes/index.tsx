@@ -138,7 +138,9 @@ function Index() {
                       </h2>
                       <div className="mt-2 h-[2px] w-32 bg-neon/30" />
                     </div>
-                    <PortfolioGrid niche={niche} index={index} />
+                    <div className="portfolio-grid-wrapper min-h-[500px]">
+                      <PortfolioGrid niche={niche} index={index} />
+                    </div>
                   </div>
                 )
               ))}
