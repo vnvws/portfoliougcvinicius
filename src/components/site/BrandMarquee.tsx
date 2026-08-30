@@ -8,13 +8,18 @@ import rainha from "@/assets/brands/rainha.png.asset.json";
 import alva from "@/assets/brands/alva.png.asset.json";
 import touti from "@/assets/brands/touti.jpg.asset.json";
 import innerAi from "@/assets/brands/inner-ai.png.asset.json";
+import jackLinks from "@/assets/brands/Jack_links.png.asset.json";
+import bic from "@/assets/brands/BIC.png.asset.json";
+import samsClub from "@/assets/brands/Sams_Club.png.asset.json";
 
 type Brand = { name: string; src: string };
 
-// Exactly 10 logos as requested
 const brands: Brand[] = [
   { name: "Canva", src: (canva as any).url },
   { name: "Tinder", src: (tinder as any).url },
+  { name: "Sam's Club", src: (samsClub as any).url },
+  { name: "BIC", src: (bic as any).url },
+  { name: "Jack Link's", src: (jackLinks as any).url },
   { name: "Wine", src: (wine as any).url },
   { name: "Open English", src: (openEnglish as any).url },
   { name: "Omie", src: (omie as any).url },
@@ -24,6 +29,7 @@ const brands: Brand[] = [
   { name: "ToutiCosmetics", src: (touti as any).url },
   { name: "Inner AI", src: (innerAi as any).url },
 ];
+
 
 function Logo({ name, src }: Brand) {
   return (
