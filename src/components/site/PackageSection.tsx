@@ -29,7 +29,7 @@ const PackageCard = ({
     >
       {/* Header Area */}
       <div className={`pt-10 pb-6 text-center ${isBestValue ? "bg-white/5" : "bg-forest/[0.03]"}`}>
-        <div className={`mx-auto mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] font-black tracking-[0.2em] ${
+        <div className={`mx-auto mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1 text-[12px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.2em] ${
           isBestValue ? "bg-neon text-ink" : "bg-forest/10 text-forest"
         }`}>
           {isBestValue && <Star size={10} fill="currentColor" />}
@@ -39,7 +39,7 @@ const PackageCard = ({
           {subtitle}
         </h3>
         {note && (
-          <span className={`text-[11px] font-black tracking-widest px-3 py-1 rounded-full ${
+          <span className={`text-[12px] sm:text-[11px] font-black tracking-wide sm:tracking-widest px-3 py-1 rounded-full ${
             isBestValue ? "bg-neon/20 text-neon" : "bg-forest text-white"
           }`}>
             {note}
@@ -66,7 +66,7 @@ const PackageCard = ({
           isBestValue ? "bg-white/10" : "bg-bone"
         }`}>
           <div className="flex flex-col items-center">
-            <span className={`text-[10px] font-black tracking-[0.2em] mb-1 ${
+            <span className={`text-[12px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.2em] mb-1 ${
               isBestValue ? "text-white/40" : "text-forest/40"
             }`}>INVESTIMENTO</span>
             <div className="flex items-baseline gap-1">
@@ -87,7 +87,7 @@ const PackageCard = ({
       </div>
 
       {isBestValue && (
-        <div className="absolute -right-12 top-8 rotate-45 bg-neon px-12 py-1 text-[10px] font-black tracking-[0.2em] text-ink shadow-xl">
+        <div className="absolute -right-12 top-8 rotate-45 bg-neon px-12 py-1 text-[12px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.2em] text-ink shadow-xl">
           MAIS VENDIDO
         </div>
       )}

@@ -501,7 +501,7 @@ function Hero() {
             </div>
           </div>
           <span
-            className="absolute -bottom-5 -left-2 sm:-left-8 -rotate-3 rounded-full px-3 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-[12px] font-bold tracking-[0.2em] shadow-lg"
+            className="absolute -bottom-5 -left-2 sm:-left-8 -rotate-3 rounded-full px-3 sm:px-5 py-1.5 sm:py-2 text-[12px] font-bold tracking-[0.12em] sm:tracking-[0.2em] shadow-lg"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
             UGC CREATOR MASCULINO
