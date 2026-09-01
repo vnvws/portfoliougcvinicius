@@ -344,67 +344,67 @@ function Hero() {
 
   return (
     <section className="relative mx-auto w-full max-w-[1240px] pt-10 pb-14 px-4 sm:px-8 lg:px-12 sm:pt-4 sm:pb-4">
-      <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14">
-        <div className="contents lg:relative lg:z-10 lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:w-full">
-          <Reveal className="order-1 text-center lg:text-left">
-            <span className="text-[13px] sm:text-[12px] font-semibold tracking-[0.14em] sm:tracking-[0.34em] text-forest uppercase">
+      <div className="relative grid grid-cols-[minmax(0,1fr)_minmax(112px,32%)] items-start gap-3 lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-14">
+        <div className="relative z-10 flex min-w-0 flex-col items-start text-left lg:flex-1 lg:w-full">
+          <Reveal>
+            <span className="text-[10px] sm:text-[12px] font-semibold tracking-[0.1em] sm:tracking-[0.34em] text-forest uppercase">
               UGC Creator Masculino · São Paulo, Brasil
             </span>
           </Reveal>
 
-          <Reveal delay={100} className="order-2 text-center lg:text-left">
-            <h1 className="mt-3 sm:mt-4 font-display text-[clamp(38px,12vw,48px)] sm:text-[clamp(56px,10vw,120px)] leading-[0.9] sm:leading-[0.85] font-black tracking-tight sm:tracking-[-0.05em] text-ink uppercase">
+          <Reveal delay={100}>
+            <h1 className="mt-3 sm:mt-4 font-display text-[clamp(34px,10.5vw,44px)] sm:text-[clamp(56px,10vw,120px)] leading-[0.9] sm:leading-[0.85] font-black tracking-tight sm:tracking-[-0.05em] text-ink uppercase">
               Vinícius
               <br />
               <span className="text-[#7dff00]">Araújo</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={200} className="order-4 text-center lg:text-left">
-            <p className="mt-0 sm:mt-8 max-w-[540px] text-[16px] sm:text-[18px] leading-[1.6] text-ink/80 font-normal">
+          <Reveal delay={200}>
+            <p className="mt-5 sm:mt-8 max-w-[540px] text-[13px] sm:text-[18px] leading-[1.5] sm:leading-[1.6] text-ink/80 font-normal">
               Vídeos UGC com presença masculina para apresentar produtos e serviços de um jeito natural, direto e feito para social e ads.
             </p>
           </Reveal>
 
-          <Reveal delay={300} className="order-5 w-full">
-            <div className="mt-6 sm:mt-10 grid w-full max-w-[680px] grid-cols-1 gap-4 sm:flex sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+          <Reveal delay={300} className="w-full">
+            <div className="mt-5 sm:mt-10 flex w-full max-w-[680px] items-start justify-between gap-2 sm:gap-6">
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-12 w-12 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-forest/5 text-forest">
                   <Share2 size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wide sm:tracking-wider">
+                  <span className="text-[9px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-normal sm:tracking-wider">
                     FEITO PARA SOCIAL
                   </span>
-                  <span className="text-[13px] sm:text-[11px] font-normal leading-[1.4] text-ink/60 mt-1 sm:mt-0.5">
+                  <span className="text-[9px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Reels, TikTok e Shorts
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-12 w-12 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-forest/5 text-forest">
                   <TrendingUp size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wide sm:tracking-wider">
+                  <span className="text-[9px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-normal sm:tracking-wider">
                     PRONTO PARA ADS
                   </span>
-                  <span className="text-[13px] sm:text-[11px] font-normal leading-[1.4] text-ink/60 mt-1 sm:mt-0.5">
+                  <span className="text-[9px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Conteúdo pensado para campanhas
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-12 w-12 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
+                <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-forest/5 text-forest">
                   <Video size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wide sm:tracking-wider">
+                  <span className="text-[9px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-normal sm:tracking-wider">
                     PRODUÇÃO COMPLETA
                   </span>
-                  <span className="text-[13px] sm:text-[11px] font-normal leading-[1.4] text-ink/60 mt-1 sm:mt-0.5">
+                  <span className="text-[9px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Roteiro, gravação e edição
                   </span>
                 </div>
@@ -412,15 +412,15 @@ function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={400} className="order-6">
-            <div className="mt-8 sm:mt-14 flex flex-col sm:flex-row items-center gap-7 sm:gap-10">
+          <Reveal delay={400}>
+            <div className="mt-6 sm:mt-14 flex flex-row items-center gap-4 sm:gap-10">
               <div className="flex items-center gap-4">
                 <a
                   href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Falar comigo pelo WhatsApp"
-                  className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <MessageCircle size={22} />
                 </a>
@@ -429,7 +429,7 @@ function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu Instagram"
-                  className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <Instagram size={22} />
                 </a>
@@ -438,7 +438,7 @@ function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu TikTok"
-                  className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <svg 
                     viewBox="0 0 24 24" 
@@ -455,7 +455,7 @@ function Hero() {
                 <a
                   href="mailto:comercial.viniciusugc@gmail.com"
                   aria-label="Enviar um e-mail"
-                  className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <Mail size={22} />
                 </a>
@@ -463,7 +463,7 @@ function Hero() {
 
               <a
                 href="#portfolio"
-                className="group relative flex min-h-12 items-center gap-2 font-display text-[17px] sm:text-[18px] font-black tracking-wider sm:tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
+                className="group relative flex min-h-9 items-center gap-1 font-display text-[11px] sm:text-[18px] font-black tracking-wide sm:tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
               >
                 <span>VER PORTFÓLIO</span>
                 <ChevronRight size={22} className="transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -473,7 +473,7 @@ function Hero() {
           </Reveal>
         </div>
 
-        <div className="relative order-3 w-[min(78vw,330px)] sm:w-[300px] lg:order-none lg:w-[340px] shrink-0">
+        <div className="relative w-full shrink-0 lg:w-[340px]">
           <div
             className="relative overflow-hidden rounded-[22px] bg-ink shadow-2xl"
             style={{
@@ -515,8 +515,8 @@ function Hero() {
 function About() {
   return (
     <section id="sobre" className="mx-auto w-full max-w-[1240px] pb-16 px-4 sm:px-8 lg:px-12 sm:pb-6">
-      <div className="grid grid-cols-1 lg:grid-cols-12 items-start gap-8 sm:gap-8">
-        <Reveal className="col-span-1 lg:col-span-5">
+      <div className="grid grid-cols-12 items-start gap-4 sm:gap-8">
+        <Reveal className="col-span-5">
           <img
             src={aboutCollageAsset.url}
             alt="Vinícius Araújo UGC Content"
@@ -529,11 +529,11 @@ function About() {
             }}
           />
         </Reveal>
-        <Reveal delay={140} className="col-span-1 lg:col-span-6 lg:col-start-7 pt-0 lg:pt-6">
-          <h2 className="font-display text-[clamp(30px,7vw,34px)] sm:text-[clamp(42px,6vw,72px)] font-black tracking-tight sm:tracking-[-0.04em] text-forest leading-none">
+        <Reveal delay={140} className="col-span-7 pt-1 lg:col-span-6 lg:col-start-7 lg:pt-6">
+          <h2 className="font-display text-[clamp(24px,7vw,34px)] sm:text-[clamp(42px,6vw,72px)] font-black tracking-tight sm:tracking-[-0.04em] text-forest leading-none">
             Me conheça
           </h2>
-          <div className="mt-5 space-y-4 text-[16px] leading-[1.65] text-forest whitespace-normal sm:mt-4 sm:whitespace-pre-line">
+          <div className="mt-3 space-y-4 text-[12px] leading-[1.5] text-forest whitespace-normal sm:mt-4 sm:text-[16px] sm:leading-[1.65] sm:whitespace-pre-line">
             <p>
               {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald's, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
             </p>
@@ -605,12 +605,12 @@ function EngagementSection() {
       </div>
 
       <div className="flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-8 w-full">
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 w-full">
           {engagementVideos.map((video, idx) => (
             <Reveal key={video.url} delay={200 + idx * 100}>
               <div className="flex flex-col items-center">
                 <div 
-                  className="relative w-full overflow-hidden rounded-[22px] bg-ink shadow-2xl max-w-[340px] sm:max-w-[320px] mx-auto"
+                  className="relative w-full overflow-hidden rounded-[12px] sm:rounded-[22px] bg-ink shadow-2xl max-w-[340px] sm:max-w-[320px] mx-auto"
                   style={{ 
                     aspectRatio: "9 / 16",
                     border: "1px solid rgba(125, 255, 0, 0.2)"
@@ -621,10 +621,10 @@ function EngagementSection() {
                   />
                 </div>
                 <div className="mt-4 text-center font-display uppercase">
-                  <p className="text-[24px] font-black tracking-tight sm:tracking-tighter text-forest leading-none">
+                  <p className="text-[14px] sm:text-[24px] font-black tracking-tight sm:tracking-tighter text-forest leading-none">
                     +De <CountUp end={video.views} suffix=" mil" />
                   </p>
-                  <p className="mt-2 text-[13px] sm:text-[12px] font-bold tracking-wider sm:tracking-widest text-forest/60 sm:text-forest/50">
+                  <p className="mt-1 text-[10px] sm:mt-2 sm:text-[12px] font-bold tracking-normal sm:tracking-widest text-forest/60 sm:text-forest/50">
                     views no {video.platform}
                   </p>
                 </div>
@@ -694,7 +694,7 @@ function FeedbackSection() {
 function FeedbackCard({ src, index }: { src: string; index: number }) {
   return (
     <div 
-      className="relative w-[calc(100vw-48px)] max-w-[360px] sm:w-[320px] lg:w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-3 sm:p-4"
+      className="relative w-[220px] sm:w-[320px] lg:w-[360px] flex-shrink-0 overflow-hidden rounded-[16px] sm:rounded-[22px] bg-white p-2 sm:p-4"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
       }}

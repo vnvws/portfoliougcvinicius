@@ -38,24 +38,24 @@ export default function ContactSection() {
   return (
     <section id="contato" className="pt-14 sm:pt-20 pb-12 px-4 sm:px-8 lg:px-12 bg-bone">
       <div className="mx-auto w-full max-w-[1240px] rounded-[20px] sm:rounded-[32px] border border-forest/10 bg-white/50 p-5 sm:p-10 lg:p-16 shadow-xl backdrop-blur-sm">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-2 gap-3 lg:gap-16">
           {/* Left Column */}
           <div className="flex flex-col">
             <Reveal>
-              <div className="mb-6 sm:mb-8 flex items-center gap-2 text-[12px] sm:text-[11px] font-bold tracking-[0.2em] sm:tracking-[0.4em] text-neon">
+              <div className="mb-4 sm:mb-8 flex items-center gap-1 sm:gap-2 text-[9px] sm:text-[11px] font-bold tracking-[0.1em] sm:tracking-[0.4em] text-neon">
                 <Star size={14} fill="currentColor" />
                 CONTATO
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h2 className="font-display text-[clamp(30px,7vw,34px)] sm:text-[clamp(36px,6vw,64px)] leading-[1.1] font-bold text-ink mb-4 sm:mb-6">
+              <h2 className="font-display text-[clamp(20px,6vw,26px)] sm:text-[clamp(36px,6vw,64px)] leading-[1.1] font-bold text-ink mb-3 sm:mb-6">
                 Vamos dar início a <span className="italic text-neon">sua próxima campanha</span>
               </h2>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="text-[16px] sm:text-[18px] text-forest/70 mb-8 sm:mb-12 max-w-[400px]">
+              <p className="text-[11px] sm:text-[18px] leading-[1.5] text-forest/70 mb-5 sm:mb-12 max-w-[400px]">
                 conta o que sua marca precisa — eu volto em até 24h úteis
               </p>
             </Reveal>
@@ -89,12 +89,12 @@ export default function ContactSection() {
 
           {/* Right Column */}
           <Reveal delay={400}>
-            <div className="rounded-2xl sm:rounded-3xl border border-forest/10 bg-white p-6 sm:p-8 lg:p-10 shadow-2xl transition-transform hover:scale-[1.01]">
-              <h3 className="font-display text-[26px] sm:text-[32px] font-bold text-ink mb-6 sm:mb-8">
+            <div className="rounded-xl sm:rounded-3xl border border-forest/10 bg-white p-3 sm:p-8 lg:p-10 shadow-2xl transition-transform hover:scale-[1.01]">
+              <h3 className="font-display text-[18px] sm:text-[32px] font-bold text-ink mb-4 sm:mb-8">
                 solicitar proposta
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-6">
                 <div className="space-y-2">
                   <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">Nome (Obrigatório)</label>
                   <input
@@ -105,7 +105,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   <div className="space-y-2">
                     <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">Empresa (Opcional)</label>
                     <input
@@ -126,7 +126,7 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   <div className="space-y-2">
                     <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">WhatsApp (Opcional)</label>
                     <input
