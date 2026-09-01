@@ -665,7 +665,7 @@ function FeedbackSection() {
       
       <div className="relative w-full overflow-hidden px-4 touch-pan-x sm:px-12" style={{ isolation: 'isolate' }}>
         <div 
-          className="flex w-max gap-6 animate-marquee"
+          className="flex w-max gap-4 animate-marquee"
           style={{ 
             transform: "translate3d(0, 0, 0)",
             WebkitTransform: "translate3d(0, 0, 0)",
@@ -694,7 +694,7 @@ function FeedbackSection() {
 function FeedbackCard({ src, index }: { src: string; index: number }) {
   return (
     <div 
-      className="relative w-[280px] sm:w-[320px] lg:w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-3 sm:p-4"
+      className="relative w-[260px] sm:w-[320px] lg:w-[380px] h-[200px] sm:h-[240px] lg:h-[280px] flex-shrink-0 overflow-hidden rounded-[18px] bg-white p-2 sm:p-3"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
       }}
@@ -704,7 +704,7 @@ function FeedbackCard({ src, index }: { src: string; index: number }) {
         alt={`Feedback ${index + 1}`}
         loading="lazy"
         decoding="async"
-        className="w-full h-auto object-contain"
+        className="w-full h-full object-cover"
       />
     </div>
   );
