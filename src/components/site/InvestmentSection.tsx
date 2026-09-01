@@ -8,21 +8,21 @@ interface InvestmentItem {
 
 const InvestmentTable = ({ title, items, note }: { title: string; items: InvestmentItem[]; note?: string }) => (
   <div className="flex flex-col h-full overflow-hidden">
-    <h3 className="text-[clamp(11px,2.5vw,22px)] font-black text-forest mb-[clamp(16px,4vw,40px)] tracking-tight uppercase leading-none text-center max-[767px]:text-[14px] max-[767px]:tracking-tight max-[767px]:mb-5">
+    <h3 className="text-[14px] sm:text-[clamp(11px,2.5vw,22px)] font-black text-forest mb-5 sm:mb-[clamp(16px,4vw,40px)] tracking-normal sm:tracking-tight uppercase leading-[1.15] text-center break-words">
       {title}
     </h3>
     <div className="flex flex-col flex-1 relative">
       {items.map((item, idx) => (
         <div 
           key={idx} 
-          className={`flex justify-between items-center px-[clamp(6px,2vw,24px)] py-[clamp(8px,1.2vw,18px)] rounded-xl mb-1 transition-colors max-[767px]:px-1 max-[767px]:py-3 ${
+          className={`grid grid-cols-[minmax(0,1fr)_auto] items-center gap-1 px-1 py-3 sm:flex sm:justify-between sm:px-[clamp(6px,2vw,24px)] sm:py-[clamp(8px,1.2vw,18px)] rounded-xl mb-1 transition-colors ${
             idx % 2 === 0 ? 'bg-forest/[0.04]' : 'bg-transparent'
           }`}
         >
-          <span className="text-[clamp(10px,1.8vw,16px)] font-medium tracking-[0.05em] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-1 max-[767px]:text-[13px] max-[767px]:tracking-tighter">
+          <span className="min-w-0 text-[12px] sm:text-[clamp(10px,1.8vw,16px)] font-semibold sm:font-medium tracking-normal sm:tracking-[0.05em] text-ink uppercase leading-tight break-words sm:whitespace-nowrap sm:overflow-hidden sm:text-ellipsis sm:mr-1">
             {item.label}
           </span>
-          <span className="text-[clamp(11px,2.2vw,22px)] font-bold text-forest tabular-nums whitespace-nowrap text-right max-[767px]:text-[14px] max-[767px]:tracking-tighter">
+          <span className="shrink-0 text-[13px] sm:text-[clamp(11px,2.2vw,22px)] font-black sm:font-bold text-forest tabular-nums whitespace-nowrap text-right tracking-normal">
             {item.price}
           </span>
         </div>
@@ -30,7 +30,7 @@ const InvestmentTable = ({ title, items, note }: { title: string; items: Investm
     </div>
     {note && (
       <div className="mt-6 flex justify-center max-[767px]:mt-4">
-        <p className="text-[clamp(8px,1.5vw,14px)] font-bold tracking-[0.2em] text-forest/50 uppercase max-[767px]:text-[11px] max-[767px]:tracking-normal">
+        <p className="text-[12px] sm:text-[clamp(8px,1.5vw,14px)] font-bold tracking-normal sm:tracking-[0.2em] text-forest/60 sm:text-forest/50 uppercase text-center">
           {note}
         </p>
       </div>
@@ -69,15 +69,15 @@ export default function InvestmentSection() {
   };
 
   return (
-    <section className="pt-6 pb-20 bg-bone overflow-hidden max-[767px]:pb-16">
-      <div className="mx-auto w-full max-w-[1240px] px-[clamp(8px,3vw,48px)] max-[767px]:px-2">
+    <section className="pt-8 pb-16 sm:pt-6 sm:pb-20 bg-bone overflow-hidden">
+      <div className="mx-auto w-full max-w-[1240px] px-2.5 sm:px-[clamp(8px,3vw,48px)]">
         <Reveal>
-          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(24px,8vw,96px)] text-center tracking-tighter leading-none">
+          <h2 className="text-[clamp(30px,7vw,34px)] sm:text-[clamp(42px,6vw,72px)] font-black text-forest mb-10 sm:mb-[clamp(24px,8vw,96px)] text-center tracking-tighter leading-none">
             Investimentos
           </h2>
         </Reveal>
         
-        <div className="grid grid-cols-3 gap-x-[clamp(2px,1.5vw,48px)] relative max-[767px]:gap-x-1">
+        <div className="grid grid-cols-3 gap-x-1 sm:gap-x-[clamp(2px,1.5vw,48px)] relative">
           {/* Vertical dividers */}
           <div className="absolute left-[33.33%] top-0 bottom-0 w-[1px] bg-forest/5" />
           <div className="absolute left-[66.66%] top-0 bottom-0 w-[1px] bg-forest/5" />

@@ -129,8 +129,7 @@ export function InlineVideo({
             <img 
               src={youtubeThumbnail}
               alt={label || "Capa do vídeo"}
-              loading="eager"
-              fetchPriority="high"
+              loading="lazy"
               className="h-full w-full object-cover"
               onError={(e) => {
                 const target = e.currentTarget;
@@ -143,7 +142,7 @@ export function InlineVideo({
             />
           ) : !isYouTube && (
             <div className="h-full w-full bg-ink flex items-center justify-center">
-              <span className="text-neon/20 text-[8px] tracking-widest uppercase">Carregando...</span>
+              <span className="text-neon/30 text-[12px] tracking-wider uppercase">Carregando...</span>
             </div>
           )}
           

@@ -74,11 +74,11 @@ export function VideoCardHorizontal({
           </>
         )}
       </div>
-      <figcaption className="pt-3">
-        <h4 className="truncate font-display text-[17px] leading-tight font-bold tracking-tight text-ink">
+      <figcaption className="pt-4 sm:pt-3">
+        <h4 className="truncate font-display text-[18px] leading-tight font-bold tracking-tight text-ink sm:text-[17px]">
           {title}
         </h4>
-        <p className="mt-1 font-sans text-[13px] leading-snug text-forest">{description}</p>
+        <p className="mt-1.5 font-sans text-[15px] leading-[1.5] text-forest sm:mt-1 sm:text-[13px] sm:leading-snug">{description}</p>
       </figcaption>
     </figure>
   );

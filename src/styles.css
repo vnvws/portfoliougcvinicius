@@ -341,6 +341,33 @@ header,
   }
 }
 
+@media (max-width: 767px) {
+  .fixed-scale-container {
+    height: auto !important;
+    min-height: 100dvh;
+    overflow: clip !important;
+  }
+
+  .fixed-scale-content {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+  }
+
+  .animate-marquee,
+  .animate-marquee-slow {
+    animation-duration: 46s;
+  }
+
+  .liquid-glass,
+  .liquid-glass-active {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
