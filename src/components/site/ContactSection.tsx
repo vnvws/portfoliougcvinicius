@@ -36,26 +36,26 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contato" className="pt-14 sm:pt-20 pb-12 px-4 sm:px-8 lg:px-12 bg-bone">
-      <div className="mx-auto w-full max-w-[1240px] rounded-[20px] sm:rounded-[32px] border border-forest/10 bg-white/50 p-6 sm:p-10 lg:p-16 shadow-xl backdrop-blur-sm">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+    <section id="contato" className="pt-10 sm:pt-20 pb-12 px-4 sm:px-8 lg:px-12 bg-bone">
+      <div className="mx-auto w-full max-w-[1240px] rounded-[20px] sm:rounded-[32px] border border-forest/10 bg-white/50 p-5 sm:p-10 lg:p-16 shadow-xl backdrop-blur-sm">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Column */}
           <div className="flex flex-col">
             <Reveal>
-              <div className="mb-6 sm:mb-8 flex items-center gap-2 text-[10px] sm:text-[11px] font-bold tracking-[0.4em] text-neon">
+              <div className="mb-4 sm:mb-6 flex items-center gap-2 text-[10px] sm:text-[11px] font-bold tracking-[0.4em] text-neon">
                 <Star size={14} fill="currentColor" />
                 CONTATO
               </div>
             </Reveal>
 
             <Reveal delay={100}>
-              <h2 className="font-display text-[clamp(36px,6vw,64px)] leading-[1.1] font-bold text-ink mb-4 sm:mb-6">
+              <h2 className="font-display text-[clamp(28px,6vw,64px)] leading-[1.1] font-bold text-ink mb-3 sm:mb-6">
                 Vamos dar início a <span className="italic text-neon">sua próxima campanha</span>
               </h2>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="text-[16px] sm:text-[18px] text-forest/70 mb-8 sm:mb-12 max-w-[400px]">
+              <p className="text-[15px] sm:text-[18px] text-forest/70 mb-6 sm:mb-12 max-w-[400px]">
                 conta o que sua marca precisa — eu volto em até 24h úteis
               </p>
             </Reveal>
@@ -89,8 +89,8 @@ export default function ContactSection() {
 
           {/* Right Column */}
           <Reveal delay={400}>
-            <div className="rounded-2xl sm:rounded-3xl border border-forest/10 bg-white p-6 sm:p-8 lg:p-10 shadow-2xl transition-transform hover:scale-[1.01]">
-              <h3 className="font-display text-[26px] sm:text-[32px] font-bold text-ink mb-6 sm:mb-8">
+            <div className="rounded-2xl sm:rounded-3xl border border-forest/10 bg-white p-5 sm:p-8 lg:p-10 shadow-2xl transition-transform hover:scale-[1.01]">
+              <h3 className="font-display text-[22px] sm:text-[32px] font-bold text-ink mb-5 sm:mb-8">
                 solicitar proposta
               </h3>
 
@@ -101,7 +101,7 @@ export default function ContactSection() {
                     required
                     name="name"
                     placeholder="seu nome"
-                    className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 sm:px-5 py-3 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
+                    className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 py-[14px] sm:px-5 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
                   />
                 </div>
 
@@ -111,7 +111,7 @@ export default function ContactSection() {
                     <input
                       name="company"
                       placeholder="nome da marca"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 sm:px-5 py-3 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
+                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 py-[14px] sm:px-5 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
                     />
                   </div>
                   <div className="space-y-2">
@@ -121,7 +121,7 @@ export default function ContactSection() {
                       type="email"
                       name="email"
                       placeholder="email@empresa.com"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 sm:px-5 py-3 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
+                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 py-[14px] sm:px-5 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
                     />
                   </div>
                 </div>
@@ -132,14 +132,14 @@ export default function ContactSection() {
                     <input
                       name="whatsapp"
                       placeholder="(11) 99999-9999"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 sm:px-5 py-3 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
+                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 py-[14px] sm:px-5 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all text-[15px]"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold tracking-widest text-forest/60">Orçamento (Opcional)</label>
                     <select
                       name="budget"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 sm:px-5 py-3 sm:py-4 text-ink focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all appearance-none cursor-pointer text-[15px]"
+                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 py-[14px] sm:px-5 sm:py-4 text-ink focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all appearance-none cursor-pointer text-[15px]"
                     >
                       <option value="prefere não dizer">prefere não dizer</option>
                       <option value="até R$500">até R$500</option>
@@ -156,7 +156,7 @@ export default function ContactSection() {
                     name="message"
                     rows={4}
                     placeholder="objetivo da campanha, prazo, referências"
-                    className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 sm:px-5 py-3 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all resize-none text-[15px]"
+                    className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 py-[14px] sm:px-5 sm:py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all resize-none text-[15px]"
                   />
                 </div>
 
