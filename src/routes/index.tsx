@@ -361,7 +361,7 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-6 sm:mt-8 max-w-[540px] w-[90%] sm:w-full text-[15px] sm:text-[18px] leading-[1.55] text-ink/80 font-normal">
+            <p className="mt-6 sm:mt-8 max-w-[540px] text-[16px] sm:text-[18px] leading-[1.6] text-ink/80 font-normal">
               Vídeos UGC com presença masculina para apresentar produtos e serviços de um jeito natural, direto e feito para social e ads.
             </p>
           </Reveal>
@@ -373,10 +373,10 @@ function Hero() {
                   <Share2 size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                  <span className="text-[12px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
                     FEITO PARA SOCIAL
                   </span>
-                  <span className="text-[12px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[10px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Reels, TikTok e Shorts
                   </span>
                 </div>
@@ -387,10 +387,10 @@ function Hero() {
                   <TrendingUp size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                  <span className="text-[12px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
                     PRONTO PARA ADS
                   </span>
-                  <span className="text-[12px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[10px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Conteúdo pensado para campanhas
                   </span>
                 </div>
@@ -401,10 +401,10 @@ function Hero() {
                   <Video size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                  <span className="text-[12px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
                     PRODUÇÃO COMPLETA
                   </span>
-                  <span className="text-[12px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[10px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Roteiro, gravação e edição
                   </span>
                 </div>
@@ -414,31 +414,31 @@ function Hero() {
 
           <Reveal delay={400}>
             <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
-              <div className="flex items-center gap-3 sm:gap-4">
+              <div className="flex items-center gap-4">
                 <a
                   href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Falar comigo pelo WhatsApp"
-                  className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
-                  <MessageCircle size={20} className="max-[639px]:w-[22px] max-[639px]:h-[22px]" />
+                  <MessageCircle size={22} />
                 </a>
                 <a
                   href="https://www.instagram.com/_oviniciusaraujo/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu Instagram"
-                  className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
-                  <Instagram size={20} className="max-[639px]:w-[22px] max-[639px]:h-[22px]" />
+                  <Instagram size={22} />
                 </a>
                 <a
                   href="https://www.tiktok.com/@viniviews_"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu TikTok"
-                  className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <svg 
                     viewBox="0 0 24 24" 
@@ -447,7 +447,7 @@ function Hero() {
                     strokeWidth="2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round" 
-                    className="h-[20px] w-[20px] max-[639px]:w-[22px] max-[639px]:h-[22px]"
+                    className="h-[22px] w-[22px]"
                   >
                     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
                   </svg>
@@ -455,18 +455,18 @@ function Hero() {
                 <a
                   href="mailto:comercial.viniciusugc@gmail.com"
                   aria-label="Enviar um e-mail"
-                  className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
-                  <Mail size={20} className="max-[639px]:w-[22px] max-[639px]:h-[22px]" />
+                  <Mail size={22} />
                 </a>
               </div>
 
               <a
                 href="#portfolio"
-                className="group relative flex items-center gap-2 font-display text-[15px] sm:text-[18px] font-black tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
+                className="group relative flex items-center gap-2 font-display text-[16px] sm:text-[18px] font-black tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
               >
                 <span>VER PORTFÓLIO</span>
-                <ChevronRight size={20} className="max-[639px]:w-[20px] max-[639px]:h-[20px] transition-transform duration-300 group-hover:translate-x-1.5" />
+                <ChevronRight size={22} className="transition-transform duration-300 group-hover:translate-x-1.5" />
                 <div className="absolute -bottom-1 left-0 h-[2px] w-full bg-forest/20 transition-all duration-300 group-hover:bg-forest group-hover:h-[3px]" />
               </a>
             </div>
