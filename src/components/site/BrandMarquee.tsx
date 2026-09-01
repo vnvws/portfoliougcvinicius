@@ -36,7 +36,7 @@ function Logo({ name, src }: Brand) {
     <div
       role="listitem"
       aria-label={`Logo da marca ${name}`}
-      className="group relative mx-3 flex h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 shrink-0 items-center justify-center overflow-hidden rounded-full transition-all duration-300 hover:scale-[1.05]"
+      className="group relative mx-2.5 flex h-20 w-20 sm:mx-3 sm:h-20 sm:w-20 lg:h-24 lg:w-24 shrink-0 items-center justify-center overflow-hidden rounded-full transition-all duration-300 hover:scale-[1.05]"
       style={{ 
         border: "1px solid color-mix(in oklab, var(--color-forest) 10%, transparent)",
       }}
@@ -56,7 +56,7 @@ function Logo({ name, src }: Brand) {
 
 export function BrandMarquee() {
   return (
-    <div className="group relative overflow-hidden py-6 lg:py-10 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
+    <div className="group relative overflow-hidden py-5 sm:py-6 lg:py-10 touch-pan-x" style={{ isolation: 'isolate' }} role="list" aria-label="Marcas que já confiaram">
       <div
         className="flex w-max items-center animate-marquee"
         style={{ 
@@ -72,11 +72,11 @@ export function BrandMarquee() {
       
       {/* Side gradients for soft fade effect */}
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-40 z-10"
+        className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-40 z-10"
         style={{ background: "linear-gradient(to right, var(--color-bone), transparent)" }}
       />
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-40 z-10"
+        className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-40 z-10"
         style={{ background: "linear-gradient(to left, var(--color-bone), transparent)" }}
       />
     </div>

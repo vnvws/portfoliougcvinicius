@@ -19,7 +19,7 @@ const PackageCard = ({
   isBestValue?: boolean;
   delay?: number;
 }) => (
-  <Reveal delay={delay} className="flex-1 min-w-[360px]">
+  <Reveal delay={delay} className="w-full min-w-0 flex-1 sm:min-w-[360px]">
     <div
       className={`group relative flex flex-col rounded-[42px] overflow-hidden transition-all duration-500 hover:-translate-y-2 ${
         isBestValue 
@@ -48,7 +48,7 @@ const PackageCard = ({
       </div>
       
       {/* Content Area */}
-      <div className="flex-1 p-10 space-y-8">
+      <div className="flex-1 p-6 sm:p-10 space-y-8">
         <ul className="space-y-4">
           {items.map((item, idx) => (
             <li key={idx} className="flex items-center gap-4 text-[16px] font-bold">
@@ -80,7 +80,7 @@ const PackageCard = ({
       </div>
 
       {/* Footer Meta */}
-      <div className={`px-10 py-6 text-center text-[10px] font-bold tracking-widest border-t ${
+      <div className={`px-6 sm:px-10 py-6 text-center text-[12px] sm:text-[10px] font-bold tracking-wider sm:tracking-widest border-t ${
         isBestValue ? "border-white/10 text-white/40" : "border-forest/5 text-forest/40"
       }`}>
         DIREITO DE USO EM ADS POR 06 MESES
@@ -97,22 +97,22 @@ const PackageCard = ({
 
 export default function PackageSection() {
   return (
-    <section className="py-10 px-6 sm:px-12 bg-bone relative overflow-hidden">
+    <section className="py-16 px-4 sm:py-10 sm:px-12 bg-bone relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 h-96 w-96 bg-neon/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 h-96 w-96 bg-forest/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="mx-auto w-[1240px] relative z-10">
+      <div className="mx-auto w-full sm:w-[1240px] relative z-10">
         <Reveal>
           <div className="mb-4 text-center">
-            <span className="text-[11px] font-black tracking-[0.4em] text-neon">ESCOLHA SEU PLANO</span>
+            <span className="text-[12px] sm:text-[11px] font-black tracking-[0.2em] sm:tracking-[0.4em] text-neon">ESCOLHA SEU PLANO</span>
           </div>
-          <h2 className="text-[72px] font-black text-forest mb-20 text-center tracking-tighter leading-none">
+          <h2 className="text-[clamp(30px,7vw,34px)] sm:text-[72px] font-black text-forest mb-10 sm:mb-20 text-center tracking-tighter leading-none">
             Pacotes de Conteúdo
           </h2>
         </Reveal>
 
-        <div className="flex flex-wrap gap-10 justify-center items-stretch">
+        <div className="flex flex-wrap gap-6 sm:gap-10 justify-center items-stretch">
           <PackageCard
             title="START"
             subtitle="1 Vídeo"
