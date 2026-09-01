@@ -76,7 +76,7 @@ export const LoadingScreen = () => {
               <h1 className="text-ink font-display text-xl font-bold tracking-tight uppercase">
                 Vinícius Araújo
               </h1>
-              <p className="text-ink/60 font-display text-[10px] tracking-[0.2em] uppercase mt-1">
+              <p className="text-ink/60 font-display text-[12px] sm:text-[10px] tracking-[0.14em] sm:tracking-[0.2em] uppercase mt-1">
                 Estúdio Criativo UGC
               </p>
             </motion.div>
@@ -92,7 +92,7 @@ export const LoadingScreen = () => {
             </div>
             
             {/* Progress Percentage */}
-            <div className="mt-3 flex justify-between w-full font-display text-[10px] text-ink/40 font-medium tabular-nums uppercase tracking-widest">
+            <div className="mt-3 flex justify-between w-full font-display text-[12px] sm:text-[10px] text-ink/40 font-medium tabular-nums uppercase tracking-wide sm:tracking-widest">
               <span>Preparando experiência</span>
               <span>{Math.floor(progress)}%</span>
             </div>

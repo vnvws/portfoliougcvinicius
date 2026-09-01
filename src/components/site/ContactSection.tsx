@@ -96,7 +96,7 @@ export default function ContactSection() {
 
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60">Nome (Obrigatório)</label>
+                  <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">Nome (Obrigatório)</label>
                   <input
                     required
                     name="name"
@@ -107,7 +107,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Empresa (Opcional)</label>
+                    <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">Empresa (Opcional)</label>
                     <input
                       name="company"
                       placeholder="nome da marca"
@@ -115,7 +115,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Email (Obrigatório)</label>
+                    <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">Email (Obrigatório)</label>
                     <input
                       required
                       type="email"
@@ -128,7 +128,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">WhatsApp (Opcional)</label>
+                    <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">WhatsApp (Opcional)</label>
                     <input
                       name="whatsapp"
                       placeholder="(11) 99999-9999"
@@ -136,7 +136,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Orçamento (Opcional)</label>
+                    <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">Orçamento (Opcional)</label>
                     <select
                       name="budget"
                       className="w-full rounded-xl border border-forest/10 bg-bone/30 px-4 sm:px-5 py-3.5 sm:py-4 text-ink focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all appearance-none cursor-pointer text-[16px] sm:text-[15px]"
@@ -150,7 +150,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60">Mensagem (Obrigatório)</label>
+                  <label className="text-[12px] sm:text-[10px] font-bold tracking-wide sm:tracking-widest text-forest/60">Mensagem (Obrigatório)</label>
                   <textarea
                     required
                     name="message"
