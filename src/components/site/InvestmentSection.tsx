@@ -69,7 +69,7 @@ export default function InvestmentSection() {
   };
 
   return (
-    <section className="pt-12 pb-32 bg-bone overflow-hidden max-[767px]:pb-24">
+    <section className="pt-6 pb-20 bg-bone overflow-hidden max-[767px]:pb-16">
       <div className="mx-auto w-full max-w-[1240px] px-[clamp(8px,3vw,48px)] max-[767px]:px-2">
         <Reveal>
           <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(24px,8vw,96px)] text-center tracking-tighter leading-none">

@@ -54,7 +54,7 @@ const steps: Step[] = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-24 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden md:px-[clamp(16px,4vw,48px)] max-[767px]:px-4">
+    <section className="py-14 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden md:px-[clamp(16px,4vw,48px)] max-[767px]:px-4">
       <div className="mx-auto w-full max-w-[1240px]">
         <Reveal>
           <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(40px,8vw,80px)] text-center tracking-tighter leading-none">

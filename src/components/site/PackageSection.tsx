@@ -97,7 +97,7 @@ const PackageCard = ({
 
 export default function PackageSection() {
   return (
-    <section className="py-16 px-12 bg-bone relative overflow-hidden">
+    <section className="py-10 px-6 sm:px-12 bg-bone relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 h-96 w-96 bg-neon/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 h-96 w-96 bg-forest/5 blur-[120px] rounded-full pointer-events-none" />

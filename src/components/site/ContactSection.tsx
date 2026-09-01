@@ -36,7 +36,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contato" className="pt-24 sm:pt-32 pb-12 px-4 sm:px-8 lg:px-12 bg-bone">
+    <section id="contato" className="pt-14 sm:pt-20 pb-12 px-4 sm:px-8 lg:px-12 bg-bone">
       <div className="mx-auto w-full max-w-[1240px] rounded-[20px] sm:rounded-[32px] border border-forest/10 bg-white/50 p-6 sm:p-10 lg:p-16 shadow-xl backdrop-blur-sm">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column */}

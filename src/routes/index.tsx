@@ -110,14 +110,14 @@ function Index() {
             <BrandMarquee />
           </section>
 
-          <div className="pt-12 sm:pt-4">
+          <div className="pt-6 sm:pt-2">
             <About />
           </div>
           
           <EngagementSection />
 
           {/* Portfolio Section */}
-          <section id="portfolio" className="mx-auto w-full max-w-[1240px] pt-12 pb-16 px-4 sm:px-8 lg:px-12">
+          <section id="portfolio" className="mx-auto w-full max-w-[1240px] pt-6 pb-10 px-4 sm:px-8 lg:px-12">
             <div className="mb-8 flex flex-col items-center">
               <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
               <div className="h-[1px] w-24 bg-neon" />
@@ -343,7 +343,7 @@ function Hero() {
   }, [setActiveVideoSrc]);
 
   return (
-    <section className="relative mx-auto w-full max-w-[1240px] pt-4 pb-20 px-4 sm:px-8 lg:px-12 sm:pb-8">
+    <section className="relative mx-auto w-full max-w-[1240px] pt-4 pb-12 px-4 sm:px-8 lg:px-12 sm:pb-4">
       <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14">
         <div className="relative z-10 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
           <Reveal>
@@ -514,7 +514,7 @@ function Hero() {
 
 function About() {
   return (
-    <section id="sobre" className="mx-auto w-full max-w-[1240px] pb-12 px-4 sm:px-8 lg:px-12 sm:pb-8">
+    <section id="sobre" className="mx-auto w-full max-w-[1240px] pb-8 px-4 sm:px-8 lg:px-12 sm:pb-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 items-start gap-8">
         <Reveal className="col-span-1 lg:col-span-5">
           <img
@@ -592,7 +592,7 @@ function EngagementSection() {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[1240px] pt-12 pb-20 px-4 sm:px-8 lg:px-12">
+    <section className="mx-auto w-full max-w-[1240px] pt-6 pb-10 px-4 sm:px-8 lg:px-12">
       <div className="mb-12 flex flex-col items-center">
         <Reveal>
           <h2 className="font-display text-[clamp(28px,5vw,48px)] sm:text-[clamp(32px,5vw,48px)] font-black tracking-[-0.04em] text-forest text-center leading-[1.1]">
@@ -654,7 +654,7 @@ function FeedbackSection() {
   ];
 
   return (
-    <section className="pt-16 pb-0 overflow-hidden bg-bone">
+    <section className="pt-10 pb-0 overflow-hidden bg-bone">
       <div className="mx-auto w-full max-w-[1240px] mb-4 px-4 sm:px-8 lg:px-12">
         <Reveal>
           <h2 className="font-display text-[clamp(42px,6vw,72px)] font-black tracking-[-0.04em] text-forest leading-none">
