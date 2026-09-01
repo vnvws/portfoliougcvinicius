@@ -19,27 +19,27 @@ const PackageCard = ({
   isBestValue?: boolean;
   delay?: number;
 }) => (
-  <Reveal delay={delay} className="w-full min-w-0 flex-1 sm:min-w-[360px]">
+  <Reveal delay={delay} className="min-w-0 flex-1 sm:min-w-[360px]">
     <div
-      className={`group relative flex flex-col rounded-[42px] overflow-hidden transition-all duration-500 hover:-translate-y-2 ${
+      className={`group relative flex h-full flex-col rounded-[16px] sm:rounded-[42px] overflow-hidden transition-all duration-500 hover:-translate-y-2 ${
         isBestValue 
           ? "bg-forest text-white ring-4 ring-neon/30" 
           : "bg-white border border-forest/10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)]"
       }`}
     >
       {/* Header Area */}
-      <div className={`pt-10 pb-6 text-center ${isBestValue ? "bg-white/5" : "bg-forest/[0.03]"}`}>
-        <div className={`mx-auto mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1 text-[12px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.2em] ${
+      <div className={`pt-4 pb-3 sm:pt-10 sm:pb-6 text-center ${isBestValue ? "bg-white/5" : "bg-forest/[0.03]"}`}>
+        <div className={`mx-auto mb-2 sm:mb-4 inline-flex items-center gap-1 sm:gap-2 rounded-full px-2 sm:px-4 py-1 text-[9px] sm:text-[10px] font-black tracking-normal sm:tracking-[0.2em] ${
           isBestValue ? "bg-neon text-ink" : "bg-forest/10 text-forest"
         }`}>
           {isBestValue && <Star size={10} fill="currentColor" />}
           {title}
         </div>
-        <h3 className={`text-4xl font-black tracking-tight mb-2 ${isBestValue ? "text-white" : "text-ink"}`}>
+        <h3 className={`text-[18px] sm:text-4xl font-black tracking-tight mb-2 ${isBestValue ? "text-white" : "text-ink"}`}>
           {subtitle}
         </h3>
         {note && (
-          <span className={`text-[12px] sm:text-[11px] font-black tracking-wide sm:tracking-widest px-3 py-1 rounded-full ${
+          <span className={`text-[8px] sm:text-[11px] font-black tracking-normal sm:tracking-widest px-1.5 sm:px-3 py-1 rounded-full ${
             isBestValue ? "bg-neon/20 text-neon" : "bg-forest text-white"
           }`}>
             {note}
@@ -48,11 +48,11 @@ const PackageCard = ({
       </div>
       
       {/* Content Area */}
-      <div className="flex-1 p-6 sm:p-10 space-y-8">
-        <ul className="space-y-4">
+      <div className="flex-1 p-2.5 sm:p-10 space-y-4 sm:space-y-8">
+        <ul className="space-y-2 sm:space-y-4">
           {items.map((item, idx) => (
-            <li key={idx} className="flex items-center gap-4 text-[16px] font-bold">
-              <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
+            <li key={idx} className="flex items-center gap-1.5 sm:gap-4 text-[9px] sm:text-[16px] font-bold">
+              <div className={`flex h-4 w-4 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full ${
                 isBestValue ? "bg-neon text-ink" : "bg-forest/10 text-forest"
               }`}>
                 <Check size={14} strokeWidth={3} />
@@ -62,16 +62,16 @@ const PackageCard = ({
           ))}
         </ul>
         
-        <div className={`rounded-3xl p-6 transition-all ${
+        <div className={`rounded-xl sm:rounded-3xl p-2 sm:p-6 transition-all ${
           isBestValue ? "bg-white/10" : "bg-bone"
         }`}>
           <div className="flex flex-col items-center">
-            <span className={`text-[12px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.2em] mb-1 ${
+            <span className={`text-[8px] sm:text-[10px] font-black tracking-normal sm:tracking-[0.2em] mb-1 ${
               isBestValue ? "text-white/40" : "text-forest/40"
             }`}>INVESTIMENTO</span>
             <div className="flex items-baseline gap-1">
-              <span className={`text-sm font-black ${isBestValue ? "text-neon" : "text-forest"}`}>R$</span>
-              <span className={`text-5xl font-black tracking-tighter ${isBestValue ? "text-white" : "text-ink"}`}>
+              <span className={`text-[9px] sm:text-sm font-black ${isBestValue ? "text-neon" : "text-forest"}`}>R$</span>
+              <span className={`text-[22px] sm:text-5xl font-black tracking-tighter ${isBestValue ? "text-white" : "text-ink"}`}>
                 {price}
               </span>
             </div>
@@ -80,14 +80,14 @@ const PackageCard = ({
       </div>
 
       {/* Footer Meta */}
-      <div className={`px-6 sm:px-10 py-6 text-center text-[12px] sm:text-[10px] font-bold tracking-wider sm:tracking-widest border-t ${
+      <div className={`px-2 sm:px-10 py-3 sm:py-6 text-center text-[8px] sm:text-[10px] font-bold tracking-normal sm:tracking-widest border-t ${
         isBestValue ? "border-white/10 text-white/40" : "border-forest/5 text-forest/40"
       }`}>
         DIREITO DE USO EM ADS POR 06 MESES
       </div>
 
       {isBestValue && (
-        <div className="absolute -right-12 top-8 rotate-45 bg-neon px-12 py-1 text-[12px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.2em] text-ink shadow-xl">
+        <div className="absolute -right-12 top-5 sm:top-8 rotate-45 bg-neon px-12 py-1 text-[8px] sm:text-[10px] font-black tracking-normal sm:tracking-[0.2em] text-ink shadow-xl">
           MAIS VENDIDO
         </div>
       )}
@@ -112,7 +112,7 @@ export default function PackageSection() {
           </h2>
         </Reveal>
 
-        <div className="flex flex-wrap gap-6 sm:gap-10 justify-center items-stretch">
+        <div className="flex flex-nowrap gap-2 sm:flex-wrap sm:gap-10 justify-center items-stretch">
           <PackageCard
             title="START"
             subtitle="1 Vídeo"

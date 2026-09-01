@@ -605,12 +605,12 @@ function EngagementSection() {
       </div>
 
       <div className="flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-8 w-full">
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 w-full">
           {engagementVideos.map((video, idx) => (
             <Reveal key={video.url} delay={200 + idx * 100}>
               <div className="flex flex-col items-center">
                 <div 
-                  className="relative w-full overflow-hidden rounded-[22px] bg-ink shadow-2xl max-w-[340px] sm:max-w-[320px] mx-auto"
+                  className="relative w-full overflow-hidden rounded-[12px] sm:rounded-[22px] bg-ink shadow-2xl max-w-[340px] sm:max-w-[320px] mx-auto"
                   style={{ 
                     aspectRatio: "9 / 16",
                     border: "1px solid rgba(125, 255, 0, 0.2)"
@@ -621,10 +621,10 @@ function EngagementSection() {
                   />
                 </div>
                 <div className="mt-4 text-center font-display uppercase">
-                  <p className="text-[24px] font-black tracking-tight sm:tracking-tighter text-forest leading-none">
+                  <p className="text-[14px] sm:text-[24px] font-black tracking-tight sm:tracking-tighter text-forest leading-none">
                     +De <CountUp end={video.views} suffix=" mil" />
                   </p>
-                  <p className="mt-2 text-[13px] sm:text-[12px] font-bold tracking-wider sm:tracking-widest text-forest/60 sm:text-forest/50">
+                  <p className="mt-1 text-[10px] sm:mt-2 sm:text-[12px] font-bold tracking-normal sm:tracking-widest text-forest/60 sm:text-forest/50">
                     views no {video.platform}
                   </p>
                 </div>
@@ -694,7 +694,7 @@ function FeedbackSection() {
 function FeedbackCard({ src, index }: { src: string; index: number }) {
   return (
     <div 
-      className="relative w-[calc(100vw-48px)] max-w-[360px] sm:w-[320px] lg:w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-3 sm:p-4"
+      className="relative w-[220px] sm:w-[320px] lg:w-[360px] flex-shrink-0 overflow-hidden rounded-[16px] sm:rounded-[22px] bg-white p-2 sm:p-4"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
       }}

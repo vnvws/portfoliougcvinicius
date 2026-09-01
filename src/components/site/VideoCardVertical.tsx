@@ -32,7 +32,7 @@ export function VideoCardVertical({
   return (
     <figure
       data-cursor="link"
-      className="group mx-auto w-full max-w-[430px] cursor-none sm:max-w-none"
+      className="group mx-auto w-full cursor-none"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
@@ -83,11 +83,11 @@ export function VideoCardVertical({
           </>
         )}
       </div>
-      <figcaption className="pt-4 sm:pt-3">
-        <h4 className="truncate font-display text-[17px] leading-tight font-bold tracking-tight text-ink sm:text-[15px]">
+      <figcaption className="pt-2 sm:pt-3">
+        <h4 className="truncate font-display text-[11px] leading-tight font-bold tracking-tight text-ink sm:text-[15px]">
           {title}
         </h4>
-        <p className="mt-1.5 font-sans text-[15px] leading-[1.5] text-forest sm:mt-1 sm:text-[12px] sm:leading-snug">{description}</p>
+        <p className="mt-1 font-sans text-[10px] leading-snug text-forest sm:text-[12px]">{description}</p>
       </figcaption>
     </figure>
   );
