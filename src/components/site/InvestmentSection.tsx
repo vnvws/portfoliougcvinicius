@@ -7,30 +7,32 @@ interface InvestmentItem {
 }
 
 const InvestmentTable = ({ title, items, note }: { title: string; items: InvestmentItem[]; note?: string }) => (
-  <div className="flex flex-col h-full overflow-hidden">
-    <h3 className="text-[clamp(11px,2.5vw,22px)] font-black text-forest mb-[clamp(16px,4vw,40px)] tracking-tight uppercase leading-none text-center max-[767px]:text-[14px] max-[767px]:tracking-tight max-[767px]:mb-5">
+  <div className="flex flex-col h-full">
+    <h3 className="text-[clamp(13px,1.6vw,26px)] font-black text-forest tracking-tight leading-none text-center mb-[clamp(20px,3.5vw,52px)] max-[767px]:text-[15px] max-[767px]:mb-6">
       {title}
     </h3>
-    <div className="flex flex-col flex-1 relative">
+
+    <div className="flex flex-col flex-1 gap-[clamp(2px,0.5vw,8px)] max-[767px]:gap-1">
       {items.map((item, idx) => (
-        <div 
-          key={idx} 
-          className={`flex justify-between items-center px-[clamp(6px,2vw,24px)] py-[clamp(8px,1.2vw,18px)] rounded-xl mb-1 transition-colors max-[767px]:px-1 max-[767px]:py-3 ${
-            idx % 2 === 0 ? 'bg-forest/[0.04]' : 'bg-transparent'
+        <div
+          key={idx}
+          className={`flex items-baseline justify-between gap-2 rounded-lg px-[clamp(8px,1.2vw,20px)] py-[clamp(10px,1.1vw,17px)] max-[767px]:px-2 max-[767px]:py-3 ${
+            idx % 2 === 0 ? "bg-forest/[0.035]" : "bg-transparent"
           }`}
         >
-          <span className="text-[clamp(10px,1.8vw,16px)] font-medium tracking-[0.05em] text-ink uppercase whitespace-nowrap overflow-hidden text-ellipsis mr-1 max-[767px]:text-[13px] max-[767px]:tracking-tighter">
+          <span className="text-[clamp(10px,1.05vw,15px)] font-medium tracking-[0.08em] text-ink/75 uppercase whitespace-nowrap overflow-hidden text-ellipsis max-[767px]:text-[13px] max-[767px]:tracking-[0.02em]">
             {item.label}
           </span>
-          <span className="text-[clamp(11px,2.2vw,22px)] font-bold text-forest tabular-nums whitespace-nowrap text-right max-[767px]:text-[14px] max-[767px]:tracking-tighter">
+          <span className="text-[clamp(12px,1.35vw,21px)] font-black text-forest tabular-nums whitespace-nowrap text-right max-[767px]:text-[14px]">
             {item.price}
           </span>
         </div>
       ))}
     </div>
+
     {note && (
-      <div className="mt-6 flex justify-center max-[767px]:mt-4">
-        <p className="text-[clamp(8px,1.5vw,14px)] font-bold tracking-[0.2em] text-forest/50 uppercase max-[767px]:text-[11px] max-[767px]:tracking-normal">
+      <div className="mt-[clamp(16px,2vw,32px)] flex justify-center max-[767px]:mt-4">
+        <p className="text-[clamp(8px,0.85vw,12px)] font-bold tracking-[0.24em] text-forest/40 uppercase max-[767px]:text-[10px] max-[767px]:tracking-[0.1em]">
           {note}
         </p>
       </div>
@@ -69,33 +71,31 @@ export default function InvestmentSection() {
   };
 
   return (
-    <section className="pt-12 pb-32 bg-bone overflow-hidden max-[767px]:pb-24">
-      <div className="mx-auto w-full max-w-[1240px] px-[clamp(8px,3vw,48px)] max-[767px]:px-2">
+    <section className="pt-[clamp(48px,7vw,120px)] pb-[clamp(80px,10vw,160px)] bg-bone overflow-hidden">
+      <div className="mx-auto w-full max-w-[1340px] px-[clamp(12px,4vw,72px)] max-[767px]:px-3">
         <Reveal>
-          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(24px,8vw,96px)] text-center tracking-tighter leading-none">
-            Investimentos
-          </h2>
+          <div className="text-center mb-[clamp(40px,7vw,110px)] max-[767px]:mb-8">
+            <h2 className="text-[clamp(44px,6.5vw,88px)] font-black text-forest tracking-tighter leading-[0.95]">
+              Investimentos
+            </h2>
+            <div className="mx-auto mt-[clamp(14px,2vw,28px)] h-[1px] w-[clamp(60px,10vw,160px)] bg-forest/20" />
+          </div>
         </Reveal>
-        
-        <div className="grid grid-cols-3 gap-x-[clamp(2px,1.5vw,48px)] relative max-[767px]:gap-x-1">
-          {/* Vertical dividers */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[1px] bg-forest/5" />
-          <div className="absolute left-[66.66%] top-0 bottom-0 w-[1px] bg-forest/5" />
+
+        <div className="grid grid-cols-3 gap-x-[clamp(8px,3vw,72px)] relative max-[767px]:gap-x-2">
+          <div className="pointer-events-none absolute left-[33.33%] top-0 bottom-[clamp(8px,2vw,24px)] w-[1px] bg-gradient-to-b from-transparent via-forest/12 to-transparent" />
+          <div className="pointer-events-none absolute left-[66.66%] top-0 bottom-[clamp(8px,2vw,24px)] w-[1px] bg-gradient-to-b from-transparent via-forest/12 to-transparent" />
 
           <Reveal delay={100} className="h-full">
-            <InvestmentTable title="CONTRATE 1 VEZ" items={data.oneTime} />
+            <InvestmentTable title="Contrate 1 vez" items={data.oneTime} />
           </Reveal>
-          
+
           <Reveal delay={200} className="h-full">
-            <InvestmentTable 
-              title="COM RECORRÊNCIA" 
-              items={data.recurring} 
-              note="(MÍNIMO 3 MESES)"
-            />
+            <InvestmentTable title="Com recorrência" items={data.recurring} note="(Mínimo 3 meses)" />
           </Reveal>
-          
+
           <Reveal delay={300} className="h-full">
-            <InvestmentTable title="ADICIONAIS" items={data.additional} />
+            <InvestmentTable title="Adicionais" items={data.additional} />
           </Reveal>
         </div>
       </div>
