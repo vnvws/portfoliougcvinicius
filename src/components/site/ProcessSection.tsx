@@ -93,7 +93,7 @@ export default function ProcessSection() {
                       </div>
                       
                       {step.description && (
-                        <p className="text-[clamp(15px,1.8vw,17px)] leading-[1.6] text-ink/80 font-normal mb-4 max-[767px]:text-[16px] max-[767px]:leading-[1.6] max-[767px]:mb-6">
+                        <p className="text-[clamp(15px,1.8vw,17px)] leading-[1.6] text-ink/80 font-normal mb-3 max-[767px]:text-[16px] max-[767px]:leading-[1.6] max-[767px]:mb-4">
                           {step.description}
                         </p>
                       )}
