@@ -560,9 +560,9 @@ export const niches: Niche[] = [
         label: "9:16"
       },
       {
-        title: "Iracema",
-        description: "Nuts perfeitos para compor uma tábua de frios",
-        youtubeUrl: "https://youtube.com/shorts/Puy6ypkVLUk",
+        title: "Jack Link's",
+        description: "Rankeando snacks proteicos",
+        youtubeUrl: "https://youtube.com/shorts/KRiqmq6ODyU",
         label: "9:16"
       }
     ],
