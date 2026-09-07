@@ -54,10 +54,10 @@ const steps: Step[] = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-24 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden md:px-[clamp(16px,4vw,48px)] max-[767px]:px-4">
+    <section className="pt-16 pb-12 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden md:px-[clamp(16px,4vw,48px)] max-[767px]:px-4">
       <div className="mx-auto w-full max-w-[1240px]">
         <Reveal>
-          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(40px,8vw,80px)] text-center tracking-tighter leading-none">
+          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(28px,4vw,44px)] text-center tracking-tighter leading-none">
             Processo Criativo
           </h2>
         </Reveal>
@@ -66,7 +66,7 @@ export default function ProcessSection() {
           {/* Vertical line connector */}
           <div className="absolute left-[19px] top-[10px] bottom-[10px] w-[2px] bg-forest/10 sm:left-1/2 sm:-ml-[1px] max-[767px]:left-[21px]" />
 
-          <div className="space-y-[clamp(40px,8vw,80px)] max-[767px]:space-y-12">
+          <div className="space-y-[clamp(24px,3.5vw,44px)] max-[767px]:space-y-8">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
