@@ -42,7 +42,7 @@ export default function ContactSection() {
           {/* Left Column */}
           <div className="flex flex-col">
             <Reveal>
-              <div className="mb-8 flex items-center gap-2 text-[11px] font-bold tracking-[0.4em] text-neon">
+              <div className="mb-8 flex items-center gap-2 text-[11px] max-[767px]:text-[13px] font-bold tracking-[0.4em] text-neon">
                 <Star size={14} fill="currentColor" />
                 CONTATO
               </div>
@@ -55,7 +55,7 @@ export default function ContactSection() {
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="text-[18px] text-forest/70 mb-12 max-w-[400px]">
+              <p className="text-[18px] max-[767px]:text-[20px] text-forest/70 mb-12 max-w-[400px]">
                 conta o que sua marca precisa — eu volto em até 24h úteis
               </p>
             </Reveal>
@@ -90,13 +90,13 @@ export default function ContactSection() {
           {/* Right Column */}
           <Reveal delay={400}>
             <div className="rounded-3xl border border-forest/10 bg-white p-10 shadow-2xl transition-transform hover:scale-[1.01]">
-              <h3 className="font-display text-[32px] font-bold text-ink mb-8">
+              <h3 className="font-display text-[32px] max-[767px]:text-[34px] font-bold text-ink mb-8">
                 solicitar proposta
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60">Nome (Obrigatório)</label>
+                  <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Nome (Obrigatório)</label>
                   <input
                     required
                     name="name"
@@ -107,7 +107,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Empresa (Opcional)</label>
+                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Empresa (Opcional)</label>
                     <input
                       name="company"
                       placeholder="nome da marca"
@@ -115,7 +115,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Email (Obrigatório)</label>
+                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Email (Obrigatório)</label>
                     <input
                       required
                       type="email"
@@ -128,7 +128,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">WhatsApp (Opcional)</label>
+                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">WhatsApp (Opcional)</label>
                     <input
                       name="whatsapp"
                       placeholder="(11) 99999-9999"
@@ -136,7 +136,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold tracking-widest text-forest/60">Orçamento (Opcional)</label>
+                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Orçamento (Opcional)</label>
                     <select
                       name="budget"
                       className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all appearance-none cursor-pointer"
@@ -150,7 +150,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest text-forest/60">Mensagem (Obrigatório)</label>
+                  <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Mensagem (Obrigatório)</label>
                   <textarea
                     required
                     name="message"
@@ -163,7 +163,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative w-full overflow-hidden rounded-xl bg-neon py-5 text-[14px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
+                  className="group relative w-full overflow-hidden rounded-xl bg-neon py-5 text-[14px] max-[767px]:text-[15px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
                   style={{
                     boxShadow: "0 4px 0 0 oklch(0.75 0.25 135)"
                   }}
@@ -186,17 +186,17 @@ function ContactRow({ label, value, href, last = false }: { label: string; value
   const valueContent = href ? (
     <a
       href={href}
-      className="text-[14px] font-bold text-ink text-right break-all transition-colors hover:text-neon"
+      className="text-[14px] max-[767px]:text-[16px] font-bold text-ink text-right break-all transition-colors hover:text-neon"
     >
       {value}
     </a>
   ) : (
-    <span className="text-[14px] font-bold text-ink text-right break-all">{value}</span>
+    <span className="text-[14px] max-[767px]:text-[16px] font-bold text-ink text-right break-all">{value}</span>
   );
 
   return (
     <div className={`flex items-center justify-between p-5 ${!last ? 'border-b border-forest/5' : ''}`}>
-      <span className="text-[10px] font-bold tracking-widest text-forest/50">{label}</span>
+      <span className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/50">{label}</span>
       {valueContent}
     </div>
   );

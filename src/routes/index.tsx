@@ -87,7 +87,7 @@ function Index() {
                     key={niche.id}
                     onClick={() => scrollToPortfolio(niche.id)}
                     aria-label={`Ver nicho ${niche.title}`}
-                    className="font-display text-[10px] font-bold tracking-[0.08em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 focus-visible:outline-2 focus-visible:outline-neon focus-visible:outline-offset-4 cursor-none whitespace-nowrap"
+                    className="font-display text-[10px] max-[767px]:text-[13px] font-bold tracking-[0.08em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 focus-visible:outline-2 focus-visible:outline-neon focus-visible:outline-offset-4 cursor-none whitespace-nowrap"
                   >
                     {niche.title}
                   </button>
@@ -102,7 +102,7 @@ function Index() {
             <div className="mx-auto w-[1240px] px-12">
               <div className="flex items-center gap-4">
                 <div className="h-[1px] flex-1 bg-forest/10" />
-                <p className="flex-shrink-0 text-[11px] font-bold tracking-[0.32em] text-forest/40 uppercase whitespace-nowrap">
+                <p className="flex-shrink-0 text-[11px] max-[767px]:text-[14px] font-bold tracking-[0.32em] text-forest/40 uppercase whitespace-nowrap">
                   Marcas que já confiaram
                 </p>
                 <div className="h-[1px] flex-1 bg-forest/10" />
@@ -120,7 +120,7 @@ function Index() {
           {/* Portfolio Section - Tabbed for Maximum Performance */}
           <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
             <div className="mb-8 flex flex-col items-center">
-              <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
+              <span className="text-[11px] max-[767px]:text-[14px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
               <div className="h-[1px] w-24 bg-neon" />
             </div>
 
@@ -211,7 +211,7 @@ const PortfolioGridInner = memo(function PortfolioGridInner({ niche, index }: { 
         <div className="flex justify-center pb-12">
           <button
             onClick={loadMore}
-            className="group relative inline-flex items-center justify-center rounded-full border border-forest/20 bg-forest/5 px-10 py-4 font-bold tracking-widest text-forest transition-all hover:bg-forest hover:text-white"
+            className="group relative inline-flex items-center justify-center rounded-full border border-forest/20 bg-forest/5 px-10 py-4 text-[14px] max-[767px]:text-[16px] font-bold tracking-widest text-forest transition-all hover:bg-forest hover:text-white"
           >
             Carregar mais vídeos
           </button>
@@ -302,7 +302,7 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
             aria-selected={activeTab === niche.id}
             role="tab"
             aria-label={`Nicho ${niche.title}`}
-            className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start focus-visible:text-neon ${
+            className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] max-[767px]:text-[17px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start focus-visible:text-neon ${
               activeTab === niche.id 
                 ? 'text-forest' 
                 : 'text-forest/30 hover:text-forest/60'
@@ -353,7 +353,7 @@ function Hero() {
       <div className="relative flex items-center justify-between gap-14 px-12">
         <div className="relative z-10 flex-1 flex flex-col items-start text-left">
           <Reveal>
-            <span className="text-[12px] font-semibold tracking-[0.34em] text-forest uppercase">
+            <span className="text-[12px] max-[767px]:text-[15px] font-semibold tracking-[0.34em] text-forest uppercase">
               UGC Creator Masculino · São Paulo, Brasil
             </span>
           </Reveal>
@@ -367,7 +367,7 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-8 max-w-[540px] text-[18px] leading-[1.6] text-ink/80 font-normal">
+            <p className="mt-8 max-w-[540px] text-[18px] max-[767px]:text-[21px] leading-[1.6] text-ink/80 font-normal">
               Vídeos UGC com presença masculina para apresentar produtos e serviços de um jeito natural, direto e feito para social e ads.
             </p>
           </Reveal>
@@ -379,10 +379,10 @@ function Hero() {
                   <Share2 size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                  <span className="text-[13px] max-[767px]:text-[15px] font-bold leading-tight text-ink uppercase tracking-wider">
                     FEITO PARA SOCIAL
                   </span>
-                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[11px] max-[767px]:text-[13px] font-normal leading-tight text-ink/60 mt-0.5">
                     Reels, TikTok e Shorts
                   </span>
                 </div>
@@ -393,10 +393,10 @@ function Hero() {
                   <TrendingUp size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                  <span className="text-[13px] max-[767px]:text-[15px] font-bold leading-tight text-ink uppercase tracking-wider">
                     PRONTO PARA ADS
                   </span>
-                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[11px] max-[767px]:text-[13px] font-normal leading-tight text-ink/60 mt-0.5">
                     Conteúdo pensado para campanhas
                   </span>
                 </div>
@@ -407,10 +407,10 @@ function Hero() {
                   <Video size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
+                  <span className="text-[13px] max-[767px]:text-[15px] font-bold leading-tight text-ink uppercase tracking-wider">
                     PRODUÇÃO COMPLETA
                   </span>
-                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[11px] max-[767px]:text-[13px] font-normal leading-tight text-ink/60 mt-0.5">
                     Roteiro, gravação e edição
                   </span>
                 </div>
@@ -469,7 +469,7 @@ function Hero() {
 
               <a
                 href="#portfolio"
-                className="group relative flex items-center gap-2 font-display text-[18px] font-black tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
+                className="group relative flex items-center gap-2 font-display text-[18px] max-[767px]:text-[21px] font-black tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
               >
                 <span>VER PORTFÓLIO</span>
                 <ChevronRight size={22} className="transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -507,7 +507,7 @@ function Hero() {
             </div>
           </div>
           <span
-            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg"
+            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] max-[767px]:text-[14px] font-bold tracking-[0.2em] shadow-lg"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
             UGC CREATOR MASCULINO
@@ -539,7 +539,7 @@ function About() {
           <h2 className="font-display text-[clamp(42px,6vw,72px)] font-black tracking-[-0.04em] text-forest leading-none">
             Me conheça
           </h2>
-          <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line">
+          <div className="mt-4 space-y-4 text-[16px] max-[767px]:text-[19px] leading-[1.6] text-forest whitespace-pre-line">
             <p>
               {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald’s, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
             </p>
@@ -627,10 +627,10 @@ function EngagementSection() {
                   />
                 </div>
                 <div className="mt-4 text-center font-display uppercase">
-                  <p className="text-[24px] font-black tracking-tighter text-forest leading-none">
+                  <p className="text-[24px] max-[767px]:text-[30px] font-black tracking-tighter text-forest leading-none">
                     +De <CountUp end={video.views} suffix=" mil" />
                   </p>
-                  <p className="mt-1 text-[12px] font-bold tracking-widest text-forest/50">
+                  <p className="mt-1 text-[12px] max-[767px]:text-[14px] font-bold tracking-widest text-forest/50">
                     views no {video.platform}
                   </p>
                 </div>
@@ -750,7 +750,7 @@ function ExitPopup() {
             Vamos decolar <span className="text-neon">sua marca?</span>
           </h2>
           
-          <p className="mb-10 text-[16px] leading-relaxed text-forest/70">
+          <p className="mb-10 text-[16px] max-[767px]:text-[17px] leading-relaxed text-forest/70">
             Peça agora sua proposta personalizada. Eu volto em até 24h úteis para darmos início à sua próxima campanha.
           </p>
 
@@ -758,7 +758,7 @@ function ExitPopup() {
             href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex w-full items-center justify-center gap-3 rounded-2xl bg-neon py-5 text-[14px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="group relative flex w-full items-center justify-center gap-3 rounded-2xl bg-neon py-5 text-[14px] max-[767px]:text-[15px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98]"
             style={{
               boxShadow: "0 4px 0 0 oklch(0.75 0.25 135)"
             }}
@@ -769,7 +769,7 @@ function ExitPopup() {
           
           <button 
             onClick={() => setIsOpen(false)}
-            className="mt-6 text-[12px] font-bold tracking-widest text-forest/40 uppercase transition-colors hover:text-forest"
+            className="mt-6 text-[12px] max-[767px]:text-[13px] font-bold tracking-widest text-forest/40 uppercase transition-colors hover:text-forest"
           >
             TALVEZ DEPOIS
           </button>
