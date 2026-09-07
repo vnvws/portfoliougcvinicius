@@ -66,7 +66,7 @@ export default function ProcessSection() {
           {/* Vertical line connector */}
           <div className="absolute left-[19px] top-[10px] bottom-[10px] w-[2px] bg-forest/10 sm:left-1/2 sm:-ml-[1px] max-[767px]:left-[21px]" />
 
-          <div className="space-y-[clamp(24px,3.5vw,44px)] max-[767px]:space-y-8">
+          <div className="space-y-[clamp(20px,3vw,36px)] max-[767px]:space-y-5">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
