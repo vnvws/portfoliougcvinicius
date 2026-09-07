@@ -83,7 +83,7 @@ export default function ProcessSection() {
                   {/* Content Container */}
                   <div className={`w-full sm:w-[45%] pl-14 max-[767px]:pl-16 sm:pl-0 ${isEven ? 'sm:pl-12 text-left' : 'sm:pr-12 sm:text-right'}`}>
                     <div className="flex flex-col">
-                      <div className={`flex items-baseline gap-3 mb-3 max-[767px]:mb-5 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
+                      <div className={`flex items-baseline gap-3 mb-2 max-[767px]:mb-3 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
                         <span className="text-[clamp(10px,1.5vw,12px)] font-bold tracking-[0.2em] text-forest/30 tabular-nums max-[767px]:text-[14px] max-[767px]:tracking-[0.1em]">
                           {step.number}
                         </span>
