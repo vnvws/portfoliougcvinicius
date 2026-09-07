@@ -550,13 +550,13 @@ export const niches: Niche[] = [
       {
         title: "SMOO",
         description: "Sorvete desidratado em pasta",
-        youtubeUrl: "https://youtube.com/shorts/h7CdCkwJa3g",
+        youtubeUrl: "https://youtube.com/shorts/h7CdCkwJa3g?feature=share",
         label: "9:16"
       },
       {
         title: "UP GAS",
         description: "O primeiro isotônico com gás do Brasil",
-        youtubeUrl: "https://youtube.com/shorts/LSDuFgCl7A8",
+        youtubeUrl: "https://youtube.com/shorts/LSDuFgCl7A8?feature=share",
         label: "9:16"
       },
       {

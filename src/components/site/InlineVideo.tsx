@@ -76,8 +76,8 @@ export function InlineVideo({
     setActiveVideoSrc(videoKey);
   };
 
-  // Thumbnail do YouTube (Prioriza 720p, depois HQ)
-  const youtubeThumbnail = youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hq720.jpg` : poster;
+  // Thumbnail do YouTube (Prioriza alta resolução, depois HQ)
+  const youtubeThumbnail = youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg` : poster;
 
   // Só montamos o player real se:
   // 1. Estiver na viewport
@@ -134,7 +134,9 @@ export function InlineVideo({
               className="h-full w-full object-cover"
               onError={(e) => {
                 const target = e.currentTarget;
-                if (isYouTube && target.src.includes('hq720')) {
+                if (isYouTube && target.src.includes('maxresdefault')) {
+                  target.src = `https://i.ytimg.com/vi/${youtubeId}/hq720.jpg`;
+                } else if (isYouTube && target.src.includes('hq720')) {
                   target.src = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
                 } else {
                   setHasError(true);
