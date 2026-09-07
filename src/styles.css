@@ -26,7 +26,7 @@ header,
   --font-serif: "Archivo", sans-serif;
   --font-sans: "Archivo", sans-serif;
   
-  --color-bone: oklch(0.947 0.014 76.5);
+  --color-bone: oklch(1 0 0);
   --color-forest: oklch(0.436 0.043 165.5);
   --color-ink: oklch(0.263 0 0);
   --color-neon: oklch(0.9 0.29 135);
