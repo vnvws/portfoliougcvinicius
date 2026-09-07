@@ -34,6 +34,7 @@ const ProcessSection = lazy(() => import("@/components/site/ProcessSection"));
 
 
 
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -77,16 +78,16 @@ function Index() {
       <NeonCursor />
       <FixedScale>
         <main className="relative w-full overflow-hidden bg-bone font-display text-ink">
-          {/* Top Navigation Bar */}
-          <nav className="w-full bg-[#252525] py-3 sm:py-2.5">
-            <div className="mx-auto w-full max-w-[1240px] overflow-x-auto px-4 sm:flex sm:items-center sm:justify-center sm:px-8 lg:px-12 scrollbar-none touch-pan-x">
-              <div className="flex w-max items-center gap-x-6 sm:w-auto sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2">
+          {/* Top Navigation Bar - Static in Header */}
+          <nav className="w-full bg-[#252525] py-2.5">
+            <div className="mx-auto flex w-full max-w-[1240px] items-center justify-center px-12">
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
                 {niches.map((niche) => (
                   <button
                     key={niche.id}
                     onClick={() => scrollToPortfolio(niche.id)}
                     aria-label={`Ver nicho ${niche.title}`}
-                    className="shrink-0 font-display text-[12px] font-bold tracking-[0.08em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 focus-visible:outline-2 focus-visible:outline-neon focus-visible:outline-offset-4 cursor-none whitespace-nowrap sm:text-[10px]"
+                    className="font-display text-[10px] font-bold tracking-[0.08em] text-[#7dff00] uppercase transition-all hover:opacity-70 active:scale-95 focus-visible:outline-2 focus-visible:outline-neon focus-visible:outline-offset-4 cursor-none whitespace-nowrap"
                   >
                     {niche.title}
                   </button>
@@ -97,11 +98,11 @@ function Index() {
 
           <Hero />
           
-          <section className="relative mt-2 sm:mt-0 mb-14 sm:mb-6 overflow-hidden">
-            <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-8 lg:px-12">
-              <div className="flex items-center gap-3 sm:gap-4">
+          <section className="relative mt-4 sm:mt-0 mb-12 sm:mb-6 overflow-hidden">
+            <div className="mx-auto w-[1240px] px-12">
+              <div className="flex items-center gap-4">
                 <div className="h-[1px] flex-1 bg-forest/10" />
-                <p className="flex-shrink-0 text-[12px] font-bold tracking-[0.12em] text-forest/50 uppercase whitespace-nowrap sm:text-[11px] sm:tracking-[0.32em] sm:text-forest/40">
+                <p className="flex-shrink-0 text-[11px] font-bold tracking-[0.32em] text-forest/40 uppercase whitespace-nowrap">
                   Marcas que já confiaram
                 </p>
                 <div className="h-[1px] flex-1 bg-forest/10" />
@@ -110,34 +111,34 @@ function Index() {
             <BrandMarquee />
           </section>
 
-          <div className="pt-0 sm:pt-2">
+          <div className="pt-12 sm:pt-4">
             <About />
           </div>
           
           <EngagementSection />
 
-          {/* Portfolio Section */}
-          <section id="portfolio" className="mx-auto w-full max-w-[1240px] pt-16 pb-16 px-4 sm:pt-6 sm:pb-10 sm:px-8 lg:px-12">
+          {/* Portfolio Section - Tabbed for Maximum Performance */}
+          <section id="portfolio" className="mx-auto w-[1240px] pt-12 pb-16">
             <div className="mb-8 flex flex-col items-center">
-              <span className="text-[13px] sm:text-[11px] font-bold tracking-[0.2em] sm:tracking-[0.4em] text-forest/50 sm:text-forest/40 uppercase mb-4">Portfólio</span>
+              <span className="text-[11px] font-bold tracking-[0.4em] text-forest/40 uppercase mb-4">Portfólio</span>
               <div className="h-[1px] w-24 bg-neon" />
             </div>
 
-            <div className="mb-10 sm:mb-12 px-0">
+            <div className="mb-12">
               <PortfolioNav activeTab={activeTab} onTabChange={setActiveTab} />
             </div>
 
             <div className="relative">
-              {niches.map((niche) => (
+              {niches.map((niche, index) => (
                 activeTab === niche.id && (
                   <div key={niche.id} className="animate-in fade-in duration-500">
-                    <div className="mb-8 sm:mb-12 px-0">
-                      <h2 className="font-display text-[clamp(28px,7vw,34px)] sm:text-[clamp(42px,6vw,64px)] font-black tracking-tight sm:tracking-[-0.04em] text-forest leading-tight">
+                    <div className="mb-12 px-12">
+                      <h2 className="font-display text-[clamp(42px,6vw,64px)] font-black tracking-[-0.04em] text-forest leading-tight">
                         {niche.title}
                       </h2>
                       <div className="mt-2 h-[2px] w-32 bg-neon/30" />
                     </div>
-                    <PortfolioGrid niche={niche} index={0} />
+                    <PortfolioGrid niche={niche} index={index} />
                   </div>
                 )
               ))}
@@ -178,6 +179,7 @@ function Index() {
 }
 
 function PortfolioGrid({ niche, index }: { niche: Niche; index: number }) {
+
   return (
     <PortfolioGridInner niche={niche} index={index} />
   );
@@ -218,6 +220,9 @@ const PortfolioGridInner = memo(function PortfolioGridInner({ niche, index }: { 
     </div>
   );
 });
+
+// Removido NicheWrapper pois agora usamos Abas Reais para otimização de memória extrema.
+
 
 function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -264,14 +269,14 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
   };
 
   return (
-    <div className="relative w-full group/nav px-0 sm:px-8 lg:px-12">
+    <div className="relative w-full px-12 group/nav">
       {/* Left Indicator */}
       {showLeftArrow && (
         <>
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-bone via-bone/80 to-transparent transition-opacity duration-500 sm:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 left-12 z-20 w-24 bg-gradient-to-r from-bone via-bone/80 to-transparent transition-opacity duration-500" />
           <button 
             onClick={() => scroll('left')}
-            className="absolute left-2 top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95 sm:left-[52px]"
+            className="absolute left-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
             aria-label="Ver nichos anteriores"
           >
             <ChevronRight className="rotate-180" size={20} strokeWidth={2.5} />
@@ -282,7 +287,7 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
       {/* Main Scrollable Area */}
       <div 
         ref={scrollRef}
-        className="flex w-full items-center gap-x-6 sm:gap-x-10 overflow-x-auto overflow-y-hidden pb-4 scrollbar-none snap-x snap-mandatory touch-pan-x"
+        className="flex w-full items-center gap-x-10 overflow-x-auto overflow-y-hidden pb-4 scrollbar-none snap-x snap-mandatory touch-pan-x"
         style={{
           msOverflowStyle: 'none',
           scrollbarWidth: 'none',
@@ -297,7 +302,7 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
             aria-selected={activeTab === niche.id}
             role="tab"
             aria-label={`Nicho ${niche.title}`}
-            className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[13px] font-bold tracking-[0.08em] uppercase transition-all duration-300 snap-start focus-visible:text-neon sm:text-[14px] sm:tracking-[0.15em] ${
+            className={`group relative flex-shrink-0 cursor-none py-2 font-display text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 snap-start focus-visible:text-neon ${
               activeTab === niche.id 
                 ? 'text-forest' 
                 : 'text-forest/30 hover:text-forest/60'
@@ -317,10 +322,10 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
       {/* Right Indicator */}
       {showRightArrow && (
         <>
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-bone via-bone/80 to-transparent transition-opacity duration-500 sm:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 right-12 z-20 w-24 bg-gradient-to-l from-bone via-bone/80 to-transparent transition-opacity duration-500" />
           <button 
             onClick={() => scroll('right')}
-            className="absolute right-2 top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95 sm:right-[52px]"
+            className="absolute right-[52px] top-1/2 z-30 -translate-y-1/2 text-forest/40 transition-all hover:text-neon hover:scale-110 active:scale-95"
             aria-label="Ver mais nichos"
           >
             <ChevronRight 
@@ -338,22 +343,23 @@ function PortfolioNav({ activeTab, onTabChange }: { activeTab: string; onTabChan
 function Hero() {
   const { setActiveVideoSrc } = useVideoControl();
   
+  // Limpar qualquer vídeo ativo ao carregar o Hero (topo da página)
   useEffect(() => {
     setActiveVideoSrc(null);
   }, [setActiveVideoSrc]);
 
   return (
-    <section className="relative mx-auto w-full max-w-[1240px] pt-10 pb-14 px-4 sm:px-8 lg:px-12 sm:pt-4 sm:pb-4">
-      <div className="relative grid grid-cols-[minmax(0,1fr)_minmax(112px,32%)] items-start gap-3 lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-14">
-        <div className="relative z-10 flex min-w-0 flex-col items-start text-left lg:flex-1 lg:w-full">
+    <section className="relative mx-auto w-[1240px] pt-4 pb-20 sm:pb-8">
+      <div className="relative flex items-center justify-between gap-14 px-12">
+        <div className="relative z-10 flex-1 flex flex-col items-start text-left">
           <Reveal>
-            <span className="text-[10px] sm:text-[12px] font-semibold tracking-[0.1em] sm:tracking-[0.34em] text-forest uppercase">
+            <span className="text-[12px] font-semibold tracking-[0.34em] text-forest uppercase">
               UGC Creator Masculino · São Paulo, Brasil
             </span>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="mt-3 sm:mt-4 font-display text-[clamp(34px,10.5vw,44px)] sm:text-[clamp(56px,10vw,120px)] leading-[0.9] sm:leading-[0.85] font-black tracking-tight sm:tracking-[-0.05em] text-ink uppercase">
+            <h1 className="mt-4 font-display text-[clamp(64px,10vw,120px)] leading-[0.85] font-black tracking-[-0.05em] text-ink uppercase">
               Vinícius
               <br />
               <span className="text-[#7dff00]">Araújo</span>
@@ -361,50 +367,50 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-5 sm:mt-8 max-w-[540px] text-[13px] sm:text-[18px] leading-[1.5] sm:leading-[1.6] text-ink/80 font-normal">
+            <p className="mt-8 max-w-[540px] text-[18px] leading-[1.6] text-ink/80 font-normal">
               Vídeos UGC com presença masculina para apresentar produtos e serviços de um jeito natural, direto e feito para social e ads.
             </p>
           </Reveal>
 
           <Reveal delay={300} className="w-full">
-            <div className="mt-5 sm:mt-10 flex w-full max-w-[680px] items-start justify-between gap-2 sm:gap-6">
+            <div className="mt-10 flex w-full max-w-[680px] items-start justify-between gap-6">
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-forest/5 text-forest">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
                   <Share2 size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[9px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-normal sm:tracking-wider">
+                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
                     FEITO PARA SOCIAL
                   </span>
-                  <span className="text-[9px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Reels, TikTok e Shorts
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-forest/5 text-forest">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
                   <TrendingUp size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[9px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-normal sm:tracking-wider">
+                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
                     PRONTO PARA ADS
                   </span>
-                  <span className="text-[9px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Conteúdo pensado para campanhas
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 flex-1 min-w-0">
-                <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-forest/5 text-forest">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/5 text-forest">
                   <Video size={18} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[9px] sm:text-[13px] font-bold leading-tight text-ink uppercase tracking-normal sm:tracking-wider">
+                  <span className="text-[13px] font-bold leading-tight text-ink uppercase tracking-wider">
                     PRODUÇÃO COMPLETA
                   </span>
-                  <span className="text-[9px] sm:text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
+                  <span className="text-[11px] font-normal leading-tight text-ink/60 mt-0.5">
                     Roteiro, gravação e edição
                   </span>
                 </div>
@@ -413,14 +419,14 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={400}>
-            <div className="mt-6 sm:mt-14 flex flex-row items-center gap-4 sm:gap-10">
+            <div className="mt-14 flex items-center gap-10">
               <div className="flex items-center gap-4">
                 <a
                   href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Falar comigo pelo WhatsApp"
-                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <MessageCircle size={22} />
                 </a>
@@ -429,7 +435,7 @@ function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu Instagram"
-                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <Instagram size={22} />
                 </a>
@@ -438,7 +444,7 @@ function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ver meu TikTok"
-                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <svg 
                     viewBox="0 0 24 24" 
@@ -455,7 +461,7 @@ function Hero() {
                 <a
                   href="mailto:comercial.viniciusugc@gmail.com"
                   aria-label="Enviar um e-mail"
-                  className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/5 text-forest transition-all duration-300 hover:bg-[#7dff00] hover:text-[#252525] hover:-translate-y-1 active:scale-90 touch-manipulation"
                 >
                   <Mail size={22} />
                 </a>
@@ -463,7 +469,7 @@ function Hero() {
 
               <a
                 href="#portfolio"
-                className="group relative flex min-h-9 items-center gap-1 font-display text-[11px] sm:text-[18px] font-black tracking-wide sm:tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
+                className="group relative flex items-center gap-2 font-display text-[18px] font-black tracking-widest text-forest transition-all duration-300 hover:opacity-70 active:scale-95"
               >
                 <span>VER PORTFÓLIO</span>
                 <ChevronRight size={22} className="transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -473,7 +479,7 @@ function Hero() {
           </Reveal>
         </div>
 
-        <div className="relative w-full shrink-0 lg:w-[340px]">
+        <div className="relative w-[340px] shrink-0">
           <div
             className="relative overflow-hidden rounded-[22px] bg-ink shadow-2xl"
             style={{
@@ -501,7 +507,7 @@ function Hero() {
             </div>
           </div>
           <span
-            className="absolute -bottom-5 -left-2 sm:-left-8 -rotate-3 rounded-full px-3 sm:px-5 py-1.5 sm:py-2 text-[12px] font-bold tracking-[0.12em] sm:tracking-[0.2em] shadow-lg"
+            className="absolute -bottom-5 -left-8 -rotate-3 rounded-full px-5 py-2 text-[12px] font-bold tracking-[0.2em] shadow-lg"
             style={{ backgroundColor: "var(--color-ink)", color: "var(--color-neon)" }}
           >
             UGC CREATOR MASCULINO
@@ -514,8 +520,8 @@ function Hero() {
 
 function About() {
   return (
-    <section id="sobre" className="mx-auto w-full max-w-[1240px] pb-16 px-4 sm:px-8 lg:px-12 sm:pb-6">
-      <div className="grid grid-cols-12 items-start gap-4 sm:gap-8">
+    <section id="sobre" className="mx-auto w-[1240px] pb-12 sm:pb-8">
+      <div className="grid grid-cols-12 items-start gap-8">
         <Reveal className="col-span-5">
           <img
             src={aboutCollageAsset.url}
@@ -529,13 +535,13 @@ function About() {
             }}
           />
         </Reveal>
-        <Reveal delay={140} className="col-span-7 pt-1 lg:col-span-6 lg:col-start-7 lg:pt-6">
-          <h2 className="font-display text-[clamp(24px,7vw,34px)] sm:text-[clamp(42px,6vw,72px)] font-black tracking-tight sm:tracking-[-0.04em] text-forest leading-none">
+        <Reveal delay={140} className="col-span-6 col-start-7 pt-6">
+          <h2 className="font-display text-[clamp(42px,6vw,72px)] font-black tracking-[-0.04em] text-forest leading-none">
             Me conheça
           </h2>
-          <div className="mt-3 space-y-4 text-[12px] leading-[1.5] text-forest whitespace-normal sm:mt-4 sm:text-[16px] sm:leading-[1.65] sm:whitespace-pre-line">
+          <div className="mt-4 space-y-4 text-[16px] leading-[1.6] text-forest whitespace-pre-line">
             <p>
-              {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald's, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
+              {"Sou o Vinícius, UGC creator formado pela vida.\n\nJá tentei várias formas de ganhar dinheiro na internet: vender\ntênis, tocar loja em marketplace, testar diferentes modelos.\nAntes disso, trabalhei no McDonald’s, tentei ser fotógrafo e\nexplorei caminhos criativos que não deram certo de primeira.\nTudo isso virou bagagem. Hoje sou detalhista com meus\nconteúdos, tenho senso estético apurado e foco total em\ncriar vídeos naturais, que parecem reais porque são.\n\nFora do trabalho, curto viajar, conhecer lugares novos, fazer\natividades ao ar livre e manter a rotina de treino. Esse lifestyle\naparece nos meus conteúdos de forma orgânica.\n\n Eu não vendo produto, eu mostro experiência real. E é isso\nque gera conexão de verdade com o público e com as marcas."}
             </p>
           </div>
         </Reveal>
@@ -592,10 +598,10 @@ function EngagementSection() {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[1240px] pt-0 pb-16 px-4 sm:pt-6 sm:pb-10 sm:px-8 lg:px-12">
-      <div className="mb-10 sm:mb-12 flex flex-col items-center">
+    <section className="mx-auto w-[1240px] pt-12 pb-20">
+      <div className="mb-12 flex flex-col items-center">
         <Reveal>
-          <h2 className="font-display text-[clamp(28px,7vw,34px)] sm:text-[clamp(32px,5vw,48px)] font-black tracking-tight sm:tracking-[-0.04em] text-forest text-center leading-[1.1]">
+          <h2 className="font-display text-[clamp(32px,5vw,48px)] font-black tracking-[-0.04em] text-forest text-center leading-[1.1]">
             Mais engajamento e mais conversão
           </h2>
         </Reveal>
@@ -604,13 +610,13 @@ function EngagementSection() {
         </Reveal>
       </div>
 
-      <div className="flex justify-center">
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 w-full">
+      <div className="flex justify-center px-12">
+        <div className="grid grid-cols-3 gap-8 w-full">
           {engagementVideos.map((video, idx) => (
             <Reveal key={video.url} delay={200 + idx * 100}>
               <div className="flex flex-col items-center">
                 <div 
-                  className="relative w-full overflow-hidden rounded-[12px] sm:rounded-[22px] bg-ink shadow-2xl max-w-[340px] sm:max-w-[320px] mx-auto"
+                  className="relative w-full overflow-hidden rounded-[22px] bg-ink shadow-2xl"
                   style={{ 
                     aspectRatio: "9 / 16",
                     border: "1px solid rgba(125, 255, 0, 0.2)"
@@ -621,10 +627,10 @@ function EngagementSection() {
                   />
                 </div>
                 <div className="mt-4 text-center font-display uppercase">
-                  <p className="text-[14px] sm:text-[24px] font-black tracking-tight sm:tracking-tighter text-forest leading-none">
+                  <p className="text-[24px] font-black tracking-tighter text-forest leading-none">
                     +De <CountUp end={video.views} suffix=" mil" />
                   </p>
-                  <p className="mt-1 text-[10px] sm:mt-2 sm:text-[12px] font-bold tracking-normal sm:tracking-widest text-forest/60 sm:text-forest/50">
+                  <p className="mt-1 text-[12px] font-bold tracking-widest text-forest/50">
                     views no {video.platform}
                   </p>
                 </div>
@@ -654,16 +660,16 @@ function FeedbackSection() {
   ];
 
   return (
-    <section className="pt-16 sm:pt-10 pb-0 overflow-hidden bg-bone">
-      <div className="mx-auto w-full max-w-[1240px] mb-6 sm:mb-4 px-4 sm:px-8 lg:px-12">
+    <section className="pt-16 pb-0 overflow-hidden bg-bone">
+      <div className="mx-auto w-[1240px] mb-4">
         <Reveal>
-          <h2 className="font-display text-[clamp(30px,7vw,34px)] sm:text-[clamp(42px,6vw,72px)] font-black tracking-tight sm:tracking-[-0.04em] text-forest leading-none">
+          <h2 className="font-display text-[clamp(42px,6vw,72px)] font-black tracking-[-0.04em] text-forest leading-none">
             Feedbacks
           </h2>
         </Reveal>
       </div>
       
-      <div className="relative w-full overflow-hidden px-4 touch-pan-x sm:px-12" style={{ isolation: 'isolate' }}>
+      <div className="relative w-full overflow-hidden px-12 touch-pan-x" style={{ isolation: 'isolate' }}>
         <div 
           className="flex w-max gap-6 animate-marquee"
           style={{ 
@@ -694,7 +700,7 @@ function FeedbackSection() {
 function FeedbackCard({ src, index }: { src: string; index: number }) {
   return (
     <div 
-      className="relative w-[220px] sm:w-[320px] lg:w-[360px] flex-shrink-0 overflow-hidden rounded-[16px] sm:rounded-[22px] bg-white p-2 sm:p-4"
+      className="relative w-[360px] flex-shrink-0 overflow-hidden rounded-[22px] bg-white p-4"
       style={{
         border: "1px solid color-mix(in oklab, var(--color-forest) 20%, transparent)",
       }}
@@ -725,11 +731,11 @@ function ExitPopup() {
   if (!isOpen) return <div ref={ref} className="h-1 w-full" />;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/60 p-4 sm:p-6 backdrop-blur-sm animate-in fade-in duration-300">
-      <div className="relative w-full max-w-[500px] overflow-hidden rounded-[32px] border border-forest/10 bg-white p-6 sm:p-12 shadow-2xl animate-in zoom-in-95 duration-300">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/60 p-6 backdrop-blur-sm animate-in fade-in duration-300">
+      <div className="relative w-full max-w-[500px] overflow-hidden rounded-[32px] border border-forest/10 bg-white p-12 shadow-2xl animate-in zoom-in-95 duration-300">
         <button 
           onClick={() => setIsOpen(false)}
-          className="absolute right-4 sm:right-6 top-4 sm:top-6 flex h-10 w-10 items-center justify-center rounded-full bg-forest/5 text-forest transition-all hover:bg-neon hover:text-ink"
+          className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-forest/5 text-forest transition-all hover:bg-neon hover:text-ink"
           aria-label="Fechar popup"
         >
           <X size={20} />
@@ -740,11 +746,11 @@ function ExitPopup() {
             <MessageCircle size={32} />
           </div>
           
-          <h2 className="mb-4 font-display text-[clamp(24px,4vw,32px)] font-black leading-tight text-forest">
+          <h2 className="mb-4 font-display text-[clamp(28px,4vw,32px)] font-black leading-tight text-forest">
             Vamos decolar <span className="text-neon">sua marca?</span>
           </h2>
           
-          <p className="mb-10 text-[14px] sm:text-[16px] leading-relaxed text-forest/70">
+          <p className="mb-10 text-[16px] leading-relaxed text-forest/70">
             Peça agora sua proposta personalizada. Eu volto em até 24h úteis para darmos início à sua próxima campanha.
           </p>
 
@@ -752,7 +758,7 @@ function ExitPopup() {
             href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex w-full items-center justify-center gap-3 rounded-2xl bg-neon py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="group relative flex w-full items-center justify-center gap-3 rounded-2xl bg-neon py-5 text-[14px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98]"
             style={{
               boxShadow: "0 4px 0 0 oklch(0.75 0.25 135)"
             }}

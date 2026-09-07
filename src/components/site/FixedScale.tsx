@@ -13,7 +13,11 @@ export const useVideoControl = () => {
   return context;
 };
 
-/** Keeps the approved fixed desktop composition while allowing a real mobile reflow. */
+/**
+ * Canva-like "do not resize" behaviour: the page keeps the exact desktop
+ * composition at 1440px and is only scaled down proportionally on smaller
+ * screens. No reflow, no breakpoints.
+ */
 export function FixedScale({ children }: { children: ReactNode }) {
   const inner = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
@@ -42,13 +46,6 @@ export function FixedScale({ children }: { children: ReactNode }) {
       }
 
       const width = Math.min(window.innerWidth, document.documentElement.clientWidth);
-      if (width < 768) {
-        setScale(1);
-        setScaledHeight("auto");
-        lastWidth = width;
-        lastHeight = 0;
-        return;
-      }
       const currentScale = width / DESIGN_WIDTH;
       
       if (Math.abs(width - lastWidth) > 0.5) {
