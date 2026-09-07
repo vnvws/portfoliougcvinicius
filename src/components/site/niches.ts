@@ -554,9 +554,9 @@ export const niches: Niche[] = [
         label: "9:16"
       },
       {
-        title: "WINE",
-        description: "Assinatura mensal de vinhos",
-        youtubeUrl: "https://youtube.com/shorts/Juwj4kL3zMA",
+        title: "Sam's Club",
+        description: "Onde seu dinheiro vale muito mais",
+        youtubeUrl: "https://youtube.com/shorts/KOUAZV3Ugpg?feature=share",
         label: "9:16"
       },
       {
