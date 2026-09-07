@@ -57,7 +57,7 @@ export default function ProcessSection() {
     <section className="pt-10 pb-6 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden md:px-[clamp(16px,4vw,48px)] max-[767px]:px-4">
       <div className="mx-auto w-full max-w-[1240px]">
         <Reveal>
-          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(28px,4vw,44px)] text-center tracking-tighter leading-none">
+          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(20px,3vw,32px)] text-center tracking-tighter leading-none">
             Processo Criativo
           </h2>
         </Reveal>
