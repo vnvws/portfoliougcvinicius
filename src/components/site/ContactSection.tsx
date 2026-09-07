@@ -1,203 +1,76 @@
-import { useState } from "react";
-import { Reveal } from "./Reveal";
-import { Mail, Instagram, Phone, Send, Star } from "lucide-react";
-import { submitProposal } from "./contact.functions";
-import { useServerFn } from "@tanstack/react-start";
-import { toast } from "sonner";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
 
 export default function ContactSection() {
-  const submitFn = useServerFn(submitProposal);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name") as string,
-      company: formData.get("company") as string,
-      email: formData.get("email") as string,
-      whatsapp: formData.get("whatsapp") as string,
-      budget: formData.get("budget") as string,
-      message: formData.get("message") as string,
-    };
-
-    try {
-      await submitFn({ data });
-      toast.success("Proposta enviada com sucesso! Voltaremos em até 24h.");
-      (e.target as HTMLFormElement).reset();
-    } catch (error) {
-      toast.error("Erro ao enviar proposta. Tente novamente.");
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const socials = [
+    {
+      label: "WhatsApp",
+      href: "https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0",
+      icon: MessageCircle,
+    },
+    {
+      label: "Email",
+      href: "mailto:comercial.viniciusugc@gmail.com",
+      icon: Mail,
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/_oviniciusaraujo/",
+      icon: Instagram,
+    },
+    {
+      label: "TikTok",
+      href: "https://www.tiktok.com/@viniviews_",
+      icon: TikTokIcon,
+    },
+  ];
 
   return (
-    <section id="contato" className="pt-32 pb-12 px-12 bg-bone">
-      <div className="mx-auto w-[1240px] rounded-[32px] border border-forest/10 bg-white/50 p-16 shadow-xl backdrop-blur-sm">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
-          {/* Left Column */}
-          <div className="flex flex-col">
-            <Reveal>
-              <div className="mb-8 flex items-center gap-2 text-[11px] max-[767px]:text-[13px] font-bold tracking-[0.4em] text-neon">
-                <Star size={14} fill="currentColor" />
-                CONTATO
-              </div>
-            </Reveal>
+    <footer id="contato" className="bg-[#2f2f2f] py-16 max-[767px]:py-12">
+      <div className="mx-auto w-[1240px] max-w-full px-6 text-center">
+        <p className="font-display text-[14px] max-[767px]:text-[15px] font-bold tracking-[0.3em] text-[#7efe11] mb-8">
+          CONECTE-SE
+        </p>
 
-            <Reveal delay={100}>
-              <h2 className="font-display text-[64px] leading-[1.1] font-bold text-ink mb-6">
-                Vamos dar início a <span className="italic text-neon">sua próxima campanha</span>
-              </h2>
-            </Reveal>
-
-            <Reveal delay={200}>
-              <p className="text-[18px] max-[767px]:text-[20px] text-forest/70 mb-12 max-w-[400px]">
-                conta o que sua marca precisa — eu volto em até 24h úteis
-              </p>
-            </Reveal>
-
-            <Reveal delay={300} className="mt-auto">
-              <div className="overflow-hidden rounded-2xl border border-forest/10 bg-forest/[0.03]">
-                <ContactRow
-                  label="WHATSAPP"
-                  value="(11) 97839-3658"
-                  href="https://api.whatsapp.com/message/RRN5XSTCXBCBK1?autoload=1&app_absent=0"
-                />
-                <ContactRow
-                  label="EMAIL"
-                  value="comercial.viniciusugc@gmail.com"
-                  href="mailto:comercial.viniciusugc@gmail.com"
-                />
-                <ContactRow
-                  label="INSTAGRAM"
-                  value="@_oviniciusaraujo"
-                  href="https://www.instagram.com/_oviniciusaraujo/"
-                />
-                <ContactRow
-                  label="TIKTOK"
-                  value="@viniviews_"
-                  href="https://www.tiktok.com/@viniviews_"
-                  last
-                />
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Right Column */}
-          <Reveal delay={400}>
-            <div className="rounded-3xl border border-forest/10 bg-white p-10 shadow-2xl transition-transform hover:scale-[1.01]">
-              <h3 className="font-display text-[32px] max-[767px]:text-[34px] font-bold text-ink mb-8">
-                solicitar proposta
-              </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Nome (Obrigatório)</label>
-                  <input
-                    required
-                    name="name"
-                    placeholder="seu nome"
-                    className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Empresa (Opcional)</label>
-                    <input
-                      name="company"
-                      placeholder="nome da marca"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Email (Obrigatório)</label>
-                    <input
-                      required
-                      type="email"
-                      name="email"
-                      placeholder="email@empresa.com"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">WhatsApp (Opcional)</label>
-                    <input
-                      name="whatsapp"
-                      placeholder="(11) 99999-9999"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Orçamento (Opcional)</label>
-                    <select
-                      name="budget"
-                      className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all appearance-none cursor-pointer"
-                    >
-                      <option value="prefere não dizer">prefere não dizer</option>
-                      <option value="até R$500">até R$500</option>
-                      <option value="R$500–1500">R$500–1500</option>
-                      <option value="acima de R$1500">acima de R$1500</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/60">Mensagem (Obrigatório)</label>
-                  <textarea
-                    required
-                    name="message"
-                    rows={4}
-                    placeholder="objetivo da campanha, prazo, referências"
-                    className="w-full rounded-xl border border-forest/10 bg-bone/30 px-5 py-4 text-ink placeholder:text-forest/30 focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-all resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group relative w-full overflow-hidden rounded-xl bg-neon py-5 text-[14px] max-[767px]:text-[15px] font-bold tracking-[0.2em] text-ink transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
-                  style={{
-                    boxShadow: "0 4px 0 0 oklch(0.75 0.25 135)"
-                  }}
-                >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    {isSubmitting ? "Enviando..." : "Solicitar Proposta"}
-                    {!isSubmitting && <Send size={16} />}
-                  </span>
-                </button>
-              </form>
-            </div>
-          </Reveal>
+        <div className="flex items-center justify-center gap-8 max-[767px]:gap-6 mb-10">
+          {socials.map((social) => {
+            const Icon = social.icon;
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.href.startsWith("http") ? "_blank" : undefined}
+                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-label={social.label}
+                className="group flex h-14 w-14 max-[767px]:h-12 max-[767px]:w-12 items-center justify-center rounded-full border border-[#7efe11]/30 text-[#7efe11] transition-all duration-300 hover:bg-[#7efe11] hover:text-[#252525] hover:border-[#7efe11] hover:scale-110"
+              >
+                <Icon size={26} className="max-[767px]:h-[22px] max-[767px]:w-[22px]" />
+              </a>
+            );
+          })}
         </div>
+
+        <p className="text-[13px] max-[767px]:text-[14px] text-white/40 font-medium tracking-wide">
+          Vinícius Araújo · UGC Creator
+        </p>
       </div>
-    </section>
+    </footer>
   );
 }
 
-function ContactRow({ label, value, href, last = false }: { label: string; value: string; href?: string; last?: boolean }) {
-  const valueContent = href ? (
-    <a
-      href={href}
-      className="text-[14px] max-[767px]:text-[16px] font-bold text-ink text-right break-all transition-colors hover:text-neon"
-    >
-      {value}
-    </a>
-  ) : (
-    <span className="text-[14px] max-[767px]:text-[16px] font-bold text-ink text-right break-all">{value}</span>
-  );
-
+function TikTokIcon({ size = 24, className }: { size?: number; className?: string }) {
   return (
-    <div className={`flex items-center justify-between p-5 ${!last ? 'border-b border-forest/5' : ''}`}>
-      <span className="text-[10px] max-[767px]:text-[12px] font-bold tracking-widest text-forest/50">{label}</span>
-      {valueContent}
-    </div>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4c.5.6 1.5 1.5 3 1.5" />
+    </svg>
   );
 }
