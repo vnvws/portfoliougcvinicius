@@ -54,10 +54,10 @@ const steps: Step[] = [
 
 export default function ProcessSection() {
   return (
-    <section className="pt-16 pb-12 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden md:px-[clamp(16px,4vw,48px)] max-[767px]:px-4">
+    <section className="pt-10 pb-6 px-[clamp(16px,4vw,48px)] bg-bone relative overflow-hidden md:px-[clamp(16px,4vw,48px)] max-[767px]:px-4">
       <div className="mx-auto w-full max-w-[1240px]">
         <Reveal>
-          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(28px,4vw,44px)] text-center tracking-tighter leading-none">
+          <h2 className="text-[clamp(42px,6vw,72px)] font-black text-forest mb-[clamp(20px,3vw,32px)] text-center tracking-tighter leading-none">
             Processo Criativo
           </h2>
         </Reveal>
@@ -66,7 +66,7 @@ export default function ProcessSection() {
           {/* Vertical line connector */}
           <div className="absolute left-[19px] top-[10px] bottom-[10px] w-[2px] bg-forest/10 sm:left-1/2 sm:-ml-[1px] max-[767px]:left-[21px]" />
 
-          <div className="space-y-[clamp(24px,3.5vw,44px)] max-[767px]:space-y-8">
+          <div className="space-y-[clamp(20px,3vw,36px)] max-[767px]:space-y-5">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
@@ -83,7 +83,7 @@ export default function ProcessSection() {
                   {/* Content Container */}
                   <div className={`w-full sm:w-[45%] pl-14 max-[767px]:pl-16 sm:pl-0 ${isEven ? 'sm:pl-12 text-left' : 'sm:pr-12 sm:text-right'}`}>
                     <div className="flex flex-col">
-                      <div className={`flex items-baseline gap-3 mb-3 max-[767px]:mb-5 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
+                      <div className={`flex items-baseline gap-3 mb-2 max-[767px]:mb-3 ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
                         <span className="text-[clamp(10px,1.5vw,12px)] font-bold tracking-[0.2em] text-forest/30 tabular-nums max-[767px]:text-[14px] max-[767px]:tracking-[0.1em]">
                           {step.number}
                         </span>
@@ -93,13 +93,13 @@ export default function ProcessSection() {
                       </div>
                       
                       {step.description && (
-                        <p className="text-[clamp(15px,1.8vw,17px)] leading-[1.6] text-ink/80 font-normal mb-4 max-[767px]:text-[16px] max-[767px]:leading-[1.6] max-[767px]:mb-6">
+                        <p className="text-[clamp(15px,1.8vw,17px)] leading-[1.6] text-ink/80 font-normal mb-3 max-[767px]:text-[16px] max-[767px]:leading-[1.6] max-[767px]:mb-4">
                           {step.description}
                         </p>
                       )}
                       
                       {step.bullets && (
-                        <ul className={`space-y-3 max-[767px]:space-y-5 ${isEven ? 'text-left' : 'text-left sm:text-right'}`}>
+                        <ul className={`space-y-2 max-[767px]:space-y-3 ${isEven ? 'text-left' : 'text-left sm:text-right'}`}>
                           {step.bullets.map((bullet, bIdx) => (
                             <li key={bIdx} className={`flex items-start gap-3 text-[clamp(14px,1.6vw,15px)] leading-[1.5] text-ink/70 max-[767px]:text-[15px] max-[767px]:leading-[1.6] ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
                               {/* Left alignment logic for desktop */}
