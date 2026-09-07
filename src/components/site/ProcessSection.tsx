@@ -99,7 +99,7 @@ export default function ProcessSection() {
                       )}
                       
                       {step.bullets && (
-                        <ul className={`space-y-3 max-[767px]:space-y-5 ${isEven ? 'text-left' : 'text-left sm:text-right'}`}>
+                        <ul className={`space-y-2 max-[767px]:space-y-3 ${isEven ? 'text-left' : 'text-left sm:text-right'}`}>
                           {step.bullets.map((bullet, bIdx) => (
                             <li key={bIdx} className={`flex items-start gap-3 text-[clamp(14px,1.6vw,15px)] leading-[1.5] text-ink/70 max-[767px]:text-[15px] max-[767px]:leading-[1.6] ${isEven ? 'justify-start' : 'justify-start sm:justify-end'}`}>
                               {/* Left alignment logic for desktop */}
