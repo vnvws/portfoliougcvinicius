@@ -28,7 +28,7 @@ export default function ContactSection() {
     <footer id="contato" className="bg-[#2f2f2f] py-16 max-[767px]:py-12">
       <div className="mx-auto w-[1240px] max-w-full px-6 text-center">
         <p className="font-display text-[14px] max-[767px]:text-[15px] font-bold tracking-[0.3em] text-[#7efe11] mb-8">
-          CONECTE-SE
+          ENTRAR EM CONTATO
         </p>
 
         <div className="flex items-center justify-center gap-8 max-[767px]:gap-6 mb-10">
