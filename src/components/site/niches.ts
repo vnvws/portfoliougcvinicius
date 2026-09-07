@@ -542,6 +542,12 @@ export const niches: Niche[] = [
     layout: "vertical",
     videos: [
       {
+        title: "Jack Link's",
+        description: "Rankeando snacks proteicos",
+        youtubeUrl: "https://youtube.com/shorts/KRiqmq6ODyU",
+        label: "9:16"
+      },
+      {
         title: "SMOO",
         description: "Sorvete desidratado em pasta",
         youtubeUrl: "https://youtube.com/shorts/h7CdCkwJa3g",
@@ -557,12 +563,6 @@ export const niches: Niche[] = [
         title: "Sam's Club",
         description: "Onde seu dinheiro vale muito mais",
         youtubeUrl: "https://youtube.com/shorts/KOUAZV3Ugpg?feature=share",
-        label: "9:16"
-      },
-      {
-        title: "Jack Link's",
-        description: "Rankeando snacks proteicos",
-        youtubeUrl: "https://youtube.com/shorts/KRiqmq6ODyU",
         label: "9:16"
       }
     ],
